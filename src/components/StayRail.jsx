@@ -124,8 +124,8 @@ export function StayRail() {
 
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
-      <div className="border border-line bg-white">
-        <div className="border-b border-line bg-light px-5 py-3">
+      <div className="border border-line bg-light">
+        <div className="border-b border-line px-5 py-3">
           <span className="eyebrow text-strong">Your Stay</span>
         </div>
         <SummaryRows />
@@ -149,7 +149,7 @@ export function StayRailMobile() {
   if (NO_RAIL.has(pathname)) return null;
 
   return (
-    <div className="border-b border-line bg-white lg:hidden">
+    <div className="border-b border-line bg-light lg:hidden">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -212,10 +212,10 @@ function EveryStayIncludes({ className = '' }) {
      brochure. The description of each item lives on the property page. */
   return (
     <div className={'border border-line ' + className}>
-      <div className="border-b border-line bg-light px-5 py-2.5">
+      <div className="px-5 pt-3">
         <span className="eyebrow text-strong">Every Stay Includes</span>
       </div>
-      <ul className="flex flex-col gap-2 px-5 py-4">
+      <ul className="flex flex-col gap-2 px-5 pt-2 pb-4">
         {D.includes.map((item) => (
           <li key={item.title} className="flex items-center gap-3">
             <span className="grid h-[18px] w-[18px] shrink-0 place-items-center text-accent">{ICONS[item.icon]}</span>
