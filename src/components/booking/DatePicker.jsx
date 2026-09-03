@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import useMountTransition from '../../useMountTransition.js';
 import RanchCalendar from '../Calendar.jsx';
@@ -192,18 +192,24 @@ export default function DatePicker({
   /* The calendar always opens above the fields. It is rendered at the
      viewport level, anchored to the fields' top edge, so it can rise over
      the drawer content above it rather than being clipped by the
-     drawer's own scroll box; when the space above is short, the panel
-     scrolls inside itself. Re-measured on resize and on scroll of the
-     region the fields live in. */
+     drawer's own scroll box. When there is not enough room above for the
+     whole panel, it keeps its full height and lets its lower edge come
+     down over the fields instead of cropping the legend. Re-measured on
+     resize, on scroll of the region the fields live in, and once more
+     after mount, when the panel's own height is known. */
   const [anchor, setAnchor] = useState(null);
   const popoverRef = useRef(null);
+  const measure = useCallback(() => {
+    if (!wrapRef.current) return;
+    const r = wrapRef.current.getBoundingClientRect();
+    const h = popoverRef.current ? popoverRef.current.offsetHeight : 0;
+    const roomAbove = r.top - 8 - 16;
+    const top = h && h > roomAbove ? 16 : null;
+    setAnchor({ left: r.left, width: r.width, top, bottom: top == null ? window.innerHeight - r.top + 8 : null });
+  }, []);
   useEffect(() => {
     if (!popoverOpen || !wrapRef.current) return;
     const scroller = wrapRef.current.closest('[data-scroll-region]');
-    function measure() {
-      const r = wrapRef.current.getBoundingClientRect();
-      setAnchor({ left: r.left, width: r.width, bottom: window.innerHeight - r.top + 8, maxHeight: Math.max(240, r.top - 24) });
-    }
     measure();
     window.addEventListener('resize', measure);
     scroller?.addEventListener('scroll', measure);
@@ -211,7 +217,13 @@ export default function DatePicker({
       window.removeEventListener('resize', measure);
       scroller?.removeEventListener('scroll', measure);
     };
-  }, [popoverOpen]);
+  }, [popoverOpen, measure]);
+  /* Second pass once the panel is in the DOM and has a height to report. */
+  useEffect(() => {
+    if (!calMounted) return;
+    const raf = requestAnimationFrame(measure);
+    return () => cancelAnimationFrame(raf);
+  }, [calMounted, measure]);
 
   /* The calendar floats over whatever sits below the fields, so it has to
      get out of the way on its own: a click anywhere outside the picker,
@@ -344,7 +356,7 @@ export default function DatePicker({
             ref={popoverRef}
             role="dialog"
             aria-label={checkIn ? 'Choose a check-out date' : 'Choose a check-in date'}
-            style={{ left: anchor.left, width: anchor.width, bottom: anchor.bottom, maxHeight: anchor.maxHeight }}
+            style={{ left: anchor.left, width: anchor.width, top: anchor.top ?? undefined, bottom: anchor.bottom ?? undefined, maxHeight: 'calc(100vh - 32px)' }}
             className={
               'fixed z-[2600] overflow-y-auto border border-line bg-light p-7 shadow-2xl ' +
               'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ' +
