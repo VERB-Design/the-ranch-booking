@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button.jsx';
-import Chip from './ui/Chip.jsx';
 import FeeModal from './FeeModal.jsx';
 import { money } from '../utils.js';
 import { activeRoomIndex, nextUnassigned, nights, roomStayTotal, useBooking } from '../store.jsx';
@@ -101,12 +100,10 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
   const [feesOpen, setFeesOpen] = useState(false);
   const grandTotal = typeof total === 'number' ? total : nightly * nightCount * guests;
   return (
-    <div className="shrink-0 text-right max-md:mt-1 max-md:w-full max-md:text-left">
-      {/* The unit never breaks mid-phrase — it sits on its own line under the
-          figure so "per person / night" reads as one thing. */}
+    <div className="text-left">
       <p className="text-ink">
-        <span className="block text-[20px] font-medium leading-none">{money(nightly, 0)}</span>
-        <span className="mt-1 block whitespace-nowrap text-xs text-muted">{suffix.trim()}</span>
+        <span className="text-[20px] font-medium leading-none">{money(nightly, 0)}</span>
+        <span className="ml-2 text-xs text-muted">{suffix.trim()}</span>
       </p>
       <span className="block text-sm text-body">Or {money(grandTotal, 0)} total</span>
       <button
@@ -144,11 +141,6 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
      button's "Selected" state is what marks the choice. */
   const borderClasses = 'bg-light';
 
-  const chips = (
-    <div className="mt-3 flex flex-wrap gap-2">
-      {room.amenities.map((a) => <Chip key={a}>{a}</Chip>)}
-    </div>
-  );
 
   /* Horizontal: the photo runs to the card's edge and fills whatever
      height the copy column needs — never the other way round, so a tall
@@ -184,7 +176,6 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
           <h2 id={headingId} className="h-serif text-lg text-ink">{room.name}</h2>
           <p className="mt-1 text-sm text-body">{room.detail}</p>
           <p className="mt-3 text-sm leading-relaxed text-body line-clamp-3">{room.desc}</p>
-          {chips}
           <div className="mt-4">{priceSlot}</div>
           <div className="mt-4">{actions}</div>
         </div>
@@ -196,16 +187,11 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
     <article aria-labelledby={headingId} className={'transition-colors ' + borderClasses + ' ' + className}>
       <div className="flex max-md:flex-col">
         {media}
-        <div className="flex min-w-0 flex-1 flex-col p-5">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between md:gap-6">
-            <div className="min-w-0">
-              <h2 id={headingId} className="h-serif text-lg text-ink md:text-xl">{room.name}</h2>
-              <p className="mt-1 text-sm text-body">{room.detail}</p>
-            </div>
-            {priceSlot}
-          </div>
+        <div className="flex min-w-0 flex-1 flex-col p-7">
+          <h2 id={headingId} className="h-serif text-lg text-ink md:text-xl">{room.name}</h2>
+          <p className="mt-1 text-sm text-body">{room.detail}</p>
           <p className="mt-3 text-sm leading-relaxed text-body line-clamp-3">{room.desc}</p>
-          {chips}
+          <div className="mt-4">{priceSlot}</div>
           <div className="mt-4">{actions}</div>
         </div>
       </div>
