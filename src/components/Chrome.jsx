@@ -1,6 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Button from './ui/Button.jsx';
-import { D, useBooking, useToastMessage } from '../store.jsx';
+import MenuButton from './SiteMenu.jsx';
+import TextCta from './home/TextCta.jsx';
+import { D, guestsLabel, useBooking, useToastMessage } from '../store.jsx';
+import { fmtShort } from '../utils.js';
 
 /* ============================================================
    Chrome — header, footer, page shell primitives
@@ -31,23 +34,45 @@ export function Header({ onEditStay }) {
   const hasStay = !!(state.checkIn && state.checkOut);
   const mark = wordmark(state.property);
 
+  /* Same row as the home hero (HeroNav): menu left, lockup centred, and
+     on the right the stay in one line — dates, guests, Edit — where the
+     home page has Book now. Edit reopens the drawer, which is now the
+     only place the stay is changed. */
   return (
     <header className="sticky top-0 z-[900] flex h-20 items-center border-b border-line bg-page">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-5 md:px-10 xl:px-[160px]">
-        <button type="button" aria-label="Start over" onClick={() => { reset(); navigate('/'); }} className="shrink-0">
-          <img src={mark.src} alt={mark.alt} className="h-auto w-[130px] md:w-[150px]" />
+      <div className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-5 md:px-10 xl:px-[103px]">
+        <MenuButton tone="dark" />
+
+        <button
+          type="button"
+          aria-label="Start over"
+          onClick={() => { reset(); navigate('/'); }}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+        >
+          <img src={mark.src} alt={mark.alt} className="h-auto w-[130px] md:w-[160px]" />
         </button>
 
-        <div className="flex items-center gap-6">
-          <a href={'tel:' + D.phone.replace(/[^\d+]/g, '')} className="label-sm hidden text-body hover:text-ink md:inline">
-            {D.phone}
-          </a>
-          {hasStay && onEditStay && (
-            <Button variant="ghost" onClick={onEditStay} className="!min-h-[38px] !px-4">
-              Edit stay
-            </Button>
-          )}
-        </div>
+        {hasStay && onEditStay ? (
+          <div className="flex items-center gap-5 md:gap-7">
+            <dl className="hidden items-center gap-6 md:flex">
+              <div className="flex items-baseline gap-2">
+                <dt className="label-sm text-muted">Dates</dt>
+                <dd className="text-sm text-ink">{fmtShort(state.checkIn)} – {fmtShort(state.checkOut)}</dd>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <dt className="label-sm text-muted">Guests</dt>
+                <dd className="text-sm text-ink">{guestsLabel(state)}</dd>
+              </div>
+            </dl>
+            <TextCta className="text-ink" onClick={onEditStay} aria-label="Edit dates and guests">
+              Edit
+            </TextCta>
+          </div>
+        ) : (
+          <TextCta className="text-ink" onClick={onEditStay || (() => navigate('/'))}>
+            Book now
+          </TextCta>
+        )}
       </div>
     </header>
   );

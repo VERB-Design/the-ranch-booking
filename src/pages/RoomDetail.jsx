@@ -136,7 +136,7 @@ export default function RoomDetail() {
                 onClick={() => setFeesOpen(true)}
                 className="mt-3 block border-t border-line pt-3 text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
               >
-                inc. taxes &amp; fees
+                plus taxes and fees
               </button>
               <FeeModal open={feesOpen} onClose={() => setFeesOpen(false)} nightly={room.rate} nights={n} adults={adults} pid={room.property} />
               <Button variant="primary" onClick={assign} className="mt-4 w-full">

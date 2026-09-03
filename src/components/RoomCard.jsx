@@ -23,7 +23,6 @@ import { cardLayout, nextPathAfter, useConfig } from '../config.jsx';
 export default function RoomCard({ room, ctaLabel = 'Select Room', selected = false }) {
   const config = useConfig();
   const layout = cardLayout(config);
-  const navigate = useNavigate();
   const choose = useChooseRoom();
   const { state } = useBooking();
   const n = Math.max(1, nights(state));
@@ -49,13 +48,6 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
           >
             {selected ? 'Selected' : ctaLabel}
           </Button>
-          <button
-            type="button"
-            onClick={() => navigate('/room/' + room.id)}
-            className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-          >
-            View Details
-          </button>
         </div>
       }
     />
@@ -122,7 +114,7 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
         onClick={() => setFeesOpen(true)}
         className="text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
       >
-        inc. taxes &amp; fees
+        plus taxes and fees
       </button>
       <FeeModal
         open={feesOpen}

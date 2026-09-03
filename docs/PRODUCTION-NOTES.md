@@ -683,3 +683,10 @@ category:
   "restart the guided sequence" pattern elsewhere, but it is a judgement call, not something the
   brief stated explicitly for the pages-mode case — flag if a different landing target is wanted
   there.
+
+## Header + Rooms alignment — 3 Sep 2026
+- Booking header now mirrors the home nav (menu · centred lockup · dates/guests + Edit). The
+  phone number left the header; it remains in the Program helper line and the footer.
+- Room cards follow wire 370:5323 exactly: totals read "plus taxes and fees" (pre-tax, matching
+  `roomStayTotal()`), and the "View details" link is gone. `/room/:id` still exists but nothing
+  links to it in drawer mode — either restore a link on the room name or retire the route.

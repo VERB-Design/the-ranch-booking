@@ -56,7 +56,8 @@ Get the drawer → Room → Upgrade pixel-faithful before polishing add-ons and 
 ## 2. Page shell (every step)
 
 ```
-Header   80px · wordmark left (public/brand/the-ranch.svg, ~150px wide) · optional phone right
+Header   80px · follows the home nav: MENU left · property lockup centred · right: DATES / GUESTS
+         summary with an Edit text-CTA that reopens the booking drawer (Book now when no stay yet)
 Stepper  full-width band, background/light, 1px border top+bottom, 7 numbered items
          current: filled dark circle + dark label · done: outlined dark circle, muted label
          upcoming: outlined #999 circle, muted label · done steps are links back
