@@ -52,7 +52,7 @@ function SummaryRows() {
   return (
     <div className="divide-y divide-line px-5">
       {(datesSet || roomsSet) && (
-        <div className="py-3 text-sm text-ink">
+        <div className="pt-3 pb-4 text-sm text-ink">
           {prop && <p className="mb-1 text-ink">{prop.name}</p>}
           {datesSet && (
             <p>
@@ -81,7 +81,7 @@ function SummaryRows() {
       )}
 
       {!!(p && p.addonLines.length) && (
-        <div className="py-2">
+        <div className="pt-3.5 pb-4">
           <span className="label-sm mb-1.5 block text-muted">Enhancements</span>
           <ul className="flex flex-col gap-2">
             {p.addonLines.map((l, i) => (
