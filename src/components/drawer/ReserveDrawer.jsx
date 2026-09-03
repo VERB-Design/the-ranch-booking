@@ -201,7 +201,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
       >
         <div className="flex flex-1 flex-col gap-5 px-6 py-8 md:px-8">
           <div className="flex items-end justify-between gap-4">
-            <h2 id={titleId} className="h-serif text-h5 leading-none text-ink">Book Your Stay</h2>
+            <h2 id={titleId} className="h-serif leading-none text-ink text-[calc(var(--text-h5)-6px)]">Book Your Stay</h2>
             <button
               ref={closeRef}
               type="button"
@@ -218,13 +218,13 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
           )}
 
           <div>
-            <span className="label-sm mb-1.5 block text-muted">{config.multiRoom ? 'Rooms & Guests' : 'Guests'}</span>
+            <span className="label-sm mb-1.5 block text-accent">{config.multiRoom ? 'Rooms & Guests' : 'Guests'}</span>
             <p className="mb-3 text-xs text-muted">Maximum 2 adult guests per room.</p>
             <RoomChips rooms={draft.rooms} multiRoom={config.multiRoom} onGuestsChange={setGuests} onAdd={addRoom} onRemove={removeRoom} />
           </div>
 
           <div>
-            <span className="label-sm mb-1.5 block text-muted">Promo Code</span>
+            <span className="label-sm mb-1.5 block text-accent">Promo Code</span>
             <div className="flex h-[50px] items-center rounded-brand border border-line bg-fill px-4">
               <input
                 type="text"
@@ -248,7 +248,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
           <hr className="border-line" />
 
           <div>
-            <span className="label-sm mb-1.5 block text-ink">Choose Your Dates</span>
+            <span className="label-sm mb-1.5 block text-accent">Choose Your Dates</span>
             {draft.property ? (
               <DatePicker
                 pid={draft.property}

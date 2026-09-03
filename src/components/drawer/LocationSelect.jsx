@@ -25,7 +25,7 @@ function propertyLabel(pid) {
 export default function LocationSelect({ value, onChange, open, onOpenChange }) {
   return (
     <div className="relative">
-      <span className="label-sm mb-1.5 block text-muted">Location</span>
+      <span className="label-sm mb-1.5 block text-accent">Location</span>
       <button
         type="button"
         aria-haspopup="listbox"

@@ -1,4 +1,5 @@
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+import useMountTransition from '../../useMountTransition.js';
 import RanchCalendar from '../Calendar.jsx';
 import Checkbox from '../ui/Checkbox.jsx';
 import RetreatCard from './RetreatCard.jsx';
@@ -117,7 +118,10 @@ function stayDescription(pid, nights) {
   const hikes = word('hike', /^Daily /) || 'hikes';
   const meals = word('dining', /^All /) || 'meals';
   const propertyShort = D.properties[pid].name.replace('The Ranch ', '');
-  return nights + '-night stay at ' + propertyShort + ' — includes daily ' + massage + ', daily ' + hikes + ', and all ' + meals + '.';
+  return {
+    title: nights + '-night stay at ' + propertyShort,
+    rest: 'Includes daily ' + massage + ', daily ' + hikes + ', and all ' + meals + '.',
+  };
 }
 
 /* ============================================================
@@ -169,7 +173,7 @@ export default function DatePicker({
   onResetCheckOut,
   onToggleExtra,
   onChooseRetreatDates,
-  bare = false,
+  bare: _bare = false,
 }) {
   const checkInKey = checkIn ? checkIn.getTime() : null;
   const [month, setMonth] = useState(() => {
@@ -181,6 +185,31 @@ export default function DatePicker({
      again once both dates are set — the fields are the resting state,
      the calendar is the tool that fills them. */
   const [open, setOpen] = useState(false);
+  const popoverOpen = open && !(checkIn && checkOut);
+  const { mounted: calMounted, shown: calShown } = useMountTransition(popoverOpen, 300);
+  const wrapRef = useRef(null);
+
+  /* The calendar floats over whatever sits below the fields, so it has to
+     get out of the way on its own: a click anywhere outside the picker,
+     or Escape, closes it. Escape is swallowed here so the drawer around
+     it does not close on the same keypress. */
+  useEffect(() => {
+    if (!popoverOpen) return;
+    function onPointer(e) {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false);
+    }
+    function onKey(e) {
+      if (e.key !== 'Escape') return;
+      e.stopPropagation();
+      setOpen(false);
+    }
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('keydown', onKey, true);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('keydown', onKey, true);
+    };
+  }, [popoverOpen]);
 
   /* Jump the visible month to wherever the guest just landed — the
      check-in's month once it is picked, back to today's month if the
@@ -264,9 +293,36 @@ export default function DatePicker({
 
   return (
     <div>
-      {open && !bothSet && (
-        <>
-          <div className={bare ? 'max-w-[420px]' : 'max-w-[420px] border border-line bg-white p-5'}>
+      <div ref={wrapRef} className="relative max-w-[420px]">
+        <div className="grid grid-cols-2 gap-4">
+          <DateField
+            label="Check-in"
+            value={checkIn ? fmtDate(checkIn) : null}
+            placeholder="Select check-in"
+            active={checkinActive}
+            onClick={openCheckIn}
+          />
+          <DateField
+            label="Check-out"
+            value={checkOut ? fmtDate(checkOut) : null}
+            placeholder="Select check-out"
+            active={checkoutActive}
+            onClick={openCheckOut}
+          />
+        </div>
+
+        {/* The calendar is an overlay: it opens beneath the fields, over
+            the content that follows, and fades in over the build's 300ms. */}
+        {calMounted && (
+          <div
+            role="dialog"
+            aria-label={checkIn ? 'Choose a check-out date' : 'Choose a check-in date'}
+            className={
+              'absolute left-0 top-full z-40 mt-2 w-full border border-line bg-light p-4 shadow-2xl ' +
+              'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ' +
+              (calShown ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1')
+            }
+          >
             <RanchCalendar
               month={month}
               onMonth={changeMonth}
@@ -278,34 +334,18 @@ export default function DatePicker({
               mode={checkIn ? 'checkout' : 'checkin'}
               helper={stayRules.blocksCopy}
             />
+            <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
           </div>
-          <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
-        </>
-      )}
-
-      <div className={'grid max-w-[420px] grid-cols-2 gap-4' + (open && !bothSet ? ' mt-6' : '')}>
-        <DateField
-          label="Check-in"
-          value={checkIn ? fmtDate(checkIn) : null}
-          placeholder="Select check-in"
-          active={checkinActive}
-          onClick={openCheckIn}
-        />
-        <DateField
-          label="Check-out"
-          value={checkOut ? fmtDate(checkOut) : null}
-          placeholder="Select check-out"
-          active={checkoutActive}
-          onClick={openCheckOut}
-        />
+        )}
       </div>
 
       {bothSet && (
         <>
           <div className="mt-6 max-w-[420px]">
             <div role="status" aria-live="polite">
-              <span className="eyebrow block text-accent">Your Chosen Stay</span>
-              <p className="h-serif mt-2 text-base text-body">{stayDescription(pid, nights)}</p>
+              <span className="label-sm block text-accent">Your Chosen Stay</span>
+              <p className="h-serif mt-2 text-[24px] leading-tight text-ink">{stayDescription(pid, nights).title}</p>
+              <p className="mt-1.5 text-sm text-body">{stayDescription(pid, nights).rest}</p>
             </div>
 
             {stayRetreat && (

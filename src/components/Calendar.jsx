@@ -189,7 +189,7 @@ export default function RanchCalendar({
           <div key={week} role="row" className="contents">
             {weekCells.map((d, j) => {
               const i = week * 7 + j;
-              if (!d) return <span key={i} role="presentation" aria-hidden="true" className="-ml-px -mt-px aspect-square w-full" />;
+              if (!d) return <span key={i} role="presentation" aria-hidden="true" className="-ml-px -mt-px aspect-square w-[calc(100%+1px)]" />;
 
               const enabled = isEnabled(d);
               const retreat = isRetreat(d);
@@ -241,7 +241,7 @@ export default function RanchCalendar({
                      pixel, so the grid reads as one ruled table. Cells with
                      a stronger border sit a layer up so theirs wins. */
                   className={[
-                    'relative -ml-px -mt-px grid aspect-square w-full place-items-center text-[15px] transition-colors',
+                    'relative -ml-px -mt-px grid aspect-square w-[calc(100%+1px)] place-items-center text-[15px] transition-colors',
                     enabled ? 'cursor-pointer hover:z-20 hover:outline hover:outline-1 hover:outline-line-hover' : 'cursor-default text-disabled',
                     enabled || selected ? 'z-10' : '',
                     fillCls,
