@@ -276,7 +276,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
           {/* CHECK RATES never scrolls away: it sticks to the bottom of
               the drawer's own scroll area, on the drawer ground, and only
               settles into the flow once everything above it is in view. */}
-          <div className="sticky bottom-0 z-30 -mx-6 mt-auto bg-light px-6 pb-6 pt-4 md:-mx-8 md:px-8">
+          <div className="sticky bottom-0 z-30 -mx-6 mt-auto border-t border-line bg-light px-6 py-4 md:-mx-8 md:px-8">
             <Button variant="primary" onClick={apply} disabled={!canSubmit} className="w-full">
               {ctaLabel}
             </Button>
