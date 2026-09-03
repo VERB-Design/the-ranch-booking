@@ -55,7 +55,7 @@ export default function Rooms() {
         <div
           role="status"
           aria-live="polite"
-          className="mt-2 mb-6 flex flex-wrap items-center justify-between gap-4 border border-line bg-white px-5 py-4"
+          className="mt-2 mb-6 flex flex-wrap items-center justify-between gap-4 bg-light px-5 py-4"
         >
           <div>
             <p className="eyebrow text-accent">

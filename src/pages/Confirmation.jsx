@@ -56,11 +56,11 @@ export default function Confirmation() {
           </p>
         </div>
 
-        <span className="label-sm border border-line bg-white px-4 py-2 text-ink">
+        <span className="label-sm bg-light px-4 py-2 text-ink">
           {state.confirmation.number}
         </span>
 
-        <div className="w-full border border-line bg-white text-left">
+        <div className="w-full bg-light text-left">
           <div className="border-b border-line bg-light px-6 py-3">
             {/* Was a styled span — the only other heading on this page
                 ("Before you arrive") is an h3 with nothing at h2 to nest

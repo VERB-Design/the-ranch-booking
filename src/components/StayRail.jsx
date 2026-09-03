@@ -126,7 +126,7 @@ export function StayRail() {
 
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
-      <div className="border border-line bg-light">
+      <div className="bg-light">
         <div className="border-b border-line px-5 py-3 text-center">
           <span className="eyebrow text-strong">Your Stay</span>
         </div>

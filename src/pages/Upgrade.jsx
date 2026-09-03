@@ -98,7 +98,7 @@ export default function Upgrade() {
           }
         />
       ) : (
-        <div className="border border-line bg-white p-8 text-center">
+        <div className="bg-light p-8 text-center">
           <p className="text-sm text-body">
             {originalRoom
               ? 'Your room is already our best in this category.'

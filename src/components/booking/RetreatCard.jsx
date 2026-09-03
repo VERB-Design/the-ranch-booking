@@ -34,7 +34,7 @@ export default function RetreatCard({ retreat, pid, onLearnMore, className = '' 
   const checkOutDate = retreatDisplayCheckout(pid, checkInDate);
 
   return (
-    <div className={'border border-line border-t-2 border-t-accent bg-white p-4 ' + className}>
+    <div className={'border-t-2 border-t-accent bg-light p-4 ' + className}>
       {checkOutDate && (
         <span className="label-sm mb-2 inline-block bg-brown-100 px-2 py-1 text-[11px] tracking-normal text-accent normal-case">
           {fmtRange(checkInDate, checkOutDate)}

@@ -173,7 +173,7 @@ export default function AddOns() {
                so the label says nothing to a sighted guest — it stays for the
                heading order a screen reader relies on. */}
             <h2 className="sr-only">Enhancements</h2>
-            <div className="divide-y divide-line border border-line">
+            <div className="divide-y divide-line bg-light">
               {catalogue.map((addon) => {
                 const entry = addedEntries.find((e) => e.id === addon.id);
                 const row = (

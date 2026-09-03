@@ -32,7 +32,7 @@ export default function Location() {
               key={pid}
               type="button"
               onClick={() => choose(pid)}
-              className="group flex flex-col border border-line bg-white text-left transition-colors hover:border-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+              className="group flex flex-col bg-light text-left transition-colors hover:bg-fill focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
             >
               <img src={p.image} alt={p.imageAlt} className="h-[258px] w-full object-cover" />
               <span className="flex flex-1 flex-col p-6">

@@ -118,7 +118,7 @@ export default function RoomDetail() {
         </div>
 
         <aside className="lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:self-start">
-          <div className="border border-line bg-white">
+          <div className="bg-light">
             <div className="border-b border-line bg-light p-5 text-center">
               <p className="eyebrow text-strong">{room.name}</p>
               <p className="mt-1 text-ink">
