@@ -56,7 +56,7 @@ function AddonRow({ addon, open, onToggle, draft, onDraftChange, dates, maxParty
           {addon.per === 'free' ? (
             <Chip className="shrink-0">Free</Chip>
           ) : priceTBD ? (
-            <Chip className="shrink-0">Price on request</Chip>
+            <Chip className="shrink-0 text-[10px]">Price on request</Chip>
           ) : (
             <div className="shrink-0 text-right">
               <span className="h-serif block text-lg text-ink">{money(addon.price, 0)}</span>
@@ -172,7 +172,7 @@ export default function AddOns() {
         {addedEntries.length > 0 && (
           <div>
             <h2 className="h-serif mb-3 text-lg text-ink">Added to your stay</h2>
-            <div className="divide-y divide-line border border-line bg-white">
+            <div className="divide-y divide-line border border-line">
               {addedEntries.map((entry) => {
                 const addon = D.addonById(entry.id);
                 if (!addon) return null;
@@ -213,7 +213,7 @@ export default function AddOns() {
                so the label says nothing to a sighted guest — it stays for the
                heading order a screen reader relies on. */}
             <h2 className="sr-only">{addedEntries.length > 0 ? 'Add more enhancements' : 'Enhancements'}</h2>
-            <div className="divide-y divide-line border border-line bg-white">
+            <div className="divide-y divide-line border border-line">
               {remaining.map((addon) => (
                 <AddonRow
                   key={addon.id}

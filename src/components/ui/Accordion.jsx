@@ -33,7 +33,7 @@ export default function Accordion({ trigger, open, onToggle, children, className
       {Heading ? <Heading className="contents">{button}</Heading> : button}
       <div className={'grid transition-all duration-300 ease-out ' + (open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
         <div className="overflow-hidden">
-          <div className="bg-light pb-5">{children}</div>
+          <div className="pb-5">{children}</div>
         </div>
       </div>
     </div>
