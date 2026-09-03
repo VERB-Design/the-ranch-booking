@@ -90,7 +90,7 @@ export default function Layout() {
     <DrawerContext.Provider value={drawerApi}>
       <Header onEditStay={() => setReserve(true)} />
       <Stepper />
-      <main id="main-content" tabIndex={-1} className="min-h-[60vh] outline-none">
+      <main id="main-content" tabIndex={-1} className={'min-h-[60vh] outline-none' + (stepConfig ? ' pb-24' : '')}>
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 px-5 py-8 md:px-10 lg:flex-row xl:px-[160px]">
           <div className="min-w-0 flex-1">
             <Outlet context={setStep} />
