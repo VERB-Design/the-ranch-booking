@@ -1,0 +1,605 @@
+const imgIconBus = "https://www.figma.com/api/mcp/asset/8750046e-c4ea-4d6e-95e5-bf10fe459d51.svg";
+const imgPhosphorPersonSimpleHike = "https://www.figma.com/api/mcp/asset/d73065f1-8a8f-4091-8411-28229c54b0b4.svg";
+const imgIconSalad = "https://www.figma.com/api/mcp/asset/cb5d6576-9994-42f2-8153-f8789a6c3e0d.svg";
+const imgTablerMassage = "https://www.figma.com/api/mcp/asset/39f5e6aa-645d-4b21-aaa3-bdcd387c498f.svg";
+const imgChevronLeft = "https://www.figma.com/api/mcp/asset/107906e2-3ba8-421a-bbd2-8df61966d32b.svg";
+const imgChevronRight = "https://www.figma.com/api/mcp/asset/dc560f08-79a5-492e-b67e-bd3ae69e16d7.svg";
+const imgVector = "https://www.figma.com/api/mcp/asset/e1c350b6-d3c7-4e21-a38c-0d7554d53395.svg";
+
+type TextButtonProps = {
+  className?: string;
+  type?: "text";
+};
+
+function TextButton({ className, type = "text" }: TextButtonProps) {
+  return (
+    <div className={className || "content-stretch flex items-center justify-center px-[32px] py-[16px] relative"} data-node-id="1:162">
+      <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-center whitespace-nowrap" data-node-id="1:159">
+        ← Back
+      </p>
+    </div>
+  );
+}
+
+function IconBus({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="88:4260" data-name="icon/bus">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconBus} />
+    </div>
+  );
+}
+
+function PhosphorPersonSimpleHike({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="88:4256" data-name="phosphor/person-simple-hike">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPhosphorPersonSimpleHike} />
+    </div>
+  );
+}
+
+function IconSalad({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="88:4248" data-name="icon/salad">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconSalad} />
+    </div>
+  );
+}
+
+function TablerMassage({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="88:4235" data-name="tabler/massage">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTablerMassage} />
+    </div>
+  );
+}
+
+type DaysProps = {
+  className?: string;
+  month?: "other" | "this";
+  size?: "small";
+  type?: "neutral";
+};
+
+function Days({ className, month = "other", size = "small", type = "neutral" }: DaysProps) {
+  const isThis = month === "this";
+  return (
+    <div className={className || `${String.raw`content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative w-[57.571px] `}${isThis ? "" : "opacity-30"}`} id={isThis ? "node-210_6146" : "node-210_6144"}>
+      <p className={`${String.raw`[word-break:break-word] font-["B612_Mono:Regular"] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap `}${isThis ? "text-[#222]" : "text-[#4f4f4f]"}`} id={isThis ? "node-210_6147" : "node-210_6142"}>
+        30
+      </p>
+    </div>
+  );
+}
+
+export default function V1BProgramSelect() {
+  return (
+    <div className="bg-white content-stretch flex flex-col items-start relative size-full" data-node-id="370:7350" data-name="v1B. Program Select">
+      <div className="content-stretch flex h-[80px] items-end px-[160px] py-[16px] relative shrink-0 w-[1440px]" data-node-id="370:7351" data-name="Header">
+        <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[20px] text-black whitespace-nowrap" data-node-id="I370:7351;1:651">
+          The Ranch
+        </p>
+      </div>
+      <div className="bg-[#f4f4f5] border border-[#c8c8cf] border-solid content-stretch flex gap-[24px] items-center px-[160px] py-[8px] relative shrink-0 w-[1440px]" data-node-id="370:7352" data-name="Stepper">
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:94" data-name="Stepper item">
+          <div className="border border-black border-solid content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:94;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[10px] text-center w-full" data-node-id="I370:7352;1:94;1:89;1:80">
+              1
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center whitespace-nowrap" data-node-id="I370:7352;1:94;1:81">
+            Location
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:99" data-name="Stepper item">
+          <div className="bg-black content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:99;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[10px] text-center text-white w-full" data-node-id="I370:7352;1:99;1:89;1:71">
+              2
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[10px] text-black text-center whitespace-nowrap" data-node-id="I370:7352;1:99;1:81">
+            Program select
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:105" data-name="Stepper item">
+          <div className="border border-[#999] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:105;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center w-full" data-node-id="I370:7352;1:105;1:89;1:74">
+              3
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center whitespace-nowrap" data-node-id="I370:7352;1:105;1:81">
+            Extensions
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:110" data-name="Stepper item">
+          <div className="border border-[#999] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:110;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center w-full" data-node-id="I370:7352;1:110;1:89;1:74">
+              4
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center whitespace-nowrap" data-node-id="I370:7352;1:110;1:81">
+            Room select
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:115" data-name="Stepper item">
+          <div className="border border-[#999] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:115;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center w-full" data-node-id="I370:7352;1:115;1:89;1:74">
+              5
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center whitespace-nowrap" data-node-id="I370:7352;1:115;1:81">
+            Upgrades
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:120" data-name="Stepper item">
+          <div className="border border-[#999] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:120;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center w-full" data-node-id="I370:7352;1:120;1:89;1:74">
+              6
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center whitespace-nowrap" data-node-id="I370:7352;1:120;1:81">
+            Add-ons
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="I370:7352;1:121" data-name="Stepper item">
+          <div className="border border-[#999] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[50px] shrink-0 size-[16px]" data-node-id="I370:7352;1:121;1:89" data-name="stepper number">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center w-full" data-node-id="I370:7352;1:121;1:89;1:74">
+              7
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] text-center whitespace-nowrap" data-node-id="I370:7352;1:121;1:81">
+            Checkout
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-[1_0_0] gap-[40px] items-start min-h-px px-[160px] py-[32px] relative w-full" data-node-id="370:7353">
+        <div className="content-stretch flex flex-[1_0_0] flex-col gap-[24px] items-start min-w-px relative" data-node-id="370:7354">
+          <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="370:7355" data-name="Frame">
+            <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="370:7356" data-name="Frame">
+              <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Bold'] leading-[normal] min-w-px not-italic relative text-[#222] text-[16px] uppercase" data-node-id="370:7357">{`Add rooms & guests`}</p>
+            </div>
+            <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[10px] whitespace-nowrap" data-node-id="370:7358">
+              Maximum 2 adult guests per room. For more information, call +1 555 555-5555
+            </p>
+            <div className="content-stretch flex gap-[20px] items-start relative shrink-0" data-node-id="370:7359">
+              <div className="bg-[#f5f5f5] border-[#222] border-[1.5px] border-solid content-stretch flex flex-col gap-[4px] items-start px-[16px] py-[12px] relative rounded-[8px] shrink-0" data-node-id="370:7360" data-name="Frame">
+                <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="370:7361" data-name="Frame">
+                  <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap" data-node-id="370:7362">
+                    ROOM 01
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="370:7363" data-name="Frame">
+                  <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[12px] whitespace-nowrap" data-node-id="370:7364">
+                    Guests
+                  </p>
+                  <div className="bg-white border border-[#999] border-solid content-stretch flex gap-[10px] items-center justify-center p-[8px] relative rounded-[2px] shrink-0" data-node-id="370:7365" data-name="experience selector buttons">
+                    <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 size-[16px]" data-node-id="I370:7365;1:506">
+                      <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] text-center w-full" data-node-id="I370:7365;1:504">
+                        -
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] text-center w-[34px]" data-node-id="I370:7365;1:503">
+                      2
+                    </p>
+                    <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 size-[16px]" data-node-id="I370:7365;1:507">
+                      <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] text-center w-full" data-node-id="I370:7365;1:508">
+                        +
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[#f5f5f5] border-[#222] border-[1.5px] border-solid content-stretch flex flex-col gap-[4px] items-start px-[16px] py-[12px] relative rounded-[8px] shrink-0" data-node-id="370:7366" data-name="Frame">
+                <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="370:7367" data-name="Frame">
+                  <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#222] text-[14px] whitespace-nowrap" data-node-id="370:7368">
+                    ROOM 02
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="370:7369" data-name="Frame">
+                  <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[12px] whitespace-nowrap" data-node-id="370:7370">
+                    Guests
+                  </p>
+                  <div className="bg-white border border-[#999] border-solid content-stretch flex gap-[10px] items-center justify-center p-[8px] relative rounded-[2px] shrink-0" data-node-id="370:7371" data-name="experience selector buttons">
+                    <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 size-[16px]" data-node-id="I370:7371;1:506">
+                      <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] text-center w-full" data-node-id="I370:7371;1:504">
+                        -
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] text-center w-[34px]" data-node-id="I370:7371;1:503">
+                      1
+                    </p>
+                    <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 size-[16px]" data-node-id="I370:7371;1:507">
+                      <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] text-center w-full" data-node-id="I370:7371;1:508">
+                        +
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex items-start relative self-stretch shrink-0 w-[227px]" data-node-id="370:7372" data-name="Frame">
+                <div className="border-[#c9c9c9] border-[1.5px] border-dashed content-stretch flex flex-[1_0_0] flex-col h-full items-center justify-center min-w-px p-[20px] relative rounded-[8px]" data-node-id="370:7373" data-name="Frame">
+                  <div className="content-stretch flex items-start relative shrink-0" data-node-id="370:7374" data-name="Frame">
+                    <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#999] text-[14px] whitespace-nowrap" data-node-id="370:7375">
+                      + Add Room
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#c9c9c9] h-[2px] relative shrink-0 w-full" data-node-id="370:7376" data-name="divider" />
+          <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="370:7377" data-name="Frame">
+            <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="370:7378" data-name="Frame">
+              <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Bold'] leading-[normal] min-w-px not-italic relative text-[#222] text-[16px] uppercase" data-node-id="370:7379">
+                Choose your dates
+              </p>
+            </div>
+            <div className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[0] not-italic relative shrink-0 text-[#999] text-[10px] whitespace-nowrap" data-node-id="370:7380">
+              <p className="leading-[normal] mb-0 whitespace-pre">{`Stays run in blocks of 3 nights, 4 nights, and 7 nights. `}</p>
+              <p className="leading-[normal] whitespace-pre">Guests can add an extra night to stays ending on Thursdays.</p>
+            </div>
+            <div className="content-stretch flex flex-col gap-[8px] items-start justify-center relative shrink-0" data-node-id="370:7381">
+              <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[12px] whitespace-nowrap" data-node-id="370:7382">
+                Select check-in
+              </p>
+              <a className="bg-white border border-[#e2e8f0] border-solid content-stretch cursor-pointer flex flex-col gap-[var(--spacing\/4,16px)] items-start px-[26px] py-[16px] relative rounded-[var(--radius\/lg,8px)] shrink-0 w-[455px]" data-node-id="370:7383" data-name="Calendar">
+                <div className="content-stretch flex items-center justify-between pb-[var(--spacing\/0,0px)] pt-[var(--spacing\/1,4px)] px-[var(--spacing\/2,8px)] relative shrink-0 w-full" data-node-id="370:7384" data-name="Title">
+                  <div className="border border-[#e2e8f0] border-solid content-stretch flex gap-[var(--spacing\/2,8px)] items-center justify-center p-[var(--spacing\/1,4px)] relative rounded-[var(--radius\/md,6px)] shrink-0" data-node-id="370:7385" data-name="button">
+                    <div className="relative shrink-0 size-[16px]" data-node-id="370:7386" data-name="chevron-left">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronLeft} />
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center justify-center px-[var(--px-0,0px)] py-[var(--py-0,0px)] relative shrink-0" data-node-id="370:7387" data-name="month">
+                    <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[20px] text-left whitespace-nowrap" data-node-id="370:7388">
+                      September 2026
+                    </p>
+                  </div>
+                  <div className="border border-[#e2e8f0] border-solid content-stretch flex gap-[var(--spacing\/2,8px)] items-center justify-center p-[var(--spacing\/1,4px)] relative rounded-[var(--radius\/md,6px)] shrink-0" data-node-id="370:7389" data-name="button">
+                    <div className="relative shrink-0 size-[16px]" data-node-id="370:7390" data-name="chevron-right">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronRight} />
+                    </div>
+                  </div>
+                </div>
+                <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[12px] text-left whitespace-nowrap" data-node-id="370:7391">
+                  Select your earliest possible checkin date
+                </p>
+                <div className="grid grid-cols-[repeat(7,minmax(0,1fr))] grid-rows-[repeat(6,minmax(0,1fr))] h-[205.714px] relative shrink-0 w-[403px]" data-node-id="370:7392" data-name="Dates">
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-1 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7393" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7394">
+                      Su
+                    </p>
+                  </div>
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-2 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7395" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7396">
+                      Mo
+                    </p>
+                  </div>
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-3 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7397" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7398">
+                      Tu
+                    </p>
+                  </div>
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-4 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7399" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7400">
+                      We
+                    </p>
+                  </div>
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-5 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7401" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7402">
+                      Th
+                    </p>
+                  </div>
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-6 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7403" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7404">
+                      Fr
+                    </p>
+                  </div>
+                  <div className="bg-[#ebebeb] border-b border-black border-solid col-7 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] items-center justify-center justify-self-stretch p-[var(--spacing\/0,0px)] relative row-1 self-stretch shrink-0" data-node-id="370:7405" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#111] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="370:7406">
+                      Sa
+                    </p>
+                  </div>
+                  <Days className="col-1 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-30 p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" />
+                  <div className="col-2 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" data-node-id="370:7408" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#4f4f4f] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7408;210:6142">
+                      31
+                    </p>
+                  </div>
+                  <div className="col-3 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" data-node-id="370:7409" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7409;210:6147">
+                      1
+                    </p>
+                  </div>
+                  <div className="col-4 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" data-node-id="370:7410" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7410;210:6147">
+                      2
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-5 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" data-node-id="370:7411" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7411;210:6153">
+                      3
+                    </p>
+                  </div>
+                  <div className="col-6 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" data-node-id="370:7412" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7412;210:6147">
+                      4
+                    </p>
+                  </div>
+                  <div className="col-7 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-2 shrink-0 w-[57.571px]" data-node-id="370:7413" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7413;210:6147">
+                      5
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-1 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7414" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7414;210:6153">
+                      6
+                    </p>
+                  </div>
+                  <div className="col-2 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7415" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7415;210:6147">
+                      7
+                    </p>
+                  </div>
+                  <div className="col-3 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7416" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7416;210:6147">
+                      8
+                    </p>
+                  </div>
+                  <div className="col-4 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7417" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7417;210:6147">
+                      9
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-5 content-stretch cursor-pointer flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7418" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7418;210:6153">
+                      10
+                    </p>
+                  </div>
+                  <div className="col-6 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7419" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7419;210:6147">
+                      11
+                    </p>
+                  </div>
+                  <div className="col-7 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-3 shrink-0 w-[57.571px]" data-node-id="370:7420" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7420;210:6147">
+                      12
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-1 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7421" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7421;210:6153">
+                      13
+                    </p>
+                  </div>
+                  <div className="col-2 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7422" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7422;210:6147">
+                      14
+                    </p>
+                  </div>
+                  <div className="col-3 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7423" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7423;210:6147">
+                      15
+                    </p>
+                  </div>
+                  <div className="col-4 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7424" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7424;210:6147">
+                      16
+                    </p>
+                  </div>
+                  <div className="bg-[#e8642c] col-5 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7425" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-left text-white tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7425;377:8044">
+                      17
+                    </p>
+                  </div>
+                  <div className="col-6 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7426" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7426;210:6147">
+                      18
+                    </p>
+                  </div>
+                  <div className="col-7 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-4 shrink-0 w-[57.571px]" data-node-id="370:7427" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7427;210:6147">
+                      19
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-1 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7428" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7428;210:6153">
+                      20
+                    </p>
+                  </div>
+                  <div className="col-2 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7429" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7429;210:6147">
+                      21
+                    </p>
+                  </div>
+                  <div className="col-3 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7430" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7430;210:6147">
+                      22
+                    </p>
+                  </div>
+                  <div className="col-4 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7431" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7431;210:6147">
+                      23
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-5 content-stretch cursor-pointer flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7432" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7432;210:6153">
+                      24
+                    </p>
+                  </div>
+                  <div className="col-6 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7433" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7433;210:6147">
+                      25
+                    </p>
+                  </div>
+                  <div className="col-7 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-5 shrink-0 w-[57.571px]" data-node-id="370:7434" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7434;210:6147">
+                      26
+                    </p>
+                  </div>
+                  <div className="bg-[#c9c9c9] col-1 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" data-node-id="370:7435" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7435;210:6153">
+                      27
+                    </p>
+                  </div>
+                  <div className="col-2 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" data-node-id="370:7436" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7436;210:6147">
+                      28
+                    </p>
+                  </div>
+                  <div className="col-3 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" data-node-id="370:7437" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#222] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7437;210:6147">
+                      29
+                    </p>
+                  </div>
+                  <Days className="col-4 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" month="this" />
+                  <div className="bg-[#c9c9c9] col-5 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-40 p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" data-node-id="370:7439" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[length:var(--font\/size\/sm,14px)] text-black text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7439;210:6202">
+                      1
+                    </p>
+                  </div>
+                  <div className="col-6 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" data-node-id="370:7440" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#4f4f4f] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7440;210:6142">
+                      2
+                    </p>
+                  </div>
+                  <div className="col-7 content-stretch flex flex-col gap-[var(--spacing\/0,0px)] h-[34.286px] items-center justify-end opacity-50 p-[var(--spacing\/0,0px)] relative row-6 shrink-0 w-[57.571px]" data-node-id="370:7441" data-name="Days">
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[var(--font\/leading\/5,20px)] not-italic relative shrink-0 text-[#4f4f4f] text-[length:var(--font\/size\/sm,14px)] text-left tracking-[var(--font\/tracking\/normal,0px)] whitespace-nowrap" data-node-id="I370:7441;210:6142">
+                      3
+                    </p>
+                  </div>
+                </div>
+                <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0" data-node-id="377:8062">
+                  <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="377:8063">
+                    <div className="bg-[#c9c9c9] relative shrink-0 size-[24px]" data-node-id="377:8064" />
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[normal] not-italic relative shrink-0 text-[12px] text-black text-left whitespace-nowrap" data-node-id="377:8065">
+                      check-in available
+                    </p>
+                  </div>
+                  <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="377:8066">
+                    <div className="bg-[#e8642c] relative shrink-0 size-[24px]" data-node-id="377:8067" />
+                    <p className="[word-break:break-word] font-['B612_Mono:Regular'] leading-[normal] not-italic relative shrink-0 text-[12px] text-black text-left whitespace-nowrap" data-node-id="377:8068">
+                      special retreat - select for details
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div className="content-stretch flex flex-col gap-[8px] items-start justify-center opacity-40 relative shrink-0" data-node-id="370:7442">
+              <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#4f4f4f] text-[12px] whitespace-nowrap" data-node-id="370:7443">
+                Check-out
+              </p>
+              <div className="bg-white border border-[#999] border-solid content-stretch flex gap-[4px] items-center justify-center px-[8px] py-[4px] relative rounded-[2px] shrink-0" data-node-id="370:7444" data-name="experience selector buttons">
+                <div className="relative shrink-0 size-[16px]" data-node-id="370:7445" data-name="Vector">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+                </div>
+                <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic opacity-40 relative shrink-0 text-[#4f4f4f] text-[12px] text-center whitespace-nowrap" data-node-id="370:7446">
+                  select check-out date
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0" data-node-id="370:7447">
+          <div className="bg-[#f4f4f5] border border-[#c9c9c9] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[8px] shrink-0 w-[320px]" data-node-id="370:7448" data-name="Summary frame">
+            <div className="content-stretch flex items-center p-[24px] relative shrink-0 w-full" data-node-id="I370:7448;34:7119" data-name="title">
+              <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Bold'] leading-[normal] min-w-px not-italic relative text-[16px] text-black uppercase" data-node-id="I370:7448;34:7080">
+                Your Stay
+              </p>
+            </div>
+            <div className="bg-[#c9c9c9] h-px relative shrink-0 w-full" data-node-id="I370:7448;34:7121" data-name="divider" />
+            <div className="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-center leading-[normal] not-italic p-[24px] relative shrink-0 text-[14px] w-full whitespace-nowrap" data-node-id="I370:7448;34:7102" data-name="summary">
+              <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="I370:7448;34:7097" data-name="line">
+                <p className="font-['B612_Mono:Bold'] relative shrink-0 text-[#999] uppercase" data-node-id="I370:7448;34:7081">
+                  Property
+                </p>
+                <p className="font-['B612_Mono:Regular'] relative shrink-0 text-black text-right" data-node-id="I370:7448;34:7082">
+                  Hudson Valley
+                </p>
+              </div>
+              <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="I370:7448;34:7111" data-name="line">
+                <p className="font-['B612_Mono:Bold'] relative shrink-0 text-[#999] uppercase" data-node-id="I370:7448;34:7112">
+                  Rooms
+                </p>
+                <p className="font-['B612_Mono:Regular'] relative shrink-0 text-black text-right" data-node-id="I370:7448;34:7113">
+                  2
+                </p>
+              </div>
+              <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="I370:7448;34:7107" data-name="line">
+                <p className="font-['B612_Mono:Bold'] relative shrink-0 text-[#999] uppercase" data-node-id="I370:7448;34:7108">
+                  Guests
+                </p>
+                <p className="font-['B612_Mono:Regular'] relative shrink-0 text-black text-right" data-node-id="I370:7448;34:7109">
+                  3
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white border border-[#c9c9c9] border-solid content-stretch flex flex-col gap-[8px] items-start overflow-clip p-[24px] relative rounded-[8px] shrink-0 w-full" data-node-id="370:7449" data-name="Every Stay Includes">
+            <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[20px] text-black w-full" data-node-id="370:7450">
+              Every Stay Includes
+            </p>
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="370:7451">
+              <TablerMassage className="relative shrink-0 size-[24px]" />
+              <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Regular'] leading-[normal] min-w-px not-italic relative text-[#4f4f4f] text-[14px]" data-node-id="370:7453">
+                Daily massage
+              </p>
+            </div>
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="370:7454">
+              <IconSalad className="relative shrink-0 size-[24px]" />
+              <div className="content-stretch flex flex-[1_0_0] items-center justify-center min-w-px relative" data-node-id="370:7456">
+                <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Regular'] leading-[normal] min-w-px not-italic relative text-[#4f4f4f] text-[14px]" data-node-id="370:7457">
+                  All meals and beverages
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="370:7458">
+              <PhosphorPersonSimpleHike className="relative shrink-0 size-[24px]" />
+              <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Regular'] leading-[normal] min-w-px not-italic relative text-[#4f4f4f] text-[14px]" data-node-id="370:7460">
+                Hikes and daily classes
+              </p>
+            </div>
+            <div className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full" data-node-id="370:7461">
+              <IconBus className="relative shrink-0 size-[24px]" />
+              <p className="[word-break:break-word] flex-[1_0_0] font-['B612_Mono:Regular'] leading-[normal] min-w-px not-italic relative text-[#4f4f4f] text-[14px]" data-node-id="370:7463">
+                Return transfer to EWR
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white border-[#999] border-solid border-t content-stretch flex items-center justify-between pb-[80px] pt-[16px] px-[160px] relative shrink-0 w-[1440px]" data-node-id="370:7464" data-name="Button Bar">
+        <TextButton className="content-stretch flex items-center justify-center px-[32px] py-[16px] relative shrink-0" />
+        <div className="bg-[#999] content-stretch flex items-center justify-center px-[32px] py-[16px] relative rounded-[8px] shrink-0 w-[169px]" data-node-id="I370:7464;1:175" data-name="Text button">
+          <p className="[word-break:break-word] font-['B612_Mono:Bold'] leading-[normal] not-italic relative shrink-0 text-[#ebebeb] text-[16px] text-center whitespace-nowrap" data-node-id="I370:7464;1:175;132:12668">
+            Continue →
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Card H2: Font(family: "B612 Mono", style: Bold, size: 20, weight: 700, lineHeight: 100, letterSpacing: 0), Stepper label: Font(family: "B612 Mono", style: Bold, size: 10, weight: 700, lineHeight: 100, letterSpacing: 0), Button text: Font(family: "B612 Mono", style: Bold, size: 16, weight: 700, lineHeight: 100, letterSpacing: 0), calendar text: Font(family: "B612 Mono", style: Regular, size: font/size/sm, weight: font/weight/normal, lineHeight: font/leading/5, letterSpacing: font/tracking/normal), Cardh3: Font(family: "B612 Mono", style: Bold, size: 16, weight: 700, lineHeight: 100, letterSpacing: 0), H4: Font(family: "B612 Mono", style: Bold, size: 14, weight: 700, lineHeight: 100, letterSpacing: 0), Card P: Font(family: "B612 Mono", style: Regular, size: 14, weight: 400, lineHeight: 100, letterSpacing: 0).
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## chevron-left
+**Node ID:** 208:5451
+
+Title: Chevron left Tags: chevron, left, direction, pointer, navigate
+
+**Documentation:**
+- [https://icons.mynaui.com/icons/chevron-left/](https://icons.mynaui.com/icons/chevron-left/)
+
+## chevron-right
+**Node ID:** 208:5464
+
+Title: Chevron right Tags: chevron, right, direction, pointer, navigate, arrow, forward
+
+**Documentation:**
+- [https://icons.mynaui.com/icons/chevron-right/](https://icons.mynaui.com/icons/chevron-right/)
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

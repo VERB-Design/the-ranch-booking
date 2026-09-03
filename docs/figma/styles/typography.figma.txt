@@ -1,0 +1,1022 @@
+const imgDivider = "https://www.figma.com/api/mcp/asset/471c63e7-7f6b-438d-8719-560880aa2289.svg";
+const imgDesktop = "https://www.figma.com/api/mcp/asset/65e34147-fd96-4507-829f-217745fa1ef9.svg";
+const imgDivider1 = "https://www.figma.com/api/mcp/asset/a9ae112e-40e3-4d97-b56c-1615fdebe19c.svg";
+const imgDivider2 = "https://www.figma.com/api/mcp/asset/6a5a8dd7-0e2f-4dac-94c8-be525b9e7f2c.svg";
+const imgDivider3 = "https://www.figma.com/api/mcp/asset/95b85112-8954-4160-9f60-b8d607ca28c6.svg";
+const imgLaptop = "https://www.figma.com/api/mcp/asset/7b9ad9d0-ebdb-4eb9-b3b4-dce527cd6978.svg";
+const imgDivider4 = "https://www.figma.com/api/mcp/asset/9f5bc896-71f4-4210-a4a7-573d8da36577.svg";
+const imgTablet = "https://www.figma.com/api/mcp/asset/1da451d5-41a7-47db-b95e-4c5b5cda308d.svg";
+const imgDivider5 = "https://www.figma.com/api/mcp/asset/b14fb4da-6853-48eb-bcaf-4daccd4e448e.svg";
+const imgDivider6 = "https://www.figma.com/api/mcp/asset/766b33d8-49ed-4174-bd88-fd93e9c04f64.svg";
+const imgMobile = "https://www.figma.com/api/mcp/asset/ef96ef4f-6688-45f5-8b02-f97331b3ae9d.svg";
+
+export default function Typography() {
+  return (
+    <div className="bg-[var(--color\/greyscale\/white,white)] content-stretch flex flex-col items-start justify-center relative size-full" data-node-id="3011:4139" data-name="Typography">
+      <div className="bg-[var(--surface\/default\/black,black)] content-stretch flex flex-col gap-[16px] items-start px-[100px] py-[64px] relative shrink-0 w-full" data-node-id="3011:4140" data-name="Content">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[60px] not-italic relative shrink-0 text-[48px] text-white tracking-[-1.2px] whitespace-nowrap" data-node-id="I3011:4140;3008:4154" style={{ fontFeatureSettings: '"liga" 0' }}>
+          Typography
+        </p>
+      </div>
+      <div className="bg-white content-stretch flex flex-col gap-[80px] items-start p-[80px] relative shrink-0 w-full" data-node-id="960:18918" data-name="Typography">
+        <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="960:18919">
+          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="3021:4225" data-name="Section Title">
+            <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I3021:4225;3008:4151">
+              <p className="leading-[normal]">Family</p>
+            </div>
+            <div className="h-0 relative shrink-0 w-full" data-node-id="I3021:4225;3008:4152" data-name="Divider">
+              <div className="absolute inset-[-1px_0_0_0]">
+                <img alt="" className="block max-w-none size-full" src={imgDivider} />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full" data-node-id="960:18923">
+            <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="960:18924">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[24px] not-italic relative shrink-0 text-[#585858] text-[16px] tracking-[0.64px] w-[468px]" data-node-id="960:18925">
+                Used for all headlines and body copy
+              </p>
+              <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-[1000px]" data-node-id="960:18926">
+                <p className="[word-break:break-word] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] relative shrink-0 text-[length:var(--heading\/size\/h1,64px)] text-black whitespace-nowrap" data-node-id="960:18927" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  Times New Roman
+                </p>
+                <div className="bg-[#8c40f6] content-stretch flex items-center justify-center px-[12px] py-[8px] relative rounded-[4px] shrink-0" data-node-id="960:18928" data-name="downlod link">
+                  <a className="[word-break:break-word] block font-['Roboto:Medium'] font-medium leading-[0] relative shrink-0 text-[12px] text-white tracking-[1.2px] uppercase whitespace-nowrap" href="https://fonts.adobe.com/fonts/times-new-roman" data-node-id="960:18929" style={{ fontVariationSettings: '"wdth" 100' }} target="_blank">
+                    <p className="[text-decoration-skip-ink:none] [text-underline-position:from-font] cursor-pointer decoration-from-font decoration-solid leading-[normal] underline">Download from Adobe</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="960:18930">
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[24px] not-italic relative shrink-0 text-[#585858] text-[16px] tracking-[0.64px] w-[468px]" data-node-id="960:18931">
+                Used for call outs and eyebrow headlines
+              </p>
+              <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-[1000px]" data-node-id="960:18932">
+                <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] relative shrink-0 text-[length:var(--body\/size\/xlarge,24px)] text-black whitespace-nowrap" data-node-id="960:18933" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  Inter
+                </p>
+                <div className="bg-[#8c40f6] content-stretch flex items-center justify-center px-[12px] py-[8px] relative rounded-[4px] shrink-0" data-node-id="960:18934" data-name="downlod link">
+                  <a className="[word-break:break-word] block font-['Roboto:Medium'] font-medium leading-[0] relative shrink-0 text-[12px] text-white tracking-[1.2px] uppercase whitespace-nowrap" href="https://fonts.google.com/specimen/Inter" data-node-id="960:18935" style={{ fontVariationSettings: '"wdth" 100' }} target="_blank">
+                    <p className="[text-decoration-skip-ink:none] [text-underline-position:from-font] cursor-pointer decoration-from-font decoration-solid leading-[normal] underline">Download from google</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="960:18936">
+          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="3021:4229" data-name="Section Title">
+            <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I3021:4229;3008:4151">
+              <p className="leading-[normal]">{`Weights & Styles`}</p>
+            </div>
+            <div className="h-0 relative shrink-0 w-full" data-node-id="I3021:4229;3008:4152" data-name="Divider">
+              <div className="absolute inset-[-1px_0_0_0]">
+                <img alt="" className="block max-w-none size-full" src={imgDivider} />
+              </div>
+            </div>
+          </div>
+          <div className="[word-break:break-word] content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="960:18940">
+            <p className="font-['Inter:Regular'] font-normal leading-[24px] not-italic relative shrink-0 text-[#585858] text-[16px] tracking-[0.64px] w-[468px]" data-node-id="960:18941">
+              The current weights are required for the initial load. Reducing the number of fonts will not only reduce the load time, but keep the design minimal and elegant.
+            </p>
+            <div className="content-stretch flex flex-col gap-[32px] items-start leading-[0] relative shrink-0 text-black w-[1000px]" data-node-id="960:18942">
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 text-[length:var(--heading\/size\/h4,36px)] w-[580px] whitespace-nowrap" data-node-id="960:18945">
+                <div className="flex flex-col font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/light,normal)] justify-end relative shrink-0" data-node-id="960:18946" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <p className="leading-[1.65]">Font Weight Light</p>
+                </div>
+                <div className="flex flex-col font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] justify-end relative shrink-0" data-node-id="54941:5233" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <p className="leading-[1.35]">Font Weight Regular</p>
+                </div>
+                <div className="flex flex-col font-[family-name:var(--family\/heading,'Times_New_Roman:Bold')] font-[var(--weight\/bold,normal)] justify-end relative shrink-0" data-node-id="54941:5234" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <p className="leading-[1.35]">Font Weight Bold</p>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 text-[length:var(--body\/size\/intro,32px)] tracking-[var(--letter-spacing\/none,0px)] w-[580px]" data-node-id="50691:8282">
+                <div className="flex flex-col font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal justify-end relative shrink-0 w-full" data-node-id="50691:8283" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <p className="leading-[var(--heading\/line-height\/h3,40px)]">Font Weight Regular</p>
+                </div>
+                <div className="flex flex-col font-[family-name:var(--family\/body,'Inter:Medium')] font-[var(--weight\/medium,normal)] font-medium justify-end relative shrink-0 w-full" data-node-id="50691:8284" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <p className="leading-[var(--heading\/line-height\/h3,40px)]">Font Weight Medium</p>
+                </div>
+                <div className="flex flex-col font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold justify-end relative shrink-0 w-full" data-node-id="50691:8285" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <p className="leading-[var(--heading\/line-height\/h3,40px)]">Font Weight Bold</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="960:18949">
+          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="3021:4233" data-name="Section Title">
+            <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I3021:4233;3008:4151">
+              <p className="leading-[normal]">Base Sizing</p>
+            </div>
+            <div className="h-0 relative shrink-0 w-full" data-node-id="I3021:4233;3008:4152" data-name="Divider">
+              <div className="absolute inset-[-1px_0_0_0]">
+                <img alt="" className="block max-w-none size-full" src={imgDivider} />
+              </div>
+            </div>
+          </div>
+          <div className="[word-break:break-word] content-stretch flex items-start justify-between leading-[0] relative shrink-0 w-full" data-node-id="960:18953">
+            <div className="font-['Inter:Regular'] font-normal not-italic relative shrink-0 text-[#585858] text-[16px] tracking-[0.64px] w-[467px] whitespace-pre-wrap" data-node-id="960:18954">
+              <p className="leading-[24px] mb-0">The font-size of the root should be set to 8px.</p>
+              <p className="leading-[24px] mb-0">​</p>
+              <p className="leading-[24px] mb-0">You can also set the root size to 50%, which will equal 8px when using the browser default size, which may help accessibility for the end user.</p>
+              <p className="leading-[24px] mb-0">​</p>
+              <p className="leading-[24px]">This makes all spacing, padding, and margining easy.</p>
+            </div>
+            <div className="content-stretch flex font-['Roboto:Light'] font-light gap-[72px] items-start relative shrink-0 text-[24px] text-black w-[1000px]" data-node-id="960:18955">
+              <div className="flex-[1_0_0] min-w-px relative" data-node-id="960:18956" style={{ fontVariationSettings: '"wdth" 100', fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                <p className="leading-[normal] mb-[16px]">1 rem = 8 px</p>
+                <p className="leading-[normal] mb-[16px]">2 rem = 16 px</p>
+                <p className="leading-[normal] mb-[16px]">3 rem = 24 px</p>
+                <p className="leading-[normal]">4 rem = 32 px</p>
+              </div>
+              <div className="flex-[1_0_0] min-w-px relative" data-node-id="960:18957" style={{ fontVariationSettings: '"wdth" 100', fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                <p className="leading-[normal] mb-[16px]">0.125 rem = 1 px</p>
+                <p className="leading-[normal] mb-[16px]">0.25 rem = 2 px</p>
+                <p className="leading-[normal] mb-[16px]">0.375 rem = 3 px</p>
+                <p className="leading-[normal] mb-[16px]">0.5 rem = 4 px</p>
+                <p className="leading-[normal] mb-[16px]">0.625 rem = 5 px</p>
+                <p className="leading-[normal] mb-[16px]">0.75 rem = 6 px</p>
+                <p className="leading-[normal]">0.875 rem = 7 px</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="960:18958" data-name="Typography">
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[80px] items-start min-w-px relative" data-node-id="960:18959" data-name="Desktop / 1920">
+            <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="960:18960">
+              <div className="content-stretch flex gap-[24px] items-center px-[56px] py-[32px] relative shrink-0 w-full" data-node-id="960:18961">
+                <div className="h-[32px] relative shrink-0 w-[43.081px]" data-node-id="3021:4312" data-name="desktop">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgDesktop} />
+                </div>
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[24px] text-black tracking-[2.4px] uppercase whitespace-nowrap" data-node-id="960:18963" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">1440</p>
+                </div>
+              </div>
+              <div className="h-0 relative shrink-0 w-full" data-node-id="960:18964" data-name="Divider">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider1} />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[80px] items-start px-[56px] relative shrink-0 w-full" data-node-id="960:18965">
+              <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-node-id="960:18966" data-name="Headings Tags">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="960:18967" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< Heading Tags >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full" data-node-id="960:18968" data-name="Heading">
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="960:18969" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:18970" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:18971" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:18972">
+                        H1
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h1,64px)] text-black" data-node-id="960:18973" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:18974" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:18975" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:18976">
+                        H2
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h2,56px)] text-black" data-node-id="960:18977" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:18978" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:18979" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:18980">
+                        H3
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h3,48px)] text-black" data-node-id="960:18981" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3779" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3780" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3781">
+                        H4
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h4,36px)] text-black" data-node-id="54941:3782" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3783" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3784" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3785">
+                        H5
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h5,32px)] text-black" data-node-id="54941:3786" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="960:18982" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[56px] items-start relative shrink-0 w-full" data-node-id="960:18983" data-name="Body Styles / Text Classes">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase whitespace-nowrap" data-node-id="960:18984" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< bODY STYLES / TEXT CLASSES >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[56px] items-start relative shrink-0 w-full" data-node-id="960:18985" data-name="Body Styles / Text Classes">
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:18986" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:18987">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:18988" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        Body
+                      </p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:18989" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3787" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3788" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3789">
+                          intro
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/intro,32px)] text-black" data-node-id="54941:3790" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:18990" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:18991" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:18992">
+                          xlarge
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/xlarge,24px)] text-black" data-node-id="960:18993" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3791" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3792" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3793">
+                          large
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.35] min-w-px relative text-[length:var(--body\/size\/large,20px)] text-black" data-node-id="54941:3794" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:18994" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:18995" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:18996">
+                          base
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/base,16px)] text-black" data-node-id="960:18997" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:18998" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:18999" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:19000">
+                          small
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/small,14px)] text-black" data-node-id="960:19001" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3862" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3863" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] whitespace-nowrap" data-node-id="54941:3864">
+                          xsmall
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/xsmall,12px)] text-black" data-node-id="54941:3865" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3866" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3867" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3868">
+                          tiny
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--body\/size\/tiny,10px)] text-black" data-node-id="54941:3869">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19002" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19003" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19004">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19005" style={{ fontVariationSettings: '"wdth" 100' }}>{`Eyebrows & Labels`}</p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19006" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:19007" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:19008" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:19009">
+                          eyebrow
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/eyebrow-default,14px)] text-black tracking-[1.68px] uppercase" data-node-id="960:19010">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4020" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[94px]" data-node-id="54941:4021" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-full" data-node-id="54941:4022">
+                          eyebrow thick
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/eyebrow-thick,14px)] text-black tracking-[1.68px] uppercase" data-node-id="54941:4023">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4024" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4025" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4026">
+                          labels
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/labels-small-default,12px)] text-black tracking-[1.44px] uppercase" data-node-id="54941:4027">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4028" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4029" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4030">
+                          labels thick
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/labels-small-thick,12px)] text-black tracking-[1.44px] uppercase" data-node-id="54941:4031">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19011" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19012" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19013">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19014" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        Button
+                      </p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19015" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:19016" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:19017" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:19018">
+                          button
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none min-w-px relative text-[length:var(--button\/size\/default,12px)] text-black tracking-[1.8px] uppercase" data-node-id="960:19019">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19020" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center relative self-stretch shrink-0" data-node-id="960:19038">
+            <div className="flex-none h-full rotate-180">
+              <div className="h-full relative w-0" data-name="Divider">
+                <div className="absolute inset-[0_-0.5px]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider3} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[80px] items-start min-w-px relative" data-node-id="960:19039" data-name="Laptop / 1280">
+            <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="960:19040">
+              <div className="content-stretch flex gap-[24px] items-center px-[56px] py-[32px] relative shrink-0 w-full" data-node-id="960:19041">
+                <div className="h-[32px] relative shrink-0 w-[39.661px]" data-node-id="3021:4311" data-name="laptop">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLaptop} />
+                </div>
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[24px] text-black tracking-[2.4px] uppercase whitespace-nowrap" data-node-id="960:19043" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">1280</p>
+                </div>
+              </div>
+              <div className="h-0 relative shrink-0 w-full" data-node-id="960:19044" data-name="Divider">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider1} />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[80px] items-start px-[56px] relative shrink-0 w-full" data-node-id="960:19045">
+              <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-node-id="960:19046" data-name="Headings Tags">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="960:19047" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< Heading Tags >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full" data-node-id="960:19048" data-name="Heading">
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="960:19049" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3957" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3958" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3959">
+                        H1
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h1,62px)] text-black" data-node-id="54941:3960" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3961" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3962" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3963">
+                        H2
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h2,52px)] text-black" data-node-id="54941:3964" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3965" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3966" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3967">
+                        H3
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h3,44px)] text-black" data-node-id="54941:3968" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3969" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3970" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3971">
+                        H4
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h4,34px)] text-black" data-node-id="54941:3972" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3973" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3974" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3975">
+                        H5
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h5,30px)] text-black" data-node-id="54941:3976" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="960:19062" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[56px] items-start relative shrink-0 w-full" data-node-id="960:19063" data-name="Body Styles / Text Classes">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase whitespace-nowrap" data-node-id="960:19064" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< bODY STYLES / TEXT CLASSES >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[56px] items-start relative shrink-0 w-full" data-node-id="960:19065" data-name="Body Styles / Text Classes">
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19066" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19067">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19068" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        Body
+                      </p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19069" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                        </div>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3870" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3871" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3872">
+                            intro
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/intro,28px)] text-black" data-node-id="54941:3873" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3874" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3875" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3876">
+                            xlarge
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/xlarge,22px)] text-black" data-node-id="54941:3877" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3878" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3879" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3880">
+                            large
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.35] min-w-px relative text-[length:var(--body\/size\/large,18px)] text-black" data-node-id="54941:3881" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3882" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3883" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3884">
+                            base
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/base,16px)] text-black" data-node-id="54941:3885" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3886" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3887" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3888">
+                            small
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/small,14px)] text-black" data-node-id="54941:3889" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3890" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3891" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] whitespace-nowrap" data-node-id="54941:3892">
+                            xsmall
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/xsmall,12px)] text-black" data-node-id="54941:3893" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3894" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3895" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3896">
+                            tiny
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--body\/size\/tiny,10px)] text-black" data-node-id="54941:3897">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19082" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19083" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19084">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19085" style={{ fontVariationSettings: '"wdth" 100' }}>{`Eyebrows & Labels`}</p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19086" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                        </div>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4045" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4046" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4047">
+                            eyebrow
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/eyebrow-default,14px)] text-black tracking-[1.68px] uppercase" data-node-id="54941:4048">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4049" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[94px]" data-node-id="54941:4050" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-full" data-node-id="54941:4051">
+                            eyebrow thick
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/eyebrow-thick,14px)] text-black tracking-[1.68px] uppercase" data-node-id="54941:4052">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4053" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4054" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4055">
+                            labels
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/labels-small-default,12px)] text-black tracking-[1.44px] uppercase" data-node-id="54941:4056">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4057" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4058" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4059">
+                            labels thick
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/labels-small-thick,12px)] text-black tracking-[1.44px] uppercase" data-node-id="54941:4060">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19091" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19092" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19093">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19094" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        Button
+                      </p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19095" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:19096" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:19097" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:19098">
+                          button
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none min-w-px relative text-[length:var(--button\/size\/default,12px)] text-black tracking-[1.8px] uppercase" data-node-id="960:19099">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19100" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center relative self-stretch shrink-0" data-node-id="960:19118">
+            <div className="flex-none h-full rotate-180">
+              <div className="h-full relative w-0" data-name="Divider">
+                <div className="absolute inset-[0_-0.5px]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider4} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[80px] items-start min-w-px relative" data-node-id="960:19119" data-name="Tablet & Mobile / 768 & 360">
+            <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="960:19120">
+              <div className="content-stretch flex gap-[24px] items-center px-[56px] py-[32px] relative shrink-0 w-full" data-node-id="960:19121">
+                <div className="h-[32px] relative shrink-0 w-[26.133px]" data-node-id="3021:4310" data-name="tablet">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTablet} />
+                </div>
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[24px] text-black tracking-[2.4px] uppercase whitespace-nowrap" data-node-id="960:19127" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">768</p>
+                </div>
+              </div>
+              <div className="h-0 relative shrink-0 w-full" data-node-id="960:19128" data-name="Divider">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider5} />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[80px] items-start px-[56px] relative shrink-0 w-full" data-node-id="960:19129">
+              <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-node-id="960:19130" data-name="Headings Tags">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="960:19131" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< Heading Tags >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full" data-node-id="960:19132" data-name="Heading">
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="960:19133" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3978" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3979" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3980">
+                        H1
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h1,60px)] text-black" data-node-id="54941:3981" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3982" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3983" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3984">
+                        H2
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h2,48px)] text-black" data-node-id="54941:3985" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3986" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3987" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3988">
+                        H3
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h3,42px)] text-black" data-node-id="54941:3989" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3990" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3991" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3992">
+                        H4
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h4,34px)] text-black" data-node-id="54941:3993" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3994" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3995" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3996">
+                        H5
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h5,28px)] text-black" data-node-id="54941:3997" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="960:19146" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[56px] items-start relative shrink-0 w-full" data-node-id="960:19147" data-name="Body Styles / Text Classes">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase whitespace-nowrap" data-node-id="960:19148" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< bODY STYLES / TEXT CLASSES >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[56px] items-start relative shrink-0 w-full" data-node-id="960:19149" data-name="Body Styles / Text Classes">
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19150" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19151">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19152" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        Body
+                      </p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19153" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                        </div>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3899" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3900" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3901">
+                            intro
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/intro,24px)] text-black" data-node-id="54941:3902" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3903" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3904" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3905">
+                            xlarge
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/xlarge,20px)] text-black" data-node-id="54941:3906" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3907" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3908" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3909">
+                            large
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.35] min-w-px relative text-[length:var(--body\/size\/large,18px)] text-black" data-node-id="54941:3910" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3911" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3912" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3913">
+                            base
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/base,16px)] text-black" data-node-id="54941:3914" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3915" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3916" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3917">
+                            small
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/small,14px)] text-black" data-node-id="54941:3918" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3919" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3920" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] whitespace-nowrap" data-node-id="54941:3921">
+                            xsmall
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] min-w-px relative text-[length:var(--body\/size\/xsmall,12px)] text-black" data-node-id="54941:3922" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3923" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:3924" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:3925">
+                            tiny
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--body\/size\/tiny,10px)] text-black" data-node-id="54941:3926">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19166" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19167" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19168">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19169" style={{ fontVariationSettings: '"wdth" 100' }}>{`Eyebrows & Labels`}</p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19170" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                        </div>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4062" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4063" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4064">
+                            eyebrow
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/eyebrow-default,14px)] text-black tracking-[1.68px] uppercase" data-node-id="54941:4065">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4066" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[94px]" data-node-id="54941:4067" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-full" data-node-id="54941:4068">
+                            eyebrow thick
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/eyebrow-thick,14px)] text-black tracking-[1.68px] uppercase" data-node-id="54941:4069">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4070" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4071" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4072">
+                            labels
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/labels-small-default,12px)] text-black tracking-[1.44px] uppercase" data-node-id="54941:4073">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                      <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4074" data-name="Section">
+                        <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4075" data-name="Title">
+                          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4076">
+                            labels thick
+                          </p>
+                        </div>
+                        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Bold')] font-[var(--weight\/bold,normal)] font-bold leading-[1.2] min-w-px relative text-[length:var(--eyebrow-\&-labels\/size\/labels-small-thick,12px)] text-black tracking-[1.44px] uppercase" data-node-id="54941:4077">
+                          Lorem ipsum
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19175" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="960:19176" data-name="Group">
+                    <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="960:19177">
+                      <p className="[word-break:break-word] font-['Roboto:Regular'] font-normal leading-[normal] relative shrink-0 text-[21px] text-black tracking-[2.1px] whitespace-nowrap" data-node-id="960:19178" style={{ fontVariationSettings: '"wdth" 100' }}>
+                        Button
+                      </p>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="960:19179" data-name="Divider">
+                        <div className="absolute inset-[-2px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="960:19180" data-name="Section">
+                      <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="960:19181" data-name="Title">
+                        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="960:19182">
+                          button
+                        </p>
+                      </div>
+                      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none min-w-px relative text-[length:var(--button\/size\/default,12px)] text-black tracking-[1.8px] uppercase" data-node-id="960:19183">
+                        Lorem ipsum
+                      </p>
+                    </div>
+                    <div className="h-0 relative shrink-0 w-full" data-node-id="960:19184" data-name="Divider">
+                      <div className="absolute inset-[-2px_0_0_0]">
+                        <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-center relative self-stretch shrink-0" data-node-id="3021:4309">
+            <div className="flex-none h-full rotate-180">
+              <div className="h-full relative w-0" data-name="Divider">
+                <div className="absolute inset-[0_-0.5px]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider4} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-[1_0_0] flex-col gap-[80px] items-start min-w-px relative" data-node-id="3021:4242" data-name="Tablet & Mobile / 768 & 361">
+            <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="3021:4243">
+              <div className="content-stretch flex gap-[24px] items-center px-[56px] py-[32px] relative shrink-0 w-full" data-node-id="3021:4244">
+                <div className="h-[32px] relative shrink-0 w-[21.333px]" data-node-id="3021:4313" data-name="mobile">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMobile} />
+                </div>
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[24px] text-black tracking-[2.4px] uppercase whitespace-nowrap" data-node-id="3021:4250" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">360</p>
+                </div>
+              </div>
+              <div className="h-0 relative shrink-0 w-full" data-node-id="3021:4251" data-name="Divider">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider5} />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[80px] items-start px-[56px] relative shrink-0 w-full" data-node-id="3021:4252">
+              <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-node-id="3021:4253" data-name="Headings Tags">
+                <div className="[word-break:break-word] flex flex-col font-['Roboto:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="3021:4254" style={{ fontVariationSettings: '"wdth" 100' }}>
+                  <p className="leading-[normal]">{`< Heading Tags >`}</p>
+                </div>
+                <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full" data-node-id="3021:4255" data-name="Heading">
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="3021:4256" data-name="Divider">
+                    <div className="absolute inset-[-2px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider6} />
+                    </div>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:3999" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4000" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4001">
+                        H1
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h1,48px)] text-black" data-node-id="54941:4002" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4003" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4004" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4005">
+                        H2
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h2,40px)] text-black" data-node-id="54941:4006" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4007" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-[100px]" data-node-id="54941:4008" data-name="Title">
+                      <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[#6929c4] text-[18px] w-[140px]" data-node-id="54941:4009">
+                        H3
+                      </p>
+                    </div>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--family\/heading,'Times_New_Roman:Regular')] font-[var(--weight\/regular,normal)] leading-[1.2] min-w-px relative text-[length:var(--heading\/size\/h3,38px)] text-black" data-node-id="54941:4010" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                      Lorem ipsum
+                    </p>
+                  </div>
+                  <div className="bg-white content-stretch flex gap-[48px] items-center relative shrink-0 w-full" data-node-id="54941:4011" data-name="Section">
+                    <div className="bg-white content-stretch flex flex-col items-start ov
+
+
+[OUTPUT TRUNCATED - exceeded 25000 token limit]
+
+The tool output was truncated. If this MCP server provides pagination or filtering tools, use them to retrieve specific portions of the data. If pagination is not available, inform the user that you are working with truncated output and results may be incomplete.

@@ -1,0 +1,892 @@
+Currently selected nodes:
+- 370:5151: Clean version
+
+
+<section id="370:5151" name="Clean version" x="-11995" y="-1142" width="30353" height="2284">
+  <frame id="370:5323" name="Room select" x="12779" y="770" width="1440" height="1022">
+    <instance id="370:5324" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5325" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5326" name="Program Selection Header" x="0" y="114" width="1440" height="760">
+      <frame id="370:5327" name="Frame 52" x="160" y="32" width="768" height="724">
+        <frame id="370:5328" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5329" name="Select your room" x="0" y="0" width="1120" height="39" />
+          <text id="370:5330" name="Choose the room you want to stay in." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <instance id="370:5331" name="Card" x="0" y="98" width="768" height="297" />
+        <instance id="370:5332" name="Card" x="0" y="427" width="768" height="297" />
+      </frame>
+      <frame id="370:5333" name="Frame 76" x="960" y="32" width="320" height="602">
+        <instance id="370:5334" name="Summary frame" x="0" y="0" width="320" height="376" />
+        <frame id="370:5335" name="Every Stay Includes" x="0" y="400" width="320" height="202">
+          <text id="370:5336" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5337" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5338" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5339" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5340" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5341" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5342" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5343" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5344" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5345" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5346" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5347" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5348" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5349" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5350" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5351" name="Room select" x="14292" y="770" width="1440" height="1022">
+    <instance id="370:5352" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5353" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5354" name="Program Selection Header" x="0" y="114" width="1440" height="760">
+      <frame id="370:5355" name="Frame 52" x="160" y="32" width="768" height="720">
+        <frame id="370:5356" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5357" name="Select your room" x="0" y="0" width="1120" height="39" />
+          <text id="370:5358" name="Choose the room you want to stay in." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <instance id="370:5359" name="Card" x="0" y="98" width="768" height="293" />
+        <instance id="370:5360" name="Card" x="0" y="423" width="768" height="297" />
+      </frame>
+      <frame id="370:5361" name="Frame 76" x="960" y="32" width="320" height="602">
+        <instance id="370:5362" name="Summary frame" x="0" y="0" width="320" height="376" />
+        <frame id="370:5363" name="Every Stay Includes" x="0" y="400" width="320" height="202">
+          <text id="370:5364" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5365" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5366" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5367" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5368" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5369" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5370" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5371" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5372" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5373" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5374" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5375" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5376" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5377" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5378" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5379" name="Upgrade" x="15925" y="770" width="1440" height="1022">
+    <instance id="370:5380" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5381" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5382" name="Program Selection Header" x="0" y="114" width="1440" height="760">
+      <frame id="370:5383" name="Frame 53" x="160" y="32" width="768" height="361">
+        <frame id="370:5384" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5385" name="Upgrade your stay" x="0" y="0" width="1120" height="39" />
+          <text id="370:5386" name="Choose the room you want to stay in." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <instance id="370:5387" name="Card" x="0" y="98" width="768" height="263" />
+      </frame>
+      <frame id="370:5388" name="Frame 76" x="960" y="32" width="320" height="688">
+        <instance id="370:5389" name="Summary frame" x="0" y="0" width="320" height="462" />
+        <frame id="370:5390" name="Every Stay Includes" x="0" y="486" width="320" height="202">
+          <text id="370:5391" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5392" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5393" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5394" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5395" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5396" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5397" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5398" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5399" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5400" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5401" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5402" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5403" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5404" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5405" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5406" name="Enhance 9" x="17406" y="770" width="1440" height="1022">
+    <instance id="370:5407" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5408" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5409" name="Main Content" x="0" y="114" width="1440" height="760">
+      <frame id="370:5410" name="Frame 54" x="160" y="24" width="768" height="371">
+        <frame id="370:5411" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5412" name="Enhance your stay" x="0" y="0" width="1120" height="39" />
+          <text id="370:5413" name="Add treatments and enhancements." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <frame id="370:5414" name="Frame 21" x="0" y="90" width="768" height="281">
+          <instance id="370:5415" name="Card" x="1" y="1" width="766" height="93" />
+          <instance id="370:5416" name="Card" x="1" y="94" width="766" height="93" />
+          <instance id="370:5417" name="Card" x="1" y="187" width="766" height="93" />
+        </frame>
+      </frame>
+      <frame id="370:5418" name="Frame 76" x="960" y="24" width="320" height="688">
+        <instance id="370:5419" name="Summary frame" x="0" y="0" width="320" height="462" />
+        <frame id="370:5420" name="Every Stay Includes" x="0" y="486" width="320" height="202">
+          <text id="370:5421" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5422" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5423" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5424" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5425" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5426" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5427" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5428" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5429" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5430" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5431" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5432" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5433" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5434" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5435" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5436" name="Enhance 10" x="18887" y="770" width="1440" height="1022">
+    <instance id="370:5437" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5438" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5439" name="Main Content" x="0" y="114" width="1440" height="760">
+      <frame id="370:5440" name="Frame 57" x="160" y="24" width="768" height="752">
+        <frame id="370:5441" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5442" name="Enhance your stay" x="0" y="0" width="1120" height="39" />
+          <text id="370:5443" name="Add treatments and enhancements." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <frame id="370:5444" name="Frame 21" x="0" y="98" width="768" height="654">
+          <instance id="370:5445" name="Card" x="1" y="1" width="766" height="93" />
+          <instance id="370:5446" name="Card" x="1" y="94" width="766" height="466" />
+          <instance id="370:5447" name="Card" x="1" y="560" width="766" height="93" />
+        </frame>
+      </frame>
+      <frame id="370:5448" name="Frame 76" x="960" y="24" width="320" height="688">
+        <instance id="370:5449" name="Summary frame" x="0" y="0" width="320" height="462" />
+        <frame id="370:5450" name="Every Stay Includes" x="0" y="486" width="320" height="202">
+          <text id="370:5451" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5452" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5453" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5454" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5455" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5456" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5457" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5458" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5459" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5460" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5461" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5462" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5463" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5464" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5465" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5466" name="Enhance 11" x="20368" y="770" width="1440" height="1022">
+    <instance id="370:5467" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5468" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5469" name="Main Content" x="0" y="114" width="1440" height="760">
+      <frame id="370:5470" name="Frame 58" x="160" y="24" width="768" height="752">
+        <frame id="370:5471" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5472" name="Enhance your stay" x="0" y="0" width="1120" height="39" />
+          <text id="370:5473" name="Add treatments and enhancements." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <frame id="370:5474" name="Frame 21" x="0" y="98" width="768" height="654">
+          <instance id="370:5475" name="Card" x="1" y="1" width="766" height="93" />
+          <instance id="370:5476" name="Card" x="1" y="94" width="766" height="466" />
+          <instance id="370:5477" name="Card" x="1" y="560" width="766" height="93" />
+        </frame>
+      </frame>
+      <frame id="370:5478" name="Frame 76" x="960" y="24" width="320" height="688">
+        <instance id="370:5479" name="Summary frame" x="0" y="0" width="320" height="462" />
+        <frame id="370:5480" name="Every Stay Includes" x="0" y="486" width="320" height="202">
+          <text id="370:5481" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5482" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5483" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5484" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5485" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5486" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5487" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5488" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5489" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5490" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5491" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5492" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5493" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5494" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5495" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5496" name="Enhance 12" x="21849" y="770" width="1440" height="1022">
+    <instance id="370:5497" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5498" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5499" name="Main Content" x="0" y="114" width="1440" height="760">
+      <frame id="370:5500" name="Frame 59" x="160" y="24" width="768" height="491">
+        <frame id="370:5501" name="Program Selection Container" x="0" y="0" width="1120" height="66">
+          <text id="370:5502" name="Enhance your stay" x="0" y="0" width="1120" height="39" />
+          <text id="370:5503" name="Add treatments and enhancements." x="0" y="47" width="1120" height="19" />
+        </frame>
+        <frame id="370:5504" name="Frame 55" x="0" y="98" width="768" height="133">
+          <text id="370:5505" name="Added to your stay" x="0" y="0" width="1120" height="24" />
+          <instance id="370:5506" name="Card" x="0" y="40" width="768" height="93" />
+        </frame>
+        <frame id="370:5507" name="Frame 56" x="0" y="263" width="768" height="228">
+          <text id="370:5508" name="Add more enhancements" x="0" y="0" width="1120" height="24" />
+          <frame id="370:5509" name="Frame 21" x="0" y="40" width="768" height="188">
+            <instance id="370:5510" name="Card" x="1" y="1" width="766" height="93" />
+            <instance id="370:5511" name="Card" x="1" y="94" width="766" height="93" />
+          </frame>
+        </frame>
+      </frame>
+      <frame id="370:5512" name="Frame 75" x="960" y="24" width="320" height="780">
+        <instance id="370:5513" name="Summary frame" x="0" y="0" width="320" height="554" />
+        <frame id="370:5514" name="Every Stay Includes" x="0" y="578" width="320" height="202">
+          <text id="370:5515" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:5516" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:5517" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:5518" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5519" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:5520" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:5521" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:5522" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5523" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:5524" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:5525" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:5526" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:5527" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:5528" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:5529" name="Button Bar" x="0" y="874" width="1440" height="148" />
+  </frame>
+  <frame id="370:5530" name="Information page" x="23437" y="770" width="1440" height="1022">
+    <instance id="370:5531" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5532" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5533" name="Main Content" x="0" y="114" width="1440" height="897">
+      <frame id="370:5534" name="Frame 59" x="160" y="40" width="768" height="1355">
+        <frame id="370:5535" name="Program Selection Container" x="0" y="0" width="768" height="66">
+          <text id="370:5536" name="Guest Details" x="0" y="0" width="768" height="39" />
+          <text id="370:5537" name="Please enter contact details for all guests." x="0" y="47" width="768" height="19" />
+        </frame>
+        <frame id="370:5538" name="Frame 56" x="0" y="98" width="768" height="452">
+          <text id="370:5539" name="Primary Contact" x="24" y="24" width="196" height="24" />
+          <frame id="370:5540" name="Frame 78" x="24" y="64" width="720" height="60">
+            <instance id="370:5541" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5542" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+          <frame id="370:5543" name="Frame 79" x="24" y="140" width="720" height="60">
+            <instance id="370:5544" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5545" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+          <instance id="370:5546" name="form field" x="24" y="216" width="720" height="60" />
+          <frame id="370:5547" name="Frame 80" x="24" y="292" width="720" height="60">
+            <instance id="370:5548" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5549" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+          <frame id="370:5550" name="Frame 81" x="24" y="368" width="720" height="60">
+            <instance id="370:5551" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5552" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+        </frame>
+        <frame id="370:5553" name="Frame 57" x="0" y="582" width="768" height="492">
+          <text id="370:5554" name="Guest 2" x="24" y="24" width="105" height="24" />
+          <frame id="370:5555" name="Frame 82" x="24" y="64" width="720" height="24">
+            <instance id="370:5556" name="checkbox" x="0" y="0" width="24" height="24" />
+            <text id="370:5557" name="This is a gift - don’t contact this guest!" x="40" y="2.5" width="768" height="19" />
+          </frame>
+          <frame id="370:5558" name="Frame 78" x="24" y="104" width="720" height="60">
+            <instance id="370:5559" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5560" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+          <frame id="370:5561" name="Frame 79" x="24" y="180" width="720" height="60">
+            <instance id="370:5562" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5563" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+          <instance id="370:5564" name="form field" x="24" y="256" width="720" height="60" />
+          <frame id="370:5565" name="Frame 80" x="24" y="332" width="720" height="60">
+            <instance id="370:5566" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5567" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+          <frame id="370:5568" name="Frame 81" x="24" y="408" width="720" height="60">
+            <instance id="370:5569" name="form field" x="0" y="0" width="352" height="60" />
+            <instance id="370:5570" name="form field" x="368" y="0" width="352" height="60" />
+          </frame>
+        </frame>
+        <frame id="370:5571" name="Frame" x="0" y="1106" width="768" height="102">
+          <frame id="370:5572" name="Frame" x="0" y="0" width="768" height="102">
+            <frame id="370:5573" name="Frame" x="302" y="42.5" width="164" height="17">
+              <text id="370:5574" name="Payment taken here" x="0" y="0" width="164" height="17" />
+            </frame>
+          </frame>
+        </frame>
+        <instance id="370:5575" name="Text button" x="0" y="1240" width="169" height="51" />
+        <frame id="370:5576" name="spacer" x="0" y="1323" width="150" height="32" />
+      </frame>
+      <instance id="370:5577" name="Summary frame" x="960" y="40" width="320" height="604" />
+    </frame>
+  </frame>
+  <frame id="370:5643" name="Location select" x="335" y="766" width="1440" height="1024">
+    <instance id="370:5644" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:5645" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:5647" name="Program Selection Header" x="0" y="114" width="1440" height="762">
+      <frame id="370:5648" name="Program Selection Container" x="160" y="40" width="1120" height="66">
+        <text id="370:5649" name="Choose your location" x="0" y="0" width="1120" height="39" />
+        <text id="370:5650" name="Select the property you would like to book." x="0" y="47" width="1120" height="19" />
+      </frame>
+      <frame id="370:5651" name="Frame 16" x="160" y="138" width="1120" height="378">
+        <instance id="370:5654" name="Card" x="0" y="0" width="555.5" height="378">
+          <instance id="I370:5654;1:56" name="Image" x="1" y="1" width="553.5" height="258" />
+          <frame id="I370:5654;1:55" name="Frame 1" x="1" y="259" width="553.5" height="118">
+            <frame id="I370:5654;1:54" name="H2 location" x="24" y="24" width="505.5" height="45">
+              <text id="I370:5654;1:37" name="Card H2" x="0" y="0" width="505.5" height="24" />
+              <text id="I370:5654;1:51" name="Location Name" x="0" y="28" width="505.5" height="17" />
+            </frame>
+            <text id="I370:5654;1:52" name="Description of location" x="24" y="77" width="505.5" height="17" />
+            <slot id="I370:5654;125:11457" name="price and button" x="24" y="102" width="438" height="69" hidden="true" />
+          </frame>
+        </instance>
+        <instance id="370:5657" name="Card" x="564.5" y="0" width="555.5" height="378">
+          <instance id="I370:5657;1:56" name="Image" x="1" y="1" width="553.5" height="258" />
+          <frame id="I370:5657;1:55" name="Frame 1" x="1" y="259" width="553.5" height="118">
+            <frame id="I370:5657;1:54" name="H2 location" x="24" y="24" width="505.5" height="45">
+              <text id="I370:5657;1:37" name="Card H2" x="0" y="0" width="505.5" height="24" />
+              <text id="I370:5657;1:51" name="Location Name" x="0" y="28" width="505.5" height="17" />
+            </frame>
+            <text id="I370:5657;1:52" name="Description of location" x="24" y="77" width="505.5" height="17" />
+            <slot id="I370:5657;125:11457" name="price and button" x="24" y="102" width="438" height="69" hidden="true" />
+          </frame>
+        </instance>
+      </frame>
+      <frame id="370:5658" name="Frame 18" x="160" y="625" width="1120" height="155" hidden="true">
+        <text id="370:5659" name="About the Ranch" x="0" y="0" width="1120" height="24" />
+        <frame id="370:5660" name="Frame 17" x="0" y="40" width="1120" height="115">
+          <instance id="370:5661" name="Card" x="0" y="0" width="366.6666564941406" height="115" />
+          <instance id="370:5662" name="Card" x="376.6666564941406" y="0" width="366.66668701171875" height="115" />
+          <instance id="370:5663" name="Card" x="753.3333740234375" y="0" width="366.66668701171875" height="115" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="370:5664" name="Confirmation" x="25025" y="770" width="1440" height="1022">
+    <instance id="370:5665" name="Header" x="0" y="0" width="1440" height="80" />
+    <frame id="370:5666" name="Main Content" x="0" y="80" width="1440" height="1041">
+      <frame id="370:5667" name="Frame 59" x="320" y="40" width="800" height="961">
+        <frame id="370:5668" name="Program Selection Container" x="0" y="0" width="800" height="143">
+          <text id="370:5669" name="Booking Confirmed" x="0" y="0" width="800" height="39" />
+          <text id="370:5670" name="A confirmation has been sent to email@mail.com" x="0" y="55" width="800" height="19" />
+          <frame id="370:5671" name="Frame 112" x="330.5" y="90" width="139" height="53">
+            <text id="370:5672" name="0123456789" x="17" y="17" width="105" height="19" />
+          </frame>
+        </frame>
+        <frame id="370:5673" name="Summary frame" x="100" y="175" width="600" height="637">
+          <frame id="370:5674" name="title" x="1" y="1" width="598" height="67">
+            <text id="370:5675" name="Reservation" x="24" y="24" width="550" height="19" />
+          </frame>
+          <frame id="370:5676" name="divider" x="1" y="68" width="598" height="1" />
+          <frame id="370:5677" name="summary" x="1" y="69" width="598" height="272">
+            <frame id="370:5678" name="line" x="24" y="24" width="550" height="17">
+              <text id="370:5679" name="Primary Contact" x="0" y="0" width="137" height="17" />
+              <text id="370:5680" name="Firstname Lastname" x="386" y="0" width="164" height="17" />
+            </frame>
+            <frame id="370:5681" name="line" x="24" y="57" width="550" height="17">
+              <text id="370:5682" name="Property" x="0" y="0" width="73" height="17" />
+              <text id="370:5683" name="Hudson Valley" x="431" y="0" width="119" height="17" />
+            </frame>
+            <frame id="370:5684" name="line" x="24" y="90" width="550" height="17">
+              <text id="370:5685" name="Rooms" x="0" y="0" width="46" height="17" />
+              <text id="370:5686" name="2" x="540" y="0" width="10" height="17" />
+            </frame>
+            <frame id="370:5687" name="line" x="24" y="123" width="550" height="17">
+              <text id="370:5688" name="Guests" x="0" y="0" width="55" height="17" />
+              <text id="370:5689" name="3" x="540" y="0" width="10" height="17" />
+            </frame>
+            <frame id="370:5690" name="line" x="24" y="156" width="550" height="59">
+              <text id="370:5691" name="Dates" x="0" y="0" width="46" height="17" />
+              <text id="370:5692" name="Sun Sep 6 → Mon Sep 14" x="0" y="21" width="550" height="17" />
+              <text id="370:5693" name="+ 1 extra night" x="0" y="42" width="550" height="17" />
+            </frame>
+            <frame id="370:5694" name="line" x="24" y="231" width="550" height="17">
+              <text id="370:5695" name="Nights" x="0" y="0" width="55" height="17" />
+              <text id="370:5696" name="8" x="540" y="0" width="10" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5697" name="divider" x="1" y="341" width="598" height="1" />
+          <frame id="370:5698" name="summary" x="1" y="342" width="598" height="228">
+            <frame id="370:5699" name="line" x="24" y="24" width="550" height="38">
+              <text id="370:5700" name="Room" x="0" y="0" width="37" height="17" />
+              <frame id="370:5701" name="detail" x="0" y="21" width="550" height="17">
+                <text id="370:5702" name="Standard King" x="0" y="0" width="119" height="17" />
+                <text id="370:5703" name="$1,234/night" x="448" y="0" width="102" height="17" />
+              </frame>
+            </frame>
+            <frame id="370:5704" name="divider" x="24" y="78" width="550" height="1" />
+            <frame id="370:5705" name="line" x="24" y="95" width="550" height="59">
+              <text id="370:5706" name="Enhancements" x="0" y="0" width="110" height="17" />
+              <frame id="370:5707" name="detail" x="0" y="21" width="550" height="17">
+                <text id="370:5708" name="Facial" x="0" y="0" width="55" height="17" />
+                <text id="370:5709" name="$120" x="513" y="0" width="37" height="17" />
+              </frame>
+              <text id="370:5710" name="1 guest, 7 Aug, 4:00 PM" x="0" y="42" width="210" height="17" />
+            </frame>
+            <frame id="370:5711" name="divider" x="24" y="170" width="550" height="1" />
+            <frame id="370:5712" name="line" x="24" y="187" width="550" height="17">
+              <text id="370:5713" name="Taxes &amp; Fees" x="0" y="0" width="110" height="17" />
+              <text id="370:5714" name="$25" x="522" y="0" width="28" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:5715" name="divider" x="1" y="570" width="598" height="1" />
+          <frame id="370:5716" name="summary" x="1" y="571" width="598" height="65">
+            <frame id="370:5717" name="line" x="24" y="24" width="550" height="17">
+              <text id="370:5718" name="Total Paid" x="0" y="0" width="92" height="17" />
+              <text id="370:5719" name="$4,379" x="495" y="0" width="55" height="17" />
+            </frame>
+          </frame>
+        </frame>
+        <instance id="370:5720" name="Text button" x="262.5" y="844" width="275" height="53" />
+        <frame id="370:5721" name="spacer" x="275.5" y="929" width="249" height="32" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="370:7350" name="v1B. Program Select" x="1945" y="766" width="1440" height="1024">
+    <instance id="370:7351" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:7352" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:7353" name="Frame 69" x="0" y="114" width="1440" height="762">
+      <frame id="370:7354" name="Frame 68" x="160" y="32" width="760" height="630.7142944335938">
+        <frame id="370:7355" name="Frame" x="0" y="0" width="760" height="129">
+          <frame id="370:7356" name="Frame" x="0" y="0" width="760" height="19">
+            <text id="370:7357" name="Add rooms &amp; guests" x="0" y="0" width="760" height="19" />
+          </frame>
+          <text id="370:7358" name="Maximum 2 adult guests per room. For more information, call +1 555 555-5555" x="0" y="27" width="488" height="12" />
+          <frame id="370:7359" name="Frame 66" x="0" y="47" width="649" height="82">
+            <frame id="370:7360" name="Frame" x="0" y="0" width="191" height="82">
+              <frame id="370:7361" name="Frame" x="16" y="12" width="159" height="17">
+                <text id="370:7362" name="ROOM 01" x="0" y="0" width="64" height="17" />
+              </frame>
+              <frame id="370:7363" name="Frame" x="16" y="33" width="159" height="37">
+                <text id="370:7364" name="Guests" x="0" y="11" width="47" height="15" />
+                <instance id="370:7365" name="experience selector buttons" x="55" y="0" width="104" height="37" />
+              </frame>
+            </frame>
+            <frame id="370:7366" name="Frame" x="211" y="0" width="191" height="82">
+              <frame id="370:7367" name="Frame" x="16" y="12" width="159" height="17">
+                <text id="370:7368" name="ROOM 02" x="0" y="0" width="64" height="17" />
+              </frame>
+              <frame id="370:7369" name="Frame" x="16" y="33" width="159" height="37">
+                <text id="370:7370" name="Guests" x="0" y="11" width="47" height="15" />
+                <instance id="370:7371" name="experience selector buttons" x="55" y="0" width="104" height="37" />
+              </frame>
+            </frame>
+            <frame id="370:7372" name="Frame" x="422" y="0" width="227" height="82">
+              <frame id="370:7373" name="Frame" x="0" y="0" width="227" height="82">
+                <frame id="370:7374" name="Frame" x="67.5" y="32.5" width="92" height="17">
+                  <text id="370:7375" name="+ Add Room" x="0" y="0" width="92" height="17" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <frame id="370:7376" name="divider" x="0" y="153" width="760" height="2" />
+        <frame id="370:7377" name="Frame" x="0" y="179" width="760" height="451.71429443359375">
+          <frame id="370:7378" name="Frame" x="0" y="0" width="760" height="19">
+            <text id="370:7379" name="Choose your dates" x="0" y="0" width="760" height="19" />
+          </frame>
+          <text id="370:7380" name="Stays run in blocks of 3 nights, 4 nights, and 7 nights. Guests can add an extra night to stays ending on Thursdays." x="0" y="27" width="384" height="24" />
+          <frame id="370:7381" name="Frame 67" x="0" y="59" width="455" height="335.71429443359375">
+            <text id="370:7382" name="Select check-in" x="0" y="0" width="118" height="15" />
+            <frame id="370:7383" name="Calendar" x="0" y="23" width="455" height="312.71429443359375">
+              <frame id="370:7384" name="Title" x="26" y="16" width="403" height="28">
+                <frame id="370:7385" name="button" x="8" y="4" width="24" height="24">
+                  <instance id="370:7386" name="chevron-left" x="4" y="4" width="16" height="16" />
+                </frame>
+                <frame id="370:7387" name="month" x="110" y="4" width="183" height="24">
+                  <text id="370:7388" name="September 2026" x="0" y="0" width="183" height="24" />
+                </frame>
+                <frame id="370:7389" name="button" x="371" y="4" width="24" height="24">
+                  <instance id="370:7390" name="chevron-right" x="4" y="4" width="16" height="16" />
+                </frame>
+              </frame>
+              <text id="370:7391" name="Select your earliest possible checkin date" x="26" y="60" width="328" height="15" />
+              <frame id="370:7392" name="Dates" x="26" y="91" width="403" height="205.71429443359375">
+                <frame id="370:7393" name="Days" x="0" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7394" name="Su" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7395" name="Days" x="57.57143020629883" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7396" name="Mo" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7397" name="Days" x="115.14286041259766" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7398" name="Tu" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7399" name="Days" x="172.71429443359375" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7400" name="We" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7401" name="Days" x="230.2857208251953" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7402" name="Th" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7403" name="Days" x="287.8571472167969" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7404" name="Fr" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7405" name="Days" x="345.4285888671875" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7406" name="Sa" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <instance id="370:7407" name="Days" x="0" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7408" name="Days" x="57.57143020629883" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7409" name="Days" x="115.14286041259766" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7410" name="Days" x="172.71429443359375" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7411" name="Days" x="230.2857208251953" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7412" name="Days" x="287.8571472167969" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7413" name="Days" x="345.4285888671875" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7414" name="Days" x="0" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7415" name="Days" x="57.57143020629883" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7416" name="Days" x="115.14286041259766" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7417" name="Days" x="172.71429443359375" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7418" name="Days" x="230.2857208251953" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7419" name="Days" x="287.8571472167969" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7420" name="Days" x="345.4285888671875" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7421" name="Days" x="0" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7422" name="Days" x="57.57143020629883" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7423" name="Days" x="115.14286041259766" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7424" name="Days" x="172.71429443359375" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7425" name="Days" x="230.2857208251953" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7426" name="Days" x="287.8571472167969" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7427" name="Days" x="345.4285888671875" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7428" name="Days" x="0" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7429" name="Days" x="57.57143020629883" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7430" name="Days" x="115.14286041259766" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7431" name="Days" x="172.71429443359375" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7432" name="Days" x="230.2857208251953" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7433" name="Days" x="287.8571472167969" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7434" name="Days" x="345.4285888671875" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7435" name="Days" x="0" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7436" name="Days" x="57.57143020629883" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7437" name="Days" x="115.14286041259766" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7438" name="Days" x="172.71429443359375" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7439" name="Days" x="230.2857208251953" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7440" name="Days" x="287.8571472167969" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7441" name="Days" x="345.4285888671875" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+              </frame>
+            </frame>
+          </frame>
+          <frame id="370:7442" name="Frame 69" x="0" y="402.71429443359375" width="202" height="49">
+            <text id="370:7443" name="Check-out" x="0" y="0" width="71" height="15" />
+            <frame id="370:7444" name="experience selector buttons" x="0" y="23" width="202" height="26">
+              <vector id="370:7445" name="Vector" x="9" y="5" width="16" height="16" />
+              <text id="370:7446" name="select check-out date" x="29" y="5.5" width="164" height="15" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="370:7447" name="Frame 76" x="960" y="32" width="320" height="427">
+        <instance id="370:7448" name="Summary frame" x="0" y="0" width="320" height="201" />
+        <frame id="370:7449" name="Every Stay Includes" x="0" y="225" width="320" height="202">
+          <text id="370:7450" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:7451" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:7452" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:7453" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:7454" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:7455" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:7456" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:7457" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:7458" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:7459" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:7460" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:7461" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:7462" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:7463" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:7464" name="Button Bar" x="0" y="876" width="1440" height="148" />
+  </frame>
+  <frame id="370:7465" name="v1B. Program Select" x="3555" y="766" width="1440" height="1024">
+    <instance id="370:7466" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:7467" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:7468" name="Frame 69" x="0" y="114" width="1440" height="738">
+      <frame id="370:7469" name="Frame 68" x="160" y="32" width="760" height="599.7142944335938">
+        <frame id="370:7470" name="Frame" x="0" y="0" width="760" height="129">
+          <frame id="370:7471" name="Frame" x="0" y="0" width="760" height="19">
+            <text id="370:7472" name="Add rooms &amp; guests" x="0" y="0" width="760" height="19" />
+          </frame>
+          <text id="370:7473" name="Maximum 2 adult guests per room. For more information, call +1 555 555-5555" x="0" y="27" width="488" height="12" />
+          <frame id="370:7474" name="Frame 66" x="0" y="47" width="649" height="82">
+            <frame id="370:7475" name="Frame" x="0" y="0" width="191" height="82">
+              <frame id="370:7476" name="Frame" x="16" y="12" width="159" height="17">
+                <text id="370:7477" name="ROOM 01" x="0" y="0" width="64" height="17" />
+              </frame>
+              <frame id="370:7478" name="Frame" x="16" y="33" width="159" height="37">
+                <text id="370:7479" name="Guests" x="0" y="11" width="47" height="15" />
+                <instance id="370:7480" name="experience selector buttons" x="55" y="0" width="104" height="37" />
+              </frame>
+            </frame>
+            <frame id="370:7481" name="Frame" x="211" y="0" width="191" height="82">
+              <frame id="370:7482" name="Frame" x="16" y="12" width="159" height="17">
+                <text id="370:7483" name="ROOM 02" x="0" y="0" width="64" height="17" />
+              </frame>
+              <frame id="370:7484" name="Frame" x="16" y="33" width="159" height="37">
+                <text id="370:7485" name="Guests" x="0" y="11" width="47" height="15" />
+                <instance id="370:7486" name="experience selector buttons" x="55" y="0" width="104" height="37" />
+              </frame>
+            </frame>
+            <frame id="370:7487" name="Frame" x="422" y="0" width="227" height="82">
+              <frame id="370:7488" name="Frame" x="0" y="0" width="227" height="82">
+                <frame id="370:7489" name="Frame" x="67.5" y="32.5" width="92" height="17">
+                  <text id="370:7490" name="+ Add Room" x="0" y="0" width="92" height="17" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <frame id="370:7491" name="divider" x="0" y="153" width="760" height="2" />
+        <frame id="370:7492" name="Frame" x="0" y="179" width="760" height="420.71429443359375">
+          <frame id="370:7493" name="Frame" x="0" y="0" width="760" height="19">
+            <text id="370:7494" name="Choose your dates" x="0" y="0" width="760" height="19" />
+          </frame>
+          <text id="370:7495" name="Stays run in blocks of 3 nights, 4 nights, and 7 nights. Guests can add an extra night to stays ending on Thursdays." x="0" y="27" width="384" height="24" />
+          <frame id="370:7496" name="Frame 145" x="0" y="59" width="163" height="49">
+            <frame id="370:7497" name="Frame 68" x="0" y="0" width="163" height="49">
+              <text id="370:7498" name="Check-in" x="0" y="0" width="63" height="15" />
+              <frame id="370:7499" name="experience selector buttons" x="0" y="23" width="163" height="26">
+                <vector id="370:7500" name="Vector" x="9" y="5" width="16" height="16" />
+                <text id="370:7501" name="6 September 2026" x="29" y="5.5" width="125" height="15" />
+              </frame>
+            </frame>
+          </frame>
+          <frame id="370:7502" name="Frame 67" x="0" y="116" width="455" height="304.71429443359375">
+            <text id="370:7503" name="Select check-out" x="0" y="0" width="125" height="15" />
+            <frame id="370:7504" name="Calendar" x="0" y="23" width="455" height="281.71429443359375">
+              <frame id="370:7505" name="Title" x="26" y="16" width="403" height="28">
+                <frame id="370:7506" name="button" x="8" y="4" width="24" height="24">
+                  <instance id="370:7507" name="chevron-left" x="4" y="4" width="16" height="16" />
+                </frame>
+                <frame id="370:7508" name="month" x="110" y="4" width="183" height="24">
+                  <text id="370:7509" name="September 2026" x="0" y="0" width="183" height="24" />
+                </frame>
+                <frame id="370:7510" name="button" x="371" y="4" width="24" height="24">
+                  <instance id="370:7511" name="chevron-right" x="4" y="4" width="16" height="16" />
+                </frame>
+              </frame>
+              <frame id="370:7513" name="Dates" x="26" y="60" width="403" height="205.71429443359375">
+                <frame id="370:7514" name="Days" x="0" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7515" name="Su" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7516" name="Days" x="57.57143020629883" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7517" name="Mo" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7518" name="Days" x="115.14286041259766" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7519" name="Tu" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7520" name="Days" x="172.71429443359375" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7521" name="We" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7522" name="Days" x="230.2857208251953" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7523" name="Th" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7524" name="Days" x="287.8571472167969" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7525" name="Fr" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <frame id="370:7526" name="Days" x="345.4285888671875" y="0" width="57.57143020629883" height="34.28571319580078">
+                  <text id="370:7527" name="Sa" x="19.285715103149414" y="7.142856597900391" width="19" height="20" />
+                </frame>
+                <instance id="370:7528" name="Days" x="0" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7529" name="Days" x="57.57143020629883" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7530" name="Days" x="115.14286041259766" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7531" name="Days" x="172.71429443359375" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7532" name="Days" x="230.2857208251953" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7533" name="Days" x="287.8571472167969" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7534" name="Days" x="345.4285888671875" y="34.28571319580078" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7535" name="Days" x="0" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7536" name="Days" x="57.57143020629883" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7537" name="Days" x="115.14286041259766" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7538" name="Days" x="172.71429443359375" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7539" name="Days" x="230.2857208251953" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7540" name="Days" x="287.8571472167969" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7541" name="Days" x="345.4285888671875" y="68.57142639160156" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7542" name="Days" x="0" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7543" name="Days" x="57.57143020629883" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7544" name="Days" x="115.14286041259766" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7545" name="Days" x="172.71429443359375" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7546" name="Days" x="230.2857208251953" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7547" name="Days" x="287.8571472167969" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7548" name="Days" x="345.4285888671875" y="102.85713958740234" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7549" name="Days" x="0" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7550" name="Days" x="57.57143020629883" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7551" name="Days" x="115.14286041259766" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7552" name="Days" x="172.71429443359375" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7553" name="Days" x="230.2857208251953" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7554" name="Days" x="287.8571472167969" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7555" name="Days" x="345.4285888671875" y="137.14285278320312" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7556" name="Days" x="0" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7557" name="Days" x="57.57143020629883" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7558" name="Days" x="115.14286041259766" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7559" name="Days" x="172.71429443359375" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7560" name="Days" x="230.2857208251953" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7561" name="Days" x="287.8571472167969" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+                <instance id="370:7562" name="Days" x="345.4285888671875" y="171.42855834960938" width="57.57143020629883" height="34.28571319580078" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="370:7563" name="Frame 76" x="960" y="32" width="320" height="427">
+        <instance id="370:7564" name="Summary frame" x="0" y="0" width="320" height="201" />
+        <frame id="370:7565" name="Every Stay Includes" x="0" y="225" width="320" height="202">
+          <text id="370:7566" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:7567" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:7568" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:7569" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:7570" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:7571" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:7572" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:7573" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:7574" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:7575" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:7576" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:7577" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:7578" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:7579" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="377:8048" name="Frame 148" x="0" y="852" width="173" height="24">
+      <frame id="377:8046" name="Frame 147" x="0" y="0" width="24" height="24" />
+      <text id="377:8047" name="check-in available" x="32" y="4.5" width="141" height="15" />
+    </frame>
+    <instance id="370:7580" name="Button Bar" x="0" y="876" width="1440" height="148" />
+  </frame>
+  <frame id="370:7581" name="v1B. Program Select" x="5165" y="766" width="1440" height="1024">
+    <instance id="370:7582" name="Header" x="0" y="0" width="1440" height="80" />
+    <instance id="370:7583" name="Stepper" x="0" y="80" width="1440" height="34" />
+    <frame id="370:7584" name="Frame 69" x="0" y="114" width="1440" height="762">
+      <frame id="370:7585" name="Frame 68" x="160" y="32" width="760" height="394">
+        <frame id="370:7586" name="Frame" x="0" y="0" width="760" height="129">
+          <frame id="370:7587" name="Frame" x="0" y="0" width="760" height="19">
+            <text id="370:7588" name="Add rooms &amp; guests" x="0" y="0" width="760" height="19" />
+          </frame>
+          <text id="370:7589" name="Maximum 2 adult guests per room. For more information, call +1 555 555-5555" x="0" y="27" width="488" height="12" />
+          <frame id="370:7590" name="Frame 66" x="0" y="47" width="649" height="82">
+            <frame id="370:7591" name="Frame" x="0" y="0" width="191" height="82">
+              <frame id="370:7592" name="Frame" x="16" y="12" width="159" height="17">
+                <text id="370:7593" name="ROOM 01" x="0" y="0" width="64" height="17" />
+              </frame>
+              <frame id="370:7594" name="Frame" x="16" y="33" width="159" height="37">
+                <text id="370:7595" name="Guests" x="0" y="11" width="47" height="15" />
+                <instance id="370:7596" name="experience selector buttons" x="55" y="0" width="104" height="37" />
+              </frame>
+            </frame>
+            <frame id="370:7597" name="Frame" x="211" y="0" width="191" height="82">
+              <frame id="370:7598" name="Frame" x="16" y="12" width="159" height="17">
+                <text id="370:7599" name="ROOM 02" x="0" y="0" width="64" height="17" />
+              </frame>
+              <frame id="370:7600" name="Frame" x="16" y="33" width="159" height="37">
+                <text id="370:7601" name="Guests" x="0" y="11" width="47" height="15" />
+                <instance id="370:7602" name="experience selector buttons" x="55" y="0" width="104" height="37" />
+              </frame>
+            </frame>
+            <frame id="370:7603" name="Frame" x="422" y="0" width="227" height="82">
+              <frame id="370:7604" name="Frame" x="0" y="0" width="227" height="82">
+                <frame id="370:7605" name="Frame" x="67.5" y="32.5" width="92" height="17">
+                  <text id="370:7606" name="+ Add Room" x="0" y="0" width="92" height="17" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <frame id="370:7607" name="divider" x="0" y="153" width="760" height="2" />
+        <frame id="370:7608" name="Frame" x="0" y="179" width="760" height="215">
+          <frame id="370:7609" name="Frame" x="0" y="0" width="760" height="19">
+            <text id="370:7610" name="Choose your dates" x="0" y="0" width="760" height="19" />
+          </frame>
+          <text id="370:7611" name="Stays run in blocks of 3 nights, 4 nights, and 7 nights. Guests can add an extra night to stays ending on Thursdays." x="0" y="27" width="384" height="24" />
+          <frame id="370:7612" name="Frame 145" x="0" y="59" width="171" height="156">
+            <frame id="370:7613" name="Frame 68" x="0" y="0" width="163" height="49">
+              <text id="370:7614" name="Check-in" x="0" y="0" width="63" height="15" />
+              <frame id="370:7615" name="experience selector buttons" x="0" y="23" width="163" height="26">
+                <vector id="370:7616" name="Vector" x="9" y="5" width="16" height="16" />
+                <text id="370:7617" name="6 September 2026" x="29" y="5.5" width="125" height="15" />
+              </frame>
+            </frame>
+            <frame id="370:7618" name="Frame 69" x="0" y="65" width="171" height="49">
+              <text id="370:7619" name="Check-out" x="0" y="0" width="71" height="15" />
+              <frame id="370:7620" name="experience selector buttons" x="0" y="23" width="171" height="26">
+                <vector id="370:7621" name="Vector" x="9" y="5" width="16" height="16" />
+                <text id="370:7622" name="13 September 2026" x="29" y="5.5" width="133" height="15" />
+              </frame>
+            </frame>
+            <frame id="370:7623" name="Frame 146" x="0" y="130" width="95" height="26">
+              <text id="370:7624" name="7 nights" x="16" y="5.5" width="63" height="15" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="370:7625" name="Frame 76" x="960" y="32" width="320" height="427">
+        <instance id="370:7626" name="Summary frame" x="0" y="0" width="320" height="201" />
+        <frame id="370:7627" name="Every Stay Includes" x="0" y="225" width="320" height="202">
+          <text id="370:7628" name="Every Stay Includes" x="25" y="25" width="270" height="24" />
+          <frame id="370:7629" name="Frame 70" x="25" y="57" width="270" height="24">
+            <instance id="370:7630" name="tabler/massage" x="0" y="0" width="24" height="24" />
+            <text id="370:7631" name="Daily massage" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:7632" name="Frame 71" x="25" y="89" width="270" height="24">
+            <instance id="370:7633" name="icon/salad" x="0" y="0" width="24" height="24" />
+            <frame id="370:7634" name="Frame 74" x="32" y="3.5" width="238" height="17">
+              <text id="370:7635" name="All meals and beverages" x="0" y="0" width="238" height="17" />
+            </frame>
+          </frame>
+          <frame id="370:7636" name="Frame 72" x="25" y="121" width="270" height="24">
+            <instance id="370:7637" name="phosphor/person-simple-hike" x="0" y="0" width="24" height="24" />
+            <text id="370:7638" name="Hikes and daily classes" x="32" y="3.5" width="238" height="17" />
+          </frame>
+          <frame id="370:7639" name="Frame 73" x="25" y="153" width="270" height="24">
+            <instance id="370:7640" name="icon/bus" x="0" y="0" width="24" height="24" />
+            <text id="370:7641" name="Return transfer to EWR" x="32" y="3.5" width="238" height="17" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="370:7642" name="Button Bar" x="0" y="876" width="1440" height="148" />
+  </frame>
+</section>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

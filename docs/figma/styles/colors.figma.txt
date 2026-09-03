@@ -1,0 +1,899 @@
+const imgDivider = "https://www.figma.com/api/mcp/asset/661f97f8-3a3b-46a5-bf79-17df37351a17.svg";
+const imgDivider1 = "https://www.figma.com/api/mcp/asset/857ef3f0-499b-408a-8639-5b564f698d9f.svg";
+
+export default function Colors() {
+  return (
+    <div className="bg-[var(--color\/greyscale\/white,white)] content-stretch flex flex-col items-start justify-center relative size-full" data-node-id="3008:4251" data-name="Colors">
+      <div className="bg-[var(--surface\/default\/black,black)] content-stretch flex flex-col gap-[16px] items-start px-[100px] py-[64px] relative shrink-0 w-full" data-node-id="3008:4256" data-name="Content">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[60px] not-italic relative shrink-0 text-[48px] text-white tracking-[-1.2px] whitespace-nowrap" data-node-id="I3008:4256;3008:4154" style={{ fontFeatureSettings: '"liga" 0' }}>
+          Colors
+        </p>
+      </div>
+      <div className="bg-white content-stretch flex flex-col gap-[80px] items-start p-[80px] relative shrink-0 w-full" data-node-id="928:23840" data-name="Typography">
+        <div className="content-stretch flex gap-[80px] items-start relative shrink-0" data-node-id="54943:5900">
+          <div className="[word-break:break-word] bg-[var(--background\/light,#fcf9f4)] content-stretch flex flex-col font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light gap-[var(--spacing\/3,16px)] items-start p-[var(--spacing\/6,48px)] relative rounded-[var(--broder-radius\/lg,8px)] self-stretch shrink-0 text-[color:var(--color\/charcoal-gray\/500,#4f4d4d)] w-[878px]" data-node-id="55008:11349">
+            <p className="leading-[1.65] relative shrink-0 text-[length:var(--body\/size\/intro,32px)] w-full" data-node-id="55008:11350" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+              Create Your Own Color Scales
+            </p>
+            <div className="content-center flex flex-wrap gap-[var(--spacing\/3,16px)] items-center relative shrink-0 w-full" data-node-id="55008:11351">
+              <p className="leading-[0] relative shrink-0 text-[0px] whitespace-nowrap" data-node-id="55008:11352" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                <span className="leading-[1.65] text-[16px]">{`Use `}</span>
+                <a className="[text-underline-position:from-font] cursor-pointer decoration-from-font decoration-solid font-['Inter:Light'] leading-[1.65] not-italic text-[16px] underline" href="https://uicolors.app/generate/22022f" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_blank">
+                  <span className="[text-underline-position:from-font] decoration-from-font decoration-solid underline" href="https://uicolors.app/generate/22022f" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_blank">
+                    TailWind CSS Color Generator
+                  </span>
+                </a>
+              </p>
+              <p className="leading-[1.65] relative shrink-0 text-[length:var(--body\/size\/base,16px)] whitespace-nowrap" data-node-id="55008:11353" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                – OR –
+              </p>
+              <p className="leading-[0] relative shrink-0 text-[0px] whitespace-nowrap" data-node-id="55008:11354" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                <span className="leading-[1.65] text-[16px]">{`Use `}</span>
+                <a className="[text-underline-position:from-font] cursor-pointer decoration-from-font decoration-solid font-['Inter:Light'] leading-[1.65] not-italic text-[16px] underline" href="https://www.tints.dev/" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_blank">
+                  <span className="[text-underline-position:from-font] decoration-from-font decoration-solid underline" href="https://www.tints.dev/" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_blank">
+                    Tints.Dev Palette Generator
+                  </span>
+                </a>
+              </p>
+              <p className="leading-[1.65] relative shrink-0 text-[length:var(--body\/size\/base,16px)] whitespace-nowrap" data-node-id="55008:11355" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                – OR –
+              </p>
+              <p className="leading-[1.65] relative shrink-0 text-[length:var(--body\/size\/base,16px)] w-[782px]" data-node-id="55008:11356" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                Use Figma AI’s Color Scale Variables tool, but note that you will have to remap your new color scales to your components in this file
+              </p>
+            </div>
+          </div>
+          <div className="bg-[var(--background\/light,#fcf9f4)] content-stretch flex flex-col gap-[var(--spacing\/3,16px)] items-start p-[var(--spacing\/6,48px)] relative rounded-[var(--broder-radius\/lg,8px)] self-stretch shrink-0" data-node-id="54943:5894">
+            <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="54945:3422">
+              <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] relative shrink-0 text-[color:var(--color\/charcoal-gray\/500,#4f4d4d)] text-[length:var(--body\/size\/intro,32px)] whitespace-nowrap" data-node-id="54943:5895" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                Consider the 60-30-10 Rule
+              </p>
+              <div className="content-stretch flex items-center relative rounded-bl-[var(--broder-radius\/lg,8px)] rounded-tl-[var(--broder-radius\/lg,8px)] shrink-0" data-node-id="54945:3417">
+                <div className="bg-[var(--background\/primary,#f8f1e6)] h-[59px] relative rounded-bl-[var(--broder-radius\/lg,8px)] rounded-tl-[var(--broder-radius\/lg,8px)] shrink-0 w-[135px]" data-node-id="54945:3418" />
+                <div className="bg-[var(--color\/charcoal-gray\/600,#313030)] h-[59px] relative shrink-0 w-[67px]" data-node-id="54945:3419" />
+                <div className="bg-[var(--color\/brown\/600,#745a3b)] h-[59px] relative rounded-br-[var(--broder-radius\/lg,8px)] rounded-tr-[var(--broder-radius\/lg,8px)] shrink-0 w-[22px]" data-node-id="54945:3420" />
+              </div>
+            </div>
+            <div className="content-stretch flex gap-[var(--spacing\/3,16px)] items-center relative shrink-0" data-node-id="54943:5896">
+              <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] relative shrink-0 text-[color:var(--color\/charcoal-gray\/500,#4f4d4d)] text-[length:var(--body\/size\/base,16px)] whitespace-pre" data-node-id="54943:5897" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>{`60% Dominant Color (EG: background) - 30% Secondary Color (EG: primary brand color)- 10%  Accent Color (EG: Buttons, links)`}</p>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[80px] items-start relative shrink-0 w-full" data-node-id="55223:4165">
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[1.2] not-italic relative shrink-0 text-[48px] text-[color:var(--color\/greyscale\/black,black)] whitespace-nowrap" data-node-id="55223:4166" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+            Primitive Colors
+          </p>
+          <div className="content-stretch flex flex-col gap-[48px] items-start relative shrink-0 w-full" data-node-id="55223:4168">
+            <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="928:23841">
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="3010:4134" data-name="Section Title">
+                <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="I3010:4134;3008:4151">
+                  <p className="whitespace-pre-wrap">
+                    <span className="leading-[normal]">{`PRIMARY brand color  |  GRAY  |  BASE `}</span>
+                    <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">600</span>
+                  </p>
+                </div>
+                <div className="h-0 relative shrink-0 w-full" data-node-id="I3010:4134;3008:4152" data-name="Divider">
+                  <div className="absolute inset-[-1px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgDivider} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-node-id="928:23846" data-name="Colors">
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="50684:4205" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/25,#f1f1f1)] h-[120px] relative shrink-0 w-full" data-node-id="I50684:4205;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I50684:4205;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I50684:4205;928:23850">
+                      <p className="leading-[22px]">25</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I50684:4205;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I50684:4205;948:34980">
+                        Note: OPTIONAL VARIABLE
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="55020:3955" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/50,#ebebeb)] h-[120px] relative shrink-0 w-full" data-node-id="I55020:3955;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I55020:3955;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I55020:3955;928:23850">
+                      <p className="leading-[22px]">50</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I55020:3955;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I55020:3955;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54934:5980" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/100,#dadada)] h-[120px] relative shrink-0 w-full" data-node-id="I54934:5980;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54934:5980;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54934:5980;928:23850">
+                      <p className="leading-[22px]">100</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54934:5980;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54934:5980;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4641" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/200,#b4b3b3)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4641;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4641;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4641;928:23850">
+                      <p className="leading-[22px]">200</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4641;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4641;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4539" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/300,#929090)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4539;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4539;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4539;928:23850">
+                      <p className="leading-[22px]">300</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4539;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4539;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4546" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/400,#716f6f)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4546;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4546;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4546;928:23850">
+                      <p className="leading-[22px]">400</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4546;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4546;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="h-[208px] relative rounded-[20px] shrink-0 w-[230.4px]" data-node-id="54932:4583">
+                  <div className="absolute border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center left-0 overflow-clip rounded-[var(--broder-radius\/4xl,20px)] top-0 w-[230.4px]" data-node-id="54932:4553" data-name="Color Name">
+                    <div className="bg-[var(--color\/charcoal-gray\/500,#4f4d4d)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4553;928:23848" data-name="Color" />
+                    <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4553;928:23849" data-name="Name">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4553;928:23850">
+                        <p className="leading-[22px]">500</p>
+                      </div>
+                      <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4553;948:35020" data-name="Note">
+                        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4553;948:34980">
+                          Note:
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-10 border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4560" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/600,#313030)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4560;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4560;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4560;928:23850">
+                      <p className="leading-[22px]">600</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4560;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4560;948:34980">
+                        Base Color
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4567" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4567;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4567;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4567;928:23850">
+                      <p className="leading-[22px]">700</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4567;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4567;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4574" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/800,#1c1b1b)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4574;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4574;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4574;928:23850">
+                      <p className="leading-[22px]">800</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4574;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4574;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54934:5987" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/900,#111)] h-[120px] relative shrink-0 w-full" data-node-id="I54934:5987;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54934:5987;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54934:5987;928:23850">
+                      <p className="leading-[22px]">900</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54934:5987;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54934:5987;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4648" data-name="Color Name">
+                  <div className="bg-[var(--color\/charcoal-gray\/950,#080707)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4648;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4648;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4648;928:23850">
+                      <p className="leading-[22px]">950</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4648;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4648;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="54932:4584">
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="54932:4585" data-name="Section Title">
+                <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="I54932:4585;3008:4151">
+                  <p className="whitespace-pre-wrap">
+                    <span className="leading-[normal]">{`PRIMARY brand color  |  brown  |  BASE `}</span>
+                    <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">600</span>
+                  </p>
+                </div>
+                <div className="h-0 relative shrink-0 w-full" data-node-id="I54932:4585;3008:4152" data-name="Divider">
+                  <div className="absolute inset-[-1px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgDivider} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-node-id="54932:4586" data-name="Colors">
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4587" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/25,#f7f4f1)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4587;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4587;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4587;928:23850">
+                      <p className="leading-[22px]">25</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4587;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4587;948:34980">
+                        Note: OPTIONAL VARIABLE
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="55020:3962" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/50,#f4ede6)] h-[120px] relative shrink-0 w-full" data-node-id="I55020:3962;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I55020:3962;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I55020:3962;928:23850">
+                      <p className="leading-[22px]">50</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I55020:3962;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I55020:3962;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54934:5994" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/100,#e9dacd)] h-[120px] relative shrink-0 w-full" data-node-id="I54934:5994;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54934:5994;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54934:5994;928:23850">
+                      <p className="leading-[22px]">100</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54934:5994;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54934:5994;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4656" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/200,#d6c3b2)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4656;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4656;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4656;928:23850">
+                      <p className="leading-[22px]">200</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4656;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4656;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4588" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/300,#c1a78c)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4588;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4588;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4588;928:23850">
+                      <p className="leading-[22px]">300</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4588;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4588;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4589" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/400,#a78c6f)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4589;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4589;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4589;928:23850">
+                      <p className="leading-[22px]">400</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4589;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4589;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-0 border-[var(--color\/greyscale\/100,#e7e7e7)] border-solid h-[208px] relative rounded-[20px] shrink-0 w-[230.4px]" data-node-id="54932:4590">
+                  <div className="absolute border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center left-0 overflow-clip rounded-[var(--broder-radius\/4xl,20px)] top-0 w-[230.4px]" data-node-id="54932:4591" data-name="Color Name">
+                    <div className="bg-[var(--color\/brown\/500,#8d7255)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4591;928:23848" data-name="Color" />
+                    <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4591;928:23849" data-name="Name">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4591;928:23850">
+                        <p className="leading-[22px]">500</p>
+                      </div>
+                      <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4591;948:35020" data-name="Note">
+                        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4591;948:34980">
+                          Note:
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-10 border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4592" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/600,#745a3b)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4592;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4592;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4592;928:23850">
+                      <p className="leading-[22px]">600</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4592;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4592;948:34980">
+                        Base Color
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4593" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/700,#554431)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4593;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4593;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4593;928:23850">
+                      <p className="leading-[22px]">700</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4593;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4593;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4594" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/800,#392e23)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4594;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4594;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4594;928:23850">
+                      <p className="leading-[22px]">800</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4594;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4594;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54932:4664" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/900,#201a15)] h-[120px] relative shrink-0 w-full" data-node-id="I54932:4664;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54932:4664;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54932:4664;928:23850">
+                      <p className="leading-[22px]">900</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54932:4664;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54932:4664;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="54934:6001" data-name="Color Name">
+                  <div className="bg-[var(--color\/brown\/950,#14100d)] h-[120px] relative shrink-0 w-full" data-node-id="I54934:6001;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I54934:6001;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I54934:6001;928:23850">
+                      <p className="leading-[22px]">950</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I54934:6001;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I54934:6001;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="56658:4339">
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="56658:4340" data-name="Section Title">
+                <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="I56658:4340;3008:4151">
+                  <p className="whitespace-pre-wrap">
+                    <span className="leading-[normal]">{`PRIMARY brand color  |  Off White  |  BASE `}</span>
+                    <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">600</span>
+                  </p>
+                </div>
+                <div className="h-0 relative shrink-0 w-full" data-node-id="I56658:4340;3008:4152" data-name="Divider">
+                  <div className="absolute inset-[-1px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgDivider} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-node-id="56658:4341" data-name="Colors">
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4343" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/100,#fdfcfa)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4343;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4343;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4343;928:23850">
+                      <p className="leading-[22px]">100</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4343;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4343;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4344" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/200,#fcf9f4)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4344;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4344;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4344;928:23850">
+                      <p className="leading-[22px]">200</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4344;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4344;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4345" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/300,#fcf9f4)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4345;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4345;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4345;928:23850">
+                      <p className="leading-[22px]">300</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4345;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4345;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4346" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/400,#faf6ef)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4346;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4346;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4346;928:23850">
+                      <p className="leading-[22px]">400</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4346;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4346;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[var(--color\/greyscale\/100,#e7e7e7)] border-solid h-[208px] relative rounded-[20px] shrink-0 w-[230.4px]" data-node-id="56658:4347">
+                  <div className="absolute border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center left-[-1px] overflow-clip rounded-[var(--broder-radius\/4xl,20px)] top-[-1px] w-[230.4px]" data-node-id="56658:4348" data-name="Color Name">
+                    <div className="bg-[var(--color\/off-white\/500,#f9f3e9)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4348;928:23848" data-name="Color" />
+                    <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4348;928:23849" data-name="Name">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4348;928:23850">
+                        <p className="leading-[22px]">500</p>
+                      </div>
+                      <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4348;948:35020" data-name="Note">
+                        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4348;948:34980">
+                          Base Color
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-10 border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4349" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/600,#f8f1e6)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4349;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4349;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4349;928:23850">
+                      <p className="leading-[22px]">600</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4349;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4349;948:34980">
+                        Base Color
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4350" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/700,#f2ebdf)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4350;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4350;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4350;928:23850">
+                      <p className="leading-[22px]">700</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4350;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4350;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4351" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/800,#efe6d8)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4351;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4351;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4351;928:23850">
+                      <p className="leading-[22px]">800</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4351;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4351;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56658:4352" data-name="Color Name">
+                  <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] h-[120px] relative shrink-0 w-full" data-node-id="I56658:4352;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56658:4352;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56658:4352;928:23850">
+                      <p className="leading-[22px]">900</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56658:4352;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56658:4352;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="56657:4050">
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="56657:4051" data-name="Section Title">
+                <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="I56657:4051;3008:4151">
+                  <p className="whitespace-pre-wrap">
+                    <span className="leading-[normal]">{`Secondary brand color  |  taupe  |  BASE `}</span>
+                    <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">300</span>
+                  </p>
+                </div>
+                <div className="h-0 relative shrink-0 w-full" data-node-id="I56657:4051;3008:4152" data-name="Divider">
+                  <div className="absolute inset-[-1px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgDivider} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-node-id="56657:4052" data-name="Colors">
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4054" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/50,#f8f6f4)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4054;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4054;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4054;928:23850">
+                      <p className="leading-[22px]">50</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4054;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4054;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4055" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/100,#f0eae4)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4055;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4055;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4055;928:23850">
+                      <p className="leading-[22px]">100</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4055;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4055;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4056" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/200,#e0d4c8)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4056;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4056;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4056;928:23850">
+                      <p className="leading-[22px]">200</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4056;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4056;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-10 border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4057" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/300,#c6b09c)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4057;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4057;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4057;928:23850">
+                      <p className="leading-[22px]">300</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4057;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4057;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4058" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/400,#b69781)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4058;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4058;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4058;928:23850">
+                      <p className="leading-[22px]">400</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4058;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4058;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[var(--color\/greyscale\/100,#e7e7e7)] border-solid h-[208px] relative rounded-[20px] shrink-0 w-[230.4px]" data-node-id="56657:4059">
+                  <div className="absolute border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center left-[-1px] overflow-clip rounded-[var(--broder-radius\/4xl,20px)] top-[-1px] w-[230.4px]" data-node-id="56657:4060" data-name="Color Name">
+                    <div className="bg-[var(--color\/taupe\/500,#a78068)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4060;928:23848" data-name="Color" />
+                    <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4060;928:23849" data-name="Name">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4060;928:23850">
+                        <p className="leading-[22px]">500</p>
+                      </div>
+                      <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4060;948:35020" data-name="Note">
+                        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4060;948:34980">
+                          Base Color
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4061" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/600,#9a6f5c)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4061;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4061;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4061;928:23850">
+                      <p className="leading-[22px]">600</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4061;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4061;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4062" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/700,#805b4e)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4062;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4062;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4062;928:23850">
+                      <p className="leading-[22px]">700</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4062;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4062;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4063" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/800,#694b43)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4063;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4063;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4063;928:23850">
+                      <p className="leading-[22px]">800</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4063;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4063;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4064" data-name="Color Name">
+                  <div className="bg-[var(--color\/taupe\/900,#563f38)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4064;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4064;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4064;928:23850">
+                      <p className="leading-[22px]">900</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4064;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4064;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="56657:4141" data-development-annotations="scale not used">
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="56657:4142" data-name="Section Title">
+                <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="I56657:4142;3008:4151">
+                  <p className="whitespace-pre-wrap">
+                    <span className="leading-[normal]">{`TERTIARY brand color  |  MALIBU  |  BASE `}</span>
+                    <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">700</span>
+                  </p>
+                </div>
+                <div className="h-0 relative shrink-0 w-full" data-node-id="I56657:4142;3008:4152" data-name="Divider">
+                  <div className="absolute inset-[-1px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgDivider1} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-node-id="56657:4143" data-name="Colors">
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4145" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/50,#f5f3f3)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4145;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4145;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4145;928:23850">
+                      <p className="leading-[22px]">50</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4145;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4145;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4146" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/100,#eae4e3)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4146;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4146;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4146;928:23850">
+                      <p className="leading-[22px]">100</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4146;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4146;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4147" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/200,#d8c9c6)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4147;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4147;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4147;928:23850">
+                      <p className="leading-[22px]">200</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4147;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4147;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4148" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/300,#c8ada9)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4148;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4148;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4148;928:23850">
+                      <p className="leading-[22px]">300</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4148;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4148;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4149" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/400,#bc9189)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4149;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4149;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4149;928:23850">
+                      <p className="leading-[22px]">400</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4149;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4149;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-0 border-[var(--color\/greyscale\/100,#e7e7e7)] border-solid h-[208px] relative rounded-[20px] shrink-0 w-[230.4px]" data-node-id="56657:4150">
+                  <div className="absolute border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center left-0 overflow-clip rounded-[var(--broder-radius\/4xl,20px)] top-0 w-[230.4px]" data-node-id="56657:4151" data-name="Color Name">
+                    <div className="bg-[var(--color\/malibu\/500,#a37a72)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4151;928:23848" data-name="Color" />
+                    <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4151;928:23849" data-name="Name">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4151;928:23850">
+                        <p className="leading-[22px]">500</p>
+                      </div>
+                      <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4151;948:35020" data-name="Note">
+                        <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4151;948:34980">
+                          Note:
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4152" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/600,#89645c)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4152;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4152;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4152;928:23850">
+                      <p className="leading-[22px]">600</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4152;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4152;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-10 border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4153" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/700,#715049)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4153;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4153;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4153;928:23850">
+                      <p className="leading-[22px]">700</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4153;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4153;948:34980">
+                        Base Color
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4154" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/800,#4c3631)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4154;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4154;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4154;928:23850">
+                      <p className="leading-[22px]">800</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4154;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4154;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4155" data-name="Color Name">
+                  <div className="bg-[var(--color\/malibu\/900,#291c1a)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4155;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4155;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4155;928:23850">
+                      <p className="leading-[22px]">900</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4155;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4155;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[36px] items-start relative shrink-0 w-full" data-node-id="56657:4242">
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="56657:4243" data-name="Section Title">
+                <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-black tracking-[2.1px] uppercase w-full" data-node-id="I56657:4243;3008:4151">
+                  <p className="whitespace-pre-wrap">
+                    <span className="leading-[normal]">{`TERTIARY brand color  |  HUDSON VALLEY  |  BASE `}</span>
+                    <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">700</span>
+                  </p>
+                </div>
+                <div className="h-0 relative shrink-0 w-full" data-node-id="I56657:4243;3008:4152" data-name="Divider">
+                  <div className="absolute inset-[-1px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgDivider1} />
+                  </div>
+                </div>
+              </div>
+              <div className="content-start flex flex-wrap gap-[32px] items-start relative shrink-0 w-full" data-node-id="56657:4244" data-development-annotations="scale not used" data-name="Colors">
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4245" data-name="Color Name">
+                  <div className="bg-[var(--color\/hudson-valley\/50,#f5f8f6)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4245;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4245;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4245;928:23850">
+                      <p className="leading-[22px]">50</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4245;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4245;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4246" data-name="Color Name">
+                  <div className="bg-[var(--color\/hudson-valley\/100,#dee9e1)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4246;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[20px] pt-[18px] px-[24px] relative shrink-0 w-full" data-node-id="I56657:4246;928:23849" data-name="Name">
+                    <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#4f4f4f] text-[16px] tracking-[0.96px] w-full" data-node-id="I56657:4246;928:23850">
+                      <p className="leading-[22px]">100</p>
+                    </div>
+                    <div className="content-stretch flex items-center pt-[8px] relative shrink-0 w-full" data-node-id="I56657:4246;948:35020" data-name="Note">
+                      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[16px] min-w-px not-italic relative text-[#9328ff] text-[12px]" data-node-id="I56657:4246;948:34980">
+                        Note:
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-[#e0e0e0] border-solid content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[var(--broder-radius\/4xl,20px)] shrink-0 w-[230.4px]" data-node-id="56657:4247" data-name="Color Name">
+                  <div className="bg-[var(--color\/hudson-valley\/200,#bdd2c4)] h-[120px] relative shrink-0 w-full" data-node-id="I56657:4247;928:23848" data-name="Color" />
+                  <div className="content-stretch flex flex-col gap-[4px] items-start pb-[2
+
+
+[OUTPUT TRUNCATED - exceeded 25000 token limit]
+
+The tool output was truncated. If this MCP server provides pagination or filtering tools, use them to retrieve specific portions of the data. If pagination is not available, inform the user that you are working with truncated output and results may be incomplete.

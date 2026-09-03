@@ -1,0 +1,88 @@
+[
+  {
+    "label": "home-desktop",
+    "violations": []
+  },
+  {
+    "label": "/location-desktop",
+    "violations": []
+  },
+  {
+    "label": "/program-desktop",
+    "violations": []
+  },
+  {
+    "label": "/rooms-desktop",
+    "violations": []
+  },
+  {
+    "label": "/upgrade-desktop",
+    "violations": []
+  },
+  {
+    "label": "/add-ons-desktop",
+    "violations": []
+  },
+  {
+    "label": "/checkout-desktop",
+    "violations": []
+  },
+  {
+    "label": "room-detail-desktop",
+    "violations": []
+  },
+  {
+    "label": "confirmation-deep-link-desktop",
+    "violations": []
+  },
+  {
+    "label": "home-mobile",
+    "violations": []
+  },
+  {
+    "label": "/location-mobile",
+    "violations": [
+      {
+        "id": "scrollable-region-focusable",
+        "impact": "serious",
+        "nodes": 1,
+        "help": "Scrollable region must have keyboard access"
+      }
+    ]
+  },
+  {
+    "label": "/program-mobile",
+    "violations": []
+  },
+  {
+    "label": "/rooms-mobile",
+    "violations": []
+  },
+  {
+    "label": "/upgrade-mobile",
+    "violations": []
+  },
+  {
+    "label": "/add-ons-mobile",
+    "violations": []
+  },
+  {
+    "label": "/checkout-mobile",
+    "violations": []
+  },
+  {
+    "label": "room-detail-mobile",
+    "violations": []
+  },
+  {
+    "label": "confirmation-deep-link-mobile",
+    "violations": [
+      {
+        "id": "scrollable-region-focusable",
+        "impact": "serious",
+        "nodes": 1,
+        "help": "Scrollable region must have keyboard access"
+      }
+    ]
+  }
+]

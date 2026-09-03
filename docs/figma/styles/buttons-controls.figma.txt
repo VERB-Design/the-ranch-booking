@@ -1,0 +1,857 @@
+const imgProperty1Pause = "https://www.figma.com/api/mcp/asset/1a6d51fc-ffaa-4a2d-845c-4dce088f307e.svg";
+const imgProperty1Play = "https://www.figma.com/api/mcp/asset/ab903ae8-bd0d-426f-9c8f-b24d4a550516.svg";
+const imgDirectionLeftColourwayDarkStateDefault = "https://www.figma.com/api/mcp/asset/18936c0f-a94f-4a67-ac08-fa2052003d53.svg";
+const imgDirectionRightColourwayDarkStateDefault = "https://www.figma.com/api/mcp/asset/e117bae2-d89b-4148-97c3-ab6f3209fb6f.svg";
+const imgDirectionLeftColourwayLightStateDefault = "https://www.figma.com/api/mcp/asset/1d9c2758-7a14-4706-a4b5-ead7b4c42ca2.svg";
+const imgDirectionRightColourwayLightStateDefault = "https://www.figma.com/api/mcp/asset/64a83bf8-f99f-4332-9c83-30284ffa6dcf.svg";
+const imgVector11 = "https://www.figma.com/api/mcp/asset/8c3c7ccd-6140-47d2-bc85-ca55255626f3.svg";
+const imgVector10 = "https://www.figma.com/api/mcp/asset/a02bdde3-8952-4e7a-9ec8-e52492fda527.svg";
+const imgVector12 = "https://www.figma.com/api/mcp/asset/81a5f2a6-24f1-4663-bfcd-977e9c19aae8.svg";
+const imgVector13 = "https://www.figma.com/api/mcp/asset/0df86f2f-6035-4579-bc13-65360f174c80.svg";
+const imgVector = "https://www.figma.com/api/mcp/asset/4aba6ca4-16af-4405-903d-f0a70aa28f7c.svg";
+const imgVector1 = "https://www.figma.com/api/mcp/asset/94c74271-3c61-4f32-8919-a6f3e5bc397f.svg";
+const imgVector2 = "https://www.figma.com/api/mcp/asset/cb8f3bb0-c628-4d05-be9e-ace3ecc8f01f.svg";
+const imgVector3 = "https://www.figma.com/api/mcp/asset/21704e87-ba84-40b7-8215-959cd59e2374.svg";
+const imgVector4 = "https://www.figma.com/api/mcp/asset/fbda7be7-ca79-4fe5-a42d-80da6c32fbf9.svg";
+const imgVector5 = "https://www.figma.com/api/mcp/asset/2b0e224e-0687-4beb-9f23-7270e04375da.svg";
+const imgVector6 = "https://www.figma.com/api/mcp/asset/91cadfcb-545d-4241-a4c2-365ea956ae41.svg";
+const imgVector7 = "https://www.figma.com/api/mcp/asset/a7601005-7548-4f8b-bb09-bbb9f9ea01b4.svg";
+const imgVector8 = "https://www.figma.com/api/mcp/asset/7f3353fb-4854-44a6-99c9-af860d07e3eb.svg";
+const imgDivider = "https://www.figma.com/api/mcp/asset/a49a1c05-640d-457f-b82d-a9d238a06e46.svg";
+const imgDivider1 = "https://www.figma.com/api/mcp/asset/8fab7738-b63f-4520-9a31-221c02932317.svg";
+const imgIcons = "https://www.figma.com/api/mcp/asset/5317dafc-21cc-4da6-8bb8-d3ba4ec91577.svg";
+const imgIcons1 = "https://www.figma.com/api/mcp/asset/91e11d43-bd58-4589-964e-22635b53a20c.svg";
+const imgIcons2 = "https://www.figma.com/api/mcp/asset/0be55c2f-deda-43d2-9b1c-4af16eb3ca74.svg";
+const imgIcons3 = "https://www.figma.com/api/mcp/asset/a8e2d89b-5d50-4b3d-aa60-114a4ab20238.svg";
+const imgIcons4 = "https://www.figma.com/api/mcp/asset/e174d910-ee56-4593-a540-ff326460677c.svg";
+const imgIcons5 = "https://www.figma.com/api/mcp/asset/840bdbcc-595c-4459-bd05-b05e1316a3ac.svg";
+const imgIcons6 = "https://www.figma.com/api/mcp/asset/bb67d074-e84a-4da3-9636-b99f63a391e0.svg";
+const imgDivider2 = "https://www.figma.com/api/mcp/asset/2f2ae527-6ae0-47d1-b09d-c1bd3c35eaf3.svg";
+const imgIcons7 = "https://www.figma.com/api/mcp/asset/caab0c2d-1d19-4817-8e21-924896c59a3c.svg";
+const imgIcons8 = "https://www.figma.com/api/mcp/asset/43209260-940b-4149-a48b-5ab14e578e94.svg";
+const imgIcons9 = "https://www.figma.com/api/mcp/asset/8bdaf2ed-612d-46a2-83ea-639d3dc482d5.svg";
+const imgIcons10 = "https://www.figma.com/api/mcp/asset/71f62b3f-35db-4526-b9ac-65f2c6838cac.svg";
+const imgIcons11 = "https://www.figma.com/api/mcp/asset/b2db2901-00e3-4b2d-9ec5-ee28d598b5af.svg";
+const imgIcons12 = "https://www.figma.com/api/mcp/asset/c9151d86-537c-4765-ae19-879c5c9f59d9.svg";
+const imgIcons13 = "https://www.figma.com/api/mcp/asset/d46bea0b-ebc4-48a1-9349-a39b57ceccc6.svg";
+const imgIcons14 = "https://www.figma.com/api/mcp/asset/a7d1ea15-d53a-4a86-a524-7259a7f40505.svg";
+const imgIcons15 = "https://www.figma.com/api/mcp/asset/9743af19-84f1-48b2-ac9c-630f129e8eb9.svg";
+const imgDivider3 = "https://www.figma.com/api/mcp/asset/f9f18bd7-c1ae-4883-acb0-996dd84b2ce0.svg";
+const imgDivider4 = "https://www.figma.com/api/mcp/asset/4e98b144-47a3-4147-9c09-6bb6466ec571.svg";
+
+type PlayPauseProps = {
+  className?: string;
+  property1?: "pause" | "play";
+};
+
+function PlayPause({ className, property1 = "pause" }: PlayPauseProps) {
+  const isPlay = property1 === "play";
+  return (
+    <button className={className || "block relative size-[32px]"} id={isPlay ? "node-52800_10294" : "node-52800_10291"}>
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={isPlay ? imgProperty1Play : imgProperty1Pause} />
+    </button>
+  );
+}
+
+type ArrowsProps = {
+  className?: string;
+  colourway?: "Dark" | "Light";
+  direction?: "Left" | "Right";
+  state?: "Default";
+};
+
+function Arrows({ className, colourway = "Dark", direction = "Left", state = "Default" }: ArrowsProps) {
+  const isLeftAndLightAndDefault = direction === "Left" && colourway === "Light" && state === "Default";
+  const isRightAndDarkAndDefault = direction === "Right" && colourway === "Dark" && state === "Default";
+  const isRightAndLightAndDefault = direction === "Right" && colourway === "Light" && state === "Default";
+  return (
+    <div className={className || "relative size-[64px]"} id={isRightAndLightAndDefault ? "node-58515_17982" : isLeftAndLightAndDefault ? "node-58515_17981" : isRightAndDarkAndDefault ? "node-58515_17980" : "node-58515_17979"}>
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={isRightAndLightAndDefault ? imgDirectionRightColourwayLightStateDefault : isLeftAndLightAndDefault ? imgDirectionLeftColourwayLightStateDefault : isRightAndDarkAndDefault ? imgDirectionRightColourwayDarkStateDefault : imgDirectionLeftColourwayDarkStateDefault} />
+    </div>
+  );
+}
+
+type CarouselControlsProps = {
+  className?: string;
+  property1?: "light" | "dark";
+};
+
+function CarouselControls({ className, property1 = "light" }: CarouselControlsProps) {
+  const isDark = property1 === "dark";
+  const isLight = property1 === "light";
+  return (
+    <div className={className || "content-stretch flex gap-[16px] items-center justify-end relative w-[1276px]"} id={isDark ? "node-57698_17902" : "node-57698_17900"}>
+      <div className="content-stretch flex flex-[1_0_0] items-end min-w-px relative" id={isDark ? "node-57698_17903" : "node-57683_16000"}>
+        <div className="h-0 relative shrink-0 w-[274px]" id={isDark ? "node-57698_17904" : "node-57683_16001"}>
+          <div className="absolute inset-[-1px_0]">
+            <img alt="" className="block max-w-none size-full" src={isDark ? imgVector12 : imgVector11} />
+          </div>
+        </div>
+        <div className="flex-[1_0_0] h-0 min-w-px relative" id={isDark ? "node-57698_17905" : "node-57683_16002"}>
+          <div className="absolute inset-[-0.5px_0]">
+            <img alt="" className="block max-w-none size-full" src={isDark ? imgVector13 : imgVector10} />
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[16px] items-center relative shrink-0" id={isDark ? "node-57698_17906" : "node-57683_16003"}>
+        <Arrows className="relative shrink-0 size-[64px]" colourway={isLight ? "Light" : undefined} />
+        <Arrows className="relative shrink-0 size-[64px]" colourway={isLight ? "Light" : undefined} direction="Right" />
+      </div>
+    </div>
+  );
+}
+
+type CloseButtonProps = {
+  className?: string;
+  state?: "Hover" | "Neutral" | "right-hover" | "right-default";
+};
+
+function CloseButton({ className, state = "Neutral" }: CloseButtonProps) {
+  if (state === "right-default") {
+    return (
+      <div className={className || "content-stretch flex gap-[8px] items-center relative"} data-node-id="59395:38147" data-name="State=right-default">
+        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/black,black)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="59395:38149">
+          Close
+        </p>
+        <div className="relative shrink-0 size-[13.435px]" data-node-id="59395:38148" data-name="Vector">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+        </div>
+      </div>
+    );
+  }
+  if (state === "Hover") {
+    return (
+      <button className={className || "content-stretch cursor-pointer flex gap-[16px] items-center relative"} data-node-id="57626:6411" data-name="State=Hover">
+        <div className="relative shrink-0 size-[13.435px]" data-node-id="59395:38128" data-name="Vector">
+          <div className="absolute inset-[-1.05%]">
+            <img alt="" className="block max-w-none size-full" src={imgVector1} />
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/black,black)] text-[length:var(--button\/size\/default,12px)] text-left tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="57626:6408">
+          Close
+        </p>
+      </button>
+    );
+  }
+  if (state === "right-hover") {
+    return (
+      <div className={className || "content-stretch flex gap-[8px] items-center relative"} data-node-id="59395:38150" data-name="State=right-hover">
+        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/black,black)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="59395:38152">
+          Close
+        </p>
+        <div className="relative shrink-0 size-[13.435px]" data-node-id="59395:38151" data-name="Vector">
+          <div className="absolute inset-[-1.32%]">
+            <img alt="" className="block max-w-none size-full" src={imgVector2} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <button className={className || "content-stretch cursor-pointer flex gap-[16px] items-center relative"} data-node-id="57626:6410" data-name="State=Neutral">
+      <div className="relative shrink-0 size-[13.435px]" data-node-id="59395:34502" data-name="Vector">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+      </div>
+      <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/black,black)] text-[length:var(--button\/size\/default,12px)] text-left tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="57626:6399">
+        Close
+      </p>
+    </button>
+  );
+}
+
+type Component18Props = {
+  className?: string;
+  colorway?: "Dark" | "Light";
+  property1?: "default" | "Hover" | "clicked";
+};
+
+function Component18({ className, colorway = "Dark", property1 = "default" }: Component18Props) {
+  const isClickedAndDark = property1 === "clicked" && colorway === "Dark";
+  const isClickedAndLight = property1 === "clicked" && colorway === "Light";
+  const isDefaultAndLight = property1 === "default" && colorway === "Light";
+  const isHoverAndDark = property1 === "Hover" && colorway === "Dark";
+  const isHoverAndLight = property1 === "Hover" && colorway === "Light";
+  const isHoverOrClicked = ["Hover", "clicked"].includes(property1);
+  return (
+    <div className={className || "content-stretch flex flex-col gap-[8px] items-center overflow-clip pt-[8px] relative"} id={isClickedAndLight ? "node-56912_6029" : isHoverAndLight ? "node-56912_6025" : isDefaultAndLight ? "node-56912_6021" : isClickedAndDark ? "node-56912_5784" : isHoverAndDark ? "node-56912_5776" : "node-56912_5777"}>
+      <div className="content-stretch flex items-center justify-center relative shrink-0" id={isClickedAndLight ? "node-56912_6030" : isHoverAndLight ? "node-56912_6026" : isDefaultAndLight ? "node-56912_6022" : isClickedAndDark ? "node-56912_5785" : isHoverAndDark ? "node-56912_5773" : "node-56912_5769"}>
+        <p className={`${String.raw`[word-break:break-word] font-[family-name:var(--family\/body,"Inter:Regular")] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap `}${isClickedAndLight ? String.raw`text-[color:var(--color\/taupe\/100,#f0eae4)]` : isHoverAndLight ? String.raw`text-[color:var(--color\/taupe\/200,#e0d4c8)]` : isDefaultAndLight ? String.raw`text-[color:var(--color\/off-white\/200,#fcf9f4)]` : isClickedAndDark ? String.raw`text-[color:var(--color\/taupe\/300,#c6b09c)]` : isHoverAndDark ? String.raw`text-[color:var(--color\/taupe\/700,#805b4e)]` : String.raw`text-[color:var(--color\/charcoal-gray\/700,#262525)]`}`} id={isClickedAndLight ? "node-56912_6031" : isHoverAndLight ? "node-56912_6027" : isDefaultAndLight ? "node-56912_6023" : isClickedAndDark ? "node-56912_5786" : isHoverAndDark ? "node-56912_5774" : "node-56912_5770"}>
+          text cta
+        </p>
+      </div>
+      <div className={`h-0 relative shrink-0 ${isHoverOrClicked ? "w-px" : "w-full"}`} id={isClickedAndLight ? "node-56912_6032" : isHoverAndLight ? "node-56912_6028" : isDefaultAndLight ? "node-56912_6024" : isClickedAndDark ? "node-56912_5787" : isHoverAndDark ? "node-56912_5775" : "node-56912_5771"}>
+        {isHoverOrClicked && <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector4} />}
+        {property1 === "default" && (
+          <div className="absolute inset-[-1px_0]">
+            <img alt="" className="block max-w-none size-full" src={imgVector3} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+type Component8Props = {
+  className?: string;
+  colorway?: "Dark" | "Light";
+  property1?: "default" | "hover";
+};
+
+function Component8({ className, colorway = "Dark", property1 = "default" }: Component8Props) {
+  const isDefaultAndLight = property1 === "default" && colorway === "Light";
+  const isHoverAndDark = property1 === "hover" && colorway === "Dark";
+  const isHoverAndLight = property1 === "hover" && colorway === "Light";
+  return (
+    <div className={className || "content-stretch flex gap-[6px] items-center justify-end relative"} id={isHoverAndLight ? "node-58534_19001" : isHoverAndDark ? "node-56870_5089" : isDefaultAndLight ? "node-58534_18998" : "node-56870_5090"}>
+      <p className={`${String.raw`[word-break:break-word] font-[family-name:var(--family\/body,"Inter:Regular")] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap `}${isHoverAndLight ? String.raw`text-[color:var(--color\/taupe\/200,#e0d4c8)]` : isHoverAndDark ? String.raw`text-[color:var(--color\/brown\/600,#745a3b)]` : isDefaultAndLight ? String.raw`text-[color:var(--color\/off-white\/200,#fcf9f4)]` : String.raw`text-[color:var(--color\/charcoal-gray\/700,#262525)]`}`} id={isHoverAndLight ? "node-58534_19002" : isHoverAndDark ? "node-56870_5087" : isDefaultAndLight ? "node-58534_18999" : "node-56870_5081"}>
+        Programs
+      </p>
+      <div className={`h-[5.926px] relative shrink-0 ${property1 === "hover" ? "w-[19.667px]" : "w-[10.667px]"}`} id={isHoverAndLight ? "node-58534_19003" : isHoverAndDark ? "node-56870_5088" : isDefaultAndLight ? "node-58534_19000" : "node-56870_5084"} data-name="Vector">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={isHoverAndLight ? imgVector8 : isHoverAndDark ? imgVector7 : isDefaultAndLight ? imgVector6 : imgVector5} />
+      </div>
+    </div>
+  );
+}
+
+export default function ButtonsControls() {
+  return (
+    <div className="bg-[var(--color\/greyscale\/white,white)] content-stretch flex flex-col items-start justify-center relative size-full" data-node-id="3010:4129" data-name="Buttons & Controls">
+      <div className="bg-[var(--surface\/default\/black,black)] content-stretch flex flex-col gap-[16px] items-start px-[100px] py-[64px] relative shrink-0 w-full" data-node-id="3010:4130" data-name="Content">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[60px] not-italic relative shrink-0 text-[48px] text-white tracking-[-1.2px] whitespace-nowrap" data-node-id="I3010:4130;3008:4154" style={{ fontFeatureSettings: '"liga" 0' }}>{`Buttons & Controls`}</p>
+      </div>
+      <div className="bg-white content-stretch flex flex-col gap-[100px] items-start p-[80px] relative shrink-0 w-[1456px]" data-node-id="928:24740">
+        <div className="content-stretch flex gap-[100px] items-center relative shrink-0" data-node-id="54993:15339">
+          <div className="[word-break:break-word] bg-[var(--color\/charcoal-gray\/50,#ebebeb)] content-stretch flex flex-col font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light gap-[var(--spacing\/3,16px)] items-start p-[var(--spacing\/6,48px)] relative rounded-[var(--broder-radius\/lg,8px)] shrink-0 text-[color:var(--color\/charcoal-gray\/500,#4f4d4d)] w-[467px]" data-node-id="54943:5887">
+            <p className="leading-[1.65] min-w-full relative shrink-0 text-[length:var(--body\/size\/intro,32px)] w-[min-content]" data-node-id="54943:5888" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+              Animation Style
+            </p>
+            <div className="content-stretch flex flex-col gap-[var(--spacing\/3,16px)] items-start justify-center relative shrink-0 whitespace-nowrap" data-node-id="54943:5889">
+              <p className="leading-[0] relative shrink-0 text-[0px]" data-node-id="54943:5890" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                <span className="leading-[1.65] text-[16px]">{`Reference `}</span>
+                <a className="[text-underline-position:from-font] cursor-pointer decoration-from-font decoration-solid font-['Inter:Light'] leading-[1.65] not-italic text-[16px] underline" href="https://ianlunn.github.io/Hover/" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_blank">
+                  <span className="[text-underline-position:from-font] decoration-from-font decoration-solid underline" href="https://ianlunn.github.io/Hover/" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_blank">
+                    Hover.Css
+                  </span>
+                </a>
+              </p>
+              <p className="leading-[1.65] relative shrink-0 text-[length:var(--body\/size\/base,16px)]" data-node-id="54943:5892" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                Use Style “Sweep to Right”
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-row items-center self-stretch" data-node-id="54993:15334">
+            <div className="bg-[var(--color\/charcoal-gray\/50,#ebebeb)] content-stretch flex flex-col gap-[var(--spacing\/6,48px)] h-full items-start justify-center p-[var(--spacing\/6,48px)] relative rounded-[var(--broder-radius\/lg,8px)] shrink-0">
+              <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[1.65] relative shrink-0 text-[color:var(--color\/charcoal-gray\/500,#4f4d4d)] text-[length:var(--body\/size\/intro,32px)] whitespace-nowrap" data-node-id="54993:15335" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                @Designers / Creative
+              </p>
+              <div className="content-stretch flex flex-col gap-[var(--spacing\/3,16px)] items-start justify-center relative shrink-0" data-node-id="54993:15336">
+                <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Light')] font-[var(--weight\/light,normal)] font-light leading-[0] relative shrink-0 text-[0px] text-[color:var(--color\/charcoal-gray\/500,#4f4d4d)] whitespace-pre" data-node-id="54993:15337" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }}>
+                  <span className="leading-[1.65] text-[16px]">{`Edit button styles  `}</span>
+                  <a className="[text-underline-position:from-font] cursor-pointer decoration-from-font decoration-solid font-['Inter:Bold'] font-bold leading-[1.65] not-italic text-[16px] underline" href="Buttons & CTAS" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_self">
+                    <span className="[text-underline-position:from-font] decoration-from-font decoration-solid underline" href="Buttons & CTAS" style={{ fontFeatureSettings: '"lnum" 1, "pnum" 1' }} target="_self">
+                      here
+                    </span>
+                  </a>
+                  <span className="leading-[1.65] text-[16px]">.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[64px] items-start relative shrink-0 w-[1200px]" data-node-id="928:24741">
+          <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-node-id="928:24742">
+            <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="3010:4150" data-name="Section Title">
+              <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I3010:4150;3008:4151">
+                <p className="leading-[normal]">Buttons</p>
+              </div>
+              <div className="h-0 relative shrink-0 w-full" data-node-id="I3010:4150;3008:4152" data-name="Divider">
+                <div className="absolute inset-[-1px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgDivider} />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[86px] items-start relative shrink-0 w-[1500px]" data-node-id="54934:5630">
+              <div className="content-stretch flex flex-col items-start relative shrink-0 w-[1200px]" data-node-id="54934:5631">
+                <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="54934:5632" data-name="Section Title">
+                  <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I54934:5632;3008:4151">
+                    <p>
+                      <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">Solid</span>
+                      <span className="leading-[normal]">{` button, Dark for light MODE`}</span>
+                    </p>
+                  </div>
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="I54934:5632;3008:4152" data-name="Divider">
+                    <div className="absolute inset-[-1px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider1} />
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-[var(--background\/primary,#f8f1e6)] content-stretch flex flex-col items-start relative shrink-0 w-[1200px]" data-node-id="54934:5633">
+                  <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="54934:5634">
+                    <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5635">
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5636" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic opacity-0 relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5636;54934:4920">
+                          <p className="leading-[22px]">No Icon</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5637" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5637;54934:4920">
+                          <p className="leading-[22px]">No Icon</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5638" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5638;54934:4920">
+                          <p className="leading-[22px]">Icon Right</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5639" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5639;54934:4920">
+                          <p className="leading-[22px]">Icon Left</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5641">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5642" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5642;54934:4920">
+                        <p className="leading-[22px]">Default</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5643" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5643;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/50,#ebebeb)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5643;55267:5106;55267:4729">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5644" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5644;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/50,#ebebeb)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5644;55267:5106;55267:4729">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5644;55267:5106;55267:4739" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5645" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5645;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5645;55267:5106;55267:4735" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons1} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/50,#ebebeb)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5645;55267:5106;55267:4729">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5647">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5648" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5648;54934:4920">
+                        <p className="leading-[22px]">Hover</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5649" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/500,#4f4d4d)] content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5649;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/white,white)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5649;55267:5106;55267:4756">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5650" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/500,#4f4d4d)] content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5650;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/white,white)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5650;55267:5106;55267:4756">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5650;55267:5106;55267:4757" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons2} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5651" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/500,#4f4d4d)] content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5651;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5651;55267:5106;55267:4755" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons3} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/greyscale\/white,white)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5651;55267:5106;55267:4756">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:6012">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6013" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:6013;54934:4920">
+                        <p className="leading-[22px]">Pressed</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6014" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/300,#929090)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6014;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/950,#080707)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6014;55267:5106;55267:4764">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6015" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/300,#929090)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6015;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/950,#080707)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6015;55267:5106;55267:4764">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:6015;55267:5106;55267:4765" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6016" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/300,#929090)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6016;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/950,#080707)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6016;55267:5106;55267:4764">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:6016;55267:5106;55267:4765" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons4} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:6047">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6048" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:6048;54934:4920">
+                        <p className="leading-[22px]">Selected</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6049" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/900,#111)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6049;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/100,#dadada)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6049;55267:5106;55267:4772">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6050" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/900,#111)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6050;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/100,#dadada)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6050;55267:5106;55267:4772">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:6050;55267:5106;55267:4773" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons5} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6051" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/900,#111)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6051;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:6051;55267:5106;55267:4771" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons6} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/100,#dadada)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6051;55267:5106;55267:4772">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5653">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5654" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5654;54934:4920">
+                        <p className="leading-[22px]">Disabled</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5655" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] opacity-30 px-[var(--spacing\/4,24px)] relative shrink-0 w-[180px]" data-node-id="I54934:5655;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/50,#ebebeb)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5655;55267:5106;55267:4780">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5656" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] opacity-30 px-[var(--spacing\/4,24px)] relative shrink-0 w-[180px]" data-node-id="I54934:5656;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/50,#ebebeb)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5656;55267:5106;55267:4780">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5656;55267:5106;55267:4781" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5657" data-name="button">
+                      <div className="bg-[var(--color\/charcoal-gray\/700,#262525)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] opacity-30 px-[var(--spacing\/4,24px)] relative shrink-0 w-[180px]" data-node-id="I54934:5657;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5657;55267:5106;55267:4779" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons1} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/50,#ebebeb)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5657;55267:5106;55267:4780">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start relative shrink-0 w-[1200px]" data-node-id="54934:5659">
+                <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="54934:5660" data-name="Section Title">
+                  <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I54934:5660;3008:4151">
+                    <p>
+                      <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">Solid</span>
+                      <span className="leading-[normal]">{` button, light for dark MODE`}</span>
+                    </p>
+                  </div>
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="I54934:5660;3008:4152" data-name="Divider">
+                    <div className="absolute inset-[-1px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider2} />
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-[var(--background\/dark,#262525)] content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="54934:5661">
+                  <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="54934:5662">
+                    <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5663">
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5664" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic opacity-0 relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5664;54934:4920">
+                          <p className="leading-[22px]">No Icon</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5665" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/100,#e7e7e7)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5665;54934:4920">
+                          <p className="leading-[22px]">No Icon</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5666" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/100,#e7e7e7)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5666;54934:4920">
+                          <p className="leading-[22px]">Icon Right</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5667" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/100,#e7e7e7)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5667;54934:4920">
+                          <p className="leading-[22px]">Icon Left</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5669">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5670" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/charcoal-gray\/100,#dadada)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5670;54934:4920">
+                        <p className="leading-[22px]">Default</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5671" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5671;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/900,#111)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5671;55267:5106;55267:4840">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5672" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5672;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/900,#111)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5672;55267:5106;55267:4840">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5672;55267:5106;55267:4841" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons7} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5673" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5673;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5673;55267:5106;55267:4839" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons8} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/900,#111)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5673;55267:5106;55267:4840">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5675">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5676" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/charcoal-gray\/100,#dadada)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5676;54934:4920">
+                        <p className="leading-[22px]">Hover</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5677" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/400,#faf6ef)] content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5677;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5677;55267:5106;55267:4844">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5678" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/400,#faf6ef)] content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5678;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5678;55267:5106;55267:4844">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5678;55267:5106;55267:4845" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons9} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5679" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/400,#faf6ef)] content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5679;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5679;55267:5106;55267:4843" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons10} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5679;55267:5106;55267:4844">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="55204:5657">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55204:5658" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/charcoal-gray\/100,#dadada)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55204:5658;54934:4920">
+                        <p className="leading-[22px]">Pressed</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55204:5659" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/100,#fdfcfa)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55204:5659;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/950,#080707)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55204:5659;55267:5106;55267:4848">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55204:5660" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/100,#fdfcfa)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55204:5660;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/950,#080707)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55204:5660;55267:5106;55267:4848">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55204:5660;55267:5106;55267:4849" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons4} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55204:5661" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/100,#fdfcfa)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55204:5661;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55204:5661;55267:5106;55267:4847" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons11} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/950,#080707)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55204:5661;55267:5106;55267:4848">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:6223">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6224" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/100,#e7e7e7)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:6224;54934:4920">
+                        <p className="leading-[22px]">Selected</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6225" data-name="button">
+                      <div className="bg-[var(--color\/brown\/600,#745a3b)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6225;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/off-white\/100,#fdfcfa)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6225;55267:5106;55267:4852">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6226" data-name="button">
+                      <div className="bg-[var(--color\/brown\/600,#745a3b)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6226;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/off-white\/100,#fdfcfa)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6226;55267:5106;55267:4852">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:6226;55267:5106;55267:4853" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons12} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:6227" data-name="button">
+                      <div className="bg-[var(--color\/brown\/600,#745a3b)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:6227;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:6227;55267:5106;55267:4851" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons13} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/off-white\/100,#fdfcfa)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:6227;55267:5106;55267:4852">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="54934:5681">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5682" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/100,#e7e7e7)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I54934:5682;54934:4920">
+                        <p className="leading-[22px]">Disabled</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5683" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] opacity-30 px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5683;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/900,#111)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5683;55267:5106;55267:4856">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5684" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] opacity-30 px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5684;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/900,#111)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5684;55267:5106;55267:4856">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5684;55267:5106;55267:4857" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons7} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="54934:5685" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] opacity-30 px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I54934:5685;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I54934:5685;55267:5106;55267:4855" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons8} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/900,#111)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I54934:5685;55267:5106;55267:4856">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start relative shrink-0 w-[1200px]" data-node-id="55267:6326">
+                <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="55267:6327" data-name="Section Title">
+                  <div className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[21px] text-[color:var(--color\/greyscale\/black,black)] tracking-[2.1px] uppercase w-full" data-node-id="I55267:6327;3008:4151">
+                    <p>
+                      <span className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic">GHOST</span>
+                      <span className="leading-[normal]">{` button, Dark for light MODE`}</span>
+                    </p>
+                  </div>
+                  <div className="h-0 relative shrink-0 w-full" data-node-id="I55267:6327;3008:4152" data-name="Divider">
+                    <div className="absolute inset-[-1px_0_0_0]">
+                      <img alt="" className="block max-w-none size-full" src={imgDivider1} />
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-[var(--background\/primary,#f8f1e6)] content-stretch flex flex-col items-start relative shrink-0 w-[1200px]" data-node-id="55267:6328">
+                  <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="55267:6329">
+                    <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="55267:6330">
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6331" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic opacity-0 relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6331;54934:4920">
+                          <p className="leading-[22px]">No Icon</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6332" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6332;54934:4920">
+                          <p className="leading-[22px]">No Icon</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6333" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6333;54934:4920">
+                          <p className="leading-[22px]">Icon Right</p>
+                        </div>
+                      </div>
+                      <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6334" data-name="title">
+                        <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6334;54934:4920">
+                          <p className="leading-[22px]">Icon Left</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="55267:6335">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6336" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6336;54934:4920">
+                        <p className="leading-[22px]">Default</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6337" data-name="button">
+                      <div className="border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6337;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6337;55267:5106;55267:4920">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6338" data-name="button">
+                      <div className="border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6338;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6338;55267:5106;55267:4920">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55267:6338;55267:5106;55267:4921" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons9} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6339" data-name="button">
+                      <div className="border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6339;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55267:6339;55267:5106;55267:4919" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons10} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6339;55267:5106;55267:4920">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="55267:6340">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6341" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6341;54934:4920">
+                        <p className="leading-[22px]">Hover</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6342" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6342;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6342;55267:5106;55267:4924">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6343" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6343;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6343;55267:5106;55267:4924">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55267:6343;55267:5106;55267:4925" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons9} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6344" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/900,#e9e0d3)] border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch cursor-pointer flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6344;55267:5106" data-name="button set">
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55267:6344;55267:5106;55267:4923" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons10} />
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6344;55267:5106;55267:4924">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="55267:6345">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6346" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6346;54934:4920">
+                        <p className="leading-[22px]">Pressed</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6347" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/300,#fcf9f4)] border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6347;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6347;55267:5106;55267:4968">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6348" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/300,#fcf9f4)] border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6348;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6348;55267:5106;55267:4968">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55267:6348;55267:5106;55267:4969" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons9} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6349" data-name="button">
+                      <div className="bg-[var(--color\/off-white\/300,#fcf9f4)] border border-[var(--color\/charcoal-gray\/700,#262525)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6349;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6349;55267:5106;55267:4968">
+                          button
+                        </p>
+                        <div className="relative shrink-0 size-[18px]" data-node-id="I55267:6349;55267:5106;55267:4969" data-name="Icons">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcons9} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="55267:6350">
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-l border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6351" data-name="title">
+                      <div className="[word-break:break-word] capitalize flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--color\/greyscale\/700,#4f4f4f)] text-center tracking-[0.96px] w-[182.4px]" data-node-id="I55267:6351;54934:4920">
+                        <p className="leading-[22px]">Selected</p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6352" data-name="button">
+                      <div className="bg-[var(--color\/taupe\/300,#c6b09c)] border border-[var(--color\/charcoal-gray\/950,#080707)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6352;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[family-name:var(--family\/body,'Inter:Regular')] font-[var(--weight\/regular,normal)] font-normal leading-none relative shrink-0 text-[color:var(--color\/charcoal-gray\/800,#1c1b1b)] text-[length:var(--button\/size\/default,12px)] tracking-[1.8px] uppercase whitespace-nowrap" data-node-id="I55267:6352;55267:5106;55267:4984">
+                          button
+                        </p>
+                      </div>
+                    </div>
+                    <div className="border-[var(--color\/greyscale\/200,#d1d1d1)] border-b border-r border-solid content-stretch flex h-[104px] items-center justify-center p-[8px] relative shrink-0 w-[300px]" data-node-id="55267:6353" data-name="button">
+                      <div className="bg-[var(--color\/taupe\/300,#c6b09c)] border border-[var(--color\/charcoal-gray\/950,#080707)] border-solid content-stretch flex gap-[8px] items-center justify-center max-h-[64px] min-h-[50px] px-[var(--spacing\/4,24px)] py-[var(--spacing\/3,16px)] relative shrink-0 w-[180px]" data-node-id="I55267:6353;55267:5106" data-name="button set">
+                        <p className="[word-break:break-word] font-[fa
+
+
+[OUTPUT TRUNCATED - exceeded 25000 token limit]
+
+The tool output was truncated. If this MCP server provides pagination or filtering tools, use them to retrieve specific portions of the data. If pagination is not available, inform the user that you are working with truncated output and results may be incomplete.
