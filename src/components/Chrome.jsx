@@ -32,7 +32,6 @@ export function Header({ onEditStay }) {
   const { state, reset } = useBooking();
   const navigate = useNavigate();
   const hasStay = !!(state.checkIn && state.checkOut);
-  const mark = wordmark(state.property);
 
   /* Same row as the home hero (HeroNav): menu left, lockup centred, and
      on the right the stay in one line — dates, guests, Edit — where the
@@ -49,7 +48,9 @@ export function Header({ onEditStay }) {
           onClick={() => { reset(); navigate('/'); }}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
         >
-          <img src={mark.src} alt={mark.alt} className="h-auto w-[130px] md:w-[160px]" />
+          {/* Same mark, same size as the home nav (HeroNav) — the dark
+              cut of the wordmark at 250×30, 184×22 on a phone. */}
+          <img src="/brand/the-ranch.svg" alt="The Ranch" className="h-[22px] w-[184px] md:h-[30px] md:w-[250px]" />
         </button>
 
         {hasStay && onEditStay ? (
