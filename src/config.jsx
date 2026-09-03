@@ -305,6 +305,14 @@ export function upsellOn(config, which, where) {
    from 1. `entry === 'pages'` keeps the original seven-step shape,
    Location and Program (with Extensions mirroring Program's status via
    `linkedTo`, since it has no page of its own) ahead of Rooms. */
+/* The key of the step that follows `key` in the live flow — for buttons
+   that name their destination ("Continue to Enhancements"). */
+export function nextStepKey(config, key) {
+  const steps = flowSteps(config);
+  const i = steps.findIndex((st) => st.key === key);
+  return i === -1 ? null : (steps[i + 1] ? steps[i + 1].key : null);
+}
+
 export function flowSteps(config) {
   if (config.entry === 'drawer') {
     return [

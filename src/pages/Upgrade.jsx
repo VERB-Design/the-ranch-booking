@@ -1,5 +1,6 @@
 import { PageTitle } from '../components/Chrome.jsx';
 import { useStep } from '../components/Layout.jsx';
+import { nextStepKey, useConfig } from '../config.jsx';
 import Button from '../components/ui/Button.jsx';
 import { CheckIcon, PriceBlock, RoomCardFrame } from '../components/RoomCard.jsx';
 import { D, nights, useBooking } from '../store.jsx';
@@ -20,14 +21,23 @@ import usePageTitle from '../usePageTitle.js';
 export default function Upgrade() {
   usePageTitle('Upgrade Your Stay');
   const { state, set } = useBooking();
-  useStep({ label: 'Continue' });
 
   const rooms = state.rooms || [];
   const slot = rooms[0] || null;
   const originalRoomId = slot ? (slot.upgradedFrom || slot.roomId) : null;
   const originalRoom = originalRoomId ? D.roomById(originalRoomId) : null;
   const upgradeRoom = originalRoomId ? D.upgradeFor(originalRoomId) : null;
+  const config = useConfig();
   const isUpgraded = !!(slot && slot.upgradedFrom);
+
+  /* The button says what the guest is doing: declining the offer, or
+     carrying the upgrade on to whatever step comes next. */
+  const nextKey = nextStepKey(config, 'upgrades');
+  useStep({
+    label: !isUpgraded
+      ? 'No Thank You, Continue'
+      : nextKey === 'add-ons' ? 'Continue to Enhancements' : 'Continue to Check-out',
+  });
   const n = Math.max(1, nights(state));
   const adults = (slot && slot.adults) || 1;
   const diff = upgradeRoom && originalRoom ? Math.max(0, upgradeRoom.rate - originalRoom.rate) : 0;

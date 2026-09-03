@@ -158,7 +158,7 @@ export function ButtonBar({ backTo, onContinue, continueLabel = 'Continue', disa
             Back
           </Button>
         ) : <span />}
-        <Button variant="primary" icon={<Arrow direction="right" />} iconPosition="right" disabled={disabled} onClick={onContinue}>
+        <Button variant="primary" icon={<Arrow direction="right" tone="light" />} iconPosition="right" disabled={disabled} onClick={onContinue}>
           {continueLabel}
         </Button>
       </Container>
@@ -183,7 +183,8 @@ export function SkipLink() {
   );
 }
 
-export function Arrow({ direction = 'right' }) {
+export function Arrow({ direction = 'right', tone = 'dark' }) {
   const src = direction === 'left' ? '/icons/long-arrow-left.svg' : '/icons/long-arrow-right.svg';
-  return <img src={src} alt="" aria-hidden="true" className="h-[14px] w-[18px]" />;
+  /* The exported glyph is dark; `invert` turns it white for dark buttons. */
+  return <img src={src} alt="" aria-hidden="true" className={'h-[14px] w-[18px]' + (tone === 'light' ? ' invert' : '')} />;
 }

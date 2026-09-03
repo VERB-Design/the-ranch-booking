@@ -117,7 +117,6 @@ function AddonRow({ addon, open, onToggle, draft, onDraftChange, dates, maxParty
 
 export default function AddOns() {
   usePageTitle('Enhance Your Stay');
-  useStep({ label: 'Continue' });
   const { state, set } = useBooking();
   const config = useConfig();
   const toast = useToast();
@@ -129,6 +128,7 @@ export default function AddOns() {
   const totalGuests = Math.max(1, (state.rooms || []).reduce((s, r) => s + (r.adults || 0), 0));
   const catalogue = state.property ? D.addonsFor(state.property) : [];
   const addedEntries = state.addons || [];
+  useStep({ label: addedEntries.length ? 'Continue to Check-out' : 'No Thank You, Continue' });
   const addedIds = new Set(addedEntries.map((e) => e.id));
   const remaining = catalogue.filter((a) => !addedIds.has(a.id));
 
