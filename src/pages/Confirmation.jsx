@@ -26,7 +26,7 @@ export default function Confirmation() {
   const p = pricing(state);
 
   if (!state.confirmation || !p) {
-    return <Navigate to={config.multiProperty ? '/location' : '/rooms'} replace />;
+    return <Navigate to={config.entry === 'drawer' ? '/' : (config.multiProperty ? '/location' : '/rooms')} replace />;
   }
 
   const { prop, lines, roomCount } = p;

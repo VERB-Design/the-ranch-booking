@@ -7,7 +7,7 @@ import Counter from '../components/ui/Counter.jsx';
 import Button from '../components/ui/Button.jsx';
 import { D, stayDates, useBooking, useToast } from '../store.jsx';
 import { money, parse } from '../utils.js';
-import { useConfig } from '../config.jsx';
+import { beginPath, useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
 /* Step 6 · Add-ons (docs/BRIEF.md, wires 05a–05d). One card of accordion
@@ -158,7 +158,7 @@ export default function AddOns() {
       <div>
         <p className="py-24 text-center text-body">
           No stay in progress.{' '}
-          <BackLink to={config.multiProperty ? '/location' : '/program'}>Begin your stay</BackLink>
+          <BackLink to={beginPath(config)}>Begin your stay</BackLink>
         </p>
       </div>
     );

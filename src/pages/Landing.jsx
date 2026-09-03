@@ -1,12 +1,9 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ReserveDrawer from '../components/ReserveDrawer.jsx';
+import ReserveDrawer from '../components/drawer/ReserveDrawer.jsx';
 import ConfigPanel from '../components/ConfigPanel.jsx';
 import HeroNav from '../components/home/HeroNav.jsx';
 import PropertyBand from '../components/home/PropertyBand.jsx';
 import { Footer, Toast } from '../components/Chrome.jsx';
-import { D, useBooking } from '../store.jsx';
-import { useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
 /* A seamless noise tile, generated with feTurbulence rather than an
@@ -40,17 +37,6 @@ export default function Landing() {
     () => typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
   const videoRef = useRef(null);
-  const { state, set } = useBooking();
-  const config = useConfig();
-  const navigate = useNavigate();
-
-  /* A single-property build has no picker to send the guest to — a search
-     lands straight on the Program step for the one property that exists. */
-  function afterSearch() {
-    if (config.multiProperty) { navigate('/location'); return; }
-    if (!state.property) set({ property: D.propertyList[0] });
-    navigate('/program');
-  }
 
   function openDrawer(propertyId) {
     setDrawerProperty(propertyId || null);
@@ -142,7 +128,6 @@ export default function Landing() {
         open={drawer}
         onClose={() => setDrawer(false)}
         presetProperty={drawerProperty}
-        onApply={afterSearch}
       />
       <ConfigPanel />
       <Toast />

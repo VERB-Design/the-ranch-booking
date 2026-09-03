@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useStep } from '../components/Layout.jsx';
-import RoomChips from '../components/program/RoomChips.jsx';
-import DatePicker from '../components/program/DatePicker.jsx';
+import RoomChips from '../components/booking/RoomChips.jsx';
+import DatePicker from '../components/booking/DatePicker.jsx';
 import { D, MAX_ROOMS, newRoomSlot, useBooking } from '../store.jsx';
 import { iso, parse } from '../stay.js';
 import { nextPathAfter, useConfig } from '../config.jsx';

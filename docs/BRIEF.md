@@ -12,7 +12,27 @@ exclamation marks.
 
 ---
 
-## 1. The flow (7 steps — the stepper is the spec)
+## 1. The flow
+
+**Config switch `entry` (URL param `entry`), default `drawer`.** Revised 3 Sep 2026: Location,
+Program's rooms & guests, and its fixed-block dates all moved into the booking drawer
+(`ReserveDrawer`), so the flow itself now depends on which entry mode is set. The stepper is still
+the spec for whichever mode is live — `flowSteps(config)` in `src/config.jsx` is the one source
+both the Stepper and the Continue buttons read.
+
+**`entry=drawer` (default) — 4 steps.** Location, rooms & guests, and dates are all chosen in the
+drawer before the flow starts; `/location` and `/program` are not registered as routes at all (the
+Dolli rule — a route that does not exist rather than one that exists and redirects), so a stray
+link to either falls through to the catch-all and returns home.
+
+| # | Step | Route | Notes |
+|---|---|---|---|
+| 1 | Rooms | `/rooms` | Horizontal cards, one selection per room in the booking. **Most important.** |
+| 2 | Upgrades | `/upgrade` | One better room offered as "$25 more / night". Skippable. Config `showUpgrades`. |
+| 3 | Add-ons | `/add-ons` | Accordion of treatments/experiences with day · time · party size. Config `showAmenities`. |
+| 4 | Checkout | `/checkout` → `/confirmation` | Guest details per guest + payment, then confirmation. |
+
+**`entry=pages` — the original 7 steps**, unchanged in behaviour:
 
 | # | Step | Route | Wire | Notes |
 |---|---|---|---|---|
@@ -24,13 +44,14 @@ exclamation marks.
 | 6 | Add-ons | `/add-ons` | 05a–d | Accordion of treatments/experiences with day · time · party size. Config `showAmenities`. |
 | 7 | Checkout | `/checkout` → `/confirmation` | 06, 07 | Guest details per guest + payment, then confirmation. |
 
-Landing (`/`) stays as the entry: a Ranch hero with a "Book a stay" button that opens the styled
-vertical booking widget (Figma "Booking Widgets" — Location dropdown, Guests/Rooms counters, Promo,
-Check-in/Check-out, calendar, CHECK RATES). Submitting lands on step 1 (or step 2 when
-single-property).
+Landing (`/`) stays as the entry in both modes: a Ranch hero with a "Book now" button that opens
+the styled vertical booking widget (Figma "Booking Widgets" — now Location, Rooms & Guests, Promo,
+Check-in/Check-out, calendar, CHECK RATES — see section 3, "Drawer entry"). Submitting always
+lands on `flowSteps(config)[0].path` — `/rooms` in drawer mode, `/location` or `/program` in pages
+mode — so the drawer never disagrees with what the Stepper calls step 1.
 
-The **first four steps are the priority**. Get Location → Program → Room → Upgrade pixel-faithful
-before polishing add-ons and checkout.
+The **Rooms and Upgrade steps are the priority** (drawer mode's steps 1–2; pages mode's steps 4–5).
+Get the drawer → Room → Upgrade pixel-faithful before polishing add-ons and checkout.
 
 ## 2. Page shell (every step)
 
@@ -142,6 +163,43 @@ First/Last, Email/Phone, Address, City/State, Country/Zip. Then one card per add
 Then payment (Dolli's card fields, restyled to the Fieldset spec) and "Complete booking".
 Confirmation: centred, "Booking Confirmed", "A confirmation has been sent to {email}", reference
 chip, "RESERVATION" card with all lines and TOTAL PAID band, "Make another booking" ghost button.
+
+### Drawer entry — added 3 Sep 2026
+`entry=drawer` (default) folds Location, Program's "rooms & guests," and "choose your dates" into
+`ReserveDrawer` (`src/components/drawer/ReserveDrawer.jsx`, refactored out of the old flat
+`src/components/ReserveDrawer.jsx`). Top to bottom, against the Figma "Vertical Booking Widget"
+shell (460px right drawer, `--color-light`, CLOSE × top right, hairline rules, full-width primary
+button):
+
+- **Location** — the custom select, required first when `multiProperty` is on; changing it clears
+  `checkIn`/`checkOut`/`extension` (the two properties run different stay rules) but keeps
+  rooms/guests. No select at all when `multiProperty` is off — the single property is set.
+- **Rooms & guests** — `RoomChips` (`src/components/booking/RoomChips.jsx`), the exact component
+  the Program step renders: one bordered chip per room ("ROOM 01," a Guests counter, min 1 max 2),
+  a dashed "+ Add Room" tile up to 4 rooms when `multiRoom` is on, an "×" to drop rooms past the
+  first. At the drawer's 396px inner content width (460px panel − 64px `md:px-8` padding), two
+  190px chips + one 16px gap land at exactly 396px — the two-per-row layout falls out of the
+  existing sizing with no drawer-specific variant.
+- **Promo code** with Apply, unchanged from the prior drawer.
+- **Dates** — `DatePicker` (`src/components/booking/DatePicker.jsx`), the same three-state machine
+  (A: bare calendar + stacked retreat cards; B: filled Check-in field + a check-out-restricted
+  calendar; C: both fields side by side + the summary card with the nested retreat card and the
+  property's extension checkbox) driven off the drawer's own local draft state instead of the
+  store directly — Program.jsx drives the identical component off store state. One component, one
+  place the state machine lives, for both entry modes. `RetreatModal` (opened from "Learn more")
+  is a real nested dialog inside the drawer for the first time; the drawer's own Escape/Tab-trap
+  handlers now check whether a nested `[role="dialog"]` holds focus before acting, so the two
+  focus traps don't fight (see PRODUCTION-NOTES, "Accessibility").
+- **CHECK RATES** — enabled once property + both dates are set and every room has ≥1 guest.
+  Submitting writes property/rooms/dates/extension to the store (clearing room assignments only
+  when the property changed) and navigates to `flowSteps(config)[0].path` — `/rooms` in drawer
+  mode, `/location` or `/program` in pages mode, so Location and Program stay reachable through
+  ordinary navigation in pages mode rather than only a typed URL.
+
+Header's "Edit stay" opens the same drawer, pre-filled from the store, everywhere in the flow.
+`/location` and `/program` pages (pages mode) import `RoomChips`/`DatePicker` from
+`src/components/booking/` rather than duplicating them — the drawer and the step pages have never
+had two copies of the room-chip layout or the date state machine to drift apart.
 
 ## 4. Data
 Replace Dolli's placeholder catalogue with Ranch content in `src/data.js`:

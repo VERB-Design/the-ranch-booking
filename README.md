@@ -15,8 +15,15 @@ Other scripts: `npm run build`, `npm run preview`, `npm run lint`.
 
 ## The flow
 
-Home → *(Location)* → Program (rooms & guests, fixed-block dates, extra night) → Rooms →
-*(Upgrade)* → *(Add-ons)* → Checkout (guest details, payment) → Confirmation.
+Default (`entry=drawer`): Home → **Book now** opens the booking drawer (location, rooms & guests,
+fixed-block dates, extra night — the styled vertical widget) → Rooms → *(Upgrade)* → *(Add-ons)* →
+Checkout (guest details, payment) → Confirmation. `/location` and `/program` are not registered as
+routes in this mode.
+
+`entry=pages`: Home → *(Location)* → Program (rooms & guests, fixed-block dates, extra night) →
+Rooms → *(Upgrade)* → *(Add-ons)* → Checkout → Confirmation — the original seven-step flow, kept
+working end to end for comparison and for builds that want their own step pages instead of the
+drawer.
 
 Bracketed steps exist only when the configuration asks for them — the route is not
 registered and the component is not mounted.

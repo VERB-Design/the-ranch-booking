@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import { Outlet, useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { ButtonBar, Footer, Header, Toast } from './Chrome.jsx';
 import { StayRail, StayRailMobile } from './StayRail.jsx';
-import ReserveDrawer from './ReserveDrawer.jsx';
+import ReserveDrawer from './drawer/ReserveDrawer.jsx';
 import ConfigPanel from './ConfigPanel.jsx';
 import Stepper from './Stepper.jsx';
 import { useBooking, useToast } from '../store.jsx';
@@ -115,7 +115,10 @@ export default function Layout() {
         open={reserve}
         onClose={() => setReserve(false)}
         onApply={({ pendingRoom }) => {
-          if (pendingRoom > -1) { navigate('/rooms'); toast('Choose a room to continue.'); }
+          /* The drawer already navigates to /rooms itself on submit — this
+             just adds the "choose a room" nudge when the edit left one
+             unassigned (e.g. the property changed, clearing room ids). */
+          if (pendingRoom > -1) toast('Choose a room to continue.');
         }}
       />
       <ConfigPanel />

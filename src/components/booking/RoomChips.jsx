@@ -11,6 +11,15 @@ import { MAX_GUESTS_PER_ROOM } from '../../config.jsx';
    fieldset/legend so the whole group reads as one control to a screen
    reader. When `multiRoom` is off, the second-and-on rooms and the add
    tile never render — the brief's "single room, no add tile" case.
+
+   Shared between the Program step page (`entry=pages`) and
+   `ReserveDrawer` (`entry=drawer`, the default) — one component, one
+   place the chip layout and guest-count rules live, per
+   docs/BRIEF.md's "Drawer entry" subsection. At the drawer's 396px inner
+   content width (460px panel − 64px padding), two 190px chips + one
+   16px gap land exactly at 396px, so the two-per-row layout the brief
+   asks for falls out of the existing sizing without a drawer-specific
+   variant.
    ============================================================ */
 export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onRemove }) {
   const visible = multiRoom ? rooms : rooms.slice(0, 1);

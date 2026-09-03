@@ -636,3 +636,50 @@ see `docs/BRIEF.md` section 3 step 2 for the rebuilt spec). Warnings from this p
   `hudson-retreat-modal-{1440,390}.png`, `malibu-state-c-before-ext-1440.png`,
   `malibu-state-c-1440.png` (Saturday pre-night ticked), `fee-modal-{1440,390}.png`.
   `npm run lint` and `npm run build` both green after every change in this pass.
+
+## Drawer entry — flow revision, 3 Sep 2026
+Rolled Location, Program's rooms & guests, and its fixed-block dates into `ReserveDrawer`
+(`src/components/drawer/`), config switch `entry` (default `drawer`), per `docs/BRIEF.md` sections
+1 and 3. `RoomChips`, `DatePicker`, `RetreatCard`, `RetreatModal` moved from
+`src/components/program/` to `src/components/booking/` — same depth, so no internal import paths
+changed, only the two consumers (`Program.jsx`, `ReserveDrawer.jsx`). Warnings from this pass, by
+category:
+
+**Accessibility**
+- **Found and fixed, not part of the brief:** nesting `RetreatModal` inside `ReserveDrawer` for
+  the first time (previously only reachable from the full-page Program step) put two independent
+  Escape/Tab-trap handlers on `document` at once — the drawer's own (registered first, since the
+  drawer opens before any retreat card can be clicked) and `ui/Modal.jsx`'s. Both listeners fire on
+  every Escape/Tab regardless of which dialog visually has focus, so pressing Escape while
+  RetreatModal was open closed the whole drawer out from under it, and Tab could cycle between the
+  drawer's own controls and the modal's in one trap instead of two. Fixed by gating the drawer's
+  own Escape and Tab handlers on whether a nested `[role="dialog"][aria-modal="true"]` currently
+  holds `document.activeElement` — when it does, the drawer bails and lets that dialog's own trap
+  run uncontested. No change to `ui/Modal.jsx` itself; the fix lives entirely in `ReserveDrawer`,
+  the component that introduced the nesting.
+- Verified with Playwright + `@axe-core/playwright` (throwaway scratch project, `pw-content`, not
+  committed — same pattern as every prior pass): zero violations across the drawer in states A/B/C
+  at 1440 and 390 (Hudson), `/rooms`, `/upgrade`, `/add-ons`, `/checkout`, `/confirmation` in
+  drawer mode at both viewports, and `/location`, `/program`, `/checkout`, `/confirmation` in
+  `entry=pages` mode at 1440. Pages mode at 390 was not re-audited in this pass — `Location.jsx`
+  and `Program.jsx` themselves carry zero visual or DOM changes (only their `RoomChips`/
+  `DatePicker` import paths moved), so their 390 contrast/structure is exactly what
+  `docs/ACCESSIBILITY-AUDIT.md` already covers; nothing in this pass touched their markup.
+
+**Reproducibility**
+- Screenshots: `docs/screens/drawer-v2/hudson-state-a/b/c-{1440,390}.png`, `rooms-stepper-1440.png`
+  (drawer mode's 4-step stepper), `confirmation-1440.png`, `malibu-state-c-before-ext-1440.png` /
+  `malibu-state-c-1440.png` (Saturday pre-night ticked). Same throwaway Playwright scratch-project
+  pattern as every prior pass (`pw-content`, not committed). Zero console/page errors across the
+  full Hudson (1440 + 390) and Malibu (1440) walks, drawer-mode and pages-mode.
+- `npm run lint` and `npm run build` both green after every change in this pass.
+
+**Content accuracy / open design question**
+- The drawer's submit now navigates to `flowSteps(config)[0].path` rather than a hardcoded route —
+  `/rooms` in drawer mode, `/location`/`/program` in pages mode — so that pages mode's Location and
+  Program steps stay reachable through Book Now rather than only a typed URL. This also means a
+  Header "Edit stay" mid-flow in **pages mode** lands back on Location (the flow's own first step),
+  not on `/rooms` where the edit was triggered from. Reasoned as consistent with pages mode's own
+  "restart the guided sequence" pattern elsewhere, but it is a judgement call, not something the
+  brief stated explicitly for the pages-mode case — flag if a different landing target is wanted
+  there.

@@ -75,9 +75,14 @@ function FlowRoutes() {
       <Route path="/" element={<Landing />} />
       <Route element={<Layout />}>
         {/* A single-property build has no property picker at all — the
-            route does not exist, rather than existing and being hidden. */}
-        {config.multiProperty && <Route path="/location" element={<Location />} />}
-        <Route path="/program" element={<Program />} />
+            route does not exist, rather than existing and being hidden.
+            Drawer entry (the default) folds Location and Program into
+            ReserveDrawer itself — same rule, same reason: neither route
+            is registered, so a stray `/location` or `/program` link falls
+            through to the catch-all below and redirects home rather than
+            rendering a page nothing in the drawer flow ever links to. */}
+        {config.entry === 'pages' && config.multiProperty && <Route path="/location" element={<Location />} />}
+        {config.entry === 'pages' && <Route path="/program" element={<Program />} />}
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/room/:id" element={<RoomDetail />} />
         {upsellOn(config, 'upgrades', 'page') && <Route path="/upgrade" element={<Upgrade />} />}

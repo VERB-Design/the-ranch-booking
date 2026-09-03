@@ -100,6 +100,12 @@ function stayDescription(pid, nights) {
    "changing either date returns to the right state." Picking a date is
    never intercepted — a retreat date commits like any other; "Learn
    more" on a card is the only way to open RetreatModal.
+
+   Shared between the Program step page (`entry=pages`) and
+   `ReserveDrawer` (`entry=drawer`, the default) — the drawer drives this
+   same component off local draft state instead of the store directly, so
+   the three-state machine, the retreat cards, and the extension checkbox
+   can never drift into two different behaviours for the two entry modes.
    ============================================================ */
 export default function DatePicker({
   pid,

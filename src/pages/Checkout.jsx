@@ -130,7 +130,7 @@ export default function Checkout() {
       <div>
         <p className="py-24 text-center text-body">
           No stay in progress.{' '}
-          <BackLink to={config.multiProperty ? '/location' : '/rooms'}>Begin your stay</BackLink>
+          <BackLink to={config.entry === 'drawer' ? '/' : (config.multiProperty ? '/location' : '/rooms')}>Begin your stay</BackLink>
         </p>
       </div>
     );

@@ -40,6 +40,16 @@ export const GROUPS = {
 
 export const OPTIONS = [
   {
+    key: 'entry',
+    param: 'entry',
+    label: 'Entry',
+    help: 'Where the flow starts — the drawer collects location, guests and dates itself, or those stay their own step pages.',
+    values: [
+      { id: 'drawer', v: 'drawer', label: 'Booking drawer', note: 'Location, guests and dates are chosen in the drawer; the flow starts at Rooms.' },
+      { id: 'pages', v: 'pages', label: 'Step pages', note: 'Location and Program are their own steps.' },
+    ],
+  },
+  {
     key: 'card',
     param: 'card',
     label: 'Room card',
@@ -136,6 +146,7 @@ export const OPTIONS = [
 ];
 
 export const DEFAULTS = {
+  entry: 'drawer',
   card: 'horizontal',
   extensions: true,
   retreats: true,
@@ -285,11 +296,24 @@ export function upsellOn(config, which, where) {
 }
 
 /* ---------- The flow, as a list ----------
-   One definition the stepper draws and the Continue buttons walk. The
-   Extensions step shares the Program step's route — there is no page of
-   its own — so `linkedTo` tells the stepper which step's status to mirror
-   rather than tracking one independently that could disagree with it. */
+   One definition the stepper draws and the Continue buttons walk.
+
+   `entry === 'drawer'` (the default) — Location, Program's rooms &
+   guests, and its fixed-block dates are all chosen in ReserveDrawer
+   before the flow ever starts, so none of the three get a step or a
+   route: the flow is Rooms → Upgrades → Add-ons → Checkout, numbered
+   from 1. `entry === 'pages'` keeps the original seven-step shape,
+   Location and Program (with Extensions mirroring Program's status via
+   `linkedTo`, since it has no page of its own) ahead of Rooms. */
 export function flowSteps(config) {
+  if (config.entry === 'drawer') {
+    return [
+      { key: 'rooms', label: 'Rooms', path: '/rooms' },
+      upsellOn(config, 'upgrades', 'page') && { key: 'upgrades', label: 'Upgrades', path: '/upgrade' },
+      upsellOn(config, 'amenities', 'page') && { key: 'add-ons', label: 'Add-ons', path: '/add-ons' },
+      { key: 'checkout', label: 'Checkout', path: '/checkout' },
+    ].filter(Boolean);
+  }
   return [
     config.multiProperty && { key: 'location', label: 'Location', path: '/location' },
     { key: 'program', label: 'Program', path: '/program' },
@@ -324,12 +348,29 @@ export function nextPathAfter(config, key) {
 export function prevPathBefore(config, key) {
   const steps = flowSteps(config);
   const i = steps.findIndex((s) => s.key === key);
-  const fallback = steps[0] ? steps[0].path : '/program';
+  /* Drawer mode's first step (Rooms) has nowhere earlier in the flow to
+     land on — Location and Program are folded into the drawer, not a
+     page — so its "back" is home, where the drawer opens. Pages mode's
+     first step (Location or Program) keeps the old behaviour: no
+     further-back page, so Layout treats it as no Back link at all (see
+     the `rawBackTo !== pathname` check there). */
+  const fallback = config.entry === 'drawer' ? '/' : (steps[0] ? steps[0].path : '/program');
   if (i <= 0) return fallback;
   for (let j = i - 1; j >= 0; j--) {
     if (steps[j].path !== steps[i].path) return steps[j].path;
   }
   return fallback;
+}
+
+/** Where a guest with no booking in progress should land to start one —
+    the "No stay in progress" fallback links on Add-ons/Checkout and the
+    Confirmation redirect guard. Pages mode sends them to the flow's own
+    first step (Location or Program); drawer mode has no route to land
+    on for that job, since the drawer collects the same information —
+    home is where it opens. */
+export function beginPath(config) {
+  if (config.entry === 'drawer') return '/';
+  return config.multiProperty ? '/location' : '/program';
 }
 
 /* Human-readable summary, for the panel and for the copied spec. */

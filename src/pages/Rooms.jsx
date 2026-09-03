@@ -32,8 +32,12 @@ export default function Rooms() {
   useStep({ canContinue: done, label: 'Continue' });
 
   /* A room is priced against the stay, so a deep link that skipped the
-     dates has nothing to price — send it back to the step that sets them. */
-  if (!state.checkIn || !state.checkOut) return <Navigate to="/program" replace />;
+     dates has nothing to price — send it back to the step that sets them.
+     Drawer entry has no /program route to land on (dates live in the
+     drawer, opened from home); pages entry keeps sending it to Program. */
+  if (!state.checkIn || !state.checkOut) {
+    return <Navigate to={config.entry === 'drawer' ? '/' : '/program'} replace />;
+  }
 
   const pid = state.property || D.propertyList[0];
   const rooms = D.roomsFor(pid);
