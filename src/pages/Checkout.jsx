@@ -164,7 +164,7 @@ export default function Checkout() {
           </div>
         )}
 
-        <section className="border border-line bg-white p-6">
+        <section className="border border-line p-6">
           <h2 className="h-serif mb-4 text-lg text-ink">Primary Contact</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field
@@ -239,7 +239,7 @@ export default function Checkout() {
         {guestCards.map((g, i) => {
           const ge = (errors.guests && errors.guests[i]) || {};
           return (
-            <section key={i} className="border border-line bg-white p-6">
+            <section key={i} className="border border-line p-6">
               <h2 className="h-serif mb-4 text-lg text-ink">Guest {i + 2}</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field
@@ -287,7 +287,7 @@ export default function Checkout() {
           );
         })}
 
-        <section className="border border-line bg-white p-6">
+        <section className="border border-line p-6">
           <h2 className="h-serif mb-4 text-lg text-ink">Payment</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field
@@ -348,7 +348,7 @@ export default function Checkout() {
         </section>
       </div>
 
-      <div className="border border-line bg-white p-6 lg:hidden">
+      <div className="border border-line p-6 lg:hidden">
         <h2 className="h-serif mb-3 text-lg text-ink">{prop.name}</h2>
         <p className="text-sm text-body">
           {fmtShort(state.checkIn)} – {fmtShort(state.checkOut)}, {n} nights

@@ -63,7 +63,7 @@
   --color-btn-selected: #111111;
   --color-btn-text: #ebebeb;
 
-  --color-fill: #fcf9f4;          /* form fill                              */
+  --color-fill: #fdfcfa;          /* off-white 100 — form fill, a step lighter than the light ground */
   --color-fill-selected: #faf6ef;
 
   --color-error: #d12828;
