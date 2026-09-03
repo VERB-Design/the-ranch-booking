@@ -191,8 +191,12 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
           <h2 id={headingId} className="h-serif text-lg text-ink md:text-xl">{room.name}</h2>
           <p className="mt-1 text-sm text-body">{room.detail}</p>
           <p className="mt-3 text-sm leading-relaxed text-body line-clamp-3">{room.desc}</p>
-          <div className="mt-4">{priceSlot}</div>
-          <div className="mt-4">{actions}</div>
+          {/* Price on the left, the action beside it on the right, bottoms
+              aligned; on a phone the action drops beneath the price. */}
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            {priceSlot}
+            <div className="shrink-0">{actions}</div>
+          </div>
         </div>
       </div>
     </article>
