@@ -15,18 +15,6 @@ import { fmtShort, money } from '../utils.js';
    never drift into reporting different numbers.
    ============================================================ */
 
-function Row({ label, value, sub }) {
-  if (value == null || value === '') return null;
-  return (
-    <div className="flex items-start justify-between gap-3 py-2 text-sm">
-      <span className="label-sm shrink-0 text-muted">{label}</span>
-      <span className="text-right text-ink">
-        {value}
-        {sub && <span className="block text-xs text-muted">{sub}</span>}
-      </span>
-    </div>
-  );
-}
 
 function useSummary() {
   const { state, set } = useBooking();
@@ -123,7 +111,6 @@ function SummaryRows() {
         </div>
       )}
 
-      {p && <Row label="Taxes & fees" value={money(p.tax)} />}
     </div>
   );
 }
@@ -145,9 +132,15 @@ export function StayRail() {
         </div>
         <SummaryRows />
         {p && (
-          <div className="flex items-center justify-between border-t border-line px-5 py-4">
-            <span className="text-base text-ink">Total</span>
-            <strong className="text-lg font-normal text-ink">{money(p.total)}</strong>
+          <div className="border-t border-line px-5 py-4">
+            <div className="flex items-center justify-between text-sm">
+              <span className="label-sm text-muted">Taxes &amp; fees</span>
+              <span className="text-ink">{money(p.tax)}</span>
+            </div>
+            <div className="mt-2 flex items-center justify-between">
+              <span className="text-base text-ink">Total</span>
+              <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
+            </div>
           </div>
         )}
       </div>
@@ -180,9 +173,15 @@ export function StayRailMobile() {
         <div className="overflow-hidden">
           <SummaryRows />
           {p && (
-            <div className="flex items-center justify-between border-t border-line px-5 py-4">
-              <span className="text-base text-ink">Total</span>
-              <strong className="text-lg font-normal text-ink">{money(p.total)}</strong>
+            <div className="border-t border-line px-5 py-4">
+              <div className="flex items-center justify-between text-sm">
+                <span className="label-sm text-muted">Taxes &amp; fees</span>
+                <span className="text-ink">{money(p.tax)}</span>
+              </div>
+              <div className="mt-2 flex items-center justify-between">
+                <span className="text-base text-ink">Total</span>
+                <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
+              </div>
             </div>
           )}
           <div className="px-5 pb-5">
