@@ -346,7 +346,7 @@ export default function DatePicker({
             aria-label={checkIn ? 'Choose a check-out date' : 'Choose a check-in date'}
             style={{ left: anchor.left, width: anchor.width, bottom: anchor.bottom, maxHeight: anchor.maxHeight }}
             className={
-              'fixed z-[2600] overflow-y-auto border border-line bg-light p-4 shadow-2xl ' +
+              'fixed z-[2600] overflow-y-auto border border-line bg-light p-7 shadow-2xl ' +
               'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ' +
               (calShown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1')
             }
