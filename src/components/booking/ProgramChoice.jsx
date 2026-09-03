@@ -36,25 +36,17 @@ export function hasProgramChoice(pid, checkIn, checkOut, retreatsOn = true) {
    the card, clicking "Learn more" only opens its modal. */
 function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore, groupName }) {
   const accent = tone === 'accent';
+  /* One row per programme: chip and name on the left, the check and
+     Learn more on the right — the cards stack rather than sit side by side. */
   return (
     <div
       className={
-        'relative rounded-brand border p-4 transition-colors ' +
+        'flex items-center gap-4 rounded-brand border p-4 transition-colors ' +
         (checked || accent ? 'border-accent ' : 'border-line ') +
         (accent ? 'bg-brown-25' : 'bg-fill')
       }
     >
-      {checked && (
-        <span
-          aria-hidden="true"
-          className="absolute right-3 top-3 grid h-5 w-5 place-items-center rounded-full bg-accent text-brown-25"
-        >
-          <span className="h-2.5 w-2.5">
-            <CheckIcon />
-          </span>
-        </span>
-      )}
-      <label className="flex cursor-pointer flex-col gap-2 pr-8 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2">
+      <label className="flex min-w-0 flex-1 cursor-pointer flex-col gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2">
         <input type="radio" name={groupName} checked={checked} onChange={onSelect} className="sr-only" />
         {dateLabel && (
           <span
@@ -66,15 +58,28 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
             {dateLabel}
           </span>
         )}
-        <span className="h-serif text-[16px] leading-tight text-ink sm:text-[18px]">{title}</span>
+        <span className="h-serif text-[18px] leading-tight text-ink">{title}</span>
       </label>
-      <button
-        type="button"
-        onClick={onLearnMore}
-        className="mt-2 text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-      >
-        Learn more
-      </button>
+      <div className="flex shrink-0 flex-col items-end gap-2">
+        <span
+          aria-hidden="true"
+          className={
+            'grid h-5 w-5 place-items-center rounded-full transition-colors ' +
+            (checked ? 'bg-accent text-brown-25' : 'border border-line text-transparent')
+          }
+        >
+          <span className="h-2.5 w-2.5">
+            <CheckIcon />
+          </span>
+        </span>
+        <button
+          type="button"
+          onClick={onLearnMore}
+          className="text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+        >
+          Learn more
+        </button>
+      </div>
     </div>
   );
 }
@@ -113,7 +118,7 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
 
   return (
     <div className={className}>
-      <fieldset role="radiogroup" aria-label="Choose your program" className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <fieldset role="radiogroup" aria-label="Choose your program" className="grid grid-cols-1 gap-3">
         <legend className="sr-only">Choose your program</legend>
         <ProgramOption
           groupName={groupName}

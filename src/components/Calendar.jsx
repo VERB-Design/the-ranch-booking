@@ -22,12 +22,12 @@ function legendFor(mode) {
     return [
       { key: 'checkin', swatch: CHOSEN_SWATCH, label: 'check-in date' },
       { key: 'available', swatch: AVAILABLE_SWATCH, label: 'check-out available' },
-      { key: 'retreat', swatch: RETREAT_SWATCH, label: 'dates include special retreat — see below for details' },
+      { key: 'retreat', swatch: RETREAT_SWATCH, label: 'dates include special retreat' },
     ];
   }
   return [
     { key: 'available', swatch: AVAILABLE_SWATCH, label: 'check-in available' },
-    { key: 'retreat', swatch: RETREAT_SWATCH, label: 'special retreat — see details below' },
+    { key: 'retreat', swatch: RETREAT_SWATCH, label: 'special retreat' },
   ];
 }
 

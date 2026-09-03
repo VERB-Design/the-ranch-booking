@@ -3,9 +3,8 @@ import { createPortal } from 'react-dom';
 import useMountTransition from '../../useMountTransition.js';
 import RanchCalendar from '../Calendar.jsx';
 import Checkbox from '../ui/Checkbox.jsx';
-import RetreatCard from './RetreatCard.jsx';
 import RetreatModal from './RetreatModal.jsx';
-import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, retreatsInMonth, stayDescription } from '../../stay.js';
+import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, stayDescription } from '../../stay.js';
 import { D } from '../../store.jsx';
 import { MONTH_NAMES } from '../../utils.js';
 
@@ -86,22 +85,6 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
   );
 }
 
-/* Every retreat landing in the visible month, stacked as cards under the
-   calendar — docs/figma/wires 02a–c v2, "if special retreats occur that
-   month, show them stacking below the calendar." Re-renders whenever
-   `month` changes, since it reads straight from D.retreats rather than
-   caching anything. */
-function RetreatList({ pid, month, onLearnMore }) {
-  const list = retreatsInMonth(pid, month.y, month.m);
-  if (!list.length) return null;
-  return (
-    <div className="mt-4 flex max-w-[420px] flex-col gap-3">
-      {list.map((r) => (
-        <RetreatCard key={r.date + r.name} retreat={r} pid={pid} onLearnMore={onLearnMore} />
-      ))}
-    </div>
-  );
-}
 
 /* ============================================================
    DatePicker
@@ -298,7 +281,6 @@ export default function DatePicker({
   const nights = bothSet ? nightsBetween(checkIn, checkOut) + (extension ? 1 : 0) : 0;
   const extendable = extensionsOn && canExtend(pid, checkIn, checkOut);
   const extensionLabel = stayRules.extensionLabel || 'Add an extra night';
-  const stayRetreat = bothSet && retreatsOn ? retreatInStay(pid, checkIn, checkOut) : null;
 
   /* The field currently being filled is the only one that carries the
      accent-focus highlight — a field that already holds a date is
@@ -352,7 +334,6 @@ export default function DatePicker({
               mode={checkIn ? 'checkout' : 'checkin'}
               helper={stayRules.blocksCopy}
             />
-            <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
           </div>,
           document.body
         )}
@@ -366,13 +347,6 @@ export default function DatePicker({
               <p className="h-serif mt-2 text-[24px] leading-tight text-ink">{stayDescription(pid, nights).title}</p>
               <p className="mt-1.5 text-sm text-body">{stayDescription(pid, nights).rest}</p>
             </div>
-
-            {stayRetreat && (
-              <>
-                <p className="mt-4 text-sm font-medium text-ink">Includes a special retreat.</p>
-                <RetreatCard retreat={stayRetreat} pid={pid} onLearnMore={setLearnMoreRetreat} className="mt-3" />
-              </>
-            )}
 
             {extendable && (
               <Checkbox
