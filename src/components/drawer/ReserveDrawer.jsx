@@ -200,9 +200,8 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
         }
       >
         <div className="flex flex-1 flex-col gap-5 px-6 py-8 md:px-8">
-          <h2 id={titleId} className="sr-only">Book a Stay</h2>
-
-          <div className="flex items-center justify-end">
+          <div className="flex items-end justify-between gap-4">
+            <h2 id={titleId} className="h-serif text-h5 leading-none text-ink">Book Your Stay</h2>
             <button
               ref={closeRef}
               type="button"
@@ -276,7 +275,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
           {/* CHECK RATES never scrolls away: it sticks to the bottom of
               the drawer's own scroll area, on the drawer ground, and only
               settles into the flow once everything above it is in view. */}
-          <div className="sticky bottom-0 -mx-6 mt-auto bg-light px-6 pb-6 pt-4 md:-mx-8 md:px-8">
+          <div className="sticky bottom-0 z-30 -mx-6 mt-auto bg-light px-6 pb-6 pt-4 md:-mx-8 md:px-8">
             <Button variant="primary" onClick={apply} disabled={!canSubmit} className="w-full">
               {ctaLabel}
             </Button>
