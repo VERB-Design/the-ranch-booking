@@ -214,18 +214,14 @@ export default function AddOns() {
                   />
                 );
                 if (!entries.length || working) return <div key={addon.id}>{row}</div>;
-                /* An added enhancement stays where it is in the list — the
-                   guest keeps their place on the page. The row swaps its
-                   price and chevron for the booking(s) made: a gold "Added"
-                   pill, the date, and Edit / Remove per booking, with Add
-                   another beneath. */
+                /* An added enhancement stays where it is in the list, faded
+                   back under an overlay: a gold "Added" pill with the date,
+                   Edit / Remove per booking, and Add another. The row beneath
+                   is inert; the overlay's links are the only controls. */
                 return (
-                  <div key={addon.id} className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3 px-5 py-4">
-                    <div className="min-w-0">
-                      <h3 className="h-serif text-lg text-ink">{addon.name}</h3>
-                      <p className="mt-1 text-sm text-body">{addon.detail}</p>
-                    </div>
-                    <div className="flex flex-col items-start gap-2 md:items-end">
+                  <div key={addon.id} className="relative" style={{ minHeight: entries.length * 40 + 56 }}>
+                    <div inert="" aria-hidden="true" className="opacity-30">{row}</div>
+                    <div className="absolute inset-0 flex flex-col justify-center gap-2 bg-light/85 px-5">
                       {entries.map((e) => (
                         <div key={e.index} className="flex flex-wrap items-center gap-x-4 gap-y-1">
                           <span className="label-sm inline-flex items-center gap-2 bg-accent px-3 py-1.5 text-brown-25">
@@ -235,7 +231,7 @@ export default function AddOns() {
                             Added
                           </span>
                           <span className="text-sm text-ink">
-                            {e.day ? fmtShort(e.day) : ''}{e.time ? ', ' + e.time : ''}
+                            {addon.name} · {e.day ? fmtShort(e.day) : ''}{e.time ? ', ' + e.time : ''}
                             {e.party > 1 ? ' · ' + e.party + ' guests' : ''}
                           </span>
                           <span className="flex items-center gap-4">
@@ -244,7 +240,7 @@ export default function AddOns() {
                           </span>
                         </div>
                       ))}
-                      <button type="button" onClick={() => addAnother(addon)} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">
+                      <button type="button" onClick={() => addAnother(addon)} className="label-sm self-start text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">
                         Add another
                       </button>
                     </div>
