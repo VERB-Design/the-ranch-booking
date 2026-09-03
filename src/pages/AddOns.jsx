@@ -209,9 +209,10 @@ export default function AddOns() {
                above it — each AddonRow's own h3 (its accordion trigger)
                otherwise follows the page's h1 with no h2 between them, a
                level skip on a first visit before anything has been added. */}
-            <h2 className="h-serif mb-3 text-lg text-ink">
-              {addedEntries.length > 0 ? 'Add more enhancements' : 'Available enhancements'}
-            </h2>
+            {/* Visually silent: a listed enhancement is by definition available,
+               so the label says nothing to a sighted guest — it stays for the
+               heading order a screen reader relies on. */}
+            <h2 className="sr-only">{addedEntries.length > 0 ? 'Add more enhancements' : 'Enhancements'}</h2>
             <div className="divide-y divide-line border border-line bg-white">
               {remaining.map((addon) => (
                 <AddonRow

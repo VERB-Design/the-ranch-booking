@@ -126,7 +126,7 @@ export function PageTitle({ eyebrow, title, sub, flush }) {
        rail, so no extra padding above it. `flush` is kept for callers. */
     <div className={'pb-5 md:pb-6' + (flush ? '' : '')}>
       {eyebrow && <span className="eyebrow mb-2 block text-accent">{eyebrow}</span>}
-      <h1 className="h-serif text-[24px] leading-none text-ink">{title}</h1>
+      <h1 className="h-serif text-[27px] leading-none text-ink">{title}</h1>
       {sub && <p className="mt-2 text-base font-light text-body">{sub}</p>}
     </div>
   );
