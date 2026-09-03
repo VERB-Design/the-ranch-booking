@@ -137,7 +137,7 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
     and act on the room differently (select vs. upgrade/keep), but the
     image, heading, detail line, description and amenity chips are one
     piece of markup so they read identically wherever a room is shown. */
-export function RoomCardFrame({ room, layout = 'horizontal', selected = false, priceSlot, actions, className = '' }) {
+export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected = false, priceSlot, actions, className = '' }) {
   const headingId = 'room-' + room.id + '-name';
   const vertical = layout === 'vertical';
   /* Every card is the light ground with no outline, chosen or not — the

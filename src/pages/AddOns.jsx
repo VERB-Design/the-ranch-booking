@@ -28,7 +28,7 @@ function summaryDate(isoStr) {
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
 
-function AddonRow({ addon, open, onToggle, draft, onDraftChange, dates, maxParty, onAdd }) {
+function AddonRow({ addon, open, onToggle, draft, onDraftChange, dates, maxParty, onAdd, ctaLabel = 'Add to plan' }) {
   const canAdd = !!draft.day && !!draft.time;
   const priceTBD = addon.per !== 'free' && typeof addon.price !== 'number';
   const total = addon.per === 'free' || priceTBD ? 0 : addon.price * (draft.party || 1);
@@ -107,7 +107,7 @@ function AddonRow({ addon, open, onToggle, draft, onDraftChange, dates, maxParty
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-4">
           <p className="text-sm text-body">{summary}</p>
           <Button variant="primary" disabled={!canAdd} onClick={onAdd}>
-            Add to plan
+            {ctaLabel}
           </Button>
         </div>
       </div>
@@ -123,6 +123,9 @@ export default function AddOns() {
 
   const [openId, setOpenId] = useState(null);
   const [drafts, setDrafts] = useState({});
+  /* { id, index } while an existing booking is being edited; { id, index: null }
+     while a second booking of the same enhancement is being made. */
+  const [editing, setEditing] = useState(null);
 
   const dates = stayDates(state);
   const totalGuests = Math.max(1, (state.rooms || []).reduce((s, r) => s + (r.adults || 0), 0));
@@ -140,15 +143,33 @@ export default function AddOns() {
   function addToPlan(addon) {
     const draft = getDraft(addon.id);
     if (!draft.day || !draft.time) return;
-    const next = (state.addons || []).filter((e) => e.id !== addon.id);
-    next.push({ id: addon.id, day: draft.day, time: draft.time, party: draft.party || 1 });
+    const entry = { id: addon.id, day: draft.day, time: draft.time, party: draft.party || 1 };
+    const current = state.addons || [];
+    const isEdit = editing && editing.id === addon.id && editing.index != null;
+    const next = isEdit ? current.map((e, i) => (i === editing.index ? entry : e)) : [...current, entry];
     set({ addons: next });
     setOpenId(null);
-    toast(addon.name + ' added to your stay.');
+    setEditing(null);
+    toast(addon.name + (isEdit ? ' updated.' : ' added to your stay.'));
   }
 
-  function removeEntry(id) {
-    set({ addons: (state.addons || []).filter((e) => e.id !== id) });
+  function editEntry(addon, index) {
+    const e = (state.addons || [])[index];
+    if (!e) return;
+    setDraft(addon.id, { day: e.day, time: e.time, party: e.party || 1 });
+    setEditing({ id: addon.id, index });
+    setOpenId(addon.id);
+  }
+
+  function addAnother(addon) {
+    setDraft(addon.id, { day: null, time: null, party: 1 });
+    setEditing({ id: addon.id, index: null });
+    setOpenId(addon.id);
+  }
+
+  function removeEntry(index) {
+    set({ addons: (state.addons || []).filter((_, i) => i !== index) });
+    if (editing && editing.index === index) setEditing(null);
   }
 
   if (!state.property) {
@@ -175,42 +196,56 @@ export default function AddOns() {
             <h2 className="sr-only">Enhancements</h2>
             <div className="divide-y divide-line bg-light">
               {catalogue.map((addon) => {
-                const entry = addedEntries.find((e) => e.id === addon.id);
+                const entries = addedEntries
+                  .map((e, index) => ({ ...e, index }))
+                  .filter((e) => e.id === addon.id);
+                const working = editing && editing.id === addon.id;
                 const row = (
                   <AddonRow
                     addon={addon}
-                    open={!entry && openId === addon.id}
-                    onToggle={() => setOpenId(openId === addon.id ? null : addon.id)}
+                    open={openId === addon.id}
+                    onToggle={() => { setOpenId(openId === addon.id ? null : addon.id); if (openId === addon.id) setEditing(null); }}
                     draft={getDraft(addon.id)}
                     onDraftChange={(patch) => setDraft(addon.id, patch)}
                     dates={dates}
                     maxParty={totalGuests}
                     onAdd={() => addToPlan(addon)}
+                    ctaLabel={working && editing.index != null ? 'Save changes' : 'Add to plan'}
                   />
                 );
-                if (!entry) return <div key={addon.id}>{row}</div>;
-                /* An added enhancement stays where it is, under an "Added"
-                   overlay, rather than moving to another list — the guest
-                   keeps their place on the page. The row beneath is inert;
-                   Remove on the overlay is the only control. */
+                if (!entries.length || working) return <div key={addon.id}>{row}</div>;
+                /* An added enhancement stays where it is in the list — the
+                   guest keeps their place on the page. The row swaps its
+                   price and chevron for the booking(s) made: a gold "Added"
+                   pill, the date, and Edit / Remove per booking, with Add
+                   another beneath. */
                 return (
-                  <div key={addon.id} className="relative">
-                    <div inert="" aria-hidden="true" className="opacity-40">{row}</div>
-                    <div className="absolute inset-0 flex items-center justify-center gap-5 bg-page/80">
-                      <span className="label-sm inline-flex items-center gap-2 text-ink">
-                        <svg className="h-3.5 w-3.5" viewBox="0 0 12 12" aria-hidden="true">
-                          <path d="M2 6.5 L4.8 9.2 L10 3.4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        Added
-                        {entry.day ? <span className="normal-case tracking-normal text-muted">· {fmtShort(entry.day)}{entry.time ? ', ' + entry.time : ''}</span> : null}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => removeEntry(entry.id)}
-                        aria-label={'Remove ' + addon.name}
-                        className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-                      >
-                        Remove
+                  <div key={addon.id} className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3 px-5 py-4">
+                    <div className="min-w-0">
+                      <h3 className="h-serif text-lg text-ink">{addon.name}</h3>
+                      <p className="mt-1 text-sm text-body">{addon.detail}</p>
+                    </div>
+                    <div className="flex flex-col items-start gap-2 md:items-end">
+                      {entries.map((e) => (
+                        <div key={e.index} className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                          <span className="label-sm inline-flex items-center gap-2 bg-accent px-3 py-1.5 text-brown-25">
+                            <svg className="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+                              <path d="M2 6.5 L4.8 9.2 L10 3.4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            Added
+                          </span>
+                          <span className="text-sm text-ink">
+                            {e.day ? fmtShort(e.day) : ''}{e.time ? ', ' + e.time : ''}
+                            {e.party > 1 ? ' · ' + e.party + ' guests' : ''}
+                          </span>
+                          <span className="flex items-center gap-4">
+                            <button type="button" onClick={() => editEntry(addon, e.index)} aria-label={'Edit ' + addon.name} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">Edit</button>
+                            <button type="button" onClick={() => removeEntry(e.index)} aria-label={'Remove ' + addon.name} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">Remove</button>
+                          </span>
+                        </div>
+                      ))}
+                      <button type="button" onClick={() => addAnother(addon)} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">
+                        Add another
                       </button>
                     </div>
                   </div>
