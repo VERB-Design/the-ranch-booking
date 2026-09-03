@@ -90,17 +90,17 @@ function SummaryRows() {
                     {l.entry.day ? ', ' + fmtShort(l.entry.day) : ''}
                     {l.entry.time ? ', ' + l.entry.time : ''}
                   </span>
-                </span>
-                <span className="flex shrink-0 items-start gap-2 text-right text-ink">
-                  {l.addon.per === 'free' ? 'Free' : l.priceTBD ? 'Price on request' : money(l.total)}
                   <button
                     type="button"
                     onClick={() => removeAddon(i)}
                     aria-label={'Remove ' + l.addon.name}
-                    className="text-muted hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+                    className="mt-1 block text-xs text-muted underline underline-offset-2 hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
                   >
-                    <img src="/icons/close.svg" alt="" aria-hidden="true" className="h-3 w-3" />
+                    Remove
                   </button>
+                </span>
+                <span className="shrink-0 text-right text-ink">
+                  {l.addon.per === 'free' ? 'Free' : l.priceTBD ? 'Price on request' : money(l.total)}
                 </span>
               </li>
             ))}
