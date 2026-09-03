@@ -6,7 +6,7 @@ import Chip from '../components/ui/Chip.jsx';
 import Counter from '../components/ui/Counter.jsx';
 import Button from '../components/ui/Button.jsx';
 import { D, stayDates, useBooking, useToast } from '../store.jsx';
-import { money, parse } from '../utils.js';
+import { fmtShort, money, parse } from '../utils.js';
 import { beginPath, useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
@@ -129,8 +129,6 @@ export default function AddOns() {
   const catalogue = state.property ? D.addonsFor(state.property) : [];
   const addedEntries = state.addons || [];
   useStep({ label: addedEntries.length ? 'Continue to Check-out' : 'No Thank You, Continue' });
-  const addedIds = new Set(addedEntries.map((e) => e.id));
-  const remaining = catalogue.filter((a) => !addedIds.has(a.id));
 
   function getDraft(id) {
     return drafts[id] || { day: null, time: null, party: 1 };
@@ -169,28 +167,47 @@ export default function AddOns() {
       <PageTitle title="Enhance your stay" sub="Add treatments and enhancements." flush />
 
       <div className="flex flex-col gap-8 pb-12">
-        {addedEntries.length > 0 && (
+        {catalogue.length > 0 && (
           <div>
-            <h2 className="h-serif mb-3 text-lg text-ink">Added to your stay</h2>
+            {/* Visually silent: a listed enhancement is by definition available,
+               so the label says nothing to a sighted guest — it stays for the
+               heading order a screen reader relies on. */}
+            <h2 className="sr-only">Enhancements</h2>
             <div className="divide-y divide-line border border-line">
-              {addedEntries.map((entry) => {
-                const addon = D.addonById(entry.id);
-                if (!addon) return null;
-                const priceTBD = addon.per !== 'free' && typeof addon.price !== 'number';
-                const total = addon.per === 'free' || priceTBD ? 0 : addon.price * (entry.party || 1);
+              {catalogue.map((addon) => {
+                const entry = addedEntries.find((e) => e.id === addon.id);
+                const row = (
+                  <AddonRow
+                    addon={addon}
+                    open={!entry && openId === addon.id}
+                    onToggle={() => setOpenId(openId === addon.id ? null : addon.id)}
+                    draft={getDraft(addon.id)}
+                    onDraftChange={(patch) => setDraft(addon.id, patch)}
+                    dates={dates}
+                    maxParty={totalGuests}
+                    onAdd={() => addToPlan(addon)}
+                  />
+                );
+                if (!entry) return <div key={addon.id}>{row}</div>;
+                /* An added enhancement stays where it is, under an "Added"
+                   overlay, rather than moving to another list — the guest
+                   keeps their place on the page. The row beneath is inert;
+                   Remove on the overlay is the only control. */
                 return (
-                  <div key={entry.id} className="flex flex-wrap items-center justify-between gap-4 px-5 py-4">
-                    <div className="min-w-0">
-                      <h3 className="h-serif text-lg text-ink">{addon.name}</h3>
-                      <p className="mt-1 text-sm text-body">{addon.detail}</p>
-                    </div>
-                    <div className="flex shrink-0 items-center gap-4">
-                      <span className="h-serif text-lg text-ink">
-                        {addon.per === 'free' ? 'Free' : priceTBD ? 'Price on request' : money(total, 0)}
+                  <div key={addon.id} className="relative">
+                    <div inert="" aria-hidden="true" className="opacity-40">{row}</div>
+                    <div className="absolute inset-0 flex items-center justify-center gap-5 bg-page/80">
+                      <span className="label-sm inline-flex items-center gap-2 text-ink">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 12 12" aria-hidden="true">
+                          <path d="M2 6.5 L4.8 9.2 L10 3.4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Added
+                        {entry.day ? <span className="normal-case tracking-normal text-muted">· {fmtShort(entry.day)}{entry.time ? ', ' + entry.time : ''}</span> : null}
                       </span>
                       <button
                         type="button"
                         onClick={() => removeEntry(entry.id)}
+                        aria-label={'Remove ' + addon.name}
                         className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
                       >
                         Remove
@@ -203,35 +220,7 @@ export default function AddOns() {
           </div>
         )}
 
-        {remaining.length > 0 && (
-          <div>
-            {/* Always an h2 here, not just when "Added to your stay" exists
-               above it — each AddonRow's own h3 (its accordion trigger)
-               otherwise follows the page's h1 with no h2 between them, a
-               level skip on a first visit before anything has been added. */}
-            {/* Visually silent: a listed enhancement is by definition available,
-               so the label says nothing to a sighted guest — it stays for the
-               heading order a screen reader relies on. */}
-            <h2 className="sr-only">{addedEntries.length > 0 ? 'Add more enhancements' : 'Enhancements'}</h2>
-            <div className="divide-y divide-line border border-line">
-              {remaining.map((addon) => (
-                <AddonRow
-                  key={addon.id}
-                  addon={addon}
-                  open={openId === addon.id}
-                  onToggle={() => setOpenId(openId === addon.id ? null : addon.id)}
-                  draft={getDraft(addon.id)}
-                  onDraftChange={(patch) => setDraft(addon.id, patch)}
-                  dates={dates}
-                  maxParty={totalGuests}
-                  onAdd={() => addToPlan(addon)}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {!remaining.length && !addedEntries.length && (
+        {!catalogue.length && (
           <p className="text-sm text-body">No enhancements are available for this property yet.</p>
         )}
       </div>
