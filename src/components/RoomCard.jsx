@@ -140,9 +140,8 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
 export function RoomCardFrame({ room, layout = 'horizontal', selected = false, priceSlot, actions, className = '' }) {
   const headingId = 'room-' + room.id + '-name';
   const vertical = layout === 'vertical';
-  /* Cards sit on the page ground; only a chosen card takes the light fill. */
-  /* Containers carry no border — the light ground is the container. A
-     chosen card gets a 1px inset ring so nothing shifts. */
+  /* Every card is the light ground with no outline, chosen or not — the
+     button's "Selected" state is what marks the choice. */
   const borderClasses = 'bg-light';
 
   const chips = (
