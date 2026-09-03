@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { PageTitle } from '../components/Chrome.jsx';
 import RoomCard from '../components/RoomCard.jsx';
-import { D, activeRoomIndex, bookedRooms, nextUnassigned, useBooking } from '../store.jsx';
+import { D, activeRoomIndex, nextUnassigned, useBooking } from '../store.jsx';
 import { cardLayout, useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
