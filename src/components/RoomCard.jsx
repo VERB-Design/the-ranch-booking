@@ -140,7 +140,8 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
 export function RoomCardFrame({ room, layout = 'horizontal', selected = false, priceSlot, actions, className = '' }) {
   const headingId = 'room-' + room.id + '-name';
   const vertical = layout === 'vertical';
-  const borderClasses = selected ? 'border-2 border-dark bg-light' : 'border border-line bg-white';
+  /* Cards sit on the page ground; only a chosen card takes the light fill. */
+  const borderClasses = selected ? 'border-2 border-dark bg-light' : 'border border-line bg-transparent';
 
   const chips = (
     <div className="mt-3 flex flex-wrap gap-2">
@@ -148,7 +149,9 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected = false, p
     </div>
   );
 
-  const mediaClass = 'w-full shrink-0 aspect-[4/3] md:aspect-square ' + (vertical ? '' : 'md:w-[300px]');
+  /* Horizontal: the photo runs to the card's edge and stretches to the
+     card's height; the copy column carries the padding. */
+  const mediaClass = 'w-full shrink-0 aspect-[4/3] ' + (vertical ? 'md:aspect-square' : 'md:aspect-auto md:w-[300px] md:self-stretch');
   const media = room.images && room.images.length ? (
     <img
       src={room.images[0].src}
@@ -178,9 +181,9 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected = false, p
 
   return (
     <article aria-labelledby={headingId} className={'transition-colors ' + borderClasses + ' ' + className}>
-      <div className="flex gap-6 p-5 max-md:flex-col max-md:gap-4">
+      <div className="flex max-md:flex-col">
         {media}
-        <div className="flex min-w-0 flex-1 flex-col">
+        <div className="flex min-w-0 flex-1 flex-col p-5">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between md:gap-6">
             <div className="min-w-0">
               <h2 id={headingId} className="h-serif text-lg text-ink md:text-xl">{room.name}</h2>

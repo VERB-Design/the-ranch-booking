@@ -211,7 +211,7 @@ function EveryStayIncludes({ className = '' }) {
   /* Titles only — the list is a reminder of what the rate covers, not a
      brochure. The description of each item lives on the property page. */
   return (
-    <div className={'border border-line bg-white ' + className}>
+    <div className={'border border-line ' + className}>
       <div className="border-b border-line bg-light px-5 py-2.5">
         <span className="eyebrow text-strong">Every Stay Includes</span>
       </div>

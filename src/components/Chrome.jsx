@@ -124,7 +124,7 @@ export function PageTitle({ eyebrow, title, sub, flush }) {
   return (
     <div className={'pb-5 md:pb-6 ' + (flush ? '' : 'pt-8 md:pt-10')}>
       {eyebrow && <span className="eyebrow mb-2 block text-accent">{eyebrow}</span>}
-      <h1 className="h-serif text-h2 text-ink">{title}</h1>
+      <h1 className="h-serif text-ink text-[calc(var(--text-h2)-10px)]">{title}</h1>
       {sub && <p className="mt-2 text-lg font-light text-body">{sub}</p>}
     </div>
   );
@@ -149,7 +149,7 @@ export function BackLink({ to, children }) {
 export function ButtonBar({ backTo, onContinue, continueLabel = 'Continue', disabled }) {
   const navigate = useNavigate();
   return (
-    <div className="sticky bottom-0 z-[700] border-t border-line bg-page">
+    <div className="sticky bottom-0 z-[700] border-t border-line bg-white">
       <Container className="flex items-center justify-between gap-4 py-4">
         {backTo ? (
           <Button variant="text" icon={<Arrow direction="left" />} onClick={() => navigate(backTo)}>
