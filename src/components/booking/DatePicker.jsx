@@ -61,18 +61,25 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
     );
   }
 
+  /* Empty field: a button too, since clicking it is what opens the
+     calendar. `aria-expanded` tells a screen reader the calendar it
+     controls is showing. */
   return (
     <div className={className}>
       <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
-      <div
+      <button
+        type="button"
+        onClick={onClick}
+        aria-labelledby={labelId + ' ' + labelId + '-value'}
+        aria-expanded={!!active}
         className={
-          shell + ' border-line bg-fill text-muted ' +
+          shell + ' border-line bg-fill text-muted hover:border-line-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2 ' +
           (active ? 'shadow-[inset_0_-2px_0_var(--color-accent-focus)]' : '')
         }
       >
         <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
-        <span>{placeholder}</span>
-      </div>
+        <span id={labelId + '-value'}>{placeholder}</span>
+      </button>
     </div>
   );
 }
@@ -170,6 +177,10 @@ export default function DatePicker({
     return { y: base.getFullYear(), m: base.getMonth() };
   });
   const [learnMoreRetreat, setLearnMoreRetreat] = useState(null);
+  /* The calendar is closed until a date field is clicked, and closes
+     again once both dates are set — the fields are the resting state,
+     the calendar is the tool that fills them. */
+  const [open, setOpen] = useState(false);
 
   /* Jump the visible month to wherever the guest just landed — the
      check-in's month once it is picked, back to today's month if the
@@ -207,7 +218,20 @@ export default function DatePicker({
 
   function commit(date, mode) {
     if (mode === 'checkin') onPickCheckIn(date);
-    else onPickCheckOut(date);
+    else {
+      onPickCheckOut(date);
+      setOpen(false);
+    }
+  }
+
+  function openCheckIn() {
+    onResetCheckIn();
+    setOpen(true);
+  }
+  function openCheckOut() {
+    if (checkIn) onResetCheckOut();
+    else onResetCheckIn();
+    setOpen(true);
   }
 
   /* "Choose these dates" in RetreatModal — sets check-in to the retreat's
@@ -220,6 +244,7 @@ export default function DatePicker({
     const outs = checkoutsFor(pid, ci);
     const threeNight = outs.filter((d) => nightsBetween(ci, d) === 3);
     onChooseRetreatDates(ci, threeNight.length === 1 ? threeNight[0] : null);
+    setOpen(threeNight.length !== 1);
     setLearnMoreRetreat(null);
   }
 
@@ -234,12 +259,12 @@ export default function DatePicker({
      accent-focus highlight — a field that already holds a date is
      "chosen," not "being chosen," even though it is technically the most
      recent one the guest touched. */
-  const checkinActive = !checkIn;
-  const checkoutActive = !!checkIn && !checkOut;
+  const checkinActive = open && !checkIn;
+  const checkoutActive = open && !!checkIn && !checkOut;
 
   return (
     <div>
-      {!bothSet && (
+      {open && !bothSet && (
         <>
           <div className={bare ? 'max-w-[420px]' : 'max-w-[420px] border border-line bg-white p-5'}>
             <RanchCalendar
@@ -255,33 +280,28 @@ export default function DatePicker({
             />
           </div>
           <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
-
-          <div className="mt-6 grid max-w-[420px] grid-cols-2 gap-4">
-            <DateField
-              label="Check-in"
-              value={checkIn ? fmtDate(checkIn) : null}
-              placeholder="Select check-in"
-              active={checkinActive}
-              onClick={onResetCheckIn}
-            />
-            <DateField
-              label="Check-out"
-              value={checkOut ? fmtDate(checkOut) : null}
-              placeholder="Select check-out"
-              active={checkoutActive}
-              onClick={onResetCheckOut}
-            />
-          </div>
         </>
       )}
 
+      <div className={'grid max-w-[420px] grid-cols-2 gap-4' + (open && !bothSet ? ' mt-6' : '')}>
+        <DateField
+          label="Check-in"
+          value={checkIn ? fmtDate(checkIn) : null}
+          placeholder="Select check-in"
+          active={checkinActive}
+          onClick={openCheckIn}
+        />
+        <DateField
+          label="Check-out"
+          value={checkOut ? fmtDate(checkOut) : null}
+          placeholder="Select check-out"
+          active={checkoutActive}
+          onClick={openCheckOut}
+        />
+      </div>
+
       {bothSet && (
         <>
-          <div className="grid max-w-[420px] grid-cols-2 gap-4">
-            <DateField label="Check-in" value={fmtDate(checkIn)} onClick={onResetCheckIn} />
-            <DateField label="Check-out" value={fmtDate(checkOut)} onClick={onResetCheckOut} />
-          </div>
-
           <div className="mt-6 max-w-[420px]">
             <div role="status" aria-live="polite">
               <span className="eyebrow block text-accent">Your Chosen Stay</span>
