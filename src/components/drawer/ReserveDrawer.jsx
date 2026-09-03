@@ -189,6 +189,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
       />
       <aside
         ref={panelRef}
+        data-scroll-region
         className={
           'absolute right-0 top-0 flex h-full w-full max-w-[460px] flex-col overflow-y-auto bg-light shadow-2xl ' +
           /* The slide is a large-field transform — the actual vestibular

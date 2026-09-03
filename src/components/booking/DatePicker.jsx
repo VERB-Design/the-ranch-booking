@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import useMountTransition from '../../useMountTransition.js';
 import RanchCalendar from '../Calendar.jsx';
 import Checkbox from '../ui/Checkbox.jsx';
@@ -188,6 +189,29 @@ export default function DatePicker({
   const popoverOpen = open && !(checkIn && checkOut);
   const { mounted: calMounted, shown: calShown } = useMountTransition(popoverOpen, 300);
   const wrapRef = useRef(null);
+  /* The calendar always opens above the fields. It is rendered at the
+     viewport level, anchored to the fields' top edge, so it can rise over
+     the drawer content above it rather than being clipped by the
+     drawer's own scroll box; when the space above is short, the panel
+     scrolls inside itself. Re-measured on resize and on scroll of the
+     region the fields live in. */
+  const [anchor, setAnchor] = useState(null);
+  const popoverRef = useRef(null);
+  useEffect(() => {
+    if (!popoverOpen || !wrapRef.current) return;
+    const scroller = wrapRef.current.closest('[data-scroll-region]');
+    function measure() {
+      const r = wrapRef.current.getBoundingClientRect();
+      setAnchor({ left: r.left, width: r.width, bottom: window.innerHeight - r.top + 8, maxHeight: Math.max(240, r.top - 24) });
+    }
+    measure();
+    window.addEventListener('resize', measure);
+    scroller?.addEventListener('scroll', measure);
+    return () => {
+      window.removeEventListener('resize', measure);
+      scroller?.removeEventListener('scroll', measure);
+    };
+  }, [popoverOpen]);
 
   /* The calendar floats over whatever sits below the fields, so it has to
      get out of the way on its own: a click anywhere outside the picker,
@@ -196,7 +220,9 @@ export default function DatePicker({
   useEffect(() => {
     if (!popoverOpen) return;
     function onPointer(e) {
-      if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false);
+      const inFields = wrapRef.current && wrapRef.current.contains(e.target);
+      const inPopover = popoverRef.current && popoverRef.current.contains(e.target);
+      if (!inFields && !inPopover) setOpen(false);
     }
     function onKey(e) {
       if (e.key !== 'Escape') return;
@@ -313,14 +339,16 @@ export default function DatePicker({
 
         {/* The calendar is an overlay: it opens beneath the fields, over
             the content that follows, and fades in over the build's 300ms. */}
-        {calMounted && (
+        {calMounted && anchor && createPortal(
           <div
+            ref={popoverRef}
             role="dialog"
             aria-label={checkIn ? 'Choose a check-out date' : 'Choose a check-in date'}
+            style={{ left: anchor.left, width: anchor.width, bottom: anchor.bottom, maxHeight: anchor.maxHeight }}
             className={
-              'absolute left-0 top-full z-40 mt-2 w-full border border-line bg-light p-4 shadow-2xl ' +
+              'fixed z-[2600] overflow-y-auto border border-line bg-light p-4 shadow-2xl ' +
               'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ' +
-              (calShown ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1')
+              (calShown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1')
             }
           >
             <RanchCalendar
@@ -335,7 +363,8 @@ export default function DatePicker({
               helper={stayRules.blocksCopy}
             />
             <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
-          </div>
+          </div>,
+          document.body
         )}
       </div>
 
