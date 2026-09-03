@@ -31,10 +31,10 @@ export default function Stepper() {
   }
 
   return (
-    <nav aria-label="Booking progress" className="sticky top-20 z-[800] h-11 border-y border-line bg-light">
+    <nav aria-label="Booking progress" className="sticky top-20 z-[800] h-11 border-b border-line bg-page">
       <Container className="h-full">
         <ol
-          className="flex h-full items-center gap-1 overflow-x-auto md:gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+          className="flex h-full items-center justify-center gap-1 overflow-x-auto md:gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
           /* The list scrolls sideways on a phone, so it has to be reachable
              from the keyboard for the steps past the edge to be seen. */
           tabIndex={0}

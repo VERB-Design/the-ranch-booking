@@ -122,10 +122,12 @@ export function Container({ children, className = '' }) {
     supplied one and the title needs to line up with what sits beside it. */
 export function PageTitle({ eyebrow, title, sub, flush }) {
   return (
-    <div className={'pb-5 md:pb-6 ' + (flush ? '' : 'pt-8 md:pt-10')}>
+    /* The title's top sits level with the top of the stay overview in the
+       rail, so no extra padding above it. `flush` is kept for callers. */
+    <div className={'pb-5 md:pb-6' + (flush ? '' : '')}>
       {eyebrow && <span className="eyebrow mb-2 block text-accent">{eyebrow}</span>}
-      <h1 className="h-serif text-ink text-[calc(var(--text-h2)-10px)]">{title}</h1>
-      {sub && <p className="mt-2 text-lg font-light text-body">{sub}</p>}
+      <h1 className="h-serif text-[24px] leading-none text-ink">{title}</h1>
+      {sub && <p className="mt-2 text-base font-light text-body">{sub}</p>}
     </div>
   );
 }
