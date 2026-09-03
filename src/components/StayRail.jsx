@@ -48,34 +48,48 @@ function useSummary() {
 }
 
 function SummaryRows() {
-  const { state, config, p, n, prop, bookedRoomLines, removeAddon } = useSummary();
+  const { state, config, p, n, bookedRoomLines, removeAddon } = useSummary();
   const roomsSet = !!state.property;
   const datesSet = !!(state.checkIn && state.checkOut);
+  const roomCount = (state.rooms || []).length;
+  const extensionNote = state.extension === 'pre'
+    ? 'incl. 1 pre-night · programme from ' + fmtShort(state.checkIn)
+    : state.extension === 'post'
+      ? 'incl. 1 extra night · programme to ' + fmtShort(state.checkOut)
+      : null;
+  const Sep = () => <span aria-hidden="true" className="mx-3 text-line-hover">|</span>;
 
+  /* Condensed: two summary lines, then the room with its rate beneath.
+     Everything reads left; the labels are the values themselves. */
   return (
     <div className="divide-y divide-line px-5">
-      <Row label="Property" value={prop?.name} />
-      {roomsSet && config.multiRoom && (
-        <Row label="Rooms" value={(state.rooms || []).length + (((state.rooms || []).length === 1) ? ' Room' : ' Rooms')} />
+      {(datesSet || roomsSet) && (
+        <div className="py-3 text-sm text-ink">
+          {datesSet && (
+            <p>
+              {fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}
+              {roomsSet && <><Sep />{guestsLabel(state)}</>}
+            </p>
+          )}
+          {roomsSet && (
+            <p className="mt-1">
+              {roomCount} {roomCount === 1 ? 'Room' : 'Rooms'}
+              {datesSet && <><Sep />{n} {n === 1 ? 'Night' : 'Nights'}</>}
+            </p>
+          )}
+          {extensionNote && <p className="mt-1 text-xs text-muted">{extensionNote}</p>}
+          {bookedRoomLines.filter((r) => r.room).map((r, i) => (
+            <div key={r.uid} className="mt-3">
+              <p className="text-ink">
+                {config.multiRoom && bookedRoomLines.length > 1 ? 'Room ' + (i + 1) + ' · ' : ''}{r.room.name}
+              </p>
+              <p className="text-xs text-muted">
+                {money(lineNightly(r.room))} per person / night{r.upgradedFrom ? ' (upgraded)' : ''}
+              </p>
+            </div>
+          ))}
+        </div>
       )}
-      {roomsSet && <Row label="Guests" value={guestsLabel(state)} />}
-      {datesSet && (
-        <Row
-          label="Dates"
-          value={fmtShort(stayRange(state).arrive) + ' – ' + fmtShort(stayRange(state).depart)}
-          sub={state.extension === 'pre' ? 'incl. 1 pre-night · programme from ' + fmtShort(state.checkIn) : state.extension === 'post' ? 'incl. 1 extra night · programme to ' + fmtShort(state.checkOut) : null}
-        />
-      )}
-      {datesSet && <Row label="Nights" value={n} />}
-
-      {bookedRoomLines.map((r, i) => (
-        <Row
-          key={r.uid}
-          label={config.multiRoom && bookedRoomLines.length > 1 ? 'Room ' + (i + 1) : 'Room'}
-          value={r.room?.name}
-          sub={r.room ? money(lineNightly(r.room)) + ' per person / night' + (r.upgradedFrom ? ' (upgraded)' : '') : null}
-        />
-      ))}
 
       {!!(p && p.addonLines.length) && (
         <div className="py-2">
@@ -125,7 +139,7 @@ export function StayRail() {
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
       <div className="border border-line bg-light">
-        <div className="border-b border-line px-5 py-3">
+        <div className="border-b border-line px-5 py-3 text-center">
           <span className="eyebrow text-strong">Your Stay</span>
         </div>
         <SummaryRows />
