@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { PageTitle } from '../components/Chrome.jsx';
 import RoomCard from '../components/RoomCard.jsx';
-import { D, activeRoomIndex, nextUnassigned, useBooking } from '../store.jsx';
+import { useStep } from '../components/Layout.jsx';
+import { D, activeRoomIndex, bookedRooms, nextUnassigned, useBooking } from '../store.jsx';
 import { cardLayout, useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
@@ -27,8 +28,12 @@ export default function Rooms() {
   const editing = !!state.editRoom && allRooms.some((r) => r.uid === state.editRoom);
   const choosing = editing || pending !== -1;
 
-  /* No Continue bar here: choosing a room is the step — RoomCard moves the
-     flow on as soon as every room in the booking has one. */
+  /* Choosing a room is the step — RoomCard moves the flow on as soon as
+     every room in the booking has one. The Continue bar only appears when a
+     guest comes back with rooms already chosen, so they can carry on
+     without picking again. */
+  const done = bookedRooms(state).length === allRooms.length && allRooms.length > 0;
+  useStep({ enabled: done, canContinue: done, label: 'Continue' });
 
   /* A room is priced against the stay, so a deep link that skipped the
      dates has nothing to price — send it back to the step that sets them.

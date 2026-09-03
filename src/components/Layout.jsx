@@ -22,13 +22,15 @@ export function useDrawers() {
     something first (RoomDetail assigning the room) — Layout calls it in
     place of navigating, and it is responsible for its own navigation.
     Not calling this at all (Confirmation) hides the bar. */
-export function useStep({ continueTo, canContinue = true, label, onContinue } = {}) {
+export function useStep({ continueTo, canContinue = true, label, onContinue, enabled = true } = {}) {
   const setStep = useOutletContext();
   useEffect(() => {
     if (!setStep) return;
-    setStep({ continueTo, canContinue, label, onContinue });
+    /* `enabled: false` keeps the page bar-less without breaking the hook
+       order — Rooms shows a bar only once a room is already chosen. */
+    setStep(enabled ? { continueTo, canContinue, label, onContinue } : null);
     return () => setStep(null);
-  }, [setStep, continueTo, canContinue, label, onContinue]);
+  }, [setStep, continueTo, canContinue, label, onContinue, enabled]);
 }
 
 /* Shared chrome for every page except Landing. */
