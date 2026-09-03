@@ -141,4 +141,40 @@ export function retreatsInMonth(pid, y, m) {
   });
 }
 
+/** The retreat a stored `program` choice's `id` refers to — a retreat's
+    own `date` is used as its id (see ProgramChoice.jsx), since it is
+    already unique per property. What StayRail and Confirmation read to
+    print the programme's real name from `state.program`. */
+export function retreatById(pid, id) {
+  if (!pid || !id) return null;
+  const list = D.retreats[pid] || [];
+  return list.find((r) => r.date === id) || null;
+}
+
+/** One-line stay description, built from D.includes rather than
+    hard-coded — "{N}-night stay at {property}" plus "Includes daily
+    {massage}, daily {hikes}, and all {meals}." Pulls the noun each
+    item's own title already carries (Daily massage → massage, Daily
+    hikes, fitness and yoga → hikes, All meals and snacks → meals)
+    instead of copying a wire's literal sentence, so a future edit to
+    D.includes's titles updates every reader of this function at once.
+    Shared between DatePicker's "Your Chosen Stay" card and
+    ProgramChoice's tray/inline summary line — moved here (Sep 2026,
+    program-choice pass) from DatePicker.jsx, where it started as a
+    private helper, once a second component needed the same text. */
+export function stayDescription(pid, nights) {
+  const word = (icon, prefix) => {
+    const item = D.includes.find((i) => i.icon === icon);
+    return item ? item.title.replace(prefix, '').split(/[ ,]/)[0].toLowerCase() : '';
+  };
+  const massage = word('spa', /^Daily /) || 'massage';
+  const hikes = word('hike', /^Daily /) || 'hikes';
+  const meals = word('dining', /^All /) || 'meals';
+  const propertyShort = D.properties[pid].name.replace('The Ranch ', '');
+  return {
+    title: nights + '-night stay at ' + propertyShort,
+    rest: 'Includes daily ' + massage + ', daily ' + hikes + ', and all ' + meals + '.',
+  };
+}
+
 export { addDays, iso, parse, sameDay };

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useStep } from '../components/Layout.jsx';
 import RoomChips from '../components/booking/RoomChips.jsx';
 import DatePicker from '../components/booking/DatePicker.jsx';
+import ProgramChoice, { hasProgramChoice } from '../components/booking/ProgramChoice.jsx';
 import { D, MAX_ROOMS, newRoomSlot, useBooking } from '../store.jsx';
 import { iso, parse } from '../stay.js';
 import { nextPathAfter, useConfig } from '../config.jsx';
@@ -36,12 +37,26 @@ export default function Program() {
 
   const roomsOk = rooms.length > 0 && rooms.every((r) => (r.adults || 0) >= 1);
   const datesOk = !!(checkIn && checkOut);
+  /* Whether these dates carry a dated retreat the guest has to choose
+     between (see ProgramChoice.jsx) — Continue stays disabled until that
+     choice is made, matching the drawer's own tray. Stays with nothing to
+     choose between get `program` defaulted to `standard` below instead of
+     asking the guest to confirm the obvious. */
+  const retreatChoice = hasProgramChoice(state.property, checkIn, checkOut, config.retreats);
+  const programOk = !retreatChoice || !!state.program;
 
   useStep({
     continueTo: nextPathAfter(config, 'program'),
-    canContinue: roomsOk && datesOk,
+    canContinue: roomsOk && datesOk && programOk,
     label: 'Continue',
   });
+
+  useEffect(() => {
+    if (!retreatChoice && (!state.program || state.program.type !== 'standard')) {
+      set({ program: { type: 'standard' } });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [retreatChoice, state.program]);
 
   function setGuests(uid, v) {
     set({ rooms: rooms.map((r) => (r.uid === uid ? { ...r, adults: v } : r)) });
@@ -126,6 +141,21 @@ export default function Program() {
           onResetCheckOut={resetCheckOut}
           onToggleExtra={toggleExtra}
           onChooseRetreatDates={chooseRetreatDates}
+        />
+
+        {/* Renders nothing (and self-gates on retreatsOn) unless these
+            dates carry a dated retreat — the same two-card chooser the
+            drawer's second tray shows, inline beneath "Your Chosen Stay"
+            instead of behind a slide transition, per docs/BRIEF.md's
+            pages-mode twin. */}
+        <ProgramChoice
+          pid={pid}
+          checkIn={checkIn}
+          checkOut={checkOut}
+          retreatsOn={config.retreats}
+          value={state.program}
+          onChange={(p) => set({ program: p })}
+          className="mt-6 max-w-[420px]"
         />
       </section>
     </div>

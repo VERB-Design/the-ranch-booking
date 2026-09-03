@@ -45,6 +45,11 @@ const D = (function () {
       desc: 'The original Ranch, twenty-one private cottages in the Santa Monica Mountains less than an hour from Los Angeles. A regenerative organic garden, ocean air, and the six-, seven- or eight-night signature programme.',
       guestCount: 'up to 25 guests',
       cottages: 21,
+      /* Named for the "Choose your program" tray/inline chooser (Sep 2026
+         pass) — the standard programme's own card, alongside whatever
+         dated retreat falls inside the guest's stay. */
+      programName: 'The Signature Programme',
+      programDesc: 'The standard Ranch programme — six, seven or eight nights of daily hikes, spa treatments and meals built around the property’s own organic garden.',
       stayRules: {
         checkInDays: ['Saturday', 'Sunday'],
         lengths: [6, 7, 8],
@@ -72,6 +77,8 @@ const D = (function () {
       desc: 'A stone manor on a historic lakefront estate an hour from New York City, bordered by more than 46,000 acres of protected parkland. Twenty-six guest rooms, a 5,000-square-foot solarium, and three-, four- or seven-night stays.',
       guestCount: 'averages 25 guests',
       rooms: 26,
+      programName: 'The Hudson Valley Programme',
+      programDesc: 'The standard Hudson Valley programme — three, four or seven nights of guided hikes, spa treatments and seasonal meals inside the stone manor and its grounds.',
       stayRules: {
         checkInDays: ['Thursday', 'Sunday'],
         lengths: [3, 4, 7],

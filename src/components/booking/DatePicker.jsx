@@ -5,7 +5,7 @@ import RanchCalendar from '../Calendar.jsx';
 import Checkbox from '../ui/Checkbox.jsx';
 import RetreatCard from './RetreatCard.jsx';
 import RetreatModal from './RetreatModal.jsx';
-import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, retreatsInMonth } from '../../stay.js';
+import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, retreatsInMonth, stayDescription } from '../../stay.js';
 import { D } from '../../store.jsx';
 import { MONTH_NAMES } from '../../utils.js';
 
@@ -101,28 +101,6 @@ function RetreatList({ pid, month, onLearnMore }) {
       ))}
     </div>
   );
-}
-
-/* One-line stay description for the state-C summary card, built from
-   D.includes rather than hard-coded — "{N}-night stay at {property} —
-   includes daily {massage}, daily {hikes}, and all {meals}." Pulls the
-   noun each item's own title already carries (Daily massage → massage,
-   Daily hikes, fitness and yoga → hikes, All meals and snacks → meals)
-   instead of copying the wire's literal sentence, so a future edit to
-   D.includes's titles updates this line too. */
-function stayDescription(pid, nights) {
-  const word = (icon, prefix) => {
-    const item = D.includes.find((i) => i.icon === icon);
-    return item ? item.title.replace(prefix, '').split(/[ ,]/)[0].toLowerCase() : '';
-  };
-  const massage = word('spa', /^Daily /) || 'massage';
-  const hikes = word('hike', /^Daily /) || 'hikes';
-  const meals = word('dining', /^All /) || 'meals';
-  const propertyShort = D.properties[pid].name.replace('The Ranch ', '');
-  return {
-    title: nights + '-night stay at ' + propertyShort,
-    rest: 'Includes daily ' + massage + ', daily ' + hikes + ', and all ' + meals + '.',
-  };
 }
 
 /* ============================================================

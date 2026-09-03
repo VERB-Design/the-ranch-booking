@@ -11,8 +11,22 @@ export default function Modal({ open, onClose, title, children, className = '', 
   const openerRef = useRef(null);
   const { mounted, shown } = useMountTransition(open, 300);
 
+  /* `mounted` (not just `open`) is a real dependency here, not a nicety —
+     `open` can flip true a full render before the dialog panel actually
+     exists in the DOM (useMountTransition's own effect hasn't flushed
+     `mounted` yet), so an effect keyed on `[open, onClose]` alone can run
+     with `panelRef.current` still null and silently focus nothing at all.
+     Every call site so far happened to dodge this in manual testing —
+     React 18 StrictMode's dev-only double-invoke of this same effect
+     papered over it by re-running a second time once `mounted` had caught
+     up — but it is a real race, not a StrictMode artefact, and the
+     program-tray pass (Sep 2026) hit it for real the first time this
+     component was driven from a persistently-mounted instance whose
+     `open` prop toggled without an intervening full remount. Keying off
+     `mounted` too means the effect simply waits for the render that
+     actually put the panel in the DOM before it tries to focus it. */
   useEffect(() => {
-    if (!open) return;
+    if (!open || !mounted) return;
     openerRef.current = document.activeElement;
     const panel = panelRef.current;
     const focusable = panel ? panel.querySelectorAll(FOCUSABLE) : [];
@@ -33,7 +47,7 @@ export default function Modal({ open, onClose, title, children, className = '', 
       document.removeEventListener('keydown', onKey);
       openerRef.current?.focus?.();
     };
-  }, [open, onClose]);
+  }, [open, mounted, onClose]);
 
   if (!mounted) return null;
 

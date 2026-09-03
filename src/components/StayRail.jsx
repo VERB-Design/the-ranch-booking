@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { D, guestsLabel, lineNightly, nights, pricing, stayRange, useBooking } from '../store.jsx';
+import { retreatById } from '../stay.js';
 import { useConfig } from '../config.jsx';
 import { fmtShort, money } from '../utils.js';
 
@@ -54,6 +55,11 @@ function SummaryRows() {
       {(datesSet || roomsSet) && (
         <div className="pt-3 pb-4 text-sm text-ink">
           {prop && <p className="mb-1 text-ink">{prop.name}</p>}
+          {state.program?.type === 'retreat' && (
+            <p className="mb-1 text-xs text-muted">
+              Special Program — {retreatById(state.property, state.program.id)?.name || 'Special retreat'}
+            </p>
+          )}
           {datesSet && (
             <p>
               {fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}

@@ -733,3 +733,52 @@ category:
   Fitness & Yoga, Acupuncture, Reiki, Energy Healing, Hypnotherapy, Physical Therapy 60 min;
   Chiropractic 30 min; Colon Hydrotherapy 45 min; IV Therapy 45–60 min) are **typical session
   lengths, not from the site** — confirm with the client's spa menu.
+
+## "Choose your program" tray — 3 Sep 2026
+- Figma node 456:1499's edge case built: CHECK RATES no longer closes the drawer when the chosen
+  dates carry a dated retreat — a second tray slides in (300ms, `overflow-hidden` panel, two
+  trays in a row translated by `-translate-x-1/2`, reduced-motion swaps instantly) prompting the
+  guest to pick the retreat or the property's own standard programme before anything commits to
+  the store. `ProgramChoice.jsx` is the shared chooser — used by the drawer's second tray and,
+  extracted per the brief, by `Program.jsx`'s pages-mode inline render beneath "Your Chosen Stay."
+  Store gains `program: null | { type: 'retreat', id } | { type: 'standard' }` — `id` is the
+  retreat's own `date` string (already unique per property; `stay.js`'s new `retreatById` reverses
+  it back to the record for StayRail/Confirmation). Stays with nothing to choose between get
+  `program` defaulted to `{ type: 'standard' }` automatically (drawer: at CHECK RATES; pages mode:
+  a `useEffect` in `Program.jsx`) rather than asking the guest to confirm the obvious.
+- **Real pre-existing bug found and fixed, not local to this feature — `src/components/ui/Modal.jsx`.**
+  Its focus-on-open effect was keyed on `[open, onClose]` only. For a *persistently-mounted* Modal
+  instance whose `open` prop toggles (which is how every caller uses it, including the original
+  `RetreatModal`), `open` can flip `true` a full render before `useMountTransition`'s own effect
+  has flushed `mounted`, i.e. before the dialog panel actually exists in the DOM — the effect ran
+  with `panelRef.current` still `null` and silently focused nothing. Every existing call site
+  (FeeModal, the original RetreatModal usage in `DatePicker.jsx`) happened to dodge this in every
+  manual and automated pass to date: React 18 StrictMode's dev-only double-invoke of the same
+  effect re-ran it a second time once `mounted` had caught up, papering over the race in dev. It
+  is not a StrictMode artefact, though — it is a real timing bug that a production build (no
+  double-invoke) could hit, and the program tray's `ProgramChoice`-driven `RetreatModal`/standard
+  `Modal` hit it for real, every time, in this pass's own Playwright verification (confirmed via
+  direct instrumentation: `panelRef.current` was `null` when the effect ran). **Fix, not a
+  workaround:** the effect now also depends on `mounted`, so it waits for the render that actually
+  puts the panel in the DOM. Verified via Playwright: focus now lands on the modal's Close button
+  from a cold first open, both through the new tray and re-confirmed against the original
+  DatePicker/RetreatModal call site. This is a shared-infrastructure fix, in scope because the
+  feature could not ship correctly without it — flagging it here since it touches every `Modal.jsx`
+  consumer in the app, not just this pass's own additions.
+- `retreatInStay` (`stay.js`) still returns the single retreat matching a stay, not a list — the
+  seeded data has exactly one dated retreat per property (Hudson: 17 Sep 2026), so "two concurrent
+  programs" never actually collides against a second *retreat* in this build. The tray already
+  implements the wire's real ask — choosing between the retreat and the standard programme — but
+  if the client later seeds two overlapping dated retreats at one property, `retreatInStay`'s
+  `.find()` will silently pick the first and the second is invisible to the tray. Flagged, not
+  built out, since nothing in the current data needs it and it wasn't asked for explicitly.
+- Verified: `npm run lint` and `npm run build` green. Playwright walk (Hudson 17→20 Sep, Malibu
+  6→13 Sep, Back, Edit-stay-with-preselect, Confirmation PROGRAMME row, pages-mode inline chooser)
+  all pass; zero console/page errors throughout. axe: zero violations on the tray at 1440 and 390,
+  and on `/program?entry=pages` with the chooser rendered and a card selected. Full nine-route axe
+  regression re-run afterward — one pre-existing `landmark-unique` (moderate) on
+  `/room/:id`, confirmed present on `program-v2-branch` before this pass too (checked via
+  `git stash`) and untouched by any file in this change; not fixed here, out of scope. Screenshots
+  in `docs/screens/drawer-v3/program-tray-{1440,390}.png` (+ `-selected-` variants and the
+  pages-mode inline chooser). Not screen-reader tested (NVDA/JAWS/VoiceOver), matching this repo's
+  existing "Not verified" scope in `ACCESSIBILITY-AUDIT.md`.

@@ -19,6 +19,14 @@ function defaults() {
        and the extension toggle never have to agree on which one owns the
        date. */
     extension: null,
+    /* Which programme the stay books, when the dates overlap a dated
+       retreat — `{ type: 'retreat', id }` (id is the retreat's own
+       `date`) or `{ type: 'standard' }`. Null until CHECK RATES/Continue
+       is first submitted with dates in hand; see ProgramChoice.jsx's
+       `hasProgramChoice` for when a stay actually needs this choice at
+       all — most stays never touch a retreat and simply get `standard`
+       set for them once dates are known. */
+    program: null,
     /* One entry per booked room. adults is 1–2 — the Ranch is adults-only,
        so there is no children field to carry. upgradedFrom holds the room
        id this slot was upgraded away from, so the offer can be undone. */

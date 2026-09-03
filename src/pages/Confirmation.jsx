@@ -2,6 +2,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button.jsx';
 import { fmtShort, money } from '../utils.js';
 import { D, guestsLabel, nights, pricing, useBooking, stayRange } from '../store.jsx';
+import { retreatById } from '../stay.js';
 import { useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
@@ -73,6 +74,16 @@ export default function Confirmation() {
           <div className="flex flex-col gap-3 px-6 py-5">
             <InfoRow label="Primary Contact" value={contactName} />
             <InfoRow label="Property" value={prop.name} />
+            {state.program && (
+              <InfoRow
+                label="Programme"
+                value={
+                  state.program.type === 'retreat'
+                    ? (retreatById(state.property, state.program.id)?.name || 'Special Program')
+                    : (prop.programName || 'Standard programme')
+                }
+              />
+            )}
             <InfoRow label="Rooms" value={roomCount} />
             <InfoRow label="Guests" value={guestsLabel(state)} />
             <InfoRow
