@@ -141,7 +141,7 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected = false, p
   const headingId = 'room-' + room.id + '-name';
   const vertical = layout === 'vertical';
   /* Cards sit on the page ground; only a chosen card takes the light fill. */
-  const borderClasses = selected ? 'border-2 border-dark bg-light' : 'border border-line bg-transparent';
+  const borderClasses = selected ? 'border border-dark bg-light' : 'border border-line bg-transparent';
 
   const chips = (
     <div className="mt-3 flex flex-wrap gap-2">
