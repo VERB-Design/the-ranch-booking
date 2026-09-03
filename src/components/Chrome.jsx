@@ -54,20 +54,20 @@ export function Header({ onEditStay }) {
         </button>
 
         {hasStay && onEditStay ? (
-          <div className="flex items-center gap-5 md:gap-7">
-            <dl className="hidden items-center gap-6 md:flex">
-              <div className="flex items-baseline gap-2">
-                <dt className="label-sm text-muted">Dates</dt>
-                <dd className="text-sm text-ink">{fmtShort(state.checkIn)} – {fmtShort(state.checkOut)}</dd>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <dt className="label-sm text-muted">Guests</dt>
-                <dd className="text-sm text-ink">{guestsLabel(state)}</dd>
-              </div>
-            </dl>
-            <TextCta className="text-ink" onClick={onEditStay} aria-label="Edit dates and guests">
+          <div className="flex items-baseline gap-4 text-sm text-ink">
+            <span className="hidden items-baseline gap-3 md:inline-flex">
+              <span>{fmtShort(state.checkIn)} – {fmtShort(state.checkOut)}</span>
+              <span aria-hidden="true" className="text-line-hover">|</span>
+              <span>{guestsLabel(state)}</span>
+            </span>
+            <button
+              type="button"
+              onClick={onEditStay}
+              aria-label="Edit dates and guests"
+              className="underline underline-offset-4 decoration-1 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+            >
               Edit
-            </TextCta>
+            </button>
           </div>
         ) : (
           <TextCta className="text-ink" onClick={onEditStay || (() => navigate('/'))}>
