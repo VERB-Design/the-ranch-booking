@@ -50,7 +50,7 @@ function SummaryRows() {
   /* Condensed: two summary lines, then the room with its rate beneath.
      Everything reads left; the labels are the values themselves. */
   return (
-    <div className="divide-y divide-line px-5">
+    <div className="divide-y divide-page px-5">
       {(datesSet || roomsSet) && (
         <div className="pt-3 pb-4 text-sm text-ink">
           {prop && <p className="mb-1 text-ink">{prop.name}</p>}
@@ -127,12 +127,12 @@ export function StayRail() {
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
       <div className="bg-light">
-        <div className="border-b border-line px-5 py-3 text-center">
+        <div className="border-b border-page px-5 py-3 text-center">
           <span className="eyebrow text-strong">Your Stay</span>
         </div>
         <SummaryRows />
         {p && (
-          <div className="border-t border-line px-5 py-4">
+          <div className="border-t border-page px-5 py-4">
             <div className="flex items-center justify-between text-sm">
               <span className="label-sm text-muted">Taxes &amp; fees</span>
               <span className="text-ink">{money(p.tax)}</span>
@@ -173,7 +173,7 @@ export function StayRailMobile() {
         <div className="overflow-hidden">
           <SummaryRows />
           {p && (
-            <div className="border-t border-line px-5 py-4">
+            <div className="border-t border-page px-5 py-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="label-sm text-muted">Taxes &amp; fees</span>
                 <span className="text-ink">{money(p.tax)}</span>
@@ -225,7 +225,7 @@ function EveryStayIncludes({ className = '' }) {
   /* Titles only — the list is a reminder of what the rate covers, not a
      brochure. The description of each item lives on the property page. */
   return (
-    <div className={'border border-line ' + className}>
+    <div className={'' + className}>
       <div className="px-5 pt-3">
         <span className="eyebrow text-strong">Every Stay Includes</span>
       </div>
