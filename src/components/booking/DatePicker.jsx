@@ -13,35 +13,66 @@ function today() {
   return d;
 }
 
+/* "17 Sep 2026" — the 3-letter month per the Sep 2026 creative-director
+   pass, everywhere a picked date renders inside a field. */
 function fmtDate(d) {
-  return d.getDate() + ' ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getFullYear();
+  return d.getDate() + ' ' + MONTH_NAMES[d.getMonth()].slice(0, 3) + ' ' + d.getFullYear();
 }
 
 /* A read-only "field" that looks like ui/Field but is a button — clicking
    it resets the date it shows, per the brief. A real Field wraps a text
    input, which is the wrong element for something that only ever opens a
-   reset, not text entry. */
-function DateField({ label, value, onClick, className = '' }) {
+   reset, not text entry.
+
+   Since the calendar now renders above both fields (Sep 2026 pass), a
+   field can be in one of three visual states: filled (a real button,
+   clicking resets it), the one currently being chosen (unfilled, carries
+   the same 2px-bottom-accent highlight ui/Field uses for focus, plus a
+   placeholder — "Select check-in"/"Select check-out"), or unfilled and
+   not yet reachable (quiet placeholder, no highlight). Only the filled
+   state is interactive — there is nothing to reset on an empty field, so
+   it renders as a plain, non-focusable field-look rather than a dead
+   button. */
+function DateField({ label, value, placeholder, active, onClick, className = '' }) {
   const labelId = useId();
+  const shell = 'flex h-[50px] w-full items-center gap-2 rounded-brand border px-4 text-left text-sm transition-colors';
+
+  if (value) {
+    return (
+      <div className={className}>
+        <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
+        <button
+          type="button"
+          onClick={onClick}
+          /* The visible "Check-in"/"Check-out" caption is a sibling <span>,
+             not a <label for>, since this is a button standing in for a
+             field rather than an actual input — without aria-labelledby a
+             screen-reader user tabbing here hears only the date ("6
+             September 2026") with no indication of which field it is or
+             that activating it resets it. Combining both ids keeps the date
+             read first, matching the visible reading order. */
+          aria-labelledby={labelId + ' ' + labelId + '-value'}
+          className={shell + ' border-line bg-fill text-ink hover:border-line-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2'}
+        >
+          <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
+          <span id={labelId + '-value'}>{value}</span>
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
       <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
-      <button
-        type="button"
-        onClick={onClick}
-        /* The visible "Check-in"/"Check-out" caption is a sibling <span>,
-           not a <label for>, since this is a button standing in for a
-           field rather than an actual input — without aria-labelledby a
-           screen-reader user tabbing here hears only the date ("6
-           September 2026") with no indication of which field it is or
-           that activating it resets it. Combining both ids keeps the date
-           read first, matching the visible reading order. */
-        aria-labelledby={labelId + ' ' + labelId + '-value'}
-        className="flex h-[50px] w-full items-center gap-2 rounded-brand border border-line bg-fill px-4 text-left text-sm text-ink transition-colors hover:border-line-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+      <div
+        className={
+          shell + ' border-line bg-fill text-muted ' +
+          (active ? 'shadow-[inset_0_-2px_0_var(--color-accent-focus)]' : '')
+        }
       >
         <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
-        <span id={labelId + '-value'}>{value}</span>
-      </button>
+        <span>{placeholder}</span>
+      </div>
     </div>
   );
 }
@@ -85,21 +116,32 @@ function stayDescription(pid, nights) {
 /* ============================================================
    DatePicker
    ------------------------------------------------------------
-   "CHOOSE YOUR DATES" per docs/figma/wires/02a–c v2 — the three states
-   the brief names: A (no check-in yet — single calendar in mode="checkin",
-   only isCheckInDay(pid) dates enabled, retreats stacked below), B
-   (check-in set — filled Check-in field + a calendar in mode="checkout"
-   restricted to checkoutsFor(pid, checkIn), same retreat cards below,
-   now marking any check-out whose stay would include one), C (both set —
-   two fields side by side, no calendar, and a summary card in place of
-   the bare nights line: heading, a data-built description, the nested
-   retreat card when the stay includes one, and the property's own
-   extension toggle when canExtend(pid, checkIn, checkOut) allows it — a
-   Saturday pre-night at Malibu, a Friday post-night at Hudson). Clicking
-   either filled field resets it and drops back a state, per the brief's
-   "changing either date returns to the right state." Picking a date is
-   never intercepted — a retreat date commits like any other; "Learn
-   more" on a card is the only way to open RetreatModal.
+   "CHOOSE YOUR DATES" per docs/figma/wires/02a–c v2, updated by the Sep
+   2026 creative-director pass — the three states the brief names: A (no
+   check-in yet — calendar in mode="checkin", only isCheckInDay(pid)
+   dates enabled, the property's own stay-rules line inside the calendar
+   block, retreats stacked below, the Check-in field highlighted below
+   the calendar with a "Select check-in" placeholder), B (check-in set —
+   calendar in mode="checkout" restricted to checkoutsFor(pid, checkIn),
+   same retreat cards, the Check-out field now highlighted with "Select
+   check-out"), C (both set — no calendar, two fields side by side, and a
+   "Your Chosen Stay" summary in place of the bare nights line: eyebrow,
+   a data-built description in Times, the nested retreat card when the
+   stay includes one, and the property's own extension toggle when
+   canExtend(pid, checkIn, checkOut) allows it — a Saturday pre-night at
+   Malibu, a Friday post-night at Hudson). Clicking either filled field
+   resets it and drops back a state, per the brief's "changing either
+   date returns to the right state." Picking a date is never intercepted
+   — a retreat date commits like any other; "Learn more" on a card is the
+   only way to open RetreatModal.
+
+   The calendar renders above the fields in every state that has one (A
+   and B) — the fields stay side by side underneath, one filled/highlighted
+   at a time rather than appearing only once picked, so the guest always
+   sees both slots. `bare` drops the calendar's own white card + border
+   (the drawer's own beige ground shows through instead) — Program keeps
+   the bordered white card, since it sits on the page ground rather than
+   inside a panel.
 
    Shared between the Program step page (`entry=pages`) and
    `ReserveDrawer` (`entry=drawer`, the default) — the drawer drives this
@@ -120,6 +162,7 @@ export default function DatePicker({
   onResetCheckOut,
   onToggleExtra,
   onChooseRetreatDates,
+  bare = false,
 }) {
   const checkInKey = checkIn ? checkIn.getTime() : null;
   const [month, setMonth] = useState(() => {
@@ -180,29 +223,69 @@ export default function DatePicker({
     setLearnMoreRetreat(null);
   }
 
+  const stayRules = D.properties[pid].stayRules;
   const bothSet = !!(checkIn && checkOut);
   const nights = bothSet ? nightsBetween(checkIn, checkOut) + (extension ? 1 : 0) : 0;
   const extendable = extensionsOn && canExtend(pid, checkIn, checkOut);
-  const extensionLabel = (D.properties[pid] && D.properties[pid].stayRules.extensionLabel) || 'Add an extra night';
+  const extensionLabel = stayRules.extensionLabel || 'Add an extra night';
   const stayRetreat = bothSet && retreatsOn ? retreatInStay(pid, checkIn, checkOut) : null;
+
+  /* The field currently being filled is the only one that carries the
+     accent-focus highlight — a field that already holds a date is
+     "chosen," not "being chosen," even though it is technically the most
+     recent one the guest touched. */
+  const checkinActive = !checkIn;
+  const checkoutActive = !!checkIn && !checkOut;
 
   return (
     <div>
-      {!bothSet && checkIn && (
-        <DateField label="Check-in" value={fmtDate(checkIn)} onClick={onResetCheckIn} className="mb-6 max-w-xs" />
+      {!bothSet && (
+        <>
+          <div className={bare ? 'max-w-[420px]' : 'max-w-[420px] border border-line bg-white p-5'}>
+            <RanchCalendar
+              month={month}
+              onMonth={changeMonth}
+              selectedStart={checkIn}
+              selectedEnd={checkOut}
+              isEnabled={checkIn ? isEnabledCheckOut : isEnabledCheckIn}
+              isRetreat={isRetreat}
+              onPick={(d) => commit(d, checkIn ? 'checkout' : 'checkin')}
+              mode={checkIn ? 'checkout' : 'checkin'}
+              helper={stayRules.blocksCopy}
+            />
+          </div>
+          <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
+
+          <div className="mt-6 grid max-w-[420px] grid-cols-2 gap-4">
+            <DateField
+              label="Check-in"
+              value={checkIn ? fmtDate(checkIn) : null}
+              placeholder="Select check-in"
+              active={checkinActive}
+              onClick={onResetCheckIn}
+            />
+            <DateField
+              label="Check-out"
+              value={checkOut ? fmtDate(checkOut) : null}
+              placeholder="Select check-out"
+              active={checkoutActive}
+              onClick={onResetCheckOut}
+            />
+          </div>
+        </>
       )}
 
-      {bothSet ? (
+      {bothSet && (
         <>
           <div className="grid max-w-[420px] grid-cols-2 gap-4">
             <DateField label="Check-in" value={fmtDate(checkIn)} onClick={onResetCheckIn} />
             <DateField label="Check-out" value={fmtDate(checkOut)} onClick={onResetCheckOut} />
           </div>
 
-          <div className="mt-6 max-w-[420px] border border-line bg-white p-6">
+          <div className="mt-6 max-w-[420px]">
             <div role="status" aria-live="polite">
-              <h3 className="h-serif text-h5 text-ink">{nights}-night stay</h3>
-              <p className="mt-2 text-sm text-body">{stayDescription(pid, nights)}</p>
+              <span className="eyebrow block text-accent">Your Chosen Stay</span>
+              <p className="h-serif mt-2 text-base text-body">{stayDescription(pid, nights)}</p>
             </div>
 
             {stayRetreat && (
@@ -221,28 +304,6 @@ export default function DatePicker({
               />
             )}
           </div>
-        </>
-      ) : (
-        <>
-          <span className="label-sm mb-3 block text-ink">
-            {checkIn ? 'Select check-out' : 'Select check-in'}
-          </span>
-          <div className="max-w-[420px] border border-line bg-white p-5">
-            {!checkIn && (
-              <p className="mb-3 text-xs text-muted">Select your earliest possible check-in date.</p>
-            )}
-            <RanchCalendar
-              month={month}
-              onMonth={changeMonth}
-              selectedStart={checkIn}
-              selectedEnd={checkOut}
-              isEnabled={checkIn ? isEnabledCheckOut : isEnabledCheckIn}
-              isRetreat={isRetreat}
-              onPick={(d) => commit(d, checkIn ? 'checkout' : 'checkin')}
-              mode={checkIn ? 'checkout' : 'checkin'}
-            />
-          </div>
-          <RetreatList pid={pid} month={month} onLearnMore={setLearnMoreRetreat} />
         </>
       )}
 

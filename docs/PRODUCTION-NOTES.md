@@ -690,3 +690,40 @@ category:
 - Room cards follow wire 370:5323 exactly: totals read "plus taxes and fees" (pre-tax, matching
   `roomStayTotal()`), and the "View details" link is gone. `/room/:id` still exists but nothing
   links to it in drawer mode — either restore a link on the room name or retire the route.
+
+## Drawer + home-nav pass — 3 Sep 2026
+- Home nav (`HeroNav.jsx`) now matches the booking `Header`'s row exactly — fixed 80px height,
+  `items-center`, the same `px-5 md:px-10 xl:px-[103px]` insets — rather than the asymmetric
+  `py-6 md:pt-[51px]` padding it had before. That asymmetric padding was the actual bug: MENU and
+  Book now (flex-centred within the content box) sat ~13.5px lower than the absolutely-positioned
+  wordmark (centred on the full padding box), which is what read as "not on one line."
+- `RoomChips` is horizontal everywhere now (drawer and Program) — no `orientation` prop, since
+  both call sites wanted the same layout; adding one un-asked would have been an unused knob.
+  Fitting "Room 1  Guests −02+  +Add Room" on one line inside the drawer's 396px content width
+  required trimming the chip's own padding/gaps and the add-tile's padding (not `Counter`'s —
+  that component is shared with `AddOns.jsx` and its own box model was left untouched). Measured
+  with Playwright bounding boxes rather than eyeballed — the fit is real but tight (≈4px of slack
+  at 396px); a future label change on "Room" or a wider guest count would need re-measuring.
+- `DatePicker`/`Calendar` restructure (calendar above fields, helper copy inside the calendar,
+  per-cell borders, field highlighting, "Your Chosen Stay" summary) is one shared implementation
+  behind a `bare` prop — `true` only from `ReserveDrawer`, so the drawer's calendar sits directly
+  on its own beige ground while Program keeps the bordered white card. Everything else in the
+  restructure (ordering, helper placement, cell styling, field highlighting, summary styling) is
+  identical between the two entry modes, per the brief.
+- **Left out on purpose:** the old "Select your earliest possible check-in date." micro-copy and
+  the "SELECT CHECK-IN"/"SELECT CHECK-OUT" label that used to sit above the calendar. Both were
+  superseded by the new field placeholders ("Select check-in"/"Select check-out") directly below
+  the calendar and had no stated place in the reordered layout — removed rather than left stacked
+  on top of the now-redundant information. Flag if the standalone label was wanted back.
+- **Not fully resolved — mobile field wrap, 390px.** At 390px the Check-out field's "Select
+  check-out" placeholder wraps to two lines inside the fixed 50px field height. Measured via
+  `scrollHeight`/`clientHeight` — it does **not** clip or overflow (two tight lines fit inside the
+  48px content box), so this is a tight-but-functional fit, not a broken one. It reads more
+  cramped than the single-line Check-in field on the same row. Not fixed by shortening the copy,
+  since the placeholder text is dictated by the brief; would need either a `min-h` field (breaks
+  the 50px input-height token when it wraps) or a smaller mobile placeholder size to fully resolve
+  — flagged rather than changed unasked.
+- Verified with the same throwaway Playwright + axe scratch project (`pw-content`, not committed):
+  zero axe violations across the drawer in states A/B/C (Malibu and Hudson, 1440 and 390) and
+  `/program?entry=pages` state C at 1440; zero console/page errors across every walk. Screenshots
+  in `docs/screens/drawer-v3/`. `npm run lint` and `npm run build` green after every change.

@@ -112,10 +112,7 @@ export default function Program() {
       <hr className="my-8 border-line md:my-10" />
 
       <section className="pb-12">
-        <h2 className="eyebrow mb-2 font-medium text-ink">Choose your dates</h2>
-        <p className="mb-6 max-w-[520px] text-sm text-body">
-          {stayRules.blocksCopy}
-        </p>
+        <h2 className="eyebrow mb-6 font-medium text-ink">Choose your dates</h2>
         <DatePicker
           pid={pid}
           checkIn={checkIn}

@@ -5,10 +5,11 @@
    box, ± buttons at 24px, a fixed-width count column so the buttons never
    drift as the number changes width.
    ============================================================ */
-export default function Counter({ label, value, min = 0, max = 99, onChange, ariaLabel }) {
+export default function Counter({ label, value, min = 0, max = 99, onChange, ariaLabel, format }) {
   const dec = () => value > min && onChange(value - 1);
   const inc = () => value < max && onChange(value + 1);
   const name = ariaLabel || label || 'Count';
+  const display = format ? format(value) : value;
 
   return (
     <div className="flex items-center justify-between gap-3 rounded-brand border border-line bg-fill px-4 py-2">
@@ -23,7 +24,7 @@ export default function Counter({ label, value, min = 0, max = 99, onChange, ari
         >
           −
         </button>
-        <span className="w-8 text-center text-sm text-ink" aria-live="polite">{value}</span>
+        <span className="w-8 text-center text-sm text-ink" aria-live="polite">{display}</span>
         <button
           type="button"
           aria-label={'Increase ' + name}

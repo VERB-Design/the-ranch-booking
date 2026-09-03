@@ -70,6 +70,7 @@ export default function RanchCalendar({
   onPick,
   legend = true,
   mode = 'checkin',
+  helper,
 }) {
   const view = month; // { y, m }
   /* getDay() is Sunday-first (0–6); Monday-first needs the +6 %7 rotation. */
@@ -141,7 +142,7 @@ export default function RanchCalendar({
             Previous/Next buttons are activated — clicking them moves no
             focus, so without this the grid's dates change with nothing
             telling a non-sighted guest the visible month just did too. */}
-        <h3 className="text-xl font-light text-body" aria-live="polite" aria-atomic="true">
+        <h3 className="h-serif text-xl text-body" aria-live="polite" aria-atomic="true">
           {MONTH_NAMES[view.m]} {view.y}
         </h3>
         <button
@@ -154,7 +155,13 @@ export default function RanchCalendar({
         </button>
       </div>
 
-      <div className="eyebrow grid grid-cols-7 text-center text-strong" aria-hidden="true">
+      {/* The property's own stay-rules line — "Stays run in blocks of…" —
+          moved inside the calendar block (Sep 2026 pass) so it reads as
+          part of the calendar rather than a separate paragraph above it;
+          sits between the month heading and the weekday row. */}
+      {helper && <p className="text-xs text-muted">{helper}</p>}
+
+      <div className="eyebrow grid grid-cols-7 text-center text-[12px] text-strong" aria-hidden="true">
         {WEEKDAYS.map((w) => <span key={w} className="py-1">{w}</span>)}
       </div>
 
@@ -195,6 +202,20 @@ export default function RanchCalendar({
                   ? 'check-in date'
                   : availabilityWord;
 
+              /* Every cell — including disabled ones — carries a 1px
+                 `line` border so the grid reads as a grid; available,
+                 retreat and selected cells layer a stronger border/fill on
+                 top of that same base rather than going borderless, per
+                 the Sep 2026 pass. One border-colour utility per cell,
+                 chosen exclusively, so there is never a cascade fight
+                 between two border-color classes. */
+              const fillCls = selected ? 'bg-accent text-brown-25' : enabled ? 'bg-brown-100 text-strong' : '';
+              const borderCls = selected
+                ? 'border border-accent'
+                : enabled
+                  ? (retreat ? 'border-2 border-accent' : 'border border-accent-focus')
+                  : 'border border-line';
+
               return (
                 <button
                   key={i}
@@ -213,9 +234,10 @@ export default function RanchCalendar({
                   onKeyDown={(e) => onKeyDown(e, i)}
                   onClick={() => enabled && onPick(d)}
                   className={[
-                    'relative mx-auto grid h-8 w-8 place-items-center text-sm transition-colors',
+                    'relative mx-auto grid h-8 w-8 place-items-center text-[15px] transition-colors',
                     enabled ? 'cursor-pointer hover:rounded-sm hover:outline hover:outline-1 hover:outline-line-hover' : 'cursor-default text-disabled',
-                    selected ? 'bg-accent text-brown-25' : enabled ? (retreat ? RETREAT_SWATCH + ' text-strong' : AVAILABLE_SWATCH + ' text-strong') : '',
+                    fillCls,
+                    borderCls,
                     isStart && !isEnd ? 'rounded-l-sm' : '',
                     isEnd && !isStart ? 'rounded-r-sm' : '',
                     isStart && isEnd ? 'rounded-sm' : '',

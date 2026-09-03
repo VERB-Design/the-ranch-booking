@@ -132,7 +132,6 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
   const propertyMissing = config.multiProperty && !draft.property;
   const roomsOk = draft.rooms.every((r) => (r.adults || 0) >= 1);
   const canSubmit = !propertyMissing && !!draft.checkIn && !!draft.checkOut && roomsOk;
-  const stayRules = draft.property && D.properties[draft.property].stayRules;
 
   function chooseProperty(pid) {
     /* Rules differ per property (different check-in days, different
@@ -251,9 +250,6 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
 
           <div>
             <span className="label-sm mb-1.5 block text-ink">Choose Your Dates</span>
-            {stayRules && (
-              <p className="mb-4 max-w-[380px] text-xs text-muted">{stayRules.blocksCopy}</p>
-            )}
             {draft.property ? (
               <DatePicker
                 pid={draft.property}
@@ -268,9 +264,10 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 onResetCheckOut={() => setDraft((x) => ({ ...x, checkOut: null, extension: null }))}
                 onToggleExtra={(v) => setDraft((x) => ({ ...x, extension: v ? D.properties[x.property].stayRules.extensionType : null }))}
                 onChooseRetreatDates={(ci, co) => setDraft((x) => ({ ...x, checkIn: ci, checkOut: co || null, extension: null }))}
+                bare
               />
             ) : (
-              <p className="border border-line bg-white p-5 text-sm text-muted">Select a location to see available dates.</p>
+              <p className="text-sm text-muted">Select a location to see available dates.</p>
             )}
           </div>
 

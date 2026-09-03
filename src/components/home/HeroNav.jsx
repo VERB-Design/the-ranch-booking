@@ -10,11 +10,14 @@ import TextCta from './TextCta.jsx';
    the <nav> — Landing wraps it in the page's one real <header> landmark
    rather than nesting a second header inside the hero <section>. The
    booking Header in Chrome.jsx follows the same row so the two read as
-   one site.
+   one site — same fixed 80px height, items-center and side insets
+   (px-5 md:px-10 xl:px-[103px]) as Header, so the three items sit on
+   one centre line at every breakpoint instead of drifting under the
+   asymmetric padding the row used to carry.
    ============================================================ */
 export default function HeroNav({ onBookNow }) {
   return (
-    <nav className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 py-6 md:px-10 md:pt-[51px] xl:px-[103px]">
+    <nav className="relative mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-5 md:px-10 xl:px-[103px]">
       <MenuButton tone="light" />
       <img
         src="/brand/the-ranch-nav-white.svg"
