@@ -69,7 +69,7 @@ export default function Stepper() {
                   <span
                     aria-hidden="true"
                     className={
-                      'grid h-[19px] w-[19px] shrink-0 place-items-center rounded-full text-[10px] leading-none ' +
+                      'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] leading-none ' +
                       (status === 'current'
                         ? 'bg-dark text-light'
                         : done

@@ -48,7 +48,7 @@ function useSummary() {
 }
 
 function SummaryRows() {
-  const { state, config, p, n, bookedRoomLines, removeAddon } = useSummary();
+  const { state, config, p, n, prop, bookedRoomLines, removeAddon } = useSummary();
   const roomsSet = !!state.property;
   const datesSet = !!(state.checkIn && state.checkOut);
   const roomCount = (state.rooms || []).length;
@@ -65,6 +65,7 @@ function SummaryRows() {
     <div className="divide-y divide-line px-5">
       {(datesSet || roomsSet) && (
         <div className="py-3 text-sm text-ink">
+          {prop && <p className="mb-1 text-ink">{prop.name}</p>}
           {datesSet && (
             <p>
               {fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}
