@@ -149,18 +149,30 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected = false, p
     </div>
   );
 
-  /* Horizontal: the photo runs to the card's edge and stretches to the
-     card's height; the copy column carries the padding. */
-  const mediaClass = 'w-full shrink-0 aspect-[4/3] ' + (vertical ? 'md:aspect-square' : 'md:aspect-auto md:w-[300px] md:self-stretch');
-  const media = room.images && room.images.length ? (
-    <img
-      src={room.images[0].src}
-      alt={room.images[0].alt || room.name}
-      loading="lazy"
-      className={mediaClass + ' object-cover'}
-    />
+  /* Horizontal: the photo runs to the card's edge and fills whatever
+     height the copy column needs — never the other way round, so a tall
+     photo cannot stretch the card past its content. On a phone it sits
+     above the copy at 4:3. */
+  const vMediaClass = 'w-full shrink-0 aspect-[4/3] md:aspect-square object-cover';
+  const media = vertical ? (
+    room.images && room.images.length ? (
+      <img src={room.images[0].src} alt={room.images[0].alt || room.name} loading="lazy" className={vMediaClass} />
+    ) : (
+      <span className={'ph-img ' + vMediaClass} />
+    )
   ) : (
-    <span className={'ph-img ' + mediaClass} />
+    <div className="relative w-full shrink-0 aspect-[4/3] md:aspect-auto md:w-[300px] md:self-stretch">
+      {room.images && room.images.length ? (
+        <img
+          src={room.images[0].src}
+          alt={room.images[0].alt || room.name}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : (
+        <span className="ph-img absolute inset-0 h-full w-full" />
+      )}
+    </div>
   );
 
   if (vertical) {
