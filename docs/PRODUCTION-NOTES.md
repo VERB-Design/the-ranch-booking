@@ -727,3 +727,9 @@ category:
   zero axe violations across the drawer in states A/B/C (Malibu and Hudson, 1440 and 390) and
   `/program?entry=pages` state C at 1440; zero console/page errors across every walk. Screenshots
   in `docs/screens/drawer-v3/`. `npm run lint` and `npm run build` green after every change.
+
+## Add-on durations — 3 Sep 2026
+- Durations added to the elective detail lines (Double Massage 100 min is sourced; Private
+  Fitness & Yoga, Acupuncture, Reiki, Energy Healing, Hypnotherapy, Physical Therapy 60 min;
+  Chiropractic 30 min; Colon Hydrotherapy 45 min; IV Therapy 45–60 min) are **typical session
+  lengths, not from the site** — confirm with the client's spa menu.
