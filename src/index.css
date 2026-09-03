@@ -23,6 +23,12 @@
    a hex into a component when a token already names it.
    ============================================================ */
 @theme {
+  /* One timing for the whole build — every hover, fade and slide runs at
+     300ms so the interface feels like one thing moving. Tailwind's
+     `transition-*` utilities read these; the base layer below covers the
+     elements that never asked for a utility. */
+  --default-transition-duration: 300ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* ---------- Type families ---------- */
   /* Times New Roman is served by the client's Adobe Fonts kit (index.html,
      use.typekit.net/sva0dtq.css) as "times-new-roman", 400 and 700 with
@@ -124,6 +130,17 @@
   --text-sm: 14px;
   --text-xs: 12px;
   --text-tiny: 10px;
+}
+
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    a, button, input, select, textarea, summary,
+    [role="gridcell"], [role="option"], [role="menuitem"], [role="tab"] {
+      transition-property: color, background-color, border-color, outline-color, opacity, box-shadow, transform, text-decoration-color;
+      transition-duration: 300ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
 }
 
 body {

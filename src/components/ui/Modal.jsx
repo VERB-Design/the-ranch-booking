@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react';
+import useMountTransition from '../../useMountTransition.js';
 
 const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,[tabindex]:not([tabindex="-1"])';
 
 /* Minimal accessible dialog: traps Tab inside the panel, closes on Esc,
-   restores focus to whatever opened it. No animation library — this is a
-   utility dialog (fee breakdowns, retreat info), not a page transition. */
+   restores focus to whatever opened it. Fades in and out over the build's
+   one 300ms timing via useMountTransition. */
 export default function Modal({ open, onClose, title, children, className = '', closeLabel = null }) {
   const panelRef = useRef(null);
   const openerRef = useRef(null);
+  const { mounted, shown } = useMountTransition(open, 300);
 
   useEffect(() => {
     if (!open) return;
@@ -33,11 +35,11 @@ export default function Modal({ open, onClose, title, children, className = '', 
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!mounted) return null;
 
   return (
     <div className="fixed inset-0 z-[2500]">
-      <div className="absolute inset-0 bg-dark/50" onClick={onClose} />
+      <div className={'absolute inset-0 bg-dark/50 transition-opacity duration-300 motion-reduce:transition-none ' + (shown ? 'opacity-100' : 'opacity-0')} onClick={onClose} />
       <div
         ref={panelRef}
         role="dialog"
@@ -50,7 +52,9 @@ export default function Modal({ open, onClose, title, children, className = '', 
              inside — RoomCard's price block is text-right, and a dialog's
              own copy should never depend on where it was triggered from. */
           'absolute left-1/2 top-1/2 max-h-[85vh] w-[calc(100vw-32px)] max-w-[480px] -translate-x-1/2 -translate-y-1/2 ' +
-          'overflow-y-auto rounded-lg bg-light text-left shadow-2xl outline-none ' + className
+          'overflow-y-auto rounded-lg bg-light text-left shadow-2xl outline-none ' +
+          'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ' +
+          (shown ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.98]') + ' ' + className
         }
       >
         <div className="flex items-start justify-between gap-4 border-b border-line px-6 py-5">

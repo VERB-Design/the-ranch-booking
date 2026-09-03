@@ -165,7 +165,7 @@ export default function RanchCalendar({
         {WEEKDAYS.map((w) => <span key={w} className="py-1">{w}</span>)}
       </div>
 
-      <div role="grid" aria-label={MONTH_NAMES[view.m] + ' ' + view.y} className="grid grid-cols-7 gap-y-1">
+      <div role="grid" aria-label={MONTH_NAMES[view.m] + ' ' + view.y} className="grid grid-cols-7 pl-px pt-px">
         {/* A role="grid" requires role="row" children owning the
             role="gridcell" children — the accessibility-tree structure the
             grid pattern actually promises, which six bare gridcells-in-a-row
@@ -182,11 +182,14 @@ export default function RanchCalendar({
              apply where there is at least one real cell to own; an
              all-blank trailing week is decorative layout, not a grid row. */
           const hasRealDay = weekCells.some(Boolean);
+          /* With square, gutterless cells a blank sixth week would be a
+             56px void, so it is simply not drawn. */
+          if (!hasRealDay) return null;
           return (
-          <div key={week} role={hasRealDay ? 'row' : undefined} className="contents">
+          <div key={week} role="row" className="contents">
             {weekCells.map((d, j) => {
               const i = week * 7 + j;
-              if (!d) return <span key={i} role="presentation" aria-hidden="true" />;
+              if (!d) return <span key={i} role="presentation" aria-hidden="true" className="-ml-px -mt-px aspect-square w-full" />;
 
               const enabled = isEnabled(d);
               const retreat = isRetreat(d);
@@ -233,15 +236,17 @@ export default function RanchCalendar({
                   onFocus={() => setActiveIndex(i)}
                   onKeyDown={(e) => onKeyDown(e, i)}
                   onClick={() => enabled && onPick(d)}
+                  /* Square cells with no gutters: every cell is a full-width
+                     square whose 1px border overlaps its neighbour's by a
+                     pixel, so the grid reads as one ruled table. Cells with
+                     a stronger border sit a layer up so theirs wins. */
                   className={[
-                    'relative mx-auto grid h-8 w-8 place-items-center text-[15px] transition-colors',
-                    enabled ? 'cursor-pointer hover:rounded-sm hover:outline hover:outline-1 hover:outline-line-hover' : 'cursor-default text-disabled',
+                    'relative -ml-px -mt-px grid aspect-square w-full place-items-center text-[15px] transition-colors',
+                    enabled ? 'cursor-pointer hover:z-20 hover:outline hover:outline-1 hover:outline-line-hover' : 'cursor-default text-disabled',
+                    enabled || selected ? 'z-10' : '',
                     fillCls,
                     borderCls,
-                    isStart && !isEnd ? 'rounded-l-sm' : '',
-                    isEnd && !isStart ? 'rounded-r-sm' : '',
-                    isStart && isEnd ? 'rounded-sm' : '',
-                    'focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2',
+                    'focus-visible:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2',
                   ].join(' ')}
                 >
                   {d.getDate()}

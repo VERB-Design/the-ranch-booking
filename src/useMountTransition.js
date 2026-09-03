@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
    Uses a short timeout rather than requestAnimationFrame: rAF is throttled
    in background tabs and headless runs, which would leave panels stuck at
    their "out" style. */
-export default function useMountTransition(open, duration = 500) {
+export default function useMountTransition(open, duration = 300) {
   const [mounted, setMounted] = useState(open);
   const [shown, setShown] = useState(open);
 

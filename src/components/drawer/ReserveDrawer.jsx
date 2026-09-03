@@ -39,7 +39,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
   const config = useConfig();
   const toast = useToast();
   const navigate = useNavigate();
-  const { mounted, shown } = useMountTransition(open, 400);
+  const { mounted, shown } = useMountTransition(open, 300);
   const titleId = useId();
 
   const [propOpen, setPropOpen] = useState(false);
@@ -184,7 +184,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
   return (
     <div role="dialog" aria-modal="true" aria-labelledby={titleId} className="fixed inset-0 z-[1000]">
       <div
-        className={'absolute inset-0 bg-dark/40 transition-opacity duration-400 motion-reduce:transition-none ' + (shown ? 'opacity-100' : 'opacity-0')}
+        className={'absolute inset-0 bg-dark/40 transition-opacity duration-300 motion-reduce:transition-none ' + (shown ? 'opacity-100' : 'opacity-0')}
         onClick={onClose}
       />
       <aside
@@ -196,7 +196,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
              itself (shown ? translate-x-0 : translate-x-full) is unchanged,
              so the panel still ends up in the right place — it just gets
              there in one frame instead of 400ms of motion. */
-          'transition-transform duration-400 ease-out motion-reduce:transition-none ' + (shown ? 'translate-x-0' : 'translate-x-full')
+          'transition-transform duration-300 ease-out motion-reduce:transition-none ' + (shown ? 'translate-x-0' : 'translate-x-full')
         }
       >
         <div className="flex flex-1 flex-col gap-5 px-6 py-8 md:px-8">
@@ -273,9 +273,14 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
 
           <hr className="border-line" />
 
-          <Button variant="primary" onClick={apply} disabled={!canSubmit} className="mt-auto w-full">
-            {ctaLabel}
-          </Button>
+          {/* CHECK RATES never scrolls away: it sticks to the bottom of
+              the drawer's own scroll area, on the drawer ground, and only
+              settles into the flow once everything above it is in view. */}
+          <div className="sticky bottom-0 -mx-6 mt-auto bg-light px-6 pb-6 pt-4 md:-mx-8 md:px-8">
+            <Button variant="primary" onClick={apply} disabled={!canSubmit} className="w-full">
+              {ctaLabel}
+            </Button>
+          </div>
         </div>
       </aside>
     </div>
