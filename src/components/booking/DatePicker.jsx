@@ -79,7 +79,13 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
         }
       >
         <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
-        <span id={labelId + '-value'}>{placeholder}</span>
+        {/* On a phone the field reads "Select date" — its caption carries the
+            check-in / check-out meaning for assistive tech, position for
+            everyone else. */}
+        <span id={labelId + '-value'}>
+          <span className="md:hidden">Select date</span>
+          <span className="hidden md:inline">{placeholder}</span>
+        </span>
       </button>
     </div>
   );
