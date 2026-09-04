@@ -239,7 +239,9 @@ export function IncludesBelowMobile() {
   const { pathname } = useLocation();
   if (NO_RAIL.has(pathname)) return null;
   return (
-    <div className="px-5 pb-8 md:px-10 lg:hidden">
+    {/* 48px above (32 from the content column + 16 here) and 48 below once
+        the fixed Continue bar is accounted for. */}
+    <div className="px-5 pt-4 pb-[34px] md:px-10 lg:hidden">
       <EveryStayIncludes />
     </div>
   );
