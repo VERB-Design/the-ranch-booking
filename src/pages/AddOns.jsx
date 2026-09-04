@@ -219,30 +219,30 @@ export default function AddOns() {
                    Edit / Remove per booking, and Add another. The row beneath
                    is inert; the overlay's links are the only controls. */
                 return (
-                  <div key={addon.id} className="relative" style={{ minHeight: entries.length * 40 + 56 }}>
+                  <div key={addon.id} className="relative" style={{ minHeight: entries.length * 72 + 24 }}>
                     <div inert="" aria-hidden="true" className="opacity-30">{row}</div>
-                    <div className="absolute inset-0 flex flex-col justify-center gap-2 bg-light/85 px-5">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-light/85 px-5 text-center">
                       {entries.map((e) => (
-                        <div key={e.index} className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                          <span className="label-sm inline-flex items-center gap-2 bg-accent px-3 py-1.5 text-brown-25">
-                            <svg className="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
-                              <path d="M2 6.5 L4.8 9.2 L10 3.4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            Added
-                          </span>
-                          <span className="text-sm text-ink">
-                            {addon.name} · {e.day ? fmtShort(e.day) : ''}{e.time ? ', ' + e.time : ''}
-                            {e.party > 1 ? ' · ' + e.party + ' guests' : ''}
-                          </span>
-                          <span className="flex items-center gap-4">
+                        <div key={e.index} className="flex flex-col items-center gap-3">
+                          <div className="flex flex-wrap items-center justify-center gap-3">
+                            <span className="label-sm inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1.5 text-brown-25">
+                              <svg className="h-3 w-3" viewBox="0 0 12 12" aria-hidden="true">
+                                <path d="M2 6.5 L4.8 9.2 L10 3.4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                              Added
+                            </span>
+                            <span className="text-sm text-ink">
+                              {addon.name} · {e.day ? fmtShort(e.day) : ''}{e.time ? ', ' + e.time : ''}
+                              {e.party > 1 ? ' · ' + e.party + ' guests' : ''}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-center gap-5">
                             <button type="button" onClick={() => editEntry(addon, e.index)} aria-label={'Edit ' + addon.name} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">Edit</button>
                             <button type="button" onClick={() => removeEntry(e.index)} aria-label={'Remove ' + addon.name} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">Remove</button>
-                          </span>
+                            <button type="button" onClick={() => addAnother(addon)} className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">Add another</button>
+                          </div>
                         </div>
                       ))}
-                      <button type="button" onClick={() => addAnother(addon)} className="label-sm self-start text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2">
-                        Add another
-                      </button>
                     </div>
                   </div>
                 );
