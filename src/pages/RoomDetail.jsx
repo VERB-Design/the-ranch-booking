@@ -4,9 +4,7 @@ import { BackLink } from '../components/Chrome.jsx';
 import { useStep } from '../components/Layout.jsx';
 import Button from '../components/ui/Button.jsx';
 import Chip from '../components/ui/Chip.jsx';
-import FeeModal from '../components/FeeModal.jsx';
-import { money } from '../utils.js';
-import { D, activeRoomIndex, nextUnassigned, nights, roomStayTotal, useBooking } from '../store.jsx';
+import { D, activeRoomIndex, nextUnassigned, useBooking } from '../store.jsx';
 import { nextPathAfter, useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
@@ -21,12 +19,10 @@ export default function RoomDetail() {
   const { state, set } = useBooking();
   const config = useConfig();
   const navigate = useNavigate();
-  const [feesOpen, setFeesOpen] = useState(false);
   const [activeImg, setActiveImg] = useState(0);
 
   const room = D.roomById(id);
   const prop = room ? D.properties[room.property] : null;
-  const n = Math.max(1, nights(state));
   usePageTitle(room ? room.name : 'Room Details');
 
   useEffect(() => { setActiveImg(0); }, [id]);
@@ -34,8 +30,6 @@ export default function RoomDetail() {
   const allRooms = state.rooms || [];
   const multi = config.multiRoom && allRooms.length > 1;
   const activeIdx = activeRoomIndex(state);
-  const adults = (allRooms[activeIdx] && allRooms[activeIdx].adults) || 1;
-  const total = room ? roomStayTotal(state, room, adults) : 0;
 
   function assign() {
     if (!room) return;
@@ -45,7 +39,7 @@ export default function RoomDetail() {
     navigate(stillEmpty === -1 ? nextPathAfter(config, 'rooms') : '/rooms');
   }
 
-  useStep({ canContinue: !!room, label: 'Select Room', onContinue: assign });
+  useStep({ canContinue: !!room, label: 'Select this room', onContinue: assign });
 
   if (!room || !prop) {
     navigate('/rooms');
@@ -118,31 +112,14 @@ export default function RoomDetail() {
         </div>
 
         <aside className="lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:self-start">
-          <div className="bg-light">
-            <div className="border-b border-line bg-light p-5 text-center">
-              <p className="eyebrow text-strong">{room.name}</p>
-              <p className="mt-1 text-ink">
-                <span className="text-[20px] font-medium leading-none">{money(room.rate, 0)}</span>
-                <span className="text-sm text-muted"> per person / night</span>
-              </p>
-            </div>
-            <div className="p-5 text-sm">
-              <div className="flex justify-between gap-3">
-                <span>{n} night{n > 1 ? 's' : ''} · {adults} guest{adults > 1 ? 's' : ''}</span>
-                <span>{money(total, 0)}</span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setFeesOpen(true)}
-                className="mt-3 block border-t border-line pt-3 text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-              >
-                plus taxes and fees
-              </button>
-              <FeeModal open={feesOpen} onClose={() => setFeesOpen(false)} nightly={room.rate} nights={n} adults={adults} pid={room.property} />
-              <Button variant="primary" onClick={assign} className="mt-4 w-full">
-                Select Room
-              </Button>
-            </div>
+          {/* Details only — the rate lives on the room card and in the
+              overview, so this panel just names the room and selects it. */}
+          <div className="bg-light p-5">
+            <p className="eyebrow text-center text-strong">{room.name}</p>
+            <p className="mt-2 text-center text-sm text-body">{room.detail}</p>
+            <Button variant="primary" onClick={assign} className="mt-5 w-full">
+              Select this room
+            </Button>
           </div>
         </aside>
       </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button.jsx';
 import FeeModal from './FeeModal.jsx';
 import { money } from '../utils.js';
-import { activeRoomIndex, nextUnassigned, nights, roomStayTotal, useBooking } from '../store.jsx';
+import { activeRoomIndex, nextUnassigned, useBooking } from '../store.jsx';
 import { cardLayout, nextPathAfter, useConfig } from '../config.jsx';
 
 /* ============================================================
@@ -23,11 +23,6 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
   const config = useConfig();
   const layout = cardLayout(config);
   const choose = useChooseRoom();
-  const { state } = useBooking();
-  const n = Math.max(1, nights(state));
-  const idx = activeRoomIndex(state);
-  const adults = (state.rooms && state.rooms[idx] && state.rooms[idx].adults) || 1;
-  const total = roomStayTotal(state, room, adults);
   const vertical = layout === 'vertical';
 
   return (
@@ -35,7 +30,8 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
       room={room}
       layout={layout}
       selected={selected}
-      priceSlot={<PriceBlock nightly={room.rate} nights={n} adults={adults} total={total} pid={room.property} />}
+      /* No rates on the Rooms step — the programme is priced in the overview. */
+      priceSlot={null}
       actions={
         <div className={vertical ? 'flex flex-col gap-2' : 'flex flex-wrap items-center gap-4'}>
           <Button
@@ -47,6 +43,13 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
           >
             {selected ? 'Selected' : ctaLabel}
           </Button>
+          <button
+            type="button"
+            onClick={() => navigate('/room/' + room.id)}
+            className="label-sm text-ink underline underline-offset-4 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+          >
+            Details
+          </button>
         </div>
       }
     />
