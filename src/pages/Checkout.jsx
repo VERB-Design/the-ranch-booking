@@ -164,6 +164,9 @@ export default function Checkout() {
           </div>
         )}
 
+        {/* Guest details sit as one stack with a hairline of page beige
+            between them; payment keeps its own space below. */}
+        <div className="flex flex-col gap-px">
         <section className="bg-light p-6">
           <h2 className="h-serif mb-4 text-lg text-ink">Primary Contact</h2>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -286,6 +289,7 @@ export default function Checkout() {
             </section>
           );
         })}
+        </div>
 
         <section className="bg-light p-6">
           <h2 className="h-serif mb-4 text-lg text-ink">Payment</h2>
