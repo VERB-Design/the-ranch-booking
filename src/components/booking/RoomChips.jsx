@@ -38,7 +38,7 @@ export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onR
         <div key={r.uid} className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">
             <Counter
-              label={<><span className="label-sm mr-2 text-muted">Room {i + 1}</span>Guests</>}
+              label={<><span className="label-sm mr-4 text-muted">Room {i + 1}</span>Guests</>}
               ariaLabel={'Guests, Room ' + pad2(i + 1)}
               value={r.adults}
               format={pad2}
