@@ -2,7 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { ButtonBar, Footer, Header, Toast } from './Chrome.jsx';
-import { StayRail, StayRailMobile } from './StayRail.jsx';
+import { IncludesBelowMobile, StayRail, StayRailMobile } from './StayRail.jsx';
 import ReserveDrawer from './drawer/ReserveDrawer.jsx';
 import ConfigPanel from './ConfigPanel.jsx';
 import Stepper from './Stepper.jsx';
@@ -101,6 +101,7 @@ export default function Layout() {
           </div>
           <StayRail />
         </div>
+        <IncludesBelowMobile />
       </main>
 
       {stepConfig && (

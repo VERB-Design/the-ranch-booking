@@ -201,11 +201,20 @@ export function StayRailMobile() {
               </div>
             </div>
           )}
-          <div className="px-5 pb-5">
-            <EveryStayIncludes />
-          </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+/* Phone only: the includes list sits at the foot of the page, after all the
+   step's own content, rather than inside the collapsed overview. */
+export function IncludesBelowMobile() {
+  const { pathname } = useLocation();
+  if (NO_RAIL.has(pathname)) return null;
+  return (
+    <div className="px-5 pb-8 md:px-10 lg:hidden">
+      <EveryStayIncludes />
     </div>
   );
 }
