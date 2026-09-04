@@ -47,7 +47,8 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
         (checked ? 'bg-brown-100' : 'bg-light')
       }
     >
-      <label className="flex min-w-0 flex-1 cursor-pointer flex-col gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2">
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+      <label className="flex min-w-0 cursor-pointer flex-col gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2">
         <input type="radio" name={groupName} checked={checked} onChange={onSelect} className="sr-only" />
         {dateLabel && (
           <span
@@ -61,6 +62,14 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
         )}
         <span className="h-serif text-[18px] leading-tight text-ink">{title}</span>
       </label>
+      <button
+        type="button"
+        onClick={onLearnMore}
+        className="w-fit text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+      >
+        Learn more
+      </button>
+      </div>
       <div className="flex shrink-0 flex-col items-end gap-2">
         <span
           aria-hidden="true"
@@ -73,13 +82,6 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
             <CheckIcon />
           </span>
         </span>
-        <button
-          type="button"
-          onClick={onLearnMore}
-          className="text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-        >
-          Learn more
-        </button>
       </div>
     </div>
   );
@@ -103,7 +105,7 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
    chooser (docs/BRIEF.md's "Drawer entry" — one component so the two
    entry modes can't drift into showing the choice differently).
    ============================================================ */
-export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = true, value, onChange, groupName = 'program-choice', className = '' }) {
+export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = true, value, onChange, groupName = 'program-choice', className = '', modalContainer = null }) {
   const [learnMoreRetreat, setLearnMoreRetreat] = useState(false);
   const [learnMoreStandard, setLearnMoreStandard] = useState(false);
 
@@ -145,6 +147,7 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
         open={learnMoreRetreat}
         retreat={retreat}
         pid={pid}
+        container={modalContainer}
         onClose={() => setLearnMoreRetreat(false)}
         onChooseDates={() => {
           onChange({ type: 'retreat', id: retreat.date });
@@ -152,7 +155,7 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
         }}
       />
 
-      <Modal open={learnMoreStandard} onClose={() => setLearnMoreStandard(false)} title={standardName}>
+      <Modal open={learnMoreStandard} onClose={() => setLearnMoreStandard(false)} title={standardName} container={modalContainer}>
         <p className="text-sm text-body">{prop.programDesc}</p>
       </Modal>
     </div>

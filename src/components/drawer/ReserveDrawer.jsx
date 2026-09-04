@@ -402,6 +402,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
               )}
 
               <ProgramChoice
+                modalContainer={panelRef.current}
                 pid={draft.property}
                 checkIn={draft.checkIn}
                 checkOut={draft.checkOut}

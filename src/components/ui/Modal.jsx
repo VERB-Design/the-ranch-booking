@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import useMountTransition from '../../useMountTransition.js';
 
 const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,[tabindex]:not([tabindex="-1"])';
@@ -6,7 +7,7 @@ const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,[tabinde
 /* Minimal accessible dialog: traps Tab inside the panel, closes on Esc,
    restores focus to whatever opened it. Fades in and out over the build's
    one 300ms timing via useMountTransition. */
-export default function Modal({ open, onClose, title, children, className = '', closeLabel = null }) {
+export default function Modal({ open, onClose, title, children, className = '', closeLabel = null, container = null }) {
   const panelRef = useRef(null);
   const openerRef = useRef(null);
   const { mounted, shown } = useMountTransition(open, 300);
@@ -51,8 +52,10 @@ export default function Modal({ open, onClose, title, children, className = '', 
 
   if (!mounted) return null;
 
-  return (
-    <div className="fixed inset-0 z-[2500]">
+  /* With a `container` the dialog is portaled into it and fills it — a
+     modal that opens inside the booking drawer rather than over the page. */
+  const node = (
+    <div className={(container ? 'absolute' : 'fixed') + ' inset-0 z-[2500]'}>
       <div className={'absolute inset-0 bg-dark/50 transition-opacity duration-300 motion-reduce:transition-none ' + (shown ? 'opacity-100' : 'opacity-0')} onClick={onClose} />
       <div
         ref={panelRef}
@@ -93,4 +96,5 @@ export default function Modal({ open, onClose, title, children, className = '', 
       </div>
     </div>
   );
+  return container ? createPortal(node, container) : node;
 }

@@ -18,13 +18,13 @@ function fmtRange(a, b) {
    date on the calendar is just selecting a date, per the wires. Only
    this explicit button changes the booking.
    ============================================================ */
-export default function RetreatModal({ open, retreat, pid, onClose, onChooseDates }) {
+export default function RetreatModal({ open, retreat, pid, onClose, onChooseDates, container = null }) {
   if (!retreat) return null;
   const checkInDate = parse(retreat.date);
   const checkOutDate = retreatDisplayCheckout(pid, checkInDate);
 
   return (
-    <Modal open={open} onClose={onClose} title={retreat.name}>
+    <Modal open={open} onClose={onClose} title={retreat.name} container={container}>
       {checkOutDate && (
         <p className="label-sm mb-3 text-muted">{fmtRange(checkInDate, checkOutDate)}</p>
       )}
