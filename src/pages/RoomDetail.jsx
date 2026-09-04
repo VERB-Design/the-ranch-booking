@@ -4,7 +4,7 @@ import { BackLink } from '../components/Chrome.jsx';
 import { useStep } from '../components/Layout.jsx';
 import FeeModal from '../components/FeeModal.jsx';
 import HeroGallery from '../components/HeroGallery.jsx';
-import { Faqs, LocationMap, OtherRooms } from '../components/RoomSections.jsx';
+import { Faqs, OtherRooms } from '../components/RoomSections.jsx';
 import Button from '../components/ui/Button.jsx';
 import Chip from '../components/ui/Chip.jsx';
 import { money, naturalJoin } from '../utils.js';
@@ -100,7 +100,6 @@ export default function RoomDetail() {
             </div>
           </section>
 
-          <LocationMap prop={prop} />
           <Faqs pid={prop.id} />
           <OtherRooms room={room} />
 
