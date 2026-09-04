@@ -41,7 +41,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
   if (value) {
     return (
       <div className={className}>
-        <span id={labelId} className="label-sm text-muted sr-only md:not-sr-only md:mb-1.5 md:block">{label}</span>
+        <span id={labelId} className="sr-only">{label}</span>
         <button
           type="button"
           onClick={onClick}
@@ -67,7 +67,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
      controls is showing. */
   return (
     <div className={className}>
-      <span id={labelId} className="label-sm text-muted sr-only md:not-sr-only md:mb-1.5 md:block">{label}</span>
+      <span id={labelId} className="sr-only">{label}</span>
       <button
         type="button"
         onClick={onClick}
@@ -79,13 +79,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
         }
       >
         <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
-        {/* On a phone the field reads "Select date" — its caption carries the
-            check-in / check-out meaning for assistive tech, position for
-            everyone else. */}
-        <span id={labelId + '-value'}>
-          <span className="md:hidden">Select date</span>
-          <span className="hidden md:inline">{placeholder}</span>
-        </span>
+        <span id={labelId + '-value'}>{placeholder}</span>
       </button>
     </div>
   );
@@ -300,16 +294,16 @@ export default function DatePicker({
       <div ref={wrapRef} className="relative max-w-[420px]">
         <div className="grid grid-cols-2 gap-4">
           <DateField
-            label="Check-in"
+            label="Arrival"
             value={checkIn ? fmtDate(checkIn) : null}
-            placeholder="Select check-in"
+            placeholder="Arrival"
             active={checkinActive}
             onClick={openCheckIn}
           />
           <DateField
-            label="Check-out"
+            label="Departure"
             value={checkOut ? fmtDate(checkOut) : null}
-            placeholder="Select check-out"
+            placeholder="Departure"
             active={checkoutActive}
             onClick={openCheckOut}
           />

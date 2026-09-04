@@ -321,11 +321,11 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
               </div>
 
               <div>
-                <span className="label-sm mb-1.5 block text-accent">Promo Code</span>
                 <div className="flex h-[50px] items-center rounded-brand border border-line bg-fill px-4">
                   <input
                     type="text"
                     aria-label="Promo code"
+                    placeholder="Promo code"
                     value={draft.promo}
                     readOnly={draft.promoApplied}
                     onChange={(e) => setDraft((d) => ({ ...d, promo: e.target.value }))}
