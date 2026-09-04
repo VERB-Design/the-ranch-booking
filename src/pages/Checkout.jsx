@@ -167,7 +167,7 @@ export default function Checkout() {
         {/* Guest details sit as one stack with a hairline of page beige
             between them; payment keeps its own space below. */}
         <div className="flex flex-col gap-px">
-        <section className="bg-light p-6">
+        <section className="bg-light p-5 md:p-6">
           <h2 className="h-serif mb-4 text-lg text-ink">Primary Contact</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field
@@ -242,7 +242,7 @@ export default function Checkout() {
         {guestCards.map((g, i) => {
           const ge = (errors.guests && errors.guests[i]) || {};
           return (
-            <section key={i} className="bg-light p-6">
+            <section key={i} className="bg-light p-5 md:p-6">
               <h2 className="h-serif mb-4 text-lg text-ink">Guest {i + 2}</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field
@@ -291,7 +291,7 @@ export default function Checkout() {
         })}
         </div>
 
-        <section className="bg-light p-6">
+        <section className="bg-light p-5 md:p-6">
           <h2 className="h-serif mb-4 text-lg text-ink">Payment</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field
@@ -352,7 +352,7 @@ export default function Checkout() {
         </section>
       </div>
 
-      <div className="bg-light p-6 lg:hidden">
+      <div className="bg-light p-5 md:p-6 lg:hidden">
         <h2 className="h-serif mb-3 text-lg text-ink">{prop.name}</h2>
         <p className="text-sm text-body">
           {fmtShort(state.checkIn)} – {fmtShort(state.checkOut)}, {n} nights

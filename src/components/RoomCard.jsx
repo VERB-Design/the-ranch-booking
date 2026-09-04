@@ -188,7 +188,7 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
     <article aria-labelledby={headingId} className={'transition-colors ' + borderClasses + ' ' + className}>
       <div className="flex max-md:flex-col">
         {media}
-        <div className="flex min-w-0 flex-1 flex-col p-7">
+        <div className="flex min-w-0 flex-1 flex-col p-5 md:p-7">
           <h2 id={headingId} className="h-serif text-lg text-ink md:text-xl">{room.name}</h2>
           <p className="mt-1 text-sm text-body">{room.detail}</p>
           <p className="mt-3 text-sm leading-relaxed text-body line-clamp-3">{room.desc}</p>

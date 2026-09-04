@@ -35,7 +35,7 @@ export default function Location() {
               className="group flex flex-col bg-light text-left transition-colors hover:bg-fill focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
             >
               <img src={p.image} alt={p.imageAlt} className="h-[258px] w-full object-cover" />
-              <span className="flex flex-1 flex-col p-6">
+              <span className="flex flex-1 flex-col p-5 md:p-6">
                 <span className="eyebrow text-accent">{p.category}</span>
                 <span className="h-serif mt-1 text-h5 text-ink">{p.name}</span>
                 <span className="mt-2 text-sm text-body">{p.desc}</span>
