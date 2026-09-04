@@ -1,41 +1,41 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BackLink } from '../components/Chrome.jsx';
 import { useStep } from '../components/Layout.jsx';
 import FeeModal from '../components/FeeModal.jsx';
+import HeroGallery from '../components/HeroGallery.jsx';
+import { Faqs, LocationMap, OtherRooms } from '../components/RoomSections.jsx';
 import Button from '../components/ui/Button.jsx';
 import Chip from '../components/ui/Chip.jsx';
-import { money } from '../utils.js';
+import { money, naturalJoin } from '../utils.js';
 import { D, activeRoomIndex, nextUnassigned, nights, roomStayTotal, useBooking } from '../store.jsx';
 import { nextPathAfter, useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
 
-/* Room detail — one programme rate, so this page is the room's full
-   description plus a single "Select Room" action rather than a rate
-   list. HeroGallery / RoomSections (reviews, location map, FAQs, other
-   rooms) were Dolli-era sections built on data this model no longer has
-   (rate plans, guest reviews) — dropped rather than left calling
-   functions that no longer exist. Re-add against real content later. */
+/* Room detail — Dolli base's shape: a full-width hero gallery above
+   everything, then copy on the left (stats strip, description, what
+   every stay includes, amenities, where you'll be, FAQs, other rooms,
+   policies) with the stay's sticky rate panel on the right. One
+   programme rate per room, so the panel is a single price and "Select
+   this room" rather than Dolli's rate-plan list. */
 export default function RoomDetail() {
   const { id } = useParams();
   const { state, set } = useBooking();
   const config = useConfig();
   const navigate = useNavigate();
   const [feesOpen, setFeesOpen] = useState(false);
-  const [activeImg, setActiveImg] = useState(0);
 
   const room = D.roomById(id);
   const prop = room ? D.properties[room.property] : null;
   const n = Math.max(1, nights(state));
   usePageTitle(room ? room.name : 'Room Details');
 
-  useEffect(() => { setActiveImg(0); }, [id]);
-
   const allRooms = state.rooms || [];
   const multi = config.multiRoom && allRooms.length > 1;
   const activeIdx = activeRoomIndex(state);
   const adults = (allRooms[activeIdx] && allRooms[activeIdx].adults) || 1;
   const total = room ? roomStayTotal(state, room, adults) : 0;
+  const gallery = room ? D.galleryFor(room) : [];
 
   function assign() {
     if (!room) return;
@@ -52,6 +52,8 @@ export default function RoomDetail() {
     return null;
   }
 
+  const includesFirstFour = D.includes.slice(0, 4).map((i) => i.title.toLowerCase());
+
   return (
     <div>
       {!config.stepper && (
@@ -62,45 +64,34 @@ export default function RoomDetail() {
         </div>
       )}
 
+      <HeroGallery key={room.id} images={gallery} title={room.name} />
+
       <div className="grid items-start gap-8 pb-16 pt-7 md:gap-12 md:pt-10 lg:grid-cols-[minmax(0,1fr)_380px]">
-        <div>
-          {room.images && room.images.length ? (
-            <div className="mb-6">
-              <img
-                src={room.images[activeImg].src}
-                alt={room.images[activeImg].alt || room.name}
-                className="block aspect-[16/9] w-full object-cover"
-              />
-              {room.images.length > 1 && (
-                <div className="mt-2 flex gap-2 overflow-x-auto">
-                  {room.images.map((image, i) => (
-                    <button
-                      key={image.src}
-                      type="button"
-                      onClick={() => setActiveImg(i)}
-                      aria-label={'Show image ' + (i + 1) + ' of ' + room.images.length}
-                      aria-pressed={i === activeImg}
-                      className={
-                        'h-16 w-16 shrink-0 overflow-hidden border focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2 ' +
-                        (i === activeImg ? 'border-dark' : 'border-line')
-                      }
-                    >
-                      <img src={image.src} alt="" loading="lazy" className="h-full w-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : (
-            <span className="ph-img mb-6 block aspect-[16/9] w-full" />
-          )}
+        {/* ---------- Copy ----------
+            min-w-0: without it, a grid item's default min-width:auto sizes
+            the (implicit, single) mobile column to its widest descendant's
+            min-content — the Other Rooms rail's horizontally-scrolling
+            content — instead of letting that rail's own overflow-x-auto
+            handle its own overflow. Same fix Layout.jsx already applies to
+            its own flex-1 column, one level further in here. */}
+        <div className="min-w-0">
           <span className="eyebrow text-accent">
             {prop.name}{multi ? ' · Room ' + (activeIdx + 1) + ' of ' + allRooms.length : ''}
           </span>
           <h1 className="h-serif mt-1 text-h3 text-ink">{room.name}</h1>
           <p className="mt-1.5 text-base text-body">{room.detail}</p>
 
+          <div className="mt-5 flex flex-wrap gap-x-8 gap-y-2 border-y border-line py-4 text-sm text-body">
+            {room.sqft && <span>Up to {room.sqft} sq.ft.</span>}
+            {room.maxOccupants && <span>Sleeps up to {room.maxOccupants}</span>}
+            {room.bed && <span>{room.bed}</span>}
+            {room.view && <span>{room.view}</span>}
+          </div>
+
           <p className="mt-6 text-base leading-relaxed text-body">{room.desc}</p>
+          <p className="mt-4 text-base leading-relaxed text-body">
+            Every stay at {prop.name} includes {naturalJoin(includesFirstFour)}.
+          </p>
 
           <section className="mt-10">
             <h2 className="h-serif text-lg text-ink">Amenities include</h2>
@@ -109,7 +100,11 @@ export default function RoomDetail() {
             </div>
           </section>
 
-          <section className="mt-10 border-t border-line pt-6">
+          <LocationMap prop={prop} />
+          <Faqs pid={prop.id} />
+          <OtherRooms room={room} />
+
+          <section className="mt-10 border-t border-line pt-8">
             <h2 className="h-serif text-lg text-ink">Policies</h2>
             <p className="mt-2 text-sm leading-relaxed text-body">
               Arrival {prop.stayRules.arrival} · Departure {prop.stayRules.departure}. {prop.depositCopy} {prop.cancelCopy}
@@ -117,6 +112,7 @@ export default function RoomDetail() {
           </section>
         </div>
 
+        {/* ---------- Sticky rate panel ---------- */}
         <aside className="lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:self-start">
           <div className="bg-light">
             <div className="border-b border-line bg-light p-5 text-center">

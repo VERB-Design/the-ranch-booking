@@ -20,6 +20,8 @@
    each one and the client sign-off this still needs.
    ============================================================ */
 
+import { naturalJoin } from './utils.js';
+
 const IMG = import.meta.env.BASE_URL + 'img/';
 
 function img(path, alt) {
@@ -42,6 +44,14 @@ const D = (function () {
       transferAirport: 'LAX',
       image: img('malibu/malibu-hero-poster.jpg', 'Aerial of The Ranch Malibu in the Santa Monica Mountains, coastal fog beyond').src,
       imageAlt: 'Aerial of The Ranch Malibu in the Santa Monica Mountains, coastal fog beyond',
+      /* Property-wide shots (not tied to a specific room) that pad a
+         room's own gallery out to three cells — see docs/content/IMAGES.md.
+         `D.galleryFor` reads this; a room's own images always come first. */
+      galleryExtras: [
+        img('malibu/malibu-hero-poster.jpg', 'Aerial of The Ranch Malibu in the Santa Monica Mountains, coastal fog beyond'),
+        img('malibu/malibu-ranch-house-exterior.jpg', 'The Ranch Malibu exterior, white board-and-batten ranch house, agave and oak'),
+        img('malibu/malibu-private-cottage-01.jpg', 'Queen bed in a Malibu guest cottage, morning light'),
+      ],
       desc: 'The original Ranch, twenty-one private cottages in the Santa Monica Mountains less than an hour from Los Angeles. A regenerative organic garden, ocean air, and the six-, seven- or eight-night signature programme.',
       guestCount: 'up to 25 guests',
       cottages: 21,
@@ -74,6 +84,10 @@ const D = (function () {
       transferAirport: 'EWR',
       image: img('hudson/hudson-hero-poster.jpg', 'Front elevation of the Hudson Valley stone manor and gravel drive').src,
       imageAlt: 'Front elevation of the Hudson Valley stone manor and gravel drive',
+      galleryExtras: [
+        img('hudson/hudson-hero-poster.jpg', 'Front elevation of the Hudson Valley stone manor and gravel drive'),
+        img('hudson/hudson-backyard-aerial.jpg', 'Aerial of the Hudson Valley estate set in forest'),
+      ],
       desc: 'A stone manor on a historic lakefront estate an hour from New York City, bordered by more than 46,000 acres of protected parkland. Twenty-six guest rooms, a 5,000-square-foot solarium, and three-, four- or seven-night stays.',
       guestCount: 'averages 25 guests',
       rooms: 26,
@@ -280,6 +294,22 @@ const D = (function () {
     return list.reduce(function (m, r) { return Math.min(m, r.rate); }, Infinity);
   }
 
+  /** A room's own photos first, then its property's non-room-specific
+      shots (exterior, aerial) to round the hero gallery out to three
+      cells — see `galleryExtras` above and docs/content/IMAGES.md.
+      De-duplicates by src in case a room's own image ever also appears
+      in the property's extras list. */
+  function galleryFor(room) {
+    if (!room) return [];
+    var prop = properties[room.property];
+    var own = room.images || [];
+    var extras = (prop && prop.galleryExtras) || [];
+    var seen = {};
+    own.forEach(function (im) { seen[im.src] = true; });
+    var extra = extras.filter(function (im) { return !seen[im.src]; });
+    return own.concat(extra);
+  }
+
   /* ---------- Upgrades ----------
      One offer per property: the next category up in the site's own
      published room order. The nightly difference is the two rooms' real
@@ -315,6 +345,41 @@ const D = (function () {
     { icon: 'laundry', title: 'Daily laundry service', desc: 'Personal laundry, washed and folded, available daily.' },
     { icon: 'bodpod', title: 'Bod Pod analysis', desc: 'Body composition analysis, plus a cooking demonstration and evening nutrition talks.' },
   ];
+
+  /** The room page's five FAQs, built from the property's own rules and
+      copy rather than invented — arrival/departure, what the rate
+      includes (the same first four `includes` titles the room page's own
+      "Every stay includes" paragraph uses), deposit/balance, cancellation
+      and the airport transfer. Kept here, next to the copy it quotes, so
+      the two can never drift apart. */
+  function faqsFor(pid) {
+    var prop = properties[pid];
+    if (!prop) return [];
+    var rules = prop.stayRules;
+    var includesList = includes.slice(0, 4).map(function (i) { return i.title.toLowerCase(); });
+    return [
+      {
+        q: 'What time can I arrive, and when do I need to check out?',
+        a: 'Arrival is ' + rules.arrival + ' and departure is ' + rules.departure + '. ' + rules.blocksCopy,
+      },
+      {
+        q: 'What does the rate include?',
+        a: 'The programme rate covers ' + naturalJoin(includesList) + ', for every night of your stay.',
+      },
+      {
+        q: 'How does the deposit and balance work?',
+        a: prop.depositCopy,
+      },
+      {
+        q: 'What is the cancellation policy?',
+        a: prop.cancelCopy,
+      },
+      {
+        q: 'Is airport transfer included?',
+        a: 'A return airport transfer to ' + prop.transferAirport + ' is included, departing at 10 am. Arrival at the property is on your own.',
+      },
+    ];
+  }
 
   /* ---------- Add-ons ----------
      Real elective services. Cold plunge, sound bath and nutrition talks
@@ -558,9 +623,11 @@ const D = (function () {
     propertyList: propertyList,
     roomsFor: roomsFor,
     roomById: roomById,
+    galleryFor: galleryFor,
     fromPrice: fromPrice,
     upgradeFor: upgradeFor,
     includes: includes,
+    faqsFor: faqsFor,
     addons: addons,
     addonById: addonById,
     addonsFor: addonsFor,

@@ -159,12 +159,18 @@ export function StayOverviewCard({ title = 'Your Stay', totalLabel = 'Total', re
 }
 
 const NO_RAIL = new Set(['/location', '/confirmation']);
+/* No rail before a property is chosen, none on the confirmation (its own
+   reservation card), and none on a room page — its sticky panel already
+   carries the rate and the action, and the copy needs the width. */
+function noRail(pathname) {
+  return NO_RAIL.has(pathname) || pathname.startsWith('/room/');
+}
 
 export function StayRail() {
   const { pathname } = useLocation();
   /* No rail before a property is chosen, and none on the confirmation,
      which carries its own reservation card. */
-  if (NO_RAIL.has(pathname)) return null;
+  if (noRail(pathname)) return null;
 
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
@@ -179,7 +185,7 @@ export function StayRailMobile({ onEdit }) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const { state, p } = useSummary();
-  if (NO_RAIL.has(pathname)) return null;
+  if (noRail(pathname)) return null;
   const datesSet = !!(state.checkIn && state.checkOut);
 
   /* Phone bar: the stay in one line with Edit (reopens the drawer) on the
@@ -213,7 +219,12 @@ export function StayRailMobile({ onEdit }) {
         </button>
       </div>
       <div className={'grid transition-all duration-300 ease-out ' + (open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
-        <div className="max-h-[60vh] overflow-y-auto">
+        <div
+          role="region"
+          aria-label="Stay summary"
+          tabIndex={0}
+          className="max-h-[60vh] overflow-y-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:-outline-offset-2"
+        >
           <SummaryRows />
           {p && (
             <div className="border-t border-page px-5 py-4">
@@ -237,7 +248,7 @@ export function StayRailMobile({ onEdit }) {
    step's own content, rather than inside the collapsed overview. */
 export function IncludesBelowMobile() {
   const { pathname } = useLocation();
-  if (NO_RAIL.has(pathname)) return null;
+  if (noRail(pathname)) return null;
   /* 48px above (32 from the content column + 16 here) and 48 below once the
      fixed Continue bar is accounted for. */
   return (

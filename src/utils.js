@@ -53,6 +53,19 @@ export function money(n, decimals = 0) {
   return '$' + n.toLocaleString('en-US', opts);
 }
 
+/** "a, b and c" — a plain "and" between exactly two items, an Oxford
+    comma before the last when there are three or more. Used for the room
+    page's "Every stay includes …" sentence and the FAQ that echoes it, so
+    both read the same short list the same way rather than each rolling
+    its own join logic. */
+export function naturalJoin(items) {
+  const list = (items || []).filter(Boolean);
+  if (list.length === 0) return '';
+  if (list.length === 1) return list[0];
+  if (list.length === 2) return list[0] + ' and ' + list[1];
+  return list.slice(0, -1).join(', ') + ', and ' + list[list.length - 1];
+}
+
 export function uid() {
   return 'x' + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36);
 }

@@ -790,3 +790,47 @@ category:
   link — Troy's call, with the usage-rights caveat above still standing.
 - Pages deploys from `program-v2-branch` (and `main`) via `.github/workflows/pages.yml`;
   Vite `base` is `/the-ranch-booking/` on build and `404.html` mirrors `index.html` for deep links.
+
+## Room detail rebuild — 4 Sep 2026 (`src/pages/RoomDetail.jsx`, `src/components/HeroGallery.jsx`,
+`src/components/RoomSections.jsx`, `src/data.js`, `src/components/StayRail.jsx`)
+
+Rebuilt to the Dolli base's room-page structure — full-width hero gallery, then copy (stats
+strip, description, every-stay-includes line, amenities, where you'll be, FAQs, other rooms,
+policies) with the sticky rate panel on the right — on top of this build's own data (one
+programme rate per room, no rate-plan list) and every accessibility pattern from
+`docs/ACCESSIBILITY-AUDIT.md`.
+
+- **Robustness — Google Maps embed is a live network dependency, unmeasured offline.**
+  `RoomSections.jsx`'s `LocationMap` loads `maps.google.com/maps?...&output=embed` for the
+  property's real address (`prop.address`) — same approach Dolli used with a placeholder query,
+  now pointed at a real one. No fallback markup renders if the request is blocked (ad blocker,
+  offline demo, restrictive CSP) beyond the `bg-light` frame underneath — same gap Dolli's own
+  build carried, not introduced here, but worth naming since the address is now real. A static
+  map image or a "map unavailable" caption would close it; not built, since axe and the manual
+  keyboard/console pass both ran with network access and saw the tile load correctly.
+- **Accessibility — `scrollable-region-focusable` (WCAG 2.1.1/2.1.3), sitewide, not new.**
+  `StayRailMobile`'s collapsed "Review" panel (`StayRail.jsx`) can exceed its own `max-h-[60vh]`
+  and scroll, but carried no way for a keyboard or switch-access user to reach that scroll short
+  of a touch/wheel gesture — present on every route at 390px (confirmed on `/rooms` too, not just
+  `/room/:id`), so it predates this pass; it surfaced because this pass re-ran axe with the same
+  route + viewport combinations `ACCESSIBILITY-AUDIT.md` used. Fixed in place —
+  `role="region" aria-label="Stay summary" tabIndex={0}` plus a visible focus ring — rather than
+  left as a known gap, since the fix was one line and in scope for "zero axe violations" on the
+  page under test. `docs/ACCESSIBILITY-AUDIT.md` itself was not re-run route-by-route for this
+  note; its "After" table predates the fix.
+- **A `min-w-0` grid trap, worth naming for the next page that copies this shape.** The room
+  page's copy column is a CSS Grid item (`lg:grid-cols-[minmax(0,1fr)_380px]`) with no
+  `min-width` override; a grid item's default `min-width: auto` sizes to its widest descendant's
+  *min-content*, which on this page was the Other Rooms rail's horizontally-scrolling row —
+  regardless of that rail's own `overflow-x-auto`, since intrinsic-sizing computation passes
+  through ordinary block descendants unless something along the way resets it. Result: real
+  horizontal overflow on every phone width (`scrollWidth` 536px against a 390px viewport),
+  invisible in a synthetic full-page screenshot but real on a device. Fixed with `min-w-0` on the
+  copy column — the same fix `Layout.jsx` already applies one level up, for the same reason.
+  Verified by measurement (`document.documentElement.scrollWidth === clientWidth`), not by eye.
+- **Gallery imagery reuses the existing crawled pool** — `D.properties[pid].galleryExtras` (the
+  property's own exterior/aerial shots) pads a room's hero gallery to three cells; no new images
+  were sourced. The Licensing caveat above (crawled from theranchlife.com, usage rights not yet
+  confirmed in writing) covers these the same as every other photo in the build.
+- **`D.faqsFor(pid)` and `D.galleryFor(room)`** are new data helpers, both pure and both reading
+  only fields that already existed in `src/data.js` — no new content was invented for either.
