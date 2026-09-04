@@ -36,10 +36,9 @@ export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onR
       <legend className="sr-only">Rooms and guests</legend>
       {visible.map((r, i) => (
         <div key={r.uid} className="flex items-center gap-2">
-          <span className="label-sm text-muted">Room {i + 1}</span>
           <div className="flex items-center gap-1.5">
             <Counter
-              label="Guests"
+              label={<><span className="label-sm mr-3 text-muted">Room {i + 1}</span>Guests</>}
               ariaLabel={'Guests, Room ' + pad2(i + 1)}
               value={r.adults}
               format={pad2}

@@ -41,7 +41,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
   if (value) {
     return (
       <div className={className}>
-        <span id={labelId} className="sr-only">{label}</span>
+        <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
         <button
           type="button"
           onClick={onClick}
@@ -67,7 +67,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
      controls is showing. */
   return (
     <div className={className}>
-      <span id={labelId} className="sr-only">{label}</span>
+      <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
       <button
         type="button"
         onClick={onClick}
@@ -296,14 +296,14 @@ export default function DatePicker({
           <DateField
             label="Arrival"
             value={checkIn ? fmtDate(checkIn) : null}
-            placeholder="Arrival"
+            placeholder="Select date"
             active={checkinActive}
             onClick={openCheckIn}
           />
           <DateField
             label="Departure"
             value={checkOut ? fmtDate(checkOut) : null}
-            placeholder="Departure"
+            placeholder="Select date"
             active={checkoutActive}
             onClick={openCheckOut}
           />
