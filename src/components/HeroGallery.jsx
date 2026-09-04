@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import Modal from './ui/Modal.jsx';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import useMountTransition from '../useMountTransition.js';
 
 /* ============================================================
    HeroGallery
@@ -64,38 +65,111 @@ export default function HeroGallery({ images = [], title = 'Photos' }) {
         <Cell index={2} className="hidden md:block" showMore />
       </div>
 
-      <Modal open={openAt !== null} onClose={() => setOpenAt(null)} title={title + ' — Photos'} closeLabel="Close">
-        {active && (
-          <div>
-            <img src={active.src} alt={active.alt || ''} className="max-h-[65vh] w-full bg-page object-contain" />
-            {count > 1 && (
-              <div className="mt-4 flex items-center justify-between gap-4">
-                <button
-                  type="button"
-                  onClick={prev}
-                  aria-label="Previous photo"
-                  className="grid h-9 w-9 place-items-center rounded-full border border-line transition-colors hover:border-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-                >
-                  <svg className="h-3.5 w-3.5 rotate-90" viewBox="0 0 12 12" aria-hidden="true">
-                    <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-                <span className="label-sm text-muted">{openAt + 1} / {count}</span>
-                <button
-                  type="button"
-                  onClick={next}
-                  aria-label="Next photo"
-                  className="grid h-9 w-9 place-items-center rounded-full border border-line transition-colors hover:border-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-                >
-                  <svg className="h-3.5 w-3.5 -rotate-90" viewBox="0 0 12 12" aria-hidden="true">
-                    <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-      </Modal>
+      <Lightbox
+        open={openAt !== null}
+        image={active}
+        index={openAt || 0}
+        count={count}
+        title={title}
+        onClose={() => setOpenAt(null)}
+        onPrev={prev}
+        onNext={next}
+      />
     </>
+  );
+}
+
+/* ============================================================
+   Lightbox
+   ------------------------------------------------------------
+   Full-bleed viewer: the photo as large as the screen allows on a dark
+   ground, with Close, the arrows and the counter floating over it — no
+   box, no borders. Esc closes, arrow keys move, focus lands on Close and
+   returns to the cell that opened it. Fades over the build's 300ms.
+   ============================================================ */
+const FOCUSABLE = 'button:not([disabled])';
+
+function Lightbox({ open, image, index, count, title, onClose, onPrev, onNext }) {
+  const { mounted, shown } = useMountTransition(open, 300);
+  const panelRef = useRef(null);
+  const openerRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    openerRef.current = document.activeElement;
+    const panel = panelRef.current;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    panel?.querySelector(FOCUSABLE)?.focus();
+    function onKey(e) {
+      if (e.key === 'Escape') { e.stopPropagation(); onClose(); return; }
+      if (e.key === 'ArrowLeft' && count > 1) onPrev();
+      if (e.key === 'ArrowRight' && count > 1) onNext();
+      if (e.key !== 'Tab' || !panel) return;
+      const items = Array.from(panel.querySelectorAll(FOCUSABLE));
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    document.addEventListener('keydown', onKey, true);
+    const opener = openerRef.current;
+    return () => {
+      document.removeEventListener('keydown', onKey, true);
+      document.body.style.overflow = prevOverflow;
+      opener?.focus?.();
+    };
+  }, [open, count, onClose, onPrev, onNext]);
+
+  if (!mounted || !image) return null;
+
+  const arrow = 'absolute top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center rounded-full text-white/85 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2';
+
+  return createPortal(
+    <div
+      ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title + ' — photo ' + (index + 1) + ' of ' + count}
+      className={'fixed inset-0 z-[2600] flex items-center justify-center bg-dark/95 transition-opacity duration-300 motion-reduce:transition-none ' + (shown ? 'opacity-100' : 'opacity-0')}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        className="btn-text absolute right-6 top-6 inline-flex items-center gap-2 text-white/85 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 md:right-8 md:top-7"
+      >
+        Close
+        <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M1 1 L13 13 M13 1 L1 13" stroke="currentColor" strokeWidth="1.4" />
+        </svg>
+      </button>
+
+      <img
+        src={image.src}
+        alt={image.alt || ''}
+        className={'max-h-[88vh] max-w-[92vw] object-contain transition-transform duration-300 motion-reduce:transition-none md:max-h-[90vh] md:max-w-[88vw] ' + (shown ? 'scale-100' : 'scale-[0.98]')}
+      />
+
+      {count > 1 && (
+        <>
+          <button type="button" onClick={onPrev} aria-label="Previous photo" className={arrow + ' left-2 md:left-6'}>
+            <svg className="h-4 w-4 rotate-90" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button type="button" onClick={onNext} aria-label="Next photo" className={arrow + ' right-2 md:right-6'}>
+            <svg className="h-4 w-4 -rotate-90" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <span className="label-sm absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70" aria-live="polite">
+            {index + 1} / {count}
+          </span>
+        </>
+      )}
+    </div>,
+    document.body
   );
 }
