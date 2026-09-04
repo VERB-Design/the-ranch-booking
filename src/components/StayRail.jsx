@@ -175,25 +175,49 @@ export function StayRail() {
   );
 }
 
-export function StayRailMobile() {
+export function StayRailMobile({ onEdit }) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  const { p } = useSummary();
+  const { state, p } = useSummary();
   if (NO_RAIL.has(pathname)) return null;
+  const datesSet = !!(state.checkIn && state.checkOut);
 
+  /* Phone bar: the stay in one line with Edit (reopens the drawer) on the
+     left, Review with a chevron (opens the details) on the right. */
   return (
     <div className="sticky top-[var(--chrome)] z-[790] border-b border-line bg-light lg:hidden">
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 px-5 py-3.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-      >
-        <span className="eyebrow text-strong">Your stay{p ? ' · ' + money(p.total) : ''}</span>
-        <svg aria-hidden="true" viewBox="0 0 12 12" className={'h-3 w-3 text-muted transition-transform ' + (open ? 'rotate-180' : '')}>
-          <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="square" />
-        </svg>
-      </button>
+      <div className="flex items-center justify-between gap-4 px-5 py-3.5 text-sm text-ink">
+        <span className="flex min-w-0 flex-wrap items-baseline gap-x-3">
+          {datesSet && (
+            <>
+              <span>{fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}</span>
+              <span aria-hidden="true" className="text-line-hover">|</span>
+            </>
+          )}
+          <span>{guestsLabel(state)}</span>
+          {onEdit && (
+            <button
+              type="button"
+              onClick={onEdit}
+              aria-label="Edit dates and guests"
+              className="underline underline-offset-4 decoration-1 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+            >
+              Edit
+            </button>
+          )}
+        </span>
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className="label-sm inline-flex shrink-0 items-center gap-2 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+        >
+          Review
+          <svg aria-hidden="true" viewBox="0 0 12 12" className={'h-3 w-3 text-muted transition-transform ' + (open ? 'rotate-180' : '')}>
+            <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="square" />
+          </svg>
+        </button>
+      </div>
       <div className={'grid transition-all duration-300 ease-out ' + (open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
         <div className="max-h-[60vh] overflow-y-auto">
           <SummaryRows />

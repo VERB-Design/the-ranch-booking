@@ -94,7 +94,7 @@ export default function Layout() {
       <Stepper />
       <main id="main-content" tabIndex={-1} className={'min-h-[60vh] outline-none' + (stepConfig ? ' pb-24' : '')}>
         {/* On a phone the overview comes first, straight under the stepper. */}
-        <StayRailMobile />
+        <StayRailMobile onEdit={() => setReserve(true)} />
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 px-5 py-8 md:px-10 lg:flex-row xl:px-[160px]">
           <div className="min-w-0 flex-1">
             <Outlet context={setStep} />
