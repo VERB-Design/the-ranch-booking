@@ -159,7 +159,10 @@ export function ButtonBar({ backTo, onContinue, continueLabel = 'Continue', disa
           </Button>
         ) : <span />}
         <Button variant="primary" icon={<Arrow direction="right" tone="light" />} iconPosition="right" disabled={disabled} onClick={onContinue}>
-          {continueLabel}
+          {/* Phones get the short word; the fuller label ("No Thank You,
+              Continue", "Continue to Check-out") returns from tablet up. */}
+          <span className="md:hidden">{continueLabel.startsWith('Confirming') ? continueLabel : continueLabel.startsWith('Complete') ? 'Complete booking' : 'Continue'}</span>
+          <span className="hidden md:inline">{continueLabel}</span>
         </Button>
       </Container>
     </div>
