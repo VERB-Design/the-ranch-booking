@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { MONTH_NAMES } from '../utils.js';
 import { sameDay } from '../stay.js';
 
-/* Monday-first, matching docs/figma/styles/booking-widgets.png. */
-const WEEKDAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+/* Sunday-first, per Troy (4 Sep 2026) — the Figma sheet is Monday-first,
+   but check-ins fall on Sundays and Saturdays, so the week reads better
+   opening on Sunday. */
+const WEEKDAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
 /* Legend content for the two calendar modes — 'checkin' (state A, no date
    picked yet) and 'checkout' (state B, check-in already set). Swatches
@@ -73,8 +75,8 @@ export default function RanchCalendar({
   helper,
 }) {
   const view = month; // { y, m }
-  /* getDay() is Sunday-first (0–6); Monday-first needs the +6 %7 rotation. */
-  const startWeekday = (new Date(view.y, view.m, 1).getDay() + 6) % 7;
+  /* getDay() is already Sunday-first (0–6). */
+  const startWeekday = new Date(view.y, view.m, 1).getDay();
   const daysInMonth = new Date(view.y, view.m + 1, 0).getDate();
 
   const cells = [];
