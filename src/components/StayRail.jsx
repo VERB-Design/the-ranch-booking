@@ -187,10 +187,10 @@ export function StayOverviewCard({ title = 'Your Stay', totalLabel = 'Total', re
       {p && (
         <div className="border-t border-page px-5 py-4">
           <TaxesRow p={p} />
-          <div className="mt-2 flex items-center justify-between">
-            <span className="text-base text-ink">{totalLabel}</span>
-            <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
-          </div>
+        </div>
+        <div className="flex items-center justify-between border-t border-page px-5 py-4">
+          <span className="text-base text-ink">{totalLabel}</span>
+          <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
         </div>
       )}
     </div>
@@ -268,10 +268,10 @@ export function StayRailMobile({ onEdit }) {
           {p && (
             <div className="border-t border-page px-5 py-4">
               <TaxesRow p={p} />
-              <div className="mt-2 flex items-center justify-between">
-                <span className="text-base text-ink">Total</span>
-                <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
-              </div>
+            </div>
+            <div className="flex items-center justify-between border-t border-page px-5 py-4">
+              <span className="text-base text-ink">Total</span>
+              <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
             </div>
           )}
         </div>
