@@ -31,7 +31,15 @@ export default function Confirmation() {
 
   const { prop } = p;
   const g = state.guest || {};
-  const contactName = [g.first, g.last].filter(Boolean).join(' ') || '—';
+  /* Whatever the guest typed, with sample details standing in for any
+     field left blank — checkout requires nothing, so the card still reads
+     as a real reservation in a demo. */
+  const contact = {
+    name: [g.first, g.last].filter(Boolean).join(' ') || 'Jordan Ellis',
+    email: g.email || 'jordan.ellis@example.com',
+    phone: g.phone || '+1 212 555 0148',
+    address: [g.address, g.city, g.state, g.zip].filter(Boolean).join(', ') || '14 Perry Street, New York, NY 10014',
+  };
 
   function again() {
     reset();
@@ -50,7 +58,7 @@ export default function Confirmation() {
         <div>
           <h1 className="h-serif text-h2 text-ink">Booking Confirmed</h1>
           <p className="mt-2 text-lg font-light text-body">
-            A confirmation has been sent to {g.email || 'your inbox'}.
+            A confirmation has been sent to {contact.email}.
           </p>
         </div>
 
@@ -58,7 +66,7 @@ export default function Confirmation() {
           {state.confirmation.number}
         </span>
 
-        <StayOverviewCard title="Reservation" totalLabel="Total paid" readOnly contact={contactName} className="w-full text-left" />
+        <StayOverviewCard title="Reservation" totalLabel="Total paid" readOnly contact={contact} className="w-full text-left" />
 
         <div className="w-full border-t border-line pt-6 text-left">
           <h2 className="h-serif text-lg text-ink">Before you arrive</h2>

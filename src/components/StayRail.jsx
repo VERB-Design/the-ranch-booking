@@ -52,9 +52,17 @@ function SummaryRows({ readOnly = false, contact = null }) {
      Everything reads left; the labels are the values themselves. */
   return (
     <div className="divide-y divide-page px-5">
+      {contact && (
+        <div className="pt-3.5 pb-4 text-sm text-ink">
+          <span className="label-sm mb-1.5 block text-muted">Primary contact</span>
+          <p>{contact.name}</p>
+          {contact.email && <p className="text-xs text-muted">{contact.email}</p>}
+          {contact.phone && <p className="text-xs text-muted">{contact.phone}</p>}
+          {contact.address && <p className="text-xs text-muted">{contact.address}</p>}
+        </div>
+      )}
       {(datesSet || roomsSet) && (
         <div className="pt-3 pb-4 text-sm text-ink">
-          {contact && <p className="mb-1 text-xs text-muted">Primary contact · {contact}</p>}
           {prop && <p className="mb-1 text-ink">{prop.name}</p>}
           {state.program?.type === 'retreat' && (
             <p className="mb-1 text-xs text-muted">
