@@ -37,7 +37,7 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
       selected={selected}
       priceSlot={<PriceBlock nightly={room.rate} nights={n} adults={adults} total={total} pid={room.property} />}
       actions={
-        <div className={vertical ? 'flex flex-col gap-2' : 'flex flex-wrap items-center gap-4'}>
+        <div className={vertical ? 'flex flex-col gap-2' : 'flex flex-col items-start gap-2 md:items-end'}>
           <Button
             variant={selected ? 'primary' : 'ghost'}
             selected={selected}
