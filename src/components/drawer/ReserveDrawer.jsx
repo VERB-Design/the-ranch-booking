@@ -279,7 +279,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
       <aside
         ref={panelRef}
         className={
-          'absolute right-0 top-0 h-full w-full max-w-[460px] overflow-hidden bg-light shadow-2xl ' +
+          'absolute right-0 top-0 h-full w-full max-w-[460px] overflow-hidden bg-page shadow-2xl ' +
           /* The slide is a large-field transform — the actual vestibular
              trigger reduced motion exists to remove. The open/closed state
              itself (shown ? translate-x-0 : translate-x-full) is unchanged,
@@ -372,7 +372,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
             {/* The button bar is its own container, outside the scroll
                 region and pinned to the foot of the tray — equal space above
                 and below, and it never moves when the content does. */}
-            <div className="shrink-0 border-t border-line bg-light px-6 py-4 md:px-8">
+            <div className="shrink-0 border-t border-line bg-page px-6 py-4 md:px-8">
               <Button variant="primary" onClick={checkRates} disabled={!canSubmit} className="w-full">
                 {ctaLabel}
               </Button>
@@ -413,7 +413,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
 
             </div>
 
-            <div className="shrink-0 border-t border-line bg-light px-6 py-4 md:px-8">
+            <div className="shrink-0 border-t border-line bg-page px-6 py-4 md:px-8">
               <Button variant="primary" onClick={continueFromProgram} disabled={!draft.program} className="w-full">
                 Continue
               </Button>
