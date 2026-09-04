@@ -123,6 +123,21 @@ export default function Landing() {
       </main>
 
       <Footer />
+      {/* Keeps the footer clear of the fixed bar on a phone. */}
+      <div aria-hidden="true" className="h-[52px] md:hidden" />
+
+      {/* Phone only: the Figma "button set" — a full-width dark bar fixed
+          to the foot of the screen, Inter Bold 14 / 1.68 tracking, since the
+          nav's Book now is hidden at this size. */}
+      <div className="fixed inset-x-0 bottom-0 z-[900] md:hidden">
+        <button
+          type="button"
+          onClick={() => openDrawer(null)}
+          className="flex w-full items-center justify-center bg-dark px-6 py-4 text-[14px] font-bold uppercase leading-[1.2] tracking-[1.68px] text-btn-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:-outline-offset-4"
+        >
+          Book now
+        </button>
+      </div>
 
       <ReserveDrawer
         open={drawer}

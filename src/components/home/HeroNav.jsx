@@ -25,9 +25,12 @@ export default function HeroNav({ onBookNow }) {
         className="pointer-events-none absolute left-1/2 top-1/2 h-[22px] w-[184px] -translate-x-1/2 -translate-y-1/2 md:h-[30px] md:w-[250px]"
       />
 
-      <TextCta className="text-off-white-700" onClick={onBookNow}>
-        Book now
-      </TextCta>
+      {/* On a phone Book now lives in the fixed bar at the foot of the page. */}
+      <span className="hidden md:block">
+        <TextCta className="text-off-white-700" onClick={onBookNow}>
+          Book now
+        </TextCta>
+      </span>
     </nav>
   );
 }

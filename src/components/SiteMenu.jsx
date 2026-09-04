@@ -68,7 +68,9 @@ export default function MenuButton({ tone = 'dark', className = '' }) {
         }
       >
         <img src="/icons/menu-lines.svg" alt="" aria-hidden="true" className={'h-[6px] w-[18px]' + (light ? '' : ' invert')} />
-        Menu
+        {/* Icon only on a phone; the word joins it from tablet up. */}
+        <span className="hidden md:inline">Menu</span>
+        <span className="sr-only md:hidden">Menu</span>
       </button>
 
       {mounted && createPortal(

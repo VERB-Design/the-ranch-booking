@@ -41,7 +41,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
   if (value) {
     return (
       <div className={className}>
-        <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
+        <span id={labelId} className="label-sm text-muted sr-only md:not-sr-only md:mb-1.5 md:block">{label}</span>
         <button
           type="button"
           onClick={onClick}
@@ -67,7 +67,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
      controls is showing. */
   return (
     <div className={className}>
-      <span id={labelId} className="label-sm mb-1.5 block text-muted">{label}</span>
+      <span id={labelId} className="label-sm text-muted sr-only md:not-sr-only md:mb-1.5 md:block">{label}</span>
       <button
         type="button"
         onClick={onClick}
