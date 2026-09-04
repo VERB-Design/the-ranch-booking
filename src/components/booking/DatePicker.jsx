@@ -6,7 +6,7 @@ import Checkbox from '../ui/Checkbox.jsx';
 import RetreatModal from './RetreatModal.jsx';
 import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, stayDescription } from '../../stay.js';
 import { D } from '../../store.jsx';
-import { MONTH_NAMES } from '../../utils.js';
+import { MONTH_NAMES, asset } from '../../utils.js';
 
 function today() {
   const d = new Date();
@@ -55,7 +55,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
           aria-labelledby={labelId + ' ' + labelId + '-value'}
           className={shell + ' border-line bg-fill text-ink hover:border-line-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2'}
         >
-          <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
+          <img src={asset('icons/calendar.svg')} alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
           <span id={labelId + '-value'}>{value}</span>
         </button>
       </div>
@@ -78,7 +78,7 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
           (active ? 'shadow-[inset_0_-2px_0_var(--color-accent-focus)]' : '')
         }
       >
-        <img src="/icons/calendar.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
+        <img src={asset('icons/calendar.svg')} alt="" aria-hidden="true" className="h-[18px] w-[18px] shrink-0" />
         <span id={labelId + '-value'}>{placeholder}</span>
       </button>
     </div>

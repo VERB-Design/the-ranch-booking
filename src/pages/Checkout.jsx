@@ -5,7 +5,7 @@ import { useStep } from '../components/Layout.jsx';
 import Field from '../components/ui/Field.jsx';
 import Checkbox from '../components/ui/Checkbox.jsx';
 import ExpiryField from '../components/checkout/ExpiryField.jsx';
-import { fmtShort, money } from '../utils.js';
+import { fmtShort, money, asset } from '../utils.js';
 import { guestsLabel, nights, pricing, useBooking } from '../store.jsx';
 import { useConfig } from '../config.jsx';
 import usePageTitle from '../usePageTitle.js';
@@ -329,7 +329,7 @@ export default function Checkout() {
               maxLength={4}
               value={payment.cvc}
               error={showErr(errors.payment?.cvc)}
-              iconRight={<img src="/icons/cvv.svg" alt="" aria-hidden="true" className="h-[18px] w-[18px]" />}
+              iconRight={<img src={asset('icons/cvv.svg')} alt="" aria-hidden="true" className="h-[18px] w-[18px]" />}
               onChange={(e) => updatePayment({ cvc: e.target.value.replace(/\D/g, '').slice(0, 4) })}
             />
           </div>

@@ -3,7 +3,7 @@ import Button from './ui/Button.jsx';
 import MenuButton from './SiteMenu.jsx';
 import TextCta from './home/TextCta.jsx';
 import { D, guestsLabel, useBooking, useToastMessage } from '../store.jsx';
-import { fmtShort } from '../utils.js';
+import { fmtShort, asset } from '../utils.js';
 
 /* ============================================================
    Chrome — header, footer, page shell primitives
@@ -23,7 +23,7 @@ import { fmtShort } from '../utils.js';
 const PROPERTY_LOCKUP = { malibu: 'the-ranch-malibu', hudson: 'the-ranch-hudson-valley' };
 function wordmark(pid) {
   return {
-    src: '/brand/' + (PROPERTY_LOCKUP[pid] || 'the-ranch') + '.svg',
+    src: asset('brand/' + (PROPERTY_LOCKUP[pid] || 'the-ranch') + '.svg'),
     alt: (pid && D.properties[pid] && D.properties[pid].name) || 'The Ranch',
   };
 }
@@ -50,7 +50,7 @@ export function Header({ onEditStay }) {
         >
           {/* Same mark, same size as the home nav (HeroNav) — the dark
               cut of the wordmark at 250×30, 184×22 on a phone. */}
-          <img src="/brand/the-ranch.svg" alt="The Ranch" className="h-[22px] w-[184px] md:h-[30px] md:w-[250px]" />
+          <img src={asset('brand/the-ranch.svg')} alt="The Ranch" className="h-[22px] w-[184px] md:h-[30px] md:w-[250px]" />
         </button>
 
         {hasStay && onEditStay ? (
@@ -187,7 +187,7 @@ export function SkipLink() {
 }
 
 export function Arrow({ direction = 'right', tone = 'dark' }) {
-  const src = direction === 'left' ? '/icons/long-arrow-left.svg' : '/icons/long-arrow-right.svg';
+  const src = asset(direction === 'left' ? 'icons/long-arrow-left.svg' : 'icons/long-arrow-right.svg');
   /* The exported glyph is dark; `invert` turns it white for dark buttons. */
   return <img src={src} alt="" aria-hidden="true" className={'h-[14px] w-[18px]' + (tone === 'light' ? ' invert' : '')} />;
 }

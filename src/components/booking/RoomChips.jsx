@@ -1,6 +1,7 @@
 import Counter from '../ui/Counter.jsx';
 import { MAX_ROOMS } from '../../store.jsx';
 import { MAX_GUESTS_PER_ROOM } from '../../config.jsx';
+import { asset } from '../../utils.js';
 
 const pad2 = (v) => String(v).padStart(2, '0');
 
@@ -53,7 +54,7 @@ export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onR
                 aria-label={'Remove Room ' + pad2(i + 1)}
                 className="grid h-6 w-6 shrink-0 place-items-center text-muted hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
               >
-                <img src="/icons/close.svg" alt="" aria-hidden="true" className="h-3 w-3" />
+                <img src={asset('icons/close.svg')} alt="" aria-hidden="true" className="h-3 w-3" />
               </button>
             )}
           </div>
@@ -66,7 +67,7 @@ export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onR
           onClick={onAdd}
           className="flex h-[50px] shrink-0 items-center justify-center gap-1.5 border border-dashed border-line px-2.5 text-sm text-muted transition-colors hover:border-dark hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
         >
-          <img src="/icons/plus.svg" alt="" aria-hidden="true" className="h-[14px] w-[14px]" />
+          <img src={asset('icons/plus.svg')} alt="" aria-hidden="true" className="h-[14px] w-[14px]" />
           Add
         </button>
       )}

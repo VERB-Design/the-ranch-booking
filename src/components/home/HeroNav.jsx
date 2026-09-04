@@ -1,5 +1,6 @@
 import MenuButton from '../SiteMenu.jsx';
 import TextCta from './TextCta.jsx';
+import { asset } from '../../utils.js';
 
 /* ============================================================
    HeroNav
@@ -20,7 +21,7 @@ export default function HeroNav({ onBookNow }) {
     <nav className="relative mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-5 md:px-10 xl:px-[103px]">
       <MenuButton tone="light" />
       <img
-        src="/brand/the-ranch-nav-white.svg"
+        src={asset('brand/the-ranch-nav-white.svg')}
         alt="The Ranch"
         className="pointer-events-none absolute left-1/2 top-1/2 h-[22px] w-[184px] -translate-x-1/2 -translate-y-1/2 md:h-[30px] md:w-[250px]"
       />

@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { D } from '../store.jsx';
 import useMountTransition from '../useMountTransition.js';
+import { asset } from '../utils.js';
 
 /* ============================================================
    MenuButton
@@ -67,7 +68,7 @@ export default function MenuButton({ tone = 'dark', className = '' }) {
           (light ? 'text-white' : 'text-ink')
         }
       >
-        <img src="/icons/menu-lines.svg" alt="" aria-hidden="true" className={'h-[6px] w-[18px]' + (light ? '' : ' invert')} />
+        <img src={asset('icons/menu-lines.svg')} alt="" aria-hidden="true" className={'h-[6px] w-[18px]' + (light ? '' : ' invert')} />
         {/* Icon only on a phone; the word joins it from tablet up. */}
         <span className="hidden md:inline">Menu</span>
         <span className="sr-only md:hidden">Menu</span>
@@ -94,14 +95,14 @@ export default function MenuButton({ tone = 'dark', className = '' }) {
             }
           >
             <div className="flex items-center justify-between">
-              <img src="/brand/the-ranch.svg" alt="The Ranch" className="h-[22px] w-[184px]" />
+              <img src={asset('brand/the-ranch.svg')} alt="The Ranch" className="h-[22px] w-[184px]" />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 className="btn-text inline-flex items-center gap-2 text-ink hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
               >
                 Close
-                <img src="/icons/close.svg" alt="" aria-hidden="true" className="h-3 w-3" />
+                <img src={asset('icons/close.svg')} alt="" aria-hidden="true" className="h-3 w-3" />
               </button>
             </div>
 

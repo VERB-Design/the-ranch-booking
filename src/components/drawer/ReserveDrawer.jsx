@@ -9,7 +9,7 @@ import { Arrow } from '../Chrome.jsx';
 import { iso, nightsBetween, retreatInStay, stayDescription } from '../../stay.js';
 import { D, MAX_ROOMS, newRoomSlot, useBooking, useToast } from '../../store.jsx';
 import { flowSteps, useConfig } from '../../config.jsx';
-import { fmtShort } from '../../utils.js';
+import { fmtShort, asset } from '../../utils.js';
 import useMountTransition from '../../useMountTransition.js';
 
 const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input:not([disabled]),select,[tabindex]:not([tabindex="-1"])';
@@ -306,7 +306,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                   className="btn-text inline-flex items-center gap-2 text-ink hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
                 >
                   Close
-                  <img src="/icons/close.svg" alt="" aria-hidden="true" className="h-2.5 w-2.5" />
+                  <img src={asset('icons/close.svg')} alt="" aria-hidden="true" className="h-2.5 w-2.5" />
                 </button>
               </div>
 

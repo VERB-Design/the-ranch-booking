@@ -1,9 +1,10 @@
 import Button from '../ui/Button.jsx';
 import { D } from '../../store.jsx';
+import { asset } from '../../utils.js';
 
 const LOCKUP = {
-  malibu: '/brand/the-ranch-malibu.svg',
-  hudson: '/brand/the-ranch-hudson-valley.svg',
+  malibu: 'brand/the-ranch-malibu.svg',
+  hudson: 'brand/the-ranch-hudson-valley.svg',
 };
 
 /* ============================================================
@@ -31,7 +32,7 @@ export default function PropertyBand({ onBook }) {
               }
             >
               <img src={p.image} alt={p.imageAlt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-              <img src={LOCKUP[pid]} alt={p.name} className="h-auto w-[200px]" />
+              <img src={asset(LOCKUP[pid])} alt={p.name} className="h-auto w-[200px]" />
               <span className="label-sm text-muted">{p.category}</span>
               <Button variant="ghost" onClick={() => onBook(pid)}>
                 Book now

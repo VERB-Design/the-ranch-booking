@@ -5,6 +5,7 @@ import HeroNav from '../components/home/HeroNav.jsx';
 import PropertyBand from '../components/home/PropertyBand.jsx';
 import { Footer, Toast } from '../components/Chrome.jsx';
 import usePageTitle from '../usePageTitle.js';
+import { asset } from '../utils.js';
 
 /* A seamless noise tile, generated with feTurbulence rather than an
    external asset — self-documenting and reproducible without a generator
@@ -75,7 +76,7 @@ export default function Landing() {
             <video
               ref={videoRef}
               className="absolute inset-0 h-full w-full object-cover"
-              poster="/media/hero-malibu-poster.jpg"
+              poster={asset('media/hero-malibu-poster.jpg')}
               preload="metadata"
               muted
               autoPlay={playing}
@@ -83,7 +84,7 @@ export default function Landing() {
               playsInline
               aria-hidden="true"
             >
-              <source src="/media/hero-malibu.mp4" type="video/mp4" />
+              <source src={asset('media/hero-malibu.mp4')} type="video/mp4" />
             </video>
             {/* Even wash so the nav reads over whatever the frame is doing at
                 the top, plus the stronger bottom gradient the headline needs.
@@ -115,7 +116,7 @@ export default function Landing() {
             aria-label={playing ? 'Pause video' : 'Play video'}
             className="absolute bottom-5 right-5 z-10 grid h-8 w-8 place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
           >
-            <img src="/icons/pause.svg" alt="" aria-hidden="true" className="h-8 w-8" />
+            <img src={asset('icons/pause.svg')} alt="" aria-hidden="true" className="h-8 w-8" />
           </button>
         </section>
 

@@ -56,3 +56,9 @@ export function money(n, decimals = 0) {
 export function uid() {
   return 'x' + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36);
 }
+
+/* Public-folder paths that survive a deploy under a sub-path (GitHub Pages
+   serves this build from /the-ranch/). Use for anything in /public. */
+export function asset(path) {
+  return import.meta.env.BASE_URL + String(path).replace(/^\//, '');
+}

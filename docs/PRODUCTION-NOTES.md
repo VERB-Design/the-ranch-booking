@@ -782,3 +782,11 @@ category:
   in `docs/screens/drawer-v3/program-tray-{1440,390}.png` (+ `-selected-` variants and the
   pages-mode inline chooser). Not screen-reader tested (NVDA/JAWS/VoiceOver), matching this repo's
   existing "Not verified" scope in `ACCESSIBILITY-AUDIT.md`.
+
+## Publishing — 4 Sep 2026
+- Repo moved to the VERB-Design organisation and made **public** so GitHub Pages can serve it;
+  the site is unlisted (`noindex, nofollow` meta + `robots.txt` disallow) but not private. The
+  client's photography and hero video are therefore reachable by anyone with the URL or the repo
+  link — Troy's call, with the usage-rights caveat above still standing.
+- Pages deploys from `program-v2-branch` (and `main`) via `.github/workflows/pages.yml`;
+  Vite `base` is `/the-ranch/` on build and `404.html` mirrors `index.html` for deep links.
