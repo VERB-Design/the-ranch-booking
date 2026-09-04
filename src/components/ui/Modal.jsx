@@ -68,7 +68,10 @@ export default function Modal({ open, onClose, title, children, className = '', 
              without this it inherits whatever text-align the opener sits
              inside — RoomCard's price block is text-right, and a dialog's
              own copy should never depend on where it was triggered from. */
-          'absolute left-1/2 top-1/2 max-h-[85vh] w-[calc(100vw-32px)] max-w-[480px] -translate-x-1/2 -translate-y-1/2 ' +
+          'absolute left-1/2 top-1/2 max-h-[85vh] -translate-x-1/2 -translate-y-1/2 ' +
+          /* Inside a container the panel keeps the container's own side
+             margins (24px, 32px from tablet up) instead of the page width. */
+          (container ? 'w-[calc(100%-48px)] md:w-[calc(100%-64px)] ' : 'w-[calc(100vw-32px)] max-w-[480px] ') +
           'overflow-y-auto rounded-lg bg-light text-left shadow-2xl outline-none ' +
           'transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none ' +
           (shown ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.98]') + ' ' + className
