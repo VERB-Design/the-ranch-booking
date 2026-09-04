@@ -69,9 +69,9 @@ export default function Confirmation() {
         <StayOverviewCard title="Reservation" totalLabel="Total paid" readOnly contact={contact} className="w-full text-left" />
 
         <div className="w-full border-t border-line pt-6 text-left">
-          <h2 className="h-serif text-lg text-ink">Before you arrive</h2>
+          <h2 className="h-serif text-lg text-ink">Before You Arrive</h2>
           <p className="mt-2 text-sm leading-relaxed text-body">
-            Check-in opens at {prop.stayRules.arrival} and check-out is {prop.stayRules.departure}. {prop.depositCopy} {prop.cancelCopy}
+            Check in opens at {prop.stayRules.arrival} and check out is {prop.stayRules.departure}. {prop.depositCopy} {prop.cancelCopy}
           </p>
           <p className="mt-3 text-sm text-body">
             Questions about your reservation? Call{' '}

@@ -185,7 +185,7 @@ export default function AddOns() {
 
   return (
     <div>
-      <PageTitle title="Enhance your stay" sub="Add treatments and enhancements." flush />
+      <PageTitle title="Enhance Your Stay" sub="Add elective treatments and wellness modalities." flush />
 
       <div className="flex flex-col gap-8 pb-12">
         {catalogue.length > 0 && (

@@ -89,7 +89,7 @@ export default function Rooms() {
         </div>
       )}
 
-      <PageTitle title="Select your room" sub="Choose the room you want to stay in." flush={multi} />
+      <PageTitle title="Select Your Room" sub="Choose the room you want to stay in." flush={multi} />
 
       <div className={grid}>
         {rooms.map((room) => {

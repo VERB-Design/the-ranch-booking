@@ -23,6 +23,7 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
   const config = useConfig();
   const layout = cardLayout(config);
   const choose = useChooseRoom();
+  const navigate = useNavigate();
   const { state } = useBooking();
   const n = Math.max(1, nights(state));
   const idx = activeRoomIndex(state);

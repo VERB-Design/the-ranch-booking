@@ -202,7 +202,7 @@ export default function Checkout() {
             />
             <Field
               label="Address"
-              placeholder="123 easy st"
+              placeholder="123 Easy St."
               className="sm:col-span-2"
               value={primary.address}
               error={showErr(errors.primary?.address)}

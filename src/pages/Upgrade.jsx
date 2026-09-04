@@ -56,7 +56,7 @@ export default function Upgrade() {
 
   return (
     <div>
-      <PageTitle title="Upgrade your stay" sub="A better room for the same dates." />
+      <PageTitle title="Upgrade Your Stay" sub="A better room for the same dates." />
 
       {upgradeRoom ? (
         <RoomCardFrame
