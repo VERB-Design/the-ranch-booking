@@ -52,15 +52,14 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
         <input type="radio" name={groupName} checked={checked} onChange={onSelect} className="sr-only" />
         {dateLabel && (
           <span
-            className={
-              'label-sm inline-block w-fit px-2 py-1 text-[11px] tracking-normal normal-case ' +
-              (accent ? 'bg-brown-100 text-accent' : 'bg-page text-muted')
-            }
+            /* One chip treatment for both programmes — the neutral one. */
+            className="label-sm inline-block w-fit bg-page px-2 py-1 text-[11px] tracking-normal normal-case text-muted"
           >
             {dateLabel}
           </span>
         )}
-        <span className="h-serif text-[18px] leading-tight text-ink">{title}</span>
+        {/* The special programme's name reads in the dark brown. */}
+        <span className={'h-serif text-[18px] leading-tight ' + (accent ? 'text-accent' : 'text-ink')}>{title}</span>
       </label>
       <button
         type="button"
