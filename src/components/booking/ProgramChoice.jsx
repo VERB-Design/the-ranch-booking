@@ -44,7 +44,7 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
         /* No outline, no fill at rest — the chosen programme takes the
            light ground and the check; the accent chip alone says "special". */
         'flex items-center gap-4 rounded-brand p-4 transition-colors ' +
-        (checked ? 'bg-page' : 'bg-transparent')
+        (checked ? 'bg-brown-100' : 'bg-page')
       }
     >
       <label className="flex min-w-0 flex-1 cursor-pointer flex-col gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2">

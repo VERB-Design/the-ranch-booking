@@ -137,9 +137,10 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
 export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected = false, priceSlot, actions, className = '' }) {
   const headingId = 'room-' + room.id + '-name';
   const vertical = layout === 'vertical';
-  /* Every card is the light ground with no outline, chosen or not — the
-     button's "Selected" state is what marks the choice. */
-  const borderClasses = 'bg-light';
+  /* No outlines anywhere. Cards sit on the light ground; the chosen one
+     takes the brown tint — the same "selected" fill the calendar and the
+     programme chooser use. */
+  const borderClasses = _selected ? 'bg-brown-100' : 'bg-light';
 
 
   /* Horizontal: the photo runs to the card's edge and fills whatever
