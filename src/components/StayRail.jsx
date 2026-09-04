@@ -182,7 +182,7 @@ export function StayRailMobile() {
   if (NO_RAIL.has(pathname)) return null;
 
   return (
-    <div className="border-b border-line bg-light lg:hidden">
+    <div className="sticky top-[var(--chrome)] z-[790] border-b border-line bg-light lg:hidden">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -195,7 +195,7 @@ export function StayRailMobile() {
         </svg>
       </button>
       <div className={'grid transition-all duration-300 ease-out ' + (open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
-        <div className="overflow-hidden">
+        <div className="max-h-[60vh] overflow-y-auto">
           <SummaryRows />
           {p && (
             <div className="border-t border-page px-5 py-4">
