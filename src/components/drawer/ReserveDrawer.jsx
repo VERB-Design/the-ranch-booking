@@ -314,6 +314,10 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 <LocationSelect value={draft.property} onChange={chooseProperty} open={propOpen} onOpenChange={setPropOpen} />
               )}
 
+              {/* Until a location is chosen, everything between it and the
+                  dates sits inert at half opacity — the dates block stays
+                  live because its own message says what to do. */}
+              <div inert={propertyMissing || undefined} className={'flex flex-col gap-5 transition-opacity ' + (propertyMissing ? 'opacity-50' : '')}>
               <div>
                 <span className="label-sm mb-1.5 block text-accent">{config.multiRoom ? 'Rooms & Guests' : 'Guests'}</span>
                 <p className="mb-3 text-xs text-muted">Maximum 2 adult guests per room.</p>
@@ -343,6 +347,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
               </div>
 
               <hr className="border-line" />
+              </div>
 
               <div>
                 <span className="label-sm mb-1.5 block text-accent">Choose Your Dates</span>
