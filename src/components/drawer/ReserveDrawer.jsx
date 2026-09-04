@@ -295,8 +295,8 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
           }
         >
           {/* ---------- Tray 1 — the stay itself ---------- */}
-          <div data-tray="main" data-scroll-region inert={tray !== "main"} className="flex h-full w-1/2 flex-col overflow-y-auto">
-            <div className="flex flex-1 flex-col gap-5 px-6 py-8 md:px-8">
+          <div data-tray="main" inert={tray !== "main"} className="flex h-full w-1/2 flex-col overflow-hidden">
+            <div data-scroll-region className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-6 py-8 md:px-8">
               <div className="flex items-end justify-between gap-4">
                 <h2 id={titleId} ref={mainTitleRef} tabIndex={-1} className="h-serif leading-none text-ink text-[calc(var(--text-h5)-6px)] outline-none">Book Your Stay</h2>
                 <button
@@ -367,23 +367,22 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 )}
               </div>
 
-              <hr className="border-line" />
+            </div>
 
-              {/* CHECK RATES never scrolls away: it sticks to the bottom of
-                  the drawer's own scroll area, on the drawer ground, and only
-                  settles into the flow once everything above it is in view. */}
-              <div className="sticky bottom-0 z-30 -mx-6 mt-auto border-t border-line bg-light px-6 py-4 md:-mx-8 md:px-8">
-                <Button variant="primary" onClick={checkRates} disabled={!canSubmit} className="w-full">
-                  {ctaLabel}
-                </Button>
-              </div>
+            {/* The button bar is its own container, outside the scroll
+                region and pinned to the foot of the tray — equal space above
+                and below, and it never moves when the content does. */}
+            <div className="shrink-0 border-t border-line bg-light px-6 py-4 md:px-8">
+              <Button variant="primary" onClick={checkRates} disabled={!canSubmit} className="w-full">
+                {ctaLabel}
+              </Button>
             </div>
           </div>
 
           {/* ---------- Tray 2 — choose your program (only reachable when
               the chosen dates carry a dated retreat) ---------- */}
-          <div data-tray="program" inert={tray !== "program"} className="flex h-full w-1/2 flex-col overflow-y-auto">
-            <div className="flex flex-1 flex-col gap-5 px-6 py-8 md:px-8">
+          <div data-tray="program" inert={tray !== "program"} className="flex h-full w-1/2 flex-col overflow-hidden">
+            <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-6 py-8 md:px-8">
               <div>
                 <Button variant="text" icon={<Arrow direction="left" />} onClick={() => setTray('main')} className="mb-4 -ml-1">
                   Back
@@ -412,11 +411,12 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 groupName={programGroupName}
               />
 
-              <div className="sticky bottom-0 z-30 -mx-6 mt-auto border-t border-line bg-light px-6 py-4 md:-mx-8 md:px-8">
-                <Button variant="primary" onClick={continueFromProgram} disabled={!draft.program} className="w-full">
-                  Continue
-                </Button>
-              </div>
+            </div>
+
+            <div className="shrink-0 border-t border-line bg-light px-6 py-4 md:px-8">
+              <Button variant="primary" onClick={continueFromProgram} disabled={!draft.program} className="w-full">
+                Continue
+              </Button>
             </div>
           </div>
         </div>
