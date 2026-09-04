@@ -66,7 +66,7 @@ const D = (function () {
         shorterStays: false, /* "Introducing Shorter Days" — 3-night Thu→Sun, 4-night Sun→Thu — exists only on /locations/malibu; the FAQ, /locations summary and programs page all still describe Malibu as 6-night minimum, so this ships off by default. Flip to true once the client confirms it's a standing product, not a limited-time page. Verified off: a Sunday check-in returns exactly two checkouts (6n Sat, 7n Sun), matching the task's own worked dates. */
         preNightRate: 1275, /* per person — the Saturday pre-night before a Sunday check-in */
         extensionType: 'pre',
-        extensionLabel: 'Add a Saturday pre-night',
+        extensionLabel: 'Add an extra night before your stay',
         blocksCopy: 'Stays run in blocks of 6, 7 or 8 nights. Guests checking in Sunday can add a Saturday pre-night before the programme begins.',
         arrival: '12:00 pm (noon)',
         departure: '10:00 am',

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { D, guestsLabel, lineNightly, nights, pricing, stayRange, useBooking } from '../store.jsx';
 import { retreatById } from '../stay.js';
@@ -132,6 +132,48 @@ function SummaryRows({ readOnly = false, contact = null }) {
   );
 }
 
+/* Taxes & fees as a toggle: the total on the row, the property's own
+   breakdown (service charge, preservation fee, each with its taxes)
+   beneath it when opened. Amounts come from the same multiplier the
+   total uses, so the lines always add up to the figure on the row. */
+function TaxesRow({ p }) {
+  const [open, setOpen] = useState(false);
+  const id = useId();
+  const taxable = (p.roomSubtotal || 0) + (p.addonsTotal || 0);
+  const lines = (p.feeInfo && p.feeInfo.breakdown) || [];
+  return (
+    <div className="text-sm">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-controls={id}
+        className="flex w-full items-center justify-between gap-3 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+      >
+        <span className="label-sm inline-flex items-center gap-2 text-muted">
+          Taxes &amp; fees
+          <svg aria-hidden="true" viewBox="0 0 12 12" className={'h-2.5 w-2.5 transition-transform ' + (open ? 'rotate-180' : '')}>
+            <path d="M2 4 L6 8 L10 4" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="square" />
+          </svg>
+        </span>
+        <span className="text-ink">{money(p.tax)}</span>
+      </button>
+      <div id={id} className={'grid transition-all duration-300 ease-out ' + (open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
+        <div className="overflow-hidden">
+          <ul className="mt-2 flex flex-col gap-1 pb-1 text-xs text-muted">
+            {lines.map((l) => (
+              <li key={l.label} className="flex items-center justify-between gap-3">
+                <span>{l.label} · {(l.rate * 100).toFixed(2).replace(/\.?0+$/, '')}%</span>
+                <span>{money(Math.round(taxable * l.rate))}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* The overview card itself — the rail on every step, and the reservation
    summary on the confirmation, so the two can never disagree. */
 export function StayOverviewCard({ title = 'Your Stay', totalLabel = 'Total', readOnly = false, contact = null, className = '' }) {
@@ -144,10 +186,7 @@ export function StayOverviewCard({ title = 'Your Stay', totalLabel = 'Total', re
       <SummaryRows readOnly={readOnly} contact={contact} />
       {p && (
         <div className="border-t border-page px-5 py-4">
-          <div className="flex items-center justify-between text-sm">
-            <span className="label-sm text-muted">Taxes &amp; fees</span>
-            <span className="text-ink">{money(p.tax)}</span>
-          </div>
+          <TaxesRow p={p} />
           <div className="mt-2 flex items-center justify-between">
             <span className="text-base text-ink">{totalLabel}</span>
             <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
@@ -228,10 +267,7 @@ export function StayRailMobile({ onEdit }) {
           <SummaryRows />
           {p && (
             <div className="border-t border-page px-5 py-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="label-sm text-muted">Taxes &amp; fees</span>
-                <span className="text-ink">{money(p.tax)}</span>
-              </div>
+              <TaxesRow p={p} />
               <div className="mt-2 flex items-center justify-between">
                 <span className="text-base text-ink">Total</span>
                 <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
