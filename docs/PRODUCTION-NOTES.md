@@ -784,9 +784,9 @@ category:
   existing "Not verified" scope in `ACCESSIBILITY-AUDIT.md`.
 
 ## Publishing — 4 Sep 2026
-- Repo moved to the VERB-Design organisation and made **public** so GitHub Pages can serve it;
+- Repo lives at VERB-Design/the-ranch-booking, **public**, so GitHub Pages can serve it;
   the site is unlisted (`noindex, nofollow` meta + `robots.txt` disallow) but not private. The
   client's photography and hero video are therefore reachable by anyone with the URL or the repo
   link — Troy's call, with the usage-rights caveat above still standing.
 - Pages deploys from `program-v2-branch` (and `main`) via `.github/workflows/pages.yml`;
-  Vite `base` is `/the-ranch/` on build and `404.html` mirrors `index.html` for deep links.
+  Vite `base` is `/the-ranch-booking/` on build and `404.html` mirrors `index.html` for deep links.
