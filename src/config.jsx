@@ -152,7 +152,7 @@ export const DEFAULTS = {
   retreats: true,
   stepper: true,
   showUpgrades: true,
-  showAmenities: true,
+  showAmenities: false,
   upsellPlacement: 'page',
   multiProperty: true,
   multiRoom: true,
