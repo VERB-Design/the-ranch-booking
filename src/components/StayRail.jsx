@@ -188,13 +188,7 @@ export function StayRailMobile({ onEdit }) {
     <div className="sticky top-[var(--chrome)] z-[790] border-b border-line bg-light lg:hidden">
       <div className="flex items-center justify-between gap-4 px-5 py-3.5 text-sm text-ink">
         <span className="flex min-w-0 flex-wrap items-baseline gap-x-3">
-          {datesSet && (
-            <>
-              <span>{fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}</span>
-              <span aria-hidden="true" className="text-line-hover">|</span>
-            </>
-          )}
-          <span>{guestsLabel(state)}</span>
+          {datesSet && <span>{fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}</span>}
           {onEdit && (
             <button
               type="button"

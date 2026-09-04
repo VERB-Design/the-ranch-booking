@@ -109,7 +109,8 @@ export function nights(state) {
 
 export function guestsLabel(state) {
   const total = (state.rooms || []).reduce((s, r) => s + (r.adults || 0), 0);
-  return total + ' Adult' + (total === 1 ? '' : 's');
+  /* The Ranch is adults-only, so "guests" says everything it needs to. */
+  return total + ' Guest' + (total === 1 ? '' : 's');
 }
 
 /** Every night of the stay, as ISO dates — what the add-on day chips
