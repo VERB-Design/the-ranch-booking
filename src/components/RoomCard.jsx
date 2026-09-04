@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button.jsx';
 import FeeModal from './FeeModal.jsx';
 import { money } from '../utils.js';
-import { activeRoomIndex, nextUnassigned, useBooking } from '../store.jsx';
+import { activeRoomIndex, nextUnassigned, nights, roomStayTotal, useBooking } from '../store.jsx';
 import { cardLayout, nextPathAfter, useConfig } from '../config.jsx';
 
 /* ============================================================
@@ -23,6 +23,11 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
   const config = useConfig();
   const layout = cardLayout(config);
   const choose = useChooseRoom();
+  const { state } = useBooking();
+  const n = Math.max(1, nights(state));
+  const idx = activeRoomIndex(state);
+  const adults = (state.rooms && state.rooms[idx] && state.rooms[idx].adults) || 1;
+  const total = roomStayTotal(state, room, adults);
   const vertical = layout === 'vertical';
 
   return (
@@ -30,8 +35,7 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
       room={room}
       layout={layout}
       selected={selected}
-      /* No rates on the Rooms step — the programme is priced in the overview. */
-      priceSlot={null}
+      priceSlot={<PriceBlock nightly={room.rate} nights={n} adults={adults} total={total} pid={room.property} />}
       actions={
         <div className={vertical ? 'flex flex-col gap-2' : 'flex flex-wrap items-center gap-4'}>
           <Button
@@ -106,7 +110,7 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
     <div className="text-left">
       <p className="text-ink">
         <span className="text-[20px] font-medium leading-none">{money(nightly, 0)}</span>
-        <span className="ml-2 text-xs text-muted">{suffix.trim()}</span>
+        <span className="ml-2 whitespace-nowrap text-xs text-muted">{suffix.trim()}</span>
       </p>
       <span className="block text-sm text-body">Or {money(grandTotal, 0)} total</span>
       <button
