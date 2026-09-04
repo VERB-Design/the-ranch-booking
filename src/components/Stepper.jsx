@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container } from './Chrome.jsx';
 import { flowSteps, stepIndexFor, useConfig } from '../config.jsx';
@@ -16,11 +17,24 @@ export default function Stepper() {
   const config = useConfig();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  if (!config.stepper) return null;
-
   const steps = flowSteps(config);
   const currentIndex = stepIndexFor(config, pathname);
-  if (currentIndex === -1) return null;
+
+  /* On a phone the list scrolls sideways; keep whichever step is current in
+     the middle of the band so the guest always sees where they are. Runs on
+     every route change; a no-op on desktop where the list fits. */
+  const listRef = useRef(null);
+  const currentRef = useRef(null);
+  useEffect(() => {
+    const list = listRef.current;
+    const item = currentRef.current;
+    if (!list || !item || list.scrollWidth <= list.clientWidth) return;
+    const target = item.offsetLeft + item.offsetWidth / 2 - list.clientWidth / 2;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    list.scrollTo({ left: Math.max(0, target), behavior: reduce ? 'auto' : 'smooth' });
+  }, [currentIndex]);
+
+  if (!config.stepper || currentIndex === -1) return null;
 
   function statusOf(i) {
     const step = steps[i];
@@ -34,7 +48,8 @@ export default function Stepper() {
     <nav aria-label="Booking progress" className="sticky top-20 z-[800] h-11 border-b border-line bg-page">
       <Container className="h-full">
         <ol
-          className="flex h-full items-center justify-center gap-1 overflow-x-auto md:gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+          ref={listRef}
+          className="flex h-full items-center gap-1 overflow-x-auto px-4 md:justify-center md:gap-2 md:px-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
           /* The list scrolls sideways on a phone, so it has to be reachable
              from the keyboard for the steps past the edge to be seen. */
           tabIndex={0}
@@ -45,7 +60,7 @@ export default function Stepper() {
             const done = status === 'done';
             const Tag = done ? 'button' : 'span';
             return (
-              <li key={step.key} className="flex shrink-0 items-center">
+              <li key={step.key} ref={status === 'current' ? currentRef : undefined} className="flex shrink-0 items-center">
                 <Tag
                   {...(done
                     ? { type: 'button', onClick: () => navigate(step.path) }

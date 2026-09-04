@@ -1,9 +1,8 @@
 import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button.jsx';
-import { fmtShort, money } from '../utils.js';
-import { D, guestsLabel, nights, pricing, useBooking, stayRange } from '../store.jsx';
-import { retreatById } from '../stay.js';
+import { D, pricing, useBooking } from '../store.jsx';
 import { useConfig } from '../config.jsx';
+import { StayOverviewCard } from '../components/StayRail.jsx';
 import usePageTitle from '../usePageTitle.js';
 
 /* Confirmation (docs/BRIEF.md, wire 07) — centred summary, reference
@@ -30,9 +29,7 @@ export default function Confirmation() {
     return <Navigate to={config.entry === 'drawer' ? '/' : (config.multiProperty ? '/location' : '/rooms')} replace />;
   }
 
-  const { prop, lines, roomCount } = p;
-  const n = Math.max(1, nights(state));
-  const multi = config.multiRoom && roomCount > 1;
+  const { prop } = p;
   const g = state.guest || {};
   const contactName = [g.first, g.last].filter(Boolean).join(' ') || '—';
 
@@ -61,85 +58,7 @@ export default function Confirmation() {
           {state.confirmation.number}
         </span>
 
-        <div className="w-full bg-light text-left">
-          <div className="border-b border-line bg-light px-6 py-3">
-            {/* Was a styled span — the only other heading on this page
-                ("Before you arrive") is an h3 with nothing at h2 to nest
-                under, a level skip axe's heading-order rule and manual
-                review both catch. Both are now h2, siblings of equal
-                standing under the page's one h1. */}
-            <h2 className="eyebrow text-strong">Reservation</h2>
-          </div>
-
-          <div className="flex flex-col gap-3 px-6 py-5">
-            <InfoRow label="Primary Contact" value={contactName} />
-            <InfoRow label="Property" value={prop.name} />
-            {state.program && (
-              <InfoRow
-                label="Programme"
-                value={
-                  state.program.type === 'retreat'
-                    ? (retreatById(state.property, state.program.id)?.name || 'Special Program')
-                    : (prop.programName || 'Standard programme')
-                }
-              />
-            )}
-            <InfoRow label="Rooms" value={roomCount} />
-            <InfoRow label="Guests" value={guestsLabel(state)} />
-            <InfoRow
-              label="Dates"
-              value={fmtShort(stayRange(state).arrive) + ' → ' + fmtShort(stayRange(state).depart)}
-              sub={state.extension === 'pre' ? 'incl. 1 pre-night · programme from ' + fmtShort(state.checkIn) : state.extension === 'post' ? 'incl. 1 extra night · programme to ' + fmtShort(state.checkOut) : null}
-            />
-            <InfoRow label="Nights" value={n} />
-          </div>
-
-          <div className="border-t border-line px-6 py-5">
-            <span className="label-sm mb-2 block text-muted">{multi ? 'Rooms' : 'Room'}</span>
-            <div className="flex flex-col gap-2">
-              {lines.map((l, i) => (
-                <div key={l.uid} className="flex items-center justify-between gap-3 text-sm">
-                  <span className="text-ink">{multi ? 'Room ' + (i + 1) + ' · ' : ''}{l.room.name}</span>
-                  <span className="text-ink">
-                    {money(l.nightly)}
-                    <span className="text-muted"> per person / night</span>
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {!!p.addonLines.length && (
-            <div className="border-t border-line px-6 py-5">
-              <span className="label-sm mb-2 block text-muted">Enhancements</span>
-              <div className="flex flex-col gap-3">
-                {p.addonLines.map((l) => (
-                  <div key={l.entry.id} className="flex items-start justify-between gap-3 text-sm">
-                    <span className="text-ink">
-                      {l.addon.name}
-                      <span className="mt-0.5 block text-xs text-muted">
-                        {(l.entry.party || 1)} guest{(l.entry.party || 1) > 1 ? 's' : ''}
-                        {l.entry.day ? ', ' + fmtShort(l.entry.day) : ''}
-                        {l.entry.time ? ', ' + l.entry.time : ''}
-                      </span>
-                    </span>
-                    <span className="shrink-0 text-ink">{l.addon.per === 'free' ? 'Free' : l.priceTBD ? 'Price on request' : money(l.total)}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="flex items-center justify-between border-t border-line px-6 py-5 text-sm">
-            <span className="label-sm text-muted">Taxes &amp; Fees</span>
-            <span className="text-ink">{money(p.tax)}</span>
-          </div>
-
-          <div className="flex items-center justify-between border-t border-line bg-light px-6 py-4">
-            <span className="text-base text-ink">Total Paid</span>
-            <strong className="h-serif text-xl text-ink">{money(p.total)}</strong>
-          </div>
-        </div>
+        <StayOverviewCard title="Reservation" totalLabel="Total paid" readOnly contact={contactName} className="w-full text-left" />
 
         <div className="w-full border-t border-line pt-6 text-left">
           <h2 className="h-serif text-lg text-ink">Before you arrive</h2>
@@ -160,14 +79,3 @@ export default function Confirmation() {
   );
 }
 
-function InfoRow({ label, value, sub }) {
-  return (
-    <div className="flex items-start justify-between gap-4 text-sm">
-      <span className="label-sm shrink-0 text-muted">{label}</span>
-      <span className="text-right text-ink">
-        {value}
-        {sub && <span className="mt-0.5 block text-xs text-muted">{sub}</span>}
-      </span>
-    </div>
-  );
-}

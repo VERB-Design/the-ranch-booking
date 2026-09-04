@@ -36,7 +36,7 @@ function useSummary() {
   return { state, config, p, n, prop, bookedRoomLines, removeAddon };
 }
 
-function SummaryRows() {
+function SummaryRows({ readOnly = false, contact = null }) {
   const { state, config, p, n, prop, bookedRoomLines, removeAddon } = useSummary();
   const roomsSet = !!state.property;
   const datesSet = !!(state.checkIn && state.checkOut);
@@ -54,10 +54,11 @@ function SummaryRows() {
     <div className="divide-y divide-page px-5">
       {(datesSet || roomsSet) && (
         <div className="pt-3 pb-4 text-sm text-ink">
+          {contact && <p className="mb-1 text-xs text-muted">Primary contact · {contact}</p>}
           {prop && <p className="mb-1 text-ink">{prop.name}</p>}
           {state.program?.type === 'retreat' && (
             <p className="mb-1 text-xs text-muted">
-              Special Program — {retreatById(state.property, state.program.id)?.name || 'Special retreat'}
+              {retreatById(state.property, state.program.id)?.name || 'Special retreat'}
             </p>
           )}
           {datesSet && (
@@ -99,14 +100,16 @@ function SummaryRows() {
                     {l.entry.day ? ', ' + fmtShort(l.entry.day) : ''}
                     {l.entry.time ? ', ' + l.entry.time : ''}
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => removeAddon(i)}
-                    aria-label={'Remove ' + l.addon.name}
-                    className="mt-1 block text-xs text-muted underline underline-offset-2 hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
-                  >
-                    Remove
-                  </button>
+                  {!readOnly && (
+                    <button
+                      type="button"
+                      onClick={() => removeAddon(i)}
+                      aria-label={'Remove ' + l.addon.name}
+                      className="mt-1 block text-xs text-muted underline underline-offset-2 hover:text-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+                    >
+                      Remove
+                    </button>
+                  )}
                 </span>
                 <span className="shrink-0 text-right text-ink">
                   {l.addon.per === 'free' ? 'Free' : l.priceTBD ? 'Price on request' : money(l.total)}
@@ -121,35 +124,43 @@ function SummaryRows() {
   );
 }
 
+/* The overview card itself — the rail on every step, and the reservation
+   summary on the confirmation, so the two can never disagree. */
+export function StayOverviewCard({ title = 'Your Stay', totalLabel = 'Total', readOnly = false, contact = null, className = '' }) {
+  const { p } = useSummary();
+  return (
+    <div className={'bg-light ' + className}>
+      <div className="border-b border-page px-5 py-3 text-center">
+        <span className="eyebrow text-strong">{title}</span>
+      </div>
+      <SummaryRows readOnly={readOnly} contact={contact} />
+      {p && (
+        <div className="border-t border-page px-5 py-4">
+          <div className="flex items-center justify-between text-sm">
+            <span className="label-sm text-muted">Taxes &amp; fees</span>
+            <span className="text-ink">{money(p.tax)}</span>
+          </div>
+          <div className="mt-2 flex items-center justify-between">
+            <span className="text-base text-ink">{totalLabel}</span>
+            <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const NO_RAIL = new Set(['/location', '/confirmation']);
 
 export function StayRail() {
   const { pathname } = useLocation();
-  const { p } = useSummary();
   /* No rail before a property is chosen, and none on the confirmation,
      which carries its own reservation card. */
   if (NO_RAIL.has(pathname)) return null;
 
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
-      <div className="bg-light">
-        <div className="border-b border-page px-5 py-3 text-center">
-          <span className="eyebrow text-strong">Your Stay</span>
-        </div>
-        <SummaryRows />
-        {p && (
-          <div className="border-t border-page px-5 py-4">
-            <div className="flex items-center justify-between text-sm">
-              <span className="label-sm text-muted">Taxes &amp; fees</span>
-              <span className="text-ink">{money(p.tax)}</span>
-            </div>
-            <div className="mt-2 flex items-center justify-between">
-              <span className="text-base text-ink">Total</span>
-              <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
-            </div>
-          </div>
-        )}
-      </div>
+      <StayOverviewCard />
 
       <EveryStayIncludes className="mt-6" />
     </aside>
