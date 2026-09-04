@@ -49,7 +49,7 @@ export default function Stepper() {
       <Container className="h-full">
         <ol
           ref={listRef}
-          className="flex h-full items-center gap-1 overflow-x-auto px-4 md:justify-center md:gap-2 md:px-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+          className="flex h-full items-center gap-1 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:justify-center md:gap-2 md:px-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
           /* The list scrolls sideways on a phone, so it has to be reachable
              from the keyboard for the steps past the edge to be seen. */
           tabIndex={0}
