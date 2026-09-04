@@ -12,7 +12,7 @@ export default function Counter({ label, value, min = 0, max = 99, onChange, ari
   const display = format ? format(value) : value;
 
   return (
-    <div className="inline-flex items-center justify-between gap-3 h-[50px] rounded-brand border border-line bg-fill px-4">
+    <div className="inline-flex items-center justify-between gap-2.5 h-[50px] rounded-brand border border-line bg-fill px-3.5">
       {label && <span className="text-sm text-ink">{label}</span>}
       <div className="flex shrink-0 items-center gap-3">
         <button

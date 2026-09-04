@@ -38,7 +38,7 @@ export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onR
         <div key={r.uid} className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">
             <Counter
-              label={<><span className="label-sm mr-3 text-muted">Room {i + 1}</span>Guests</>}
+              label={<><span className="label-sm mr-2 text-muted">Room {i + 1}</span>Guests</>}
               ariaLabel={'Guests, Room ' + pad2(i + 1)}
               value={r.adults}
               format={pad2}
@@ -64,7 +64,7 @@ export default function RoomChips({ rooms, multiRoom, onGuestsChange, onAdd, onR
         <button
           type="button"
           onClick={onAdd}
-          className="flex h-[50px] shrink-0 items-center justify-center gap-1.5 border border-dashed border-line px-3 text-sm text-muted transition-colors hover:border-dark hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+          className="flex h-[50px] shrink-0 items-center justify-center gap-1.5 border border-dashed border-line px-2.5 text-sm text-muted transition-colors hover:border-dark hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
         >
           <img src="/icons/plus.svg" alt="" aria-hidden="true" className="h-[14px] w-[14px]" />
           Add
