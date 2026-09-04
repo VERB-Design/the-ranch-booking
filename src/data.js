@@ -98,7 +98,7 @@ const D = (function () {
         lengths: [3, 4, 7],
         shorterStays: false,
         extensionType: 'post', /* one extra night, Friday, after a Thursday check-out */
-        extensionLabel: 'Add an extra night (Fri)',
+        extensionLabel: 'Add an extra night after your stay',
         blocksCopy: 'Stays run in blocks of 3, 4 or 7 nights. Guests can add an extra night to stays ending on Thursdays.',
         arrival: '1:00 pm',
         departure: '10:00 am',

@@ -8,8 +8,8 @@ export default function Checkbox({ checked, onChange, label, id, className = '',
   const boxId = id || autoId;
 
   return (
-    <label htmlFor={boxId} className={'flex cursor-pointer items-start gap-3 text-sm text-ink ' + className}>
-      <span className="relative mt-0.5 h-6 w-6 shrink-0">
+    <label htmlFor={boxId} className={'flex cursor-pointer items-center gap-3 text-sm text-ink ' + className}>
+      <span className="relative h-6 w-6 shrink-0">
         <input
           id={boxId}
           type="checkbox"
