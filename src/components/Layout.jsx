@@ -4,7 +4,6 @@ import { Outlet, useLocation, useNavigate, useOutletContext } from 'react-router
 import { ButtonBar, Footer, Header, Toast } from './Chrome.jsx';
 import { IncludesBelowMobile, StayRail, StayRailMobile } from './StayRail.jsx';
 import ReserveDrawer from './drawer/ReserveDrawer.jsx';
-import ConfigPanel from './ConfigPanel.jsx';
 import Stepper from './Stepper.jsx';
 import { useBooking, useToast } from '../store.jsx';
 import { flowSteps, nextPathAfter, prevPathBefore, stepIndexFor, useConfig } from '../config.jsx';
@@ -125,7 +124,6 @@ export default function Layout() {
           if (pendingRoom > -1) toast('Choose a room to continue.');
         }}
       />
-      <ConfigPanel />
       <Toast />
     </DrawerContext.Provider>
   );

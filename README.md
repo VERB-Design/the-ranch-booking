@@ -30,8 +30,9 @@ registered and the component is not mounted.
 
 ## Configuring it
 
-The config panel is hidden by default. Reveal it with **Ctrl/Cmd + `.`** or `?config=on`.
-Every switch is mirrored into the URL so a configuration can be shared as a link.
+The on-screen config panel is switched off for the client build (the component remains in
+`src/components/ConfigPanel.jsx`, unmounted). Every switch still reads from the URL, so a
+configuration can be shared as a link, e.g. `?entry=pages` or `?mp=0`.
 Presets: **Ranch full flow** (default) · **Single property** · **No upsells**.
 
 ## Where things are

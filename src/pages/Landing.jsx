@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import ReserveDrawer from '../components/drawer/ReserveDrawer.jsx';
-import ConfigPanel from '../components/ConfigPanel.jsx';
 import HeroNav from '../components/home/HeroNav.jsx';
 import PropertyBand from '../components/home/PropertyBand.jsx';
 import { Footer, Toast } from '../components/Chrome.jsx';
@@ -145,7 +144,6 @@ export default function Landing() {
         onClose={() => setDrawer(false)}
         presetProperty={drawerProperty}
       />
-      <ConfigPanel />
       <Toast />
     </div>
   );
