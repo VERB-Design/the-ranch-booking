@@ -113,13 +113,13 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
         <span className="text-[20px] font-medium leading-none">{money(nightly, 0)}</span>
         <span className="ml-2 whitespace-nowrap text-xs text-muted">{suffix.trim()}</span>
       </p>
-      <span className="block text-sm text-body">Or {money(grandTotal, 0)} total</span>
+      <span className="block text-sm text-body">{money(grandTotal, 0)} total</span>
       <button
         type="button"
         onClick={() => setFeesOpen(true)}
         className="text-xs text-muted underline underline-offset-2 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
       >
-        plus taxes and fees
+        Excluding taxes and fees
       </button>
       <FeeModal
         open={feesOpen}
@@ -148,7 +148,7 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
   /* No outlines anywhere. Cards sit on the light ground; the chosen one
      takes the brown tint — the same "selected" fill the calendar and the
      programme chooser use. */
-  const borderClasses = _selected ? 'bg-brown-100' : 'bg-light';
+  const borderClasses = _selected ? 'bg-brown-100 [&_.text-muted]:text-body' : 'bg-light';
 
 
   /* Horizontal: the photo runs to the card's edge and fills whatever

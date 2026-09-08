@@ -324,28 +324,6 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 <RoomChips rooms={draft.rooms} multiRoom={config.multiRoom} onGuestsChange={setGuests} onAdd={addRoom} onRemove={removeRoom} />
               </div>
 
-              <div>
-                <span className="label-sm mb-1.5 block text-accent">Promo Code</span>
-                <div className="flex h-[50px] items-center rounded-brand border border-line bg-fill px-4">
-                  <input
-                    type="text"
-                    aria-label="Promo code"
-                    value={draft.promo}
-                    readOnly={draft.promoApplied}
-                    onChange={(e) => setDraft((d) => ({ ...d, promo: e.target.value }))}
-                    className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none"
-                  />
-                  <button
-                    type="button"
-                    disabled={!draft.promo}
-                    onClick={() => setDraft((d) => ({ ...d, promoApplied: !d.promoApplied }))}
-                    className="label-sm shrink-0 text-accent underline underline-offset-2 hover:text-ink disabled:pointer-events-none disabled:text-disabled disabled:no-underline"
-                  >
-                    {draft.promoApplied ? 'Remove' : 'Apply'}
-                  </button>
-                </div>
-              </div>
-
               <hr className="border-line" />
               </div>
 
@@ -370,6 +348,39 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 ) : (
                   <p className="text-sm text-muted">Select a location to see available dates.</p>
                 )}
+              </div>
+
+              {/* Client-feedback pass (8 Sep 2026): moved to the foot of
+                  the tray, below dates and above the button bar (was
+                  above Choose Your Dates, full width). Half width — the
+                  field and Apply/Remove together take roughly half the
+                  row — and inert-at-half-opacity until a location is
+                  chosen, the same gating the Rooms & Guests block above
+                  uses, now applied on its own since the two are no
+                  longer inside one shared wrapper. */}
+              <div>
+                <span className="label-sm mb-1.5 block text-accent">Promo Code</span>
+                <div
+                  inert={propertyMissing || undefined}
+                  className={'flex h-[50px] w-1/2 items-center rounded-brand border border-line bg-fill px-4 transition-opacity ' + (propertyMissing ? 'opacity-50' : '')}
+                >
+                  <input
+                    type="text"
+                    aria-label="Promo code"
+                    value={draft.promo}
+                    readOnly={draft.promoApplied}
+                    onChange={(e) => setDraft((d) => ({ ...d, promo: e.target.value }))}
+                    className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none"
+                  />
+                  <button
+                    type="button"
+                    disabled={!draft.promo}
+                    onClick={() => setDraft((d) => ({ ...d, promoApplied: !d.promoApplied }))}
+                    className="label-sm shrink-0 text-accent underline underline-offset-2 hover:text-ink disabled:pointer-events-none disabled:text-disabled disabled:no-underline"
+                  >
+                    {draft.promoApplied ? 'Remove' : 'Apply'}
+                  </button>
+                </div>
               </div>
 
             </div>

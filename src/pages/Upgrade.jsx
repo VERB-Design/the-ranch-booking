@@ -2,8 +2,10 @@ import { PageTitle } from '../components/Chrome.jsx';
 import { useStep } from '../components/Layout.jsx';
 import { nextStepKey, useConfig } from '../config.jsx';
 import Button from '../components/ui/Button.jsx';
+import Checkbox from '../components/ui/Checkbox.jsx';
 import { CheckIcon, PriceBlock, RoomCardFrame } from '../components/RoomCard.jsx';
 import { D, nights, useBooking } from '../store.jsx';
+import { canExtend, parse } from '../stay.js';
 import usePageTitle from '../usePageTitle.js';
 
 /* Step 5 · Upgrades (docs/BRIEF.md, wire 04; updated per the real content
@@ -52,6 +54,29 @@ export default function Upgrade() {
     if (!slot || !originalRoomId) return;
     const next = rooms.map((r, i) => (i === 0 ? { ...r, roomId: originalRoomId, upgradedFrom: null } : r));
     set({ rooms: next });
+  }
+
+  /* "Extend your stay" — the same extension checkbox ReserveDrawer's
+     DatePicker offers on the first tray, reused here rather than
+     re-specified: it writes `state.extension` exactly as DatePicker
+     does ('pre' for Malibu, 'post' for Hudson, read off the property's
+     own `stayRules.extensionType`) and only shows when `canExtend`
+     (src/stay.js) says this stay's dates actually allow one. Both
+     controls read the same store field, so they can never disagree —
+     ticking it here and reopening the drawer shows it already ticked,
+     and vice versa. Renders beneath the upgrade card, and also when
+     there is no upgrade to offer (originalRoom already at the top of
+     its category, or no room chosen yet upstream). */
+  const pid = state.property;
+  const prop = pid ? D.properties[pid] : null;
+  const checkInDate = state.checkIn ? parse(state.checkIn) : null;
+  const checkOutDate = state.checkOut ? parse(state.checkOut) : null;
+  const extendable = !!(prop && canExtend(pid, checkInDate, checkOutDate));
+  const extensionLabel = (prop && prop.stayRules.extensionLabel) || 'Add an extra night';
+
+  function toggleExtension(checked) {
+    if (!prop) return;
+    set({ extension: checked ? prop.stayRules.extensionType : null });
   }
 
   return (
@@ -104,6 +129,21 @@ export default function Upgrade() {
               ? 'Your room is already our best in this category.'
               : 'Choose a room on the previous step to see upgrade options.'}
           </p>
+        </div>
+      )}
+
+      {extendable && (
+        <div className="mt-6 bg-light p-5 md:p-8">
+          <h2 className="h-serif text-lg text-ink">Extend your stay</h2>
+          <p className="mt-2 text-sm text-body">
+            Settle into the program or linger longer and enjoy the property&rsquo;s amenities.
+          </p>
+          <Checkbox
+            className="mt-4"
+            checked={!!state.extension}
+            onChange={toggleExtension}
+            label={extensionLabel}
+          />
         </div>
       )}
     </div>

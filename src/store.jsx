@@ -30,7 +30,7 @@ function defaults() {
     /* One entry per booked room. adults is 1–2 — the Ranch is adults-only,
        so there is no children field to carry. upgradedFrom holds the room
        id this slot was upgraded away from, so the offer can be undone. */
-    rooms: [{ uid: 'r1', roomId: null, adults: 2, upgradedFrom: null }],
+    rooms: [{ uid: 'r1', roomId: null, adults: 1, upgradedFrom: null }],
     /* Add-ons apply to the stay, not to a room — each entry is one booked
        slot: which add-on, which day of the stay, what time, and party size. */
     addons: [],
@@ -155,7 +155,7 @@ export function newRoomSlot(rooms) {
   return {
     uid: 'r' + (list.length + 1) + Date.now().toString(36),
     roomId: null,
-    adults: 2,
+    adults: 1,
     upgradedFrom: null,
   };
 }

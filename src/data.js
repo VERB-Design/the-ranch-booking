@@ -333,17 +333,25 @@ const D = (function () {
   }
 
   /* ---------- Every Stay Includes ----------
-     The site's own longer list, wire's four items first (spa/dining/
-     hike/transfer) then the extras it actually publishes. {airport} is
-     filled in by the component with the guest's own property. */
+     Client feedback pass (8 Sep 2026): replaced with the client's own
+     nine-line order. {airport} is filled in by the component with the
+     guest's own property. `meditation` and `fitness` are new icon keys —
+     hand-drawn for this pass like `amenities`/`laundry`/`bodpod` before
+     them, not exported from the client's Figma icon set; see
+     docs/PRODUCTION-NOTES.md, Licensing. `stayDescription` (src/stay.js)
+     no longer extracts nouns from these titles — the wording here is
+     long-form list copy, not a noun a one-line sentence can safely pull
+     out; that sentence is hard-coded instead, see stay.js. */
   var includes = [
-    { icon: 'spa', title: 'Daily massage', desc: 'A 50-minute deep tissue massage for each full day of the programme.' },
+    { icon: 'spa', title: 'Daily deep tissue massage', desc: 'A 50-minute deep tissue massage for each full day of the programme.' },
     { icon: 'dining', title: 'All meals and snacks', desc: 'Plant-forward, nutritionally dense meals and snacks, plus morning organic coffee and a daily tea bar.' },
-    { icon: 'hike', title: 'Daily hikes, fitness and yoga', desc: 'Daily guided hikes, an afternoon fitness class, and a restorative yoga or meditation class.' },
-    { icon: 'transfer', title: 'Return airport transfer', desc: 'Departure transfer to {airport} at 10 am. Arrival is on your own.' },
-    { icon: 'amenities', title: 'Pool, sauna and cold plunge', desc: 'Heated pool, jacuzzi, infrared sauna and cold plunge; weekly sound bath.' },
+    { icon: 'hike', title: 'Guided daily hikes', desc: 'Daily guided hikes across the property’s own trails.' },
+    { icon: 'meditation', title: 'Daily fitness, yoga, and meditation classes', desc: 'An afternoon fitness class alongside a daily yoga or meditation class.' },
+    { icon: 'amenities', title: 'Access to pool, sauna, and cold plunge', desc: 'Heated pool, jacuzzi, infrared sauna and cold plunge; weekly sound bath.' },
     { icon: 'laundry', title: 'Daily laundry service', desc: 'Personal laundry, washed and folded, available daily.' },
-    { icon: 'bodpod', title: 'Bod Pod analysis', desc: 'Body composition analysis, plus a cooking demonstration and evening nutrition talks.' },
+    { icon: 'bodpod', title: 'Body composition analysis', desc: 'Body composition analysis, plus a cooking demonstration and evening nutrition talks.' },
+    { icon: 'transfer', title: 'Return transfer to airport', desc: 'Departure transfer to {airport} at 10 am. Arrival is on your own.' },
+    { icon: 'fitness', title: 'Unlimited use of fitness facilities', desc: 'Full access to the property’s fitness facilities for the length of your stay.' },
   ];
 
   /** The room page's five FAQs, built from the property's own rules and
@@ -590,25 +598,56 @@ const D = (function () {
   };
 
   /* ---------- Fees & policies ----------
-     Replaces the old flat 11.8% with the booking engine's own line
-     items, expressed as an all-in multiplier per property with a
-     breakdown for the fee modal. Malibu: 20% service charge (itself
-     taxed) + preservation fee & taxes. Hudson: service charge & taxes +
-     preservation fee + occupancy/room/F&B taxes. See
-     docs/content/CONTENT-SOURCE.md section 4 for the line-item source. */
+     Client feedback pass (8 Sep 2026): itemised into the real receipt
+     lines the booking engine charges, not the earlier "Service charge &
+     taxes" combined line the client found confusing next to the fee
+     modal's separate "20% service fee" copy (FeeModal.jsx now quotes the
+     same 20% "Service charge" line this breakdown does — no more two
+     numbers for one thing). Every rate is expressed as a percentage of
+     the pre-tax subtotal, derived from the dollar figures on
+     docs/content/CONTENT-SOURCE.md section 4's worked examples, rounded
+     to two decimals:
+
+     Malibu — $1,550/night example, $334.03 "Service Charge & Taxes" +
+     $33.57 "Preservation Fee & Taxes": service charge is a flat 20%
+     ($310.00); the remaining $24.03 is tax *on* that service charge,
+     24.03/1550 = 1.55%; preservation fee & taxes 33.57/1550 = 2.17%.
+     20 + 1.55 + 2.17 = 23.72 → allInMultiplier 1.2372 (was rounded to
+     1.24 — now the exact sum of the lines shown, not a rounder number
+     the lines were tuned to hit).
+
+     Hudson — $1,675/night example, $363.06 "Service Charge & Taxes" +
+     $34.56 "Preservation Fee" + $13.40 "Occupancy Tax" + $7.01 "Food &
+     Beverage Sales Tax" + $14.03 "Room Sales Tax": service charge 20%
+     ($335.00); tax on the service charge (363.06-335.00)/1675 = 1.68%;
+     preservation fee 34.56/1675 = 2.06%; occupancy tax 13.40/1675 =
+     0.80%; room sales tax 14.03/1675 = 0.84%; food & beverage sales tax
+     7.01/1675 = 0.42%. Sum 20 + 1.68 + 2.06 + 0.80 + 0.84 + 0.42 = 25.80
+     → allInMultiplier 1.258 (unchanged from before — this one already
+     rounded to the exact sum, Malibu didn't).
+
+     `label`s intentionally never say "service fee" — the client's
+     confusion was exactly that clash between the modal's "20% service
+     fee" copy and the rail's "Service charge & taxes 21.55%" line; both
+     now read "service charge" and show the identical breakdown. */
   var fees = {
     malibu: {
-      allInMultiplier: 1.24,
+      allInMultiplier: 1.2372,
       breakdown: [
-        { label: 'Service charge & taxes', rate: 0.2155 },
-        { label: 'Preservation fee & taxes', rate: 0.0245 },
+        { label: 'Service charge', rate: 0.20 },
+        { label: 'Tax on service charge', rate: 0.0155 },
+        { label: 'Preservation fee and taxes', rate: 0.0217 },
       ],
     },
     hudson: {
-      allInMultiplier: 1.26,
+      allInMultiplier: 1.258,
       breakdown: [
-        { label: 'Service charge & taxes', rate: 0.2168 },
-        { label: 'Preservation fee & taxes', rate: 0.0432 },
+        { label: 'Service charge', rate: 0.20 },
+        { label: 'Tax on service charge', rate: 0.0168 },
+        { label: 'Preservation fee', rate: 0.0206 },
+        { label: 'Occupancy tax', rate: 0.008 },
+        { label: 'Room sales tax', rate: 0.0084 },
+        { label: 'Food & beverage sales tax', rate: 0.0042 },
       ],
     },
     depositRate: 0.25,

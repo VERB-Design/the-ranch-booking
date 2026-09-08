@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { D, guestsLabel, lineNightly, nights, pricing, stayRange, useBooking } from '../store.jsx';
 import { retreatById } from '../stay.js';
 import { useConfig } from '../config.jsx';
-import { fmtShort, money } from '../utils.js';
+import { fmtShort, money, pct } from '../utils.js';
 
 /* ============================================================
    StayRail
@@ -163,7 +163,7 @@ function TaxesRow({ p }) {
           <ul className="mt-2 flex flex-col gap-1 pb-1 text-xs text-muted">
             {lines.map((l) => (
               <li key={l.label} className="flex items-center justify-between gap-3">
-                <span>{l.label} · {(l.rate * 100).toFixed(2).replace(/\.?0+$/, '')}%</span>
+                <span>{l.label} · {pct(l.rate)}%</span>
                 <span>{money(Math.round(taxable * l.rate))}</span>
               </li>
             ))}
@@ -323,6 +323,15 @@ const ICONS = {
   ),
   bodpod: (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="5" stroke="currentColor" strokeWidth="1.4" /><path d="M9 9h6M9 12h6M9 15h6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" /></svg>
+  ),
+  /* Added for the client-feedback "Every Stay Includes" rewrite (8 Sep
+     2026) — same hand-drawn status as the three above, not from the
+     client's Figma icon set; see docs/PRODUCTION-NOTES.md, Licensing. */
+  meditation: (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="6" r="2" stroke="currentColor" strokeWidth="1.4" /><path d="M12 9v3M6 18c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5M4 18h16" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  ),
+  fitness: (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="9" width="3" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" /><rect x="18.5" y="9" width="3" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" /><path d="M6.5 12h11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /><rect x="8.5" y="7" width="2" height="10" rx="0.6" stroke="currentColor" strokeWidth="1.2" /><rect x="13.5" y="7" width="2" height="10" rx="0.6" stroke="currentColor" strokeWidth="1.2" /></svg>
   ),
 };
 

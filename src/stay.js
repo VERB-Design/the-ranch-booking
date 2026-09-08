@@ -151,29 +151,22 @@ export function retreatById(pid, id) {
   return list.find((r) => r.date === id) || null;
 }
 
-/** One-line stay description, built from D.includes rather than
-    hard-coded — "{N}-night stay at {property}" plus "Includes daily
-    {massage}, daily {hikes}, and all {meals}." Pulls the noun each
-    item's own title already carries (Daily massage → massage, Daily
-    hikes, fitness and yoga → hikes, All meals and snacks → meals)
-    instead of copying a wire's literal sentence, so a future edit to
-    D.includes's titles updates every reader of this function at once.
-    Shared between DatePicker's "Your Chosen Stay" card and
-    ProgramChoice's tray/inline summary line — moved here (Sep 2026,
-    program-choice pass) from DatePicker.jsx, where it started as a
-    private helper, once a second component needed the same text. */
+/** One-line stay description — "{N}-night stay in {property}" plus a
+    fixed "Includes daily massage, guided hikes, and all meals." Used to
+    pull its three nouns out of D.includes's own titles (Daily massage →
+    massage, etc.) so an edit to the includes list updated this sentence
+    for free; the client-feedback pass (8 Sep 2026) rewrote those titles
+    to longer list copy ("Daily deep tissue massage", "Guided daily
+    hikes", "Daily fitness, yoga, and meditation classes") that the
+    extraction can no longer safely reduce to one clean noun each —
+    hard-coded instead, per the brief's own fallback instruction. Shared
+    between DatePicker's "Your Chosen Stay" card and ProgramChoice's
+    tray/inline summary line. */
 export function stayDescription(pid, nights) {
-  const word = (icon, prefix) => {
-    const item = D.includes.find((i) => i.icon === icon);
-    return item ? item.title.replace(prefix, '').split(/[ ,]/)[0].toLowerCase() : '';
-  };
-  const massage = word('spa', /^Daily /) || 'massage';
-  const hikes = word('hike', /^Daily /) || 'hikes';
-  const meals = word('dining', /^All /) || 'meals';
   const propertyShort = D.properties[pid].name.replace('The Ranch ', '');
   return {
-    title: nights + '-night stay at ' + propertyShort,
-    rest: 'Includes daily ' + massage + ', daily ' + hikes + ', and all ' + meals + '.',
+    title: nights + '-night stay in ' + propertyShort,
+    rest: 'Includes daily massage, guided hikes, and all meals.',
   };
 }
 

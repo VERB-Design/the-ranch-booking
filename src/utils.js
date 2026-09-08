@@ -53,6 +53,14 @@ export function money(n, decimals = 0) {
   return '$' + n.toLocaleString('en-US', opts);
 }
 
+/** "1.55" / "20" / "0.8" — a rate expressed as a percent, up to two
+    decimals with trailing zeros trimmed. Shared by StayRail's TaxesRow
+    and FeeModal so the two taxes-and-fees breakdowns can never render
+    the same D.fees rate two different ways. */
+export function pct(rate) {
+  return (rate * 100).toFixed(2).replace(/\.?0+$/, '');
+}
+
 /** "a, b and c" — a plain "and" between exactly two items, an Oxford
     comma before the last when there are three or more. Used for the room
     page's "Every stay includes …" sentence and the FAQ that echoes it, so

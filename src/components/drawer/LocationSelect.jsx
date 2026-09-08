@@ -1,4 +1,5 @@
 import { D } from '../../store.jsx';
+import { money } from '../../utils.js';
 
 /* "The Ranch Malibu, CA" — the abbreviated state suffix per
    docs/figma/styles/booking-widgets.png. No field in src/data.js carries
@@ -21,6 +22,13 @@ function propertyLabel(pid) {
    the one piece of the drawer's contents that Program.jsx has no
    equivalent for (Location is a two-card page there, not a dropdown), so
    unlike RoomChips/DatePicker it is not shared with a step page.
+
+   Client-feedback pass (8 Sep 2026), "show rates first": each option now
+   carries a second, smaller line — "From $X per person / night," the
+   property's own lowest room rate (`D.fromPrice`, min of
+   `D.roomsFor(pid)`) — so a guest can compare Malibu and Hudson Valley
+   before ever reaching the Rooms step, per the client's own Canyon Ranch
+   reference. Read-only text; the option itself is still the one control.
    ============================================================ */
 export default function LocationSelect({ value, onChange, open, onOpenChange }) {
   return (
@@ -70,7 +78,10 @@ export default function LocationSelect({ value, onChange, open, onOpenChange }) 
                 onClick={() => { onChange(pid); onOpenChange(false); }}
                 className="w-full px-4 py-2.5 text-left text-sm hover:bg-page focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent-focus"
               >
-                {propertyLabel(pid)}
+                <span className="block">{propertyLabel(pid)}</span>
+                <span className="mt-0.5 block text-xs text-muted">
+                  From {money(D.fromPrice(pid), 0)} per person / night
+                </span>
               </button>
             </li>
           ))}

@@ -6,7 +6,7 @@ import Checkbox from '../ui/Checkbox.jsx';
 import RetreatModal from './RetreatModal.jsx';
 import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, stayDescription } from '../../stay.js';
 import { D } from '../../store.jsx';
-import { MONTH_NAMES, asset } from '../../utils.js';
+import { MONTH_NAMES, asset, money } from '../../utils.js';
 
 function today() {
   const d = new Date();
@@ -282,6 +282,20 @@ export default function DatePicker({
   const extendable = extensionsOn && canExtend(pid, checkIn, checkOut);
   const extensionLabel = stayRules.extensionLabel || 'Add an extra night';
 
+  /* "Show rates first" (client feedback, 8 Sep 2026) — the property's
+     lowest room rate, so the guest sees a real number before Rooms.
+     `baseNights` deliberately excludes the extension (it's priced
+     separately, at the property's own extension rate, not the lowest
+     room's programme rate) — Malibu's Saturday pre-night charges
+     `preNightRate` regardless of which room is eventually booked;
+     Hudson's Friday post-night charges the room's own nightly rate, so
+     the lowest room's rate stands in for it here too. Single guest,
+     read-only text — no new control. */
+  const lowestRate = D.fromPrice(pid);
+  const baseNights = bothSet ? nightsBetween(checkIn, checkOut) : 0;
+  const extensionNightRate = extension ? (pid === 'malibu' ? (stayRules.preNightRate || lowestRate) : lowestRate) : 0;
+  const fromStayTotal = lowestRate * baseNights + extensionNightRate;
+
   /* The field currently being filled is the only one that carries the
      accent-focus highlight — a field that already holds a date is
      "chosen," not "being chosen," even though it is technically the most
@@ -346,6 +360,9 @@ export default function DatePicker({
               <span className="label-sm block text-accent">Your Chosen Stay</span>
               <p className="h-serif mt-2 text-[24px] leading-tight text-ink">{stayDescription(pid, nights).title}</p>
               <p className="mt-1.5 text-sm text-body">{stayDescription(pid, nights).rest}</p>
+              <p className="mt-1.5 text-sm text-muted">
+                From {money(lowestRate, 0)} per person / night · from {money(fromStayTotal, 0)} for your stay, before taxes and fees
+              </p>
             </div>
 
             {extendable && (

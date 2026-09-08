@@ -834,3 +834,115 @@ programme rate per room, no rate-plan list) and every accessibility pattern from
   confirmed in writing) covers these the same as every other photo in the build.
 - **`D.faqsFor(pid)` and `D.galleryFor(room)`** are new data helpers, both pure and both reading
   only fields that already existed in `src/data.js` — no new content was invented for either.
+
+## Client feedback pass 1 — 8 Sep 2026
+Content and functionality only, per the brief — spacing, layout density and card styling were
+explicitly out of scope and untouched. Files: `src/store.jsx`, `src/data.js`, `src/stay.js`,
+`src/utils.js`, `src/components/{StayRail,FeeModal,RoomCard}.jsx`,
+`src/components/drawer/{LocationSelect,ReserveDrawer}.jsx`, `src/components/booking/DatePicker.jsx`,
+`src/pages/{RoomDetail,Upgrade}.jsx`. `npm run lint` and `npm run build` green after every change.
+
+**Content accuracy — fee rates derived this pass, replacing the earlier rounded ones.**
+Both properties' `D.fees[pid].breakdown` are now itemised into the real receipt lines
+(docs/content/CONTENT-SOURCE.md section 4's dollar figures), each rate expressed as a percentage
+of the pre-tax subtotal and rounded to two decimals — see the derivation comment directly above
+`var fees` in `src/data.js` for the full arithmetic. Summary:
+- **Malibu** ($1,550/night example): Service charge 20% (flat) · Tax on service charge 1.55%
+  (the part of the engine's combined 21.55% "Service Charge & Taxes" that isn't the flat 20%) ·
+  Preservation fee and taxes 2.17%. Sum 23.72% → `allInMultiplier` 1.2372 (was a rounded 1.24 —
+  the exact sum of the displayed lines now, not a rounder number the lines were tuned to hit).
+- **Hudson** ($1,675/night example): Service charge 20% · Tax on service charge 1.68% ·
+  Preservation fee 2.06% · Occupancy tax 0.80% · Room sales tax 0.84% · Food & beverage sales tax
+  0.42%. Sum 25.80% → `allInMultiplier` 1.258 (unchanged in value — it already rounded to the
+  exact sum; only the single combined line was split into six).
+- Verified by direct computation (see the fee-math check run this pass) that the sum of each
+  property's breakdown rates equals `allInMultiplier - 1` exactly, and that the rail's `pricing()`
+  tax and `FeeModal`'s own tax converge on the same total for a Malibu 7-night and a Hudson
+  3-night stay ($13,424 and $6,321 respectively, at $0 rounding difference between the two
+  surfaces' totals). Individual displayed line amounts are each independently rounded to the
+  nearest dollar for display, so they can be a cent or two off from the true total when summed by
+  hand — the same display-rounding trade-off the rail already carried before this pass, not new.
+- **Assumption, not sourced:** which of the six/three lines a given dollar delta "belongs to" is
+  inferred arithmetic (e.g. "tax on the service charge" = the combined line minus the flat 20%),
+  not a verbatim line-item name from the booking engine's own receipt UI — the engine's raw JSON
+  (`docs/content/CONTENT-SOURCE.md` section 4) only gives combined figures for Malibu and named
+  totals for Hudson, not a component-level breakdown of "service charge" vs "tax on service
+  charge" as two separate receipt lines. The math reconciles exactly; the labels are a plausible
+  reconstruction. Confirm the real line-item names/order with the client before this ships as fact.
+- **`FeeModal`'s intro copy changed** from a flat "A 20% service fee will be added to your stay."
+  to "A 20% service charge, plus applicable taxes and fees, is added to your stay." — this was the
+  client's exact complaint (a "20% service fee" sentence sitting next to a modelled "21.55%
+  service charge & taxes" line that didn't visibly relate to it). The explanatory paragraph below
+  it was left verbatim per the task's own instruction to keep it. "Service fee" no longer appears
+  anywhere in the app; every surface says "service charge."
+- **"Every Stay Includes" rewritten to the client's nine-line order** (`D.includes` in
+  `src/data.js`) — new icon keys `meditation` and `fitness` added to `StayRail.jsx`'s `ICONS` map,
+  hand-drawn like the three added in the earlier content-integration pass (`amenities`, `laundry`,
+  `bodpod`), not exported from the client's Figma icon set — same Licensing caveat applies.
+  `stay.js`'s `stayDescription()` no longer extracts nouns from these titles to build its one-line
+  summary sentence ("Includes daily {X}, daily {Y}, and all {Z}.") — the new titles are longer list
+  copy ("Daily deep tissue massage," "Guided daily hikes," "Daily fitness, yoga, and meditation
+  classes") that a regex-based noun extraction can no longer safely reduce to a single clean word
+  each. Hard-coded the sentence instead, per the task's own fallback instruction: "Includes daily
+  massage, guided hikes, and all meals." `RoomDetail.jsx`'s own "Every stay includes…" sentence and
+  the room-page FAQ (`D.faqsFor`) both still build their list from `naturalJoin()` over the first
+  four full titles directly (not noun-extracted), so they read naturally without any further change.
+- **Room card rate figures are unaffected by the fee-rate change** — `roomStayTotal()` and
+  `PriceBlock`'s "$X total" both price the *pre-tax* subtotal (nightly × nights × guests, plus any
+  extension), same as before; only the taxes-and-fees breakdown shown in `FeeModal`/`TaxesRow`
+  changed shape. No room, upgrade or rail total number moved as a side effect of the fee-line
+  restructuring — verified directly: Malibu Queen Cottage 7 nights read $10,850 pre-tax /
+  $13,424 with taxes both before and after this pass.
+- **"Show rates first" (drawer Location select + DatePicker's "Your Chosen Stay" line) reads
+  single-guest, single-room, lowest-rate figures** — deliberately optimistic "from" pricing (the
+  cheapest room, one guest), not what a guest with a specific room/guest count already chosen would
+  pay. This mirrors how Canyon Ranch and most hospitality "from" pricing works, but is worth a
+  client confirmation that a from-rate this low (vs. a family/couple's real per-room total) doesn't
+  read as bait pricing once real content is final.
+- **Extend your stay checkbox on `/upgrade` reads/writes the same `state.extension` field the
+  drawer's `DatePicker` does** — ticking it in one place and reopening the drawer (or revisiting
+  Upgrade) always shows it already ticked, by construction (one store field, two UIs). Confirmed
+  live: ticking on `/upgrade` moved the rail from 7 to 8 nights and $13,424 to $15,001 without a
+  page reload.
+- **Default guest count is now 1, not 2** (`src/store.jsx` `defaults()` and `newRoomSlot()`) — the
+  counter's own min/max (`MAX_GUESTS_PER_ROOM` in `src/config.jsx`) was already 1–2 and is
+  unchanged; only the starting value moved. Any config/demo state seeded before this pass with an
+  assumed 2-guest default (screenshots, saved `sessionStorage` fixtures, other agents' scratch
+  scripts) will now start at 1 instead on a fresh booking.
+
+**Accessibility — found during verification, pre-existing, not caused by this pass, not fixed
+(out of scope — task was content/functionality only, explicitly no visual changes).**
+- **`color-contrast` (serious), `/rooms`, only when a room card is in its *selected* state**
+  (`bg-brown-100` fill, `RoomCardFrame` in `src/components/RoomCard.jsx`). Two elements —
+  `PriceBlock`'s "per person / night" caption and its "Excluding taxes and fees" link (`text-muted`
+  #6d6d6d) — measure 3.78:1 against the `bg-brown-100` (#e9dacd) selected-card fill, under the
+  4.5:1 floor. Confirmed pre-existing by reverting this pass's changes with `git stash`, re-running
+  the same axe check against the untouched original code, and seeing the identical violation with
+  the identical ratio before restoring (`git stash pop`) — this pass changed the text content of
+  that link ("plus taxes and fees" → "Excluding taxes and fees") but never touched its `text-muted`
+  class, and the failure reproduces on the original wording too. `docs/ACCESSIBILITY-AUDIT.md`'s own
+  route sweep evidently never exercised a room card in its *selected* state on `/rooms` (its
+  seeded booking had no `roomId` assigned yet when it visited that route) — a real gap in that
+  audit's coverage, not something new. Route to `accessibility-agent` for a real fix (likely:
+  `text-body` or a purpose-built colour in place of `text-muted` specifically on the `bg-brown-100`
+  fill, the same pattern the calendar's own retreat-cell fix already used) before this ships; not
+  fixed here since a colour-class change is a visual change this task's brief put out of scope.
+- Zero console/page errors across every seeded route and viewport tested this pass. All other axe
+  checks (`/`, `/upgrade`, `/checkout` at 1440 and 390; `/rooms` at both viewports apart from the
+  one finding above) came back clean.
+
+**Verification.** Playwright (`playwright` + `@axe-core/playwright`, throwaway scratch project at
+`pw-content`, not committed — same standing pattern as every prior pass) against the dev server on
+port 5180. The scratch project's own `node_modules` had been partially pruned by an earlier `npm
+install --no-save` in a previous session (left `playwright` without a `package.json` to anchor it,
+so a later `npm install` treated it as extraneous and removed it) — fixed by running a proper `npm
+install playwright @axe-core/playwright axe-core` (no `--no-save`) so the three packages stay
+declared and stop getting pruned by each other's install; also had to `npx playwright install
+chromium` to fetch a browser binary matching the newly-installed Playwright version (the cached
+one belonged to an older version). Screenshots: `docs/screens/feedback-1/` (desktop 1440, mobile
+390; viewport screenshots, not `fullPage`, per this repo's standing note on sticky-chrome + fullPage
+stitching). **Operational note, not a code issue:** the dev server on port 5180 was not running at
+the start of this pass despite the brief's "use it, do not start or kill servers" — confirmed dead
+via `curl`/`lsof` before starting it, since verification was impossible against a server that
+wasn't up; started with `npm run dev -- --port 5180 --strictPort` and left running in the
+background for the session, not stopped.
