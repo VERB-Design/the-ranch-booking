@@ -198,11 +198,11 @@ export function RoomCardFrame({ room, layout = 'horizontal', selected: _selected
         {media}
         <div className="flex min-w-0 flex-1 flex-col p-5 md:p-7">
           <h2 id={headingId} className="h-serif text-lg text-ink md:text-xl">{room.name}</h2>
-          <p className="mt-1 text-sm text-body">{room.detail}</p>
-          <p className="mt-3 text-sm leading-relaxed text-body line-clamp-3">{room.desc}</p>
+          <p className="mt-1.5 text-sm text-body">{room.detail}</p>
+          <p className="mt-3.5 text-sm leading-relaxed text-body line-clamp-3">{room.desc}</p>
           {/* Price on the left, the action beside it on the right, bottoms
               aligned; on a phone the action drops beneath the price. */}
-          <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="mt-[18px] flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             {priceSlot}
             <div className="shrink-0">{actions}</div>
           </div>
