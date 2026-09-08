@@ -290,15 +290,15 @@ const D = (function () {
     return rooms.filter(function (r) { return r.property === pid; });
   }
   /* Per-person nightly rates by occupancy for the drawer's Rates block.
-     Single is the engine's sampled per-person rate (the lowest room). Double
-     occupancy is NOT on the site for the current programmes — the only
-     published pair is a past special ("$1325 single / $985 per person
-     double"), so double is derived at that ratio and rounded to $25.
+     The engine's sampled per-person rate is treated as the double-occupancy
+     figure (the industry's usual quoted rate); single occupancy is derived
+     above it at the only ratio the site publishes — a past special's
+     "$1,325 single / $985 per person double" — rounded to $25.
      UNVERIFIED — see docs/PRODUCTION-NOTES.md. */
   function occupancyRates(pid) {
-    var single = fromPrice(pid);
-    var double = Math.round((single * (985 / 1325)) / 25) * 25;
-    return { single: single, double: double, doubleUnverified: true };
+    var double = fromPrice(pid);
+    var single = Math.round((double * (1325 / 985)) / 25) * 25;
+    return { single: single, double: double, unverified: true };
   }
 
   function fromPrice(pid) {

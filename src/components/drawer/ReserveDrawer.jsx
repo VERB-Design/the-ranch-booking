@@ -330,6 +330,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                     </div>
                   </dl>
                   <p className="mt-1.5 text-xs text-muted">Before taxes and fees.</p>
+                  <hr className="mt-5 border-line" />
                 </div>
               )}
 

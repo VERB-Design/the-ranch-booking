@@ -949,7 +949,8 @@ background for the session, not stopped.
 
 ## Drawer rates block — 8 Sep 2026
 - The drawer now shows single and double occupancy "from" rates once a location is chosen.
-  Single is the engine's sampled per-person rate. **Double occupancy is derived**, not sourced:
-  the site publishes no double rate for the current programmes, only a past special's pair
-  ($1,325 single / $985 per person double), so double = single × 985/1325 rounded to $25.
-  Client to supply real double-occupancy rates.
+  Revised 8 Sep 2026 at Troy's direction so single reads higher than double: the engine's
+  sampled per-person rate is shown as **double occupancy**, and **single occupancy is derived**
+  above it at the only ratio the site publishes (a past special's $1,325 single / $985 per
+  person double), rounded to $25. Neither is a confirmed rate card — client to supply real
+  single and double rates.
