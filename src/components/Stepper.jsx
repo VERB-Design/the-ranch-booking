@@ -103,7 +103,7 @@ export default function Stepper() {
                   {/* Only the current step carries its name — the rest are
                       just their numbers, so the band stays compact. The name
                       stays in the accessible text for every step. */}
-                  <span className={status === 'current' ? '' : 'sr-only'}>{step.label}</span>
+                  <span className={status === 'current' ? '' : 'sr-only md:not-sr-only'}>{step.label}</span>
                 </Tag>
                 {i < steps.length - 1 && <span aria-hidden="true" className="mx-1 h-px w-3 bg-line md:w-5" />}
               </li>
