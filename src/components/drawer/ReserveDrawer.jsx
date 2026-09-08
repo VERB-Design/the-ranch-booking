@@ -9,7 +9,7 @@ import { Arrow } from '../Chrome.jsx';
 import { iso, nightsBetween, retreatInStay, stayDescription } from '../../stay.js';
 import { D, MAX_ROOMS, newRoomSlot, useBooking, useToast } from '../../store.jsx';
 import { flowSteps, useConfig } from '../../config.jsx';
-import { fmtShort, asset } from '../../utils.js';
+import { fmtShort, asset, money } from '../../utils.js';
 import useMountTransition from '../../useMountTransition.js';
 
 const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input:not([disabled]),select,[tabindex]:not([tabindex="-1"])';
@@ -314,6 +314,25 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 <LocationSelect value={draft.property} onChange={chooseProperty} open={propOpen} onOpenChange={setPropOpen} />
               )}
 
+              {/* Rates for the chosen location, single and double occupancy,
+                  before taxes and fees — shown as soon as a location is set. */}
+              {draft.property && (
+                <div>
+                  <span className="label-sm mb-1.5 block text-accent">Rates</span>
+                  <dl className="flex flex-col gap-1 text-sm text-ink">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <dt>Single occupancy</dt>
+                      <dd className="text-right">from {money(D.occupancyRates(draft.property).single, 0)} per night</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-4">
+                      <dt>Double occupancy</dt>
+                      <dd className="text-right">from {money(D.occupancyRates(draft.property).double, 0)} per person / night</dd>
+                    </div>
+                  </dl>
+                  <p className="mt-1.5 text-xs text-muted">Before taxes and fees.</p>
+                </div>
+              )}
+
               {/* Until a location is chosen, everything between it and the
                   dates sits inert at half opacity — the dates block stays
                   live because its own message says what to do. */}
@@ -362,7 +381,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 <span className="label-sm mb-1.5 block text-accent">Promo Code</span>
                 <div
                   inert={propertyMissing || undefined}
-                  className={'flex h-[50px] w-1/2 items-center rounded-brand border border-line bg-fill px-4 transition-opacity ' + (propertyMissing ? 'opacity-50' : '')}
+                  className={'flex h-[50px] w-[calc(50%-8px)] items-center rounded-brand border border-line bg-fill px-4 transition-opacity ' + (propertyMissing ? 'opacity-50' : '')}
                 >
                   <input
                     type="text"

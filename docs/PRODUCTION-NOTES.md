@@ -946,3 +946,10 @@ the start of this pass despite the brief's "use it, do not start or kill servers
 via `curl`/`lsof` before starting it, since verification was impossible against a server that
 wasn't up; started with `npm run dev -- --port 5180 --strictPort` and left running in the
 background for the session, not stopped.
+
+## Drawer rates block — 8 Sep 2026
+- The drawer now shows single and double occupancy "from" rates once a location is chosen.
+  Single is the engine's sampled per-person rate. **Double occupancy is derived**, not sourced:
+  the site publishes no double rate for the current programmes, only a past special's pair
+  ($1,325 single / $985 per person double), so double = single × 985/1325 rounded to $25.
+  Client to supply real double-occupancy rates.

@@ -1,5 +1,4 @@
 import { D } from '../../store.jsx';
-import { money } from '../../utils.js';
 
 /* "The Ranch Malibu, CA" — the abbreviated state suffix per
    docs/figma/styles/booking-widgets.png. No field in src/data.js carries
@@ -79,9 +78,6 @@ export default function LocationSelect({ value, onChange, open, onOpenChange }) 
                 className="w-full px-4 py-2.5 text-left text-sm hover:bg-page focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent-focus"
               >
                 <span className="block">{propertyLabel(pid)}</span>
-                <span className="mt-0.5 block text-xs text-muted">
-                  From {money(D.fromPrice(pid), 0)} per person / night
-                </span>
               </button>
             </li>
           ))}

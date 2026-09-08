@@ -134,7 +134,7 @@ export default function Upgrade() {
 
       {extendable && (
         <div className="mt-6 bg-light p-5 md:p-8">
-          <h2 className="h-serif text-lg text-ink">Extend your stay</h2>
+          <h2 className="h-serif text-lg text-ink">Extend Your Stay</h2>
           <p className="mt-2 text-sm text-body">
             Settle into the program or linger longer and enjoy the property&rsquo;s amenities.
           </p>
