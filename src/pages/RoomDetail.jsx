@@ -106,8 +106,10 @@ export default function RoomDetail() {
           <section className="mt-10 border-t border-line pt-8">
             <h2 className="h-serif text-lg text-ink">Policies</h2>
             <p className="mt-2 text-sm leading-relaxed text-body">
-              Arrival {prop.stayRules.arrival} · Departure {prop.stayRules.departure}. {prop.depositCopy} {prop.cancelCopy}
+              Arrival {prop.stayRules.arrival} · Departure {prop.stayRules.departure}.
             </p>
+            <p className="mt-3 text-sm leading-relaxed text-body">{prop.depositCopy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-body">{prop.cancelCopy}</p>
           </section>
         </div>
 

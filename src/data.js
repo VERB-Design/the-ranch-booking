@@ -52,29 +52,33 @@ const D = (function () {
         img('malibu/malibu-ranch-house-exterior.jpg', 'The Ranch Malibu exterior, white board-and-batten ranch house, agave and oak'),
         img('malibu/malibu-private-cottage-01.jpg', 'Queen bed in a Malibu guest cottage, morning light'),
       ],
-      desc: 'The original Ranch, twenty-one private cottages in the Santa Monica Mountains less than an hour from Los Angeles. A regenerative organic garden, ocean air, and the six-, seven- or eight-night signature programme.',
+      desc: 'The original Ranch, twenty-one private cottages in the Santa Monica Mountains less than an hour from Los Angeles. A regenerative organic garden, ocean air, and the six-night signature program.',
       guestCount: 'up to 25 guests',
       cottages: 21,
+      siteUrl: 'https://www.theranchlife.com/locations/malibu',
       /* Named for the "Choose your program" tray/inline chooser (Sep 2026
-         pass) — the standard programme's own card, alongside whatever
+         pass) — the standard program's own card, alongside whatever
          dated retreat falls inside the guest's stay. */
-      programName: 'The Signature Programme',
-      programDesc: 'The standard Ranch programme — six, seven or eight nights of daily hikes, spa treatments and meals built around the property’s own organic garden.',
+      programName: 'The Signature Program',
+      programDesc: 'The standard Ranch program — six nights of daily hikes, spa treatments and meals built around the property’s own organic garden, with the option to add a night before or after.',
+      /* Client's second feedback round (9 Sep 2026): Malibu is a fixed
+         6-night Sunday→Saturday core stay — no more Saturday check-in, no
+         5-night stays. Guests may add the Saturday night before or the
+         Sunday night after, or both (see stay.js's extensionOptions).
+         `preNightRate` is quoted by the client for the *pre*-night only;
+         the post-night has no rate of its own in the brief, so the same
+         figure is charged for both and flagged as an assumption — see
+         docs/PRODUCTION-NOTES.md, dated entry. */
       stayRules: {
-        checkInDays: ['Saturday', 'Sunday'],
-        lengths: [6, 7, 8],
-        shorterStays: false, /* "Introducing Shorter Days" — 3-night Thu→Sun, 4-night Sun→Thu — exists only on /locations/malibu; the FAQ, /locations summary and programs page all still describe Malibu as 6-night minimum, so this ships off by default. Flip to true once the client confirms it's a standing product, not a limited-time page. Verified off: a Sunday check-in returns exactly two checkouts (6n Sat, 7n Sun), matching the task's own worked dates. */
-        preNightRate: 1275, /* per person — the Saturday pre-night before a Sunday check-in */
-        extensionType: 'pre',
-        extensionLabel: 'Add an extra night before your stay',
-        blocksCopy: 'Stays run in blocks of 6, 7 or 8 nights. Guests checking in Sunday can add a Saturday pre-night before the programme begins.',
+        preNightRate: 1275, /* per person — charged for either extra night, see note above */
+        blocksCopy: 'Stays run Sunday to Saturday, six nights. Add a night before or after, or both.',
         arrival: '12:00 pm (noon)',
         departure: '10:00 am',
       },
       resortFee: 0,
       cancelDays: 40,
-      cancelCopy: 'If you cancel outside 41 days from your stay, a 10% fee will apply. Within 40 days of your stay, all payments are non-refundable and non-cancellable.',
-      depositCopy: 'A credit card is required for booking, as a deposit of 25% of total will be charged upon booking. The balance will be charged 40 days prior to arrival. If booking within 40 days of arrival, the full amount, inclusive of tax and fees, will be charged.',
+      cancelCopy: 'Should your plans change, cancellations made 41 days or more before arrival are subject to a cancellation fee equal to 10% of the deposit paid. Cancellations made within 40 days of arrival are nonrefundable, and all payments will be forfeited.',
+      depositCopy: 'A credit card is required to reserve your stay. A deposit equal to 25% of the total stay, including taxes and fees, will be charged at the time of booking. The remaining balance will be charged 40 days prior to arrival. Reservations made within 40 days of arrival require full payment at the time of booking.',
     },
     hudson: {
       id: 'hudson',
@@ -88,25 +92,31 @@ const D = (function () {
         img('hudson/hudson-hero-poster.jpg', 'Front elevation of the Hudson Valley stone manor and gravel drive'),
         img('hudson/hudson-backyard-aerial.jpg', 'Aerial of the Hudson Valley estate set in forest'),
       ],
-      desc: 'A stone manor on a historic lakefront estate an hour from New York City, bordered by more than 46,000 acres of protected parkland. Twenty-six guest rooms, a 5,000-square-foot solarium, and three-, four- or seven-night stays.',
+      desc: 'A stone manor on a historic lakefront estate an hour from New York City, bordered by more than 46,000 acres of protected parkland. Twenty-six guest rooms, a 5,000-square-foot solarium, and three-night stays.',
       guestCount: 'averages 25 guests',
       rooms: 26,
-      programName: 'The Hudson Valley Programme',
-      programDesc: 'The standard Hudson Valley programme — three, four or seven nights of guided hikes, spa treatments and seasonal meals inside the stone manor and its grounds.',
+      siteUrl: 'https://www.theranchlife.com/locations/hudson-valley',
+      programName: 'The Hudson Valley Program',
+      programDesc: 'The standard Hudson Valley program — three nights of guided hikes, spa treatments and seasonal meals inside the stone manor and its grounds, with the option to add the Sunday night before or after.',
+      /* Client's second feedback round (9 Sep 2026): a fixed 3-night core
+         stay, Thursday→Sunday or Monday→Thursday — no more 4- or 7-night
+         options. The one extra night is always the Sunday that sits
+         between the two patterns (see stay.js's extensionOptions), priced
+         at the room's own nightly rate rather than a flat figure of its
+         own, since the brief gives Hudson no separate extension rate —
+         see docs/PRODUCTION-NOTES.md, dated entry. This rule is stated by
+         the client to begin 1 Nov 2026; applied for every date rather
+         than building a date-based switch, per the brief's own
+         instruction — see the same PRODUCTION-NOTES entry. */
       stayRules: {
-        checkInDays: ['Thursday', 'Sunday'],
-        lengths: [3, 4, 7],
-        shorterStays: false,
-        extensionType: 'post', /* one extra night, Friday, after a Thursday check-out */
-        extensionLabel: 'Add an extra night after your stay',
-        blocksCopy: 'Stays run in blocks of 3, 4 or 7 nights. Guests can add an extra night to stays ending on Thursdays.',
+        blocksCopy: 'Stays run Thursday to Sunday or Monday to Thursday, three nights. Add the Sunday night before or after.',
         arrival: '1:00 pm',
         departure: '10:00 am',
       },
       resortFee: 0,
       cancelDays: 40,
-      cancelCopy: 'If you cancel outside 41 days from your stay, a 10% fee will apply. Within 40 days of your stay, all payments are non-refundable and non-cancellable.',
-      depositCopy: 'A credit card is required for booking, as a deposit of 25% of total will be charged upon booking. The balance will be charged 40 days prior to arrival. If booking within 40 days of arrival, the full amount, inclusive of tax and fees, will be charged.',
+      cancelCopy: 'Should your plans change, cancellations made 41 days or more before arrival are subject to a cancellation fee equal to 10% of the deposit paid. Cancellations made within 40 days of arrival are nonrefundable, and all payments will be forfeited.',
+      depositCopy: 'A credit card is required to reserve your stay. A deposit equal to 25% of the total stay, including taxes and fees, will be charged at the time of booking. The remaining balance will be charged 40 days prior to arrival. Reservations made within 40 days of arrival require full payment at the time of booking.',
     },
   };
   var propertyList = ['malibu', 'hudson'];
@@ -180,8 +190,8 @@ const D = (function () {
       floor: '2nd floor',
       maxOccupants: 1,
       amenities: ['Walk-in shower', 'Marble vanity', 'Jolie showerhead'],
-      detail: 'Queen bed · Up to 290 sq ft · Courtyard view',
-      desc: 'A charming space for your time with us — a courtyard view, a queen bed and a bathroom with a shower. A peaceful retreat following the active day.',
+      detail: 'Courtyard view • 1 queen bed • Up to 290 sq.ft.',
+      desc: 'A private room with a queen bed, courtyard view, and bathroom with shower, located on the second floor. No television; Wi-Fi limited to guest rooms.',
       images: [img('hudson/hudson-petite-deluxe-01.jpg', 'Petite Deluxe room: queen bed, writing desk, courtyard window')],
       rate: 1675,
     },
@@ -195,8 +205,8 @@ const D = (function () {
       floor: '2nd or 3rd floor',
       maxOccupants: 2,
       amenities: ['Walk-in shower', 'Separate bathtub (some rooms)', 'Marble vanity'],
-      detail: 'Queen or King · Up to 415 sq ft · Courtyard or trail view',
-      desc: 'A bit more spacious, with a king or queen bed and views of the courtyard or trail. Some offer both a shower and a separate bathtub.',
+      detail: 'Courtyard or trail view • 1 queen or king bed • Up to 415 sq.ft.',
+      desc: 'Serene and spacious, with a king or queen bed and bathroom with a shower, plus separate bathtub in select rooms.',
       images: [img('hudson/hudson-deluxe-01.jpg', 'Deluxe room: king bed, armchair and leather bench at the window')],
       rate: 1825,
     },
@@ -204,18 +214,18 @@ const D = (function () {
       id: 'hudson-deluxe-double',
       property: 'hudson',
       name: 'Deluxe Double Room',
-      bed: 'Two queen beds or one shared king',
-      sqft: 560,
-      view: 'Lake or courtyard view',
+      bed: 'Two queen beds',
+      sqft: 415,
+      view: 'Lake view',
       floor: '2nd or 3rd floor',
       maxOccupants: 3,
       amenities: ['Lake views', 'Walk-in shower', 'Marble vanity'],
-      detail: 'Two queens or shared king · Up to 560 sq ft · Lake or courtyard view',
-      desc: 'More space for those who want separate beds or a shared king. Two-queen rooms look over the lake and grounds; king rooms may include a separate shower and bathtub with courtyard views.',
+      detail: 'Lake view • 2 queen beds • Up to 415 sq.ft.',
+      desc: 'Perfectly suited to guests who desire separate beds while staying together, with two queen beds, bathroom with marble vanity, and views of the lake.',
       images: [img('hudson/hudson-deluxe-double-01.jpg', 'Deluxe Double: two queen beds under a dormer window')],
       rate: 2025,
       unverified: true,
-      rateNote: 'Not returned by the booking engine for the sampled window. Extrapolated by interpolating between Deluxe ($1,825, 415 sq ft) and Junior Suite ($2,125, 635 sq ft) at this room’s 560 sq ft — confirm with client.',
+      rateNote: 'Not returned by the booking engine for the sampled window. Extrapolated by interpolating between Deluxe ($1,825, 415 sq ft) and Junior Suite ($2,125, 635 sq ft) — confirm with client. Square footage corrected to 415 sq.ft. per the client’s 9 Sep 2026 copy doc (was 560 sq.ft., extrapolated); the rate figure itself is unchanged and still unverified.',
     },
     {
       id: 'hudson-junior-suite',
@@ -227,8 +237,8 @@ const D = (function () {
       floor: '2nd or 3rd floor',
       maxOccupants: 2,
       amenities: ['Seating area', 'Single or double vanity', 'Shower, some with separate bathtub'],
-      detail: 'King bed · Up to 635 sq ft · Lake or courtyard view',
-      desc: 'A spacious room with a king bed, a seating area and a shower; some also offer a double vanity. Views of the lake and surrounding mountains, or the courtyard.',
+      detail: 'Lake or courtyard view • 1 king bed • Up to 635 sq.ft.',
+      desc: 'Airy and inviting, featuring a king bed, separate sitting area, bathroom with a shower and double vanity, and historic millwork throughout.',
       images: [img('hudson/hudson-junior-suite-01.jpg', 'Junior Suite: king bed, panelled walls, seating area')],
       rate: 2125,
     },
@@ -242,8 +252,8 @@ const D = (function () {
       floor: '2nd or 3rd floor',
       maxOccupants: 3,
       amenities: ['Separate bathtub', 'Walk-in shower', 'Single or double vanity'],
-      detail: 'Two queens · Up to 635 sq ft · Lake or courtyard view',
-      desc: 'A light-filled respite with two queen beds, courtyard views and a bathroom with a separate bathtub.',
+      detail: 'Lake or courtyard view • 2 queen beds • Up to 635 sq.ft.',
+      desc: 'A light-filled respite with two lushly appointed queen beds, a bathroom with a shower and separate bathtub/double vanity in select suites.',
       images: [img('hudson/hudson-junior-suite-two-queen-01.jpg', 'Junior Suite Two Queen: two queen beds, desk and courtyard windows')],
       rate: 2150,
       unverified: true,
@@ -255,12 +265,12 @@ const D = (function () {
       name: 'Premier Junior Suite—Morgan',
       bed: 'King bed',
       sqft: 650,
-      view: 'Lake or mountain views',
+      view: 'Lake or mountain view',
       floor: '2nd floor',
       maxOccupants: 2,
       amenities: ['Double vanity', 'Separate bathtub and shower', 'Sitting room just outside'],
-      detail: 'King bed · 650 sq ft · Lake or mountain views',
-      desc: 'Abundant with natural light on the second floor, with views of the lake and surrounding mountains. A spacious bathroom with double vanity, separate bathtub and shower, and a sitting room just outside.',
+      detail: 'Lake or mountain view • 1 king bed • Up to 650 sq.ft.',
+      desc: 'A spacious second-floor suite featuring a king bed, separate sitting room, and bathroom with double vanity, separate bathtub, and shower.',
       images: [img('hudson/hudson-premier-junior-suite-morgan-01.jpg', 'Premier Junior Suite – Morgan: king bed, sitting area, striped rug, lake-side windows')],
       rate: 2225,
       unverified: true,
@@ -272,12 +282,12 @@ const D = (function () {
       name: 'Premier Junior Suite—Hamilton',
       bed: 'King bed',
       sqft: 750,
-      view: 'Front courtyard and lawn views',
+      view: 'Courtyard view',
       floor: '1st floor',
       maxOccupants: 2,
       amenities: ['Private entrance option', 'Walk-in closet / dressing room', 'Double vanity, separate bathtub and shower'],
-      detail: 'King bed · 750 sq ft · Courtyard and lawn views',
-      desc: 'Private and secluded on the first floor, with the option of a separate entrance. Original wood panelling honours the historic building; a walk-in dressing room and a spacious bathroom with double vanity, separate bathtub and shower.',
+      detail: 'Courtyard view • 1 king bed • Up to 750 sq.ft.',
+      desc: 'Secluded first-floor suite with its own private entrance, walk-in closet/dressing room, and spacious bathroom with a double vanity, shower, and separate bathtub.',
       images: [img('hudson/hudson-premier-junior-suite-hamilton-01.jpg', 'Premier Junior Suite – Hamilton: king bed against original oak panelling')],
       rate: 2525,
     },
@@ -345,24 +355,26 @@ const D = (function () {
   }
 
   /* ---------- Every Stay Includes ----------
-     Client feedback pass (8 Sep 2026): replaced with the client's own
-     nine-line order. {airport} is filled in by the component with the
-     guest's own property. `meditation` and `fitness` are new icon keys —
-     hand-drawn for this pass like `amenities`/`laundry`/`bodpod` before
-     them, not exported from the client's Figma icon set; see
-     docs/PRODUCTION-NOTES.md, Licensing. `stayDescription` (src/stay.js)
-     no longer extracts nouns from these titles — the wording here is
-     long-form list copy, not a noun a one-line sentence can safely pull
-     out; that sentence is hard-coded instead, see stay.js. */
+     Client's second feedback round (9 Sep 2026): replaced with the
+     client's updated eight-line order — the 8 Sep pass's nine lines minus
+     Body composition analysis, which the client's copy doc drops
+     entirely; the `bodpod` icon key is no longer read anywhere. {airport}
+     is filled in by the component with the guest's own property.
+     `meditation` and `fitness` are icon keys hand-drawn for the prior
+     pass, like `amenities`/`laundry` before them, not exported from the
+     client's Figma icon set; see docs/PRODUCTION-NOTES.md, Licensing.
+     `stayDescription` (src/stay.js) does not extract nouns from these
+     titles — the wording here is long-form list copy, not a noun a
+     one-line sentence can safely pull out; that sentence is hard-coded
+     instead, see stay.js. */
   var includes = [
-    { icon: 'spa', title: 'Daily deep tissue massage', desc: 'A 50-minute deep tissue massage for each full day of the programme.' },
+    { icon: 'spa', title: 'Daily deep tissue massage', desc: 'A 50-minute deep tissue massage for each full day of the program.' },
     { icon: 'dining', title: 'All meals and snacks', desc: 'Plant-forward, nutritionally dense meals and snacks, plus morning organic coffee and a daily tea bar.' },
     { icon: 'hike', title: 'Guided daily hikes', desc: 'Daily guided hikes across the property’s own trails.' },
     { icon: 'meditation', title: 'Daily fitness, yoga, and meditation classes', desc: 'An afternoon fitness class alongside a daily yoga or meditation class.' },
-    { icon: 'amenities', title: 'Access to pool, sauna, and cold plunge', desc: 'Heated pool, jacuzzi, infrared sauna and cold plunge; weekly sound bath.' },
-    { icon: 'laundry', title: 'Daily laundry service', desc: 'Personal laundry, washed and folded, available daily.' },
-    { icon: 'bodpod', title: 'Body composition analysis', desc: 'Body composition analysis, plus a cooking demonstration and evening nutrition talks.' },
-    { icon: 'transfer', title: 'Return transfer to airport', desc: 'Departure transfer to {airport} at 10 am. Arrival is on your own.' },
+    { icon: 'amenities', title: 'Access to pool, infra-red sauna, and cold plunge', desc: 'Heated pool, jacuzzi, infra-red sauna and cold plunge; weekly sound bath.' },
+    { icon: 'laundry', title: 'Daily wash & fold laundry service', desc: 'Personal laundry, washed and folded, available daily.' },
+    { icon: 'transfer', title: 'Return shuttle transfer to airport', desc: 'Departure shuttle transfer to {airport} at 10 am. Arrival is on your own.' },
     { icon: 'fitness', title: 'Unlimited use of fitness facilities', desc: 'Full access to the property’s fitness facilities for the length of your stay.' },
   ];
 
@@ -384,7 +396,7 @@ const D = (function () {
       },
       {
         q: 'What does the rate include?',
-        a: 'The programme rate covers ' + naturalJoin(includesList) + ', for every night of your stay.',
+        a: 'The program rate covers ' + naturalJoin(includesList) + ', for every night of your stay.',
       },
       {
         q: 'How does the deposit and balance work?',
@@ -548,7 +560,7 @@ const D = (function () {
       per: 'person',
       times: ['10:00 AM', '1:00 PM', '3:00 PM'],
       detail: '60 minutes',
-      desc: 'One-on-one physical therapy with the Ranch team, worked around the rest of your programme.',
+      desc: 'One-on-one physical therapy with the Ranch team, worked around the rest of your program.',
       properties: ['hudson'],
     },
   ];
@@ -582,27 +594,27 @@ const D = (function () {
       {
         date: '2026-10-10',
         name: 'Erewhon × The Ranch — One-Night Retreat',
-        desc: 'A one-night collaboration with Erewhon opens the standard Malibu programme, October 10, 2026.',
-        note: 'A one-night retreat with Erewhon at The Ranch Malibu, October 10, 2026. Booking continues into the standard multi-night programme from this date — the one-night format itself isn’t modelled in this prototype.',
+        desc: 'A one-night collaboration with Erewhon opens the standard Malibu program, October 10, 2026.',
+        note: 'A one-night retreat with Erewhon at The Ranch Malibu, October 10, 2026. Booking continues into the standard multi-night program from this date — the one-night format itself isn’t modelled in this prototype.',
       },
       {
         date: '2027-03-21',
         name: 'Backbone Trail Week',
-        desc: 'A themed Signature week on the Backbone Trail, six nights at the regular programme rate.',
-        note: 'A themed Signature week on the Backbone Trail, six nights, at the regular programme rate.',
+        desc: 'A themed Signature week on the Backbone Trail, six nights at the regular program rate.',
+        note: 'A themed Signature week on the Backbone Trail, six nights, at the regular program rate.',
       },
       {
         date: '2027-05-30',
         name: 'Backbone Trail Week',
-        desc: 'A second themed week on the Backbone Trail, six nights at the regular programme rate.',
-        note: 'A themed Signature week on the Backbone Trail, six nights, at the regular programme rate.',
+        desc: 'A second themed week on the Backbone Trail, six nights at the regular program rate.',
+        note: 'A themed Signature week on the Backbone Trail, six nights, at the regular program rate.',
       },
     ],
     hudson: [
       {
         date: '2026-09-17',
         name: 'Special Program — Guest Practitioner Week',
-        desc: 'A visiting practitioner leads three nights of the regular Hudson Valley programme, September 17–20, 2026.',
+        desc: 'A visiting practitioner leads three nights of the regular Hudson Valley program, September 17–20, 2026.',
         note: 'UNVERIFIED — placeholder content standing in for the wireframe\'s "guest Influencer Namehere" text. Real name, dates and copy needed from the client before this ships; see docs/PRODUCTION-NOTES.md.',
         unverified: true,
       },

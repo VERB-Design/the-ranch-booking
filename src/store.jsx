@@ -10,15 +10,18 @@ function defaults() {
     property: null,
     checkIn: null,
     checkOut: null,
-    /* 'pre' | 'post' | null. Hudson's extension is a Friday night *after*
-       a Thursday check-out ('post'); Malibu's is a Saturday pre-night
-       *before* a Sunday check-in ('pre'), priced at the property's own
-       preNightRate rather than the room's programme rate — see
-       stay.js canExtend() and D.properties[pid].stayRules. Kept as a flag
-       rather than baked into checkIn/checkOut so the calendar selection
-       and the extension toggle never have to agree on which one owns the
-       date. */
-    extension: null,
+    /* `{ pre: boolean, post: boolean }` — which of the stay's two possible
+       extra nights are taken: the night before check-in, and the night
+       after check-out. Both can be true at once (Malibu's 8-night stay);
+       Hudson's one extra night only ever sets one of the two, per
+       stay.js's extensionOptions(). Kept as flags rather than baked into
+       checkIn/checkOut so the calendar's core selection and the two
+       extension checkboxes never have to agree on which one owns a date.
+       Client's second feedback round (9 Sep 2026) replaced the old
+       single 'pre' | 'post' | null flag with this shape — see
+       `normalizeExtension` below for the migration off a session that
+       still has the old value. */
+    extension: { pre: false, post: false },
     /* Which programme the stay books, when the dates overlap a dated
        retreat — `{ type: 'retreat', id }` (id is the retreat's own
        `date`) or `{ type: 'standard' }`. Null until CHECK RATES/Continue
@@ -41,10 +44,27 @@ function defaults() {
   };
 }
 
+/** Normalizes `extension` to the current `{ pre, post }` shape — a saved
+    session may still carry the old single `'pre' | 'post' | null` flag
+    from before the client's second feedback round, and a fresh object
+    read straight off `defaults()` or the UI is already well-formed and
+    passes through unchanged. Exported so any caller reading `extension`
+    off state it did not itself just set (e.g. a value seeded directly
+    into `sessionStorage` by a test) can normalize defensively too. */
+export function normalizeExtension(raw) {
+  if (raw && typeof raw === 'object') return { pre: !!raw.pre, post: !!raw.post };
+  if (raw === 'pre') return { pre: true, post: false };
+  if (raw === 'post') return { pre: false, post: true };
+  return { pre: false, post: false };
+}
+
 function load() {
   try {
     const raw = sessionStorage.getItem(KEY);
-    if (raw) return { ...defaults(), ...JSON.parse(raw) };
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return { ...defaults(), ...parsed, extension: normalizeExtension(parsed.extension) };
+    }
   } catch { /* fall through */ }
   return defaults();
 }
@@ -97,14 +117,15 @@ export function useToastMessage() {
 
 /* ---------- Derived helpers (data-aware) ---------- */
 
-/** Nights of the base stay plus the extension (Malibu pre-night or
-    Hudson post-night), when taken. Every price and every rail line reads
-    nights from here, so the extension can never be counted in one place
-    and forgotten in another. */
+/** Nights of the core stay plus whichever extension nights are taken
+    (`extension.pre`, `extension.post`, or both). Every price and every
+    rail line reads nights from here, so an extension can never be
+    counted in one place and forgotten in another. */
 export function nights(state) {
   if (!state.checkIn || !state.checkOut) return 0;
   const base = nightsBetween(parse(state.checkIn), parse(state.checkOut));
-  return base + (state.extension ? 1 : 0);
+  const ext = normalizeExtension(state.extension);
+  return base + (ext.pre ? 1 : 0) + (ext.post ? 1 : 0);
 }
 
 export function guestsLabel(state) {
@@ -122,21 +143,19 @@ export function guestsLabel(state) {
    rather than a Sunday with a footnote. */
 export function stayRange(state) {
   if (!state.checkIn || !state.checkOut) return null;
-  const pre = state.extension === 'pre' ? 1 : 0;
-  const post = state.extension === 'post' ? 1 : 0;
+  const ext = normalizeExtension(state.extension);
   return {
-    arrive: iso(addDays(parse(state.checkIn), -pre)),
-    depart: iso(addDays(parse(state.checkOut), post)),
+    arrive: iso(addDays(parse(state.checkIn), ext.pre ? -1 : 0)),
+    depart: iso(addDays(parse(state.checkOut), ext.post ? 1 : 0)),
   };
 }
 
 export function stayDates(state) {
   if (!state.checkIn || !state.checkOut) return [];
   const out = [];
-  const pre = state.extension === 'pre' ? 1 : 0;
-  const post = state.extension === 'post' ? 1 : 0;
-  let d = addDays(parse(state.checkIn), -pre);
-  const end = addDays(parse(state.checkOut), post);
+  const ext = normalizeExtension(state.extension);
+  let d = addDays(parse(state.checkIn), ext.pre ? -1 : 0);
+  const end = addDays(parse(state.checkOut), ext.post ? 1 : 0);
   while (d < end) {
     out.push(iso(d));
     d = addDays(d, 1);
@@ -199,15 +218,27 @@ export function lineNightly(room) {
   return room ? room.rate : 0;
 }
 
-/** The extension's own charge for one room's line, per person — Malibu's
-    Saturday pre-night at the property's flat preNightRate, Hudson's
-    Friday post-night at the room's own nightly rate. Returns 0 when no
+/** The property's own rate for one extension night, per person — Malibu
+    charges its flat `preNightRate` for either direction (the brief gives
+    no separate post-night figure; see D.properties.malibu.stayRules'
+    own comment and docs/PRODUCTION-NOTES.md), Hudson charges the room's
+    own nightly rate for its one possible extra night. */
+function extensionNightRate(room) {
+  const rules = D.properties[room.property] && D.properties[room.property].stayRules;
+  if (room.property === 'malibu') return (rules && rules.preNightRate) || room.rate;
+  return room.rate;
+}
+
+/** The extension's own charge for one room's line, per person — the
+    per-night rate above times however many extra nights this stay took
+    (0, 1, or 2 at Malibu; 0 or 1 at Hudson). Returns 0 when neither
     extension is taken. */
 function extensionAmount(state, room) {
-  if (!state.extension || !room) return 0;
-  const rules = D.properties[room.property] && D.properties[room.property].stayRules;
-  if (state.extension === 'pre') return (rules && rules.preNightRate) || room.rate;
-  return room.rate; /* 'post' */
+  if (!room) return 0;
+  const ext = normalizeExtension(state.extension);
+  const extraNights = (ext.pre ? 1 : 0) + (ext.post ? 1 : 0);
+  if (!extraNights) return 0;
+  return extensionNightRate(room) * extraNights;
 }
 
 /** Quick total for a single candidate room against the stay currently in
@@ -224,8 +255,9 @@ export function roomStayTotal(state, room, adults) {
 export function pricing(state) {
   const n = nights(state);
   if (!n) return null;
-  const extension = state.extension || null;
-  const baseNights = n - (extension ? 1 : 0);
+  const ext = normalizeExtension(state.extension);
+  const extraNights = (ext.pre ? 1 : 0) + (ext.post ? 1 : 0);
+  const baseNights = n - extraNights;
 
   const lines = bookedRooms(state).map((r) => {
     const room = D.roomById(r.roomId);

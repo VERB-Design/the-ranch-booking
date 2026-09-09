@@ -250,3 +250,25 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .bk-toast { animation: none; }
 }
+
+/* ============================================================
+   Print
+   ------------------------------------------------------------
+   Client's second feedback round (9 Sep 2026) — Confirmation's own
+   "Print" action (`window.print()`). The rule targets the site's shared
+   chrome by element/landmark rather than a page-specific class, so it
+   holds wherever it fires: `<header>` (Chrome.jsx's booking header, and
+   Landing's own hand-built one), the step progress nav, and `<footer>`
+   all disappear; `.print-hide` opts out anything else that is action
+   rather than content (Confirmation's own button row and its "send to
+   another email" field). Everything left standing — the reservation
+   card, "Before You Arrive" — prints as ordinary page content, no print-
+   specific layout of its own. */
+@media print {
+  header,
+  nav[aria-label="Booking progress"],
+  footer,
+  .print-hide {
+    display: none !important;
+  }
+}

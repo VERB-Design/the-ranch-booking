@@ -3,37 +3,50 @@
    ------------------------------------------------------------
    The Ranch sells fixed-length stays, not arbitrary date ranges — and the
    two properties run genuinely different booking mechanics, not one rule
-   with different constants:
+   with different constants. Rewritten for the client's second feedback
+   round (9 Sep 2026) — see docs/PRODUCTION-NOTES.md for the dated entry —
+   which replaces both properties' rules outright rather than adjusting
+   constants on the previous shape:
 
-     Hudson Valley — check-in Thursday or Sunday.
-       Sunday check-in  → Thursday (4 nights) or the following Sunday (7 nights)
-       Thursday check-in → Sunday (3 nights) or the following Thursday (7 nights)
-       Extension: one extra night *after* a Thursday check-out (to Friday).
+     Malibu — check-in Sunday only, a fixed 6-night core stay,
+       Sunday → Saturday. Guests may add a Saturday night *before* the
+       core stay, a Sunday night *after* it, or both (6/7/8 nights total).
+       Both extra nights price at the property's own preNightRate — the
+       brief has no separate post-night figure, so the same rate is used
+       for both and flagged as an assumption (see PRODUCTION-NOTES).
 
-     Malibu — check-in Saturday or Sunday.
-       Sunday check-in   → Saturday (6 nights) or the following Sunday (7 nights)
-       Saturday check-in → the following Saturday (7 nights) or Sunday (8 nights)
-       Extension: a Saturday *pre-night* before a Sunday check-in, priced
-       at the property's own preNightRate rather than the programme rate.
-       "Shorter Days" (data flag `stayRules.shorterStays`) adds a Thursday
-       check-in for a 3-night Thu→Sun stay, and a 4-night Sun→Thu option
-       on top of the signature Sunday check-in.
+     Hudson Valley — check-in Thursday or Monday, a fixed 3-night core
+       stay: Thursday → Sunday, or Monday → Thursday. Guests may add the
+       Sunday night that sits between the two patterns — before a Monday
+       check-in, or after a Thursday→Sunday check-out — never both on the
+       same stay, since a stay only ever runs one of the two patterns.
+       The extra night prices at the room's own nightly rate, same as the
+       rest of the stay.
 
    Every function here takes the property id first and is pure — no store,
    no React — so a page and the ReserveDrawer widget can both ask the same
-   question and never disagree about the answer. Confirmed against
-   docs/content/CONTENT-SOURCE.md section 2 and the worked dates in
-   docs/BRIEF.md's successor task: Hudson Sun 6 Sep 2026 → Thu 10 Sep /
-   Sun 13 Sep; Malibu Sun 6 Sep 2026 → Sat 12 Sep / Sun 13 Sep; Malibu
-   Sat 5 Sep 2026 → Sat 12 Sep / Sun 13 Sep.
+   question and never disagree about the answer. Worked dates confirmed
+   against the client's own examples: Malibu Sun 13 Sep 2026 → Sat 19 Sep
+   only; Hudson Thu 17 Sep 2026 → Sun 20 Sep, and Mon 21 Sep 2026 → Thu 24
+   Sep.
    ============================================================ */
 
 import D from './data.js';
 import { addDays, iso, parse, sameDay } from './utils.js';
 
 const SUNDAY = 0;
+const MONDAY = 1;
 const THURSDAY = 4;
-const SATURDAY = 6;
+
+/* Both properties now use identical wording for the two extension
+   checkboxes — "before"/"after" already say which end each one adds,
+   so there is nothing left for a property-specific label to add. Shared
+   here so DatePicker, ReserveDrawer, and Upgrade can never drift into
+   slightly different copy for the same control. */
+export const EXTENSION_LABELS = {
+  pre: 'Add an extra night before your stay',
+  post: 'Add an extra night after your stay',
+};
 
 /** Whether `date` is a valid check-in day at this property. */
 export function isCheckInDay(pid, date) {
@@ -41,18 +54,16 @@ export function isCheckInDay(pid, date) {
   const rules = D.properties[pid] && D.properties[pid].stayRules;
   if (!rules) return false;
   const dow = date.getDay();
-  if (pid === 'hudson') return dow === SUNDAY || dow === THURSDAY;
-  if (pid === 'malibu') {
-    if (dow === SATURDAY || dow === SUNDAY) return true;
-    if (dow === THURSDAY && rules.shorterStays) return true;
-    return false;
-  }
+  if (pid === 'hudson') return dow === THURSDAY || dow === MONDAY;
+  if (pid === 'malibu') return dow === SUNDAY;
   return false;
 }
 
 /** The check-outs a given check-in allows, as Date objects. Returns []
     for a date that was never a valid check-in in the first place, rather
-    than guessing. */
+    than guessing. Both properties now offer exactly one core check-out
+    per valid check-in — no more Friday check-outs, no more 5-night
+    stays. */
 export function checkoutsFor(pid, checkIn) {
   if (!checkIn) return [];
   const rules = D.properties[pid] && D.properties[pid].stayRules;
@@ -60,36 +71,46 @@ export function checkoutsFor(pid, checkIn) {
   const dow = checkIn.getDay();
 
   if (pid === 'hudson') {
-    if (dow === SUNDAY) return [addDays(checkIn, 4), addDays(checkIn, 7)];
-    if (dow === THURSDAY) return [addDays(checkIn, 3), addDays(checkIn, 7)];
+    if (dow === THURSDAY) return [addDays(checkIn, 3)]; /* Thu → Sun */
+    if (dow === MONDAY) return [addDays(checkIn, 3)]; /* Mon → Thu */
     return [];
   }
 
   if (pid === 'malibu') {
-    if (dow === SUNDAY) {
-      const outs = [addDays(checkIn, 6), addDays(checkIn, 7)];
-      if (rules.shorterStays) outs.unshift(addDays(checkIn, 4)); /* Sun→Thu, 4 nights */
-      return outs;
-    }
-    if (dow === SATURDAY) return [addDays(checkIn, 7), addDays(checkIn, 8)];
-    if (dow === THURSDAY && rules.shorterStays) return [addDays(checkIn, 3)]; /* Thu→Sun, 3 nights */
+    if (dow === SUNDAY) return [addDays(checkIn, 6)]; /* Sun → Sat */
     return [];
   }
 
   return [];
 }
 
-/** Whether this stay can pick up its property's one kind of extra night —
-    Hudson's Friday post-night (depends on the check-out day) or Malibu's
-    Saturday pre-night (depends on the check-in day). `checkOut` is
-    accepted but unused for Malibu, kept so callers don't have to branch
-    on property before calling. */
+/** Which of a stay's two possible extra nights — `pre` (the night before
+    check-in) and `post` (the night after check-out) — are available for
+    this particular core stay. Malibu's core is always Sunday→Saturday, so
+    both the Saturday pre-night and the Sunday post-night are always on
+    offer together. Hudson's one extra night is the Sunday that sits
+    between its two core patterns: offered as a pre-night before a Monday
+    check-in, or a post-night after a Thursday→Sunday check-out — a given
+    stay only ever runs one of those two patterns, so it only ever offers
+    one direction, never both. */
+export function extensionOptions(pid, checkIn, checkOut) {
+  if (!checkIn || !checkOut) return { pre: false, post: false };
+  const dow = checkIn.getDay();
+  if (pid === 'malibu') return { pre: true, post: true };
+  if (pid === 'hudson') {
+    if (dow === MONDAY) return { pre: true, post: false };
+    if (dow === THURSDAY) return { pre: false, post: true };
+    return { pre: false, post: false };
+  }
+  return { pre: false, post: false };
+}
+
+/** Whether this stay can pick up either of its property's extra nights at
+    all — a plain boolean for callers that only need to gate a block of UI
+    on and off, not which direction(s) it offers. */
 export function canExtend(pid, checkIn, checkOut) {
-  const rules = D.properties[pid] && D.properties[pid].stayRules;
-  if (!rules) return false;
-  if (pid === 'hudson') return !!checkOut && checkOut.getDay() === THURSDAY;
-  if (pid === 'malibu') return !!checkIn && checkIn.getDay() === SUNDAY;
-  return false;
+  const opts = extensionOptions(pid, checkIn, checkOut);
+  return opts.pre || opts.post;
 }
 
 /** Whole nights between two dates, floor-safe against DST by working in

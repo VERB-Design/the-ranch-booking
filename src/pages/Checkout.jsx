@@ -334,6 +334,17 @@ export default function Checkout() {
             />
           </div>
 
+          <div className="mt-6 flex flex-col gap-2 border-t border-line pt-6 text-sm">
+            <div className="flex items-center justify-between text-ink">
+              <span>Due today · 25% deposit</span>
+              <strong className="font-normal">{money(p.dueToday)}</strong>
+            </div>
+            <div className="flex items-center justify-between text-ink">
+              <span>Balance due 40 days before arrival</span>
+              <strong className="font-normal">{money(p.total - p.dueToday)}</strong>
+            </div>
+          </div>
+
           <div className="mt-6 flex flex-col gap-2 border-t border-line pt-6 text-sm leading-relaxed text-body">
             <p>{prop.depositCopy}</p>
             <p>{prop.cancelCopy}</p>
@@ -360,9 +371,15 @@ export default function Checkout() {
         <p className="mt-1 text-sm text-body">
           {multi ? lines.length + ' rooms' : lines[0]?.room.name} · {guestsLabel(state)}
         </p>
-        <div className="mt-4 flex justify-between border-t border-line pt-4 text-lg">
-          <strong className="font-normal text-ink">Total</strong>
-          <strong className="font-normal text-ink">{money(p.total)}</strong>
+        <div className="mt-4 flex flex-col gap-1 border-t border-line pt-4">
+          <div className="flex justify-between text-lg">
+            <strong className="font-normal text-ink">Due today · 25% deposit</strong>
+            <strong className="font-normal text-ink">{money(p.dueToday)}</strong>
+          </div>
+          <div className="flex justify-between text-sm text-body">
+            <span>Balance due 40 days before arrival</span>
+            <span>{money(p.total - p.dueToday)}</span>
+          </div>
         </div>
       </div>
     </div>

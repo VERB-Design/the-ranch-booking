@@ -954,3 +954,151 @@ background for the session, not stopped.
   above it at the only ratio the site publishes (a past special's $1,325 single / $985 per
   person double), rounded to $25. Neither is a confirmed rate card — client to supply real
   single and double rates.
+
+## Client feedback pass 2 — 9 Sep 2026
+
+Content and functionality only, per the brief — no token, layout, or component-style changes.
+`npm run lint` and `npm run build` stay green throughout; axe (`wcag2a/2aa`, `wcag21a/21aa`,
+`wcag22aa`) came back **0 violations** on `/`, `/rooms`, `/upgrade`, `/checkout` and `/confirmation`
+at 1440 and 390 after this pass, with zero console/page errors on any seeded route. Screenshots:
+`docs/screens/feedback-2/`.
+
+**1 — Stay rules rewritten, both properties (`src/stay.js`, `src/data.js`).** Malibu is now a fixed
+6-night Sunday→Saturday core stay only — no Saturday check-in, no 5-night stays, no more
+"shorterStays" flag (the whole concept it gated no longer exists). Hudson is now a fixed 3-night
+core stay, Thursday→Sunday or Monday→Thursday — no more 4- or 7-night options, no Friday
+check-out. `checkoutsFor` returns exactly one core check-out per valid check-in at both properties.
+New `extensionOptions(pid, checkIn, checkOut)` returns `{ pre, post }` — Malibu always offers both
+(its core start/end never changes), Hudson offers exactly one, whichever direction the stay's own
+pattern allows. `canExtend` is kept as a plain boolean wrapper over `extensionOptions` for callers
+that only need an on/off gate.
+  - **Assumption — Malibu's post-night rate.** The brief gives Malibu one `preNightRate` ($1,275)
+    and says explicitly to reuse it for the post-night too, flagged as an assumption. Done exactly
+    that way in `D.properties.malibu.stayRules` and `store.jsx`'s `extensionNightRate()` — both
+    extra nights charge `preNightRate`. No client-confirmed post-night figure exists; confirm
+    before this ships as fact.
+  - **Assumption — Hudson's extra-night rate.** The brief gives Hudson no rate of its own for its
+    one extra (Sunday) night, only "add the room rate." Implemented as the booked room's own
+    nightly rate, same as every other night of the stay — see `extensionNightRate()`.
+  - **Assumption — Hudson's 1 Nov 2026 start date.** The brief states this rule set begins 1 Nov
+    2026 and explicitly says not to build a date-based switch. Applied for every date, no matter
+    how far in the past or future — a guest could today book a Hudson stay in October 2026 under
+    rules the client says don't take effect until November. Flagged per the brief's own
+    instruction; needs the client's sign-off that a single standing rule (not a date-gated one) is
+    acceptable, or a follow-up task to add the switch this pass deliberately didn't build.
+  - **`state.extension` is now `{ pre: boolean, post: boolean }`**, not the old single
+    `'pre' | 'post' | null` flag — a stay can now take *both* extra nights at once (Malibu's
+    8-night stay), which a single flag can't represent. `store.jsx` exports `normalizeExtension()`,
+    called on every `sessionStorage` read in `load()` so an old saved session with the previous
+    string shape migrates cleanly instead of crashing; every other reader in the codebase reads
+    `state.extension` only after it has passed through the store, so no other call site needed its
+    own defensive normalization except the two places that read a value *before* it round-trips
+    through the store (`ReserveDrawer`'s draft seeding, `DatePicker`'s own prop) — both normalize
+    explicitly.
+  - **The retreat system was not touched, and one retreat is now structurally awkward.** The
+    Erewhon retreat (`D.retreats.malibu`, 10 Oct 2026) lands on a Saturday, which was a valid
+    Malibu check-in day under the old rules and is not under the new ones — Malibu check-in is
+    Sunday only now, with Saturday reachable solely as a pre-night extension *on* a Sunday stay.
+    The calendar will correctly show 10 Oct 2026 as disabled (it is no longer a valid check-in),
+    so the retreat is no longer directly bookable as its own check-in date. This was already a
+    partially-wired feature before this pass — `RetreatCard`/`retreatsInMonth` are defined but not
+    actually rendered anywhere in `DatePicker`, and `RetreatModal`'s "Choose these dates" path
+    (the only thing that could set an invalid check-in date directly) is unreachable from any
+    visible control — so nothing regresses in practice, but the retreat's own date no longer lines
+    up with the new rules. Needs either a client-confirmed date change (the following Sunday, 11
+    Oct 2026, with the pre-night ticked to include the 10th) or a small addition to the retreat
+    system (a "reachable via extension" concept) that this pass did not build, being out of the
+    brief's explicit scope. The Backbone Trail weeks (both Sundays) and the Hudson retreat
+    (Thursday) are unaffected.
+
+**2 — Rail Edit link.** `StayOverviewCard` takes an `onEdit` prop, threaded through to
+`SummaryRows`, which renders an underlined "Edit" button to the right of the dates/guests line
+when `onEdit` is passed — same visual treatment as the header's own Edit. `StayRail` (the desktop
+aside) now takes `onEdit` and `Layout.jsx` passes `() => setReserve(true)`; `StayRailMobile`
+deliberately does not pass `onEdit` into its own `SummaryRows` call (it already has its own Edit at
+the top of the phone bar, per the brief — passing it through too would have shown two); Confirmation
+passes no `onEdit` at all, so its reservation card shows none, per the brief.
+
+**3 — Confirmation buttons.** Added "Back to Home" (`/`), "Find out more" (new tab, `rel="noopener"`,
+`D.properties[pid].siteUrl` — added per property), "Send to another email" (an inline `Field` +
+"Send" button, prototype-only — no request is sent, a toast reads "Confirmation sent to {email}"),
+and "Print" (`window.print()`). A minimal print stylesheet lives in `src/index.css` (`@media print`),
+targeting `header`, `nav[aria-label="Booking progress"]`, `footer` and a new `.print-hide` utility
+class generically (by element/landmark, not a page-specific selector, so it holds wherever print
+fires) rather than only on Confirmation; `.print-hide` is applied to Confirmation's own button row
+and its "send to another email" field. Verified with `page.emulateMedia({ media: 'print' })`: header,
+footer and the button row all report `display: none`, the reservation card stays visible.
+  - **Bug found and fixed in `src/components/ui/Button.jsx`, not just Confirmation.jsx.** The
+    "Find out more" button is the first place in the app `Button`'s `as="a"` escape hatch was
+    exercised with `variant="ghost"` (a non-`'text'` variant). `Button` was unconditionally setting
+    `aria-pressed` on any non-`'text'` variant regardless of the rendered tag — valid on a `<button>`,
+    invalid on an `<a>` (link role does not support `aria-pressed`), and axe caught it as a critical
+    `aria-allowed-attr` violation on `/confirmation` at both viewports. Fixed by gating
+    `aria-pressed` on `Tag === 'button'` as well — a one-line, non-visual fix to a genuine latent bug
+    in the shared primitive, not a design-system change; every existing `Button` usage in the app
+    already rendered as a real `<button>`, so nothing else was affected. Re-ran axe after the fix:
+    0 violations across all five routes at both viewports.
+
+**4 — Checkout/confirmation deposit-and-balance display.** `pricing()` already computed `dueToday`
+as 25% of `total` (which already includes tax) — confirmed correct against the new deposit copy,
+no fix needed there. New shared `TotalsBlock` in `StayRail.jsx` renders either the plain "Total" row
+(everywhere else in the flow) or a "Due today · 25% deposit" + "Balance due 40 days before arrival"
+pair, used by both `StayOverviewCard` (desktop rail, `depositMode` on when `pathname === '/checkout'`)
+and `StayRailMobile`'s own inline totals (same `pathname` check) — one component so the
+`p.total - p.dueToday` arithmetic can never diverge between the two surfaces. `Checkout.jsx` adds
+the same due-today/balance pair inside the Payment section (above the deposit/cancellation copy) and
+in its own mobile-only summary card at the foot of the page. Confirmation's `StayOverviewCard` now
+reads `depositMode` with `depositLabel="Deposit paid"` in place of the old `totalLabel="Total paid"`
+prop, which no longer exists on `StayOverviewCard` (replaced by `depositMode`/`depositLabel`).
+
+**5 — Before You Arrive copy** (`Confirmation.jsx`) rewritten verbatim to the brief's wording, using
+each property's own `stayRules.arrival`/`departure` (Hudson 1:00 pm, Malibu 12:00 pm (noon)) and a
+`tel:` link for the phone number. `depositCopy`/`cancelCopy` still render on this page too (item 6
+below), as two further paragraphs under the new copy rather than folded back into it.
+
+**6 — Cancellation/deposit policy copy** replaced verbatim on both properties' `depositCopy` and
+`cancelCopy` in `src/data.js`. Every place that previously concatenated the two into one paragraph
+(`RoomDetail.jsx`'s Policies section, `Confirmation.jsx`'s Before You Arrive) now renders them as two
+separate `<p>` elements; `Checkout.jsx`'s Payment section already rendered them as two paragraphs and
+needed no structural change. The room page's FAQ (`D.faqsFor`) already asks deposit and cancellation
+as two separate questions, so no change was needed there beyond the copy itself.
+
+**7 — Copy doc updates.** `D.includes` (`src/data.js`) now matches the client's eight-line order
+exactly, dropping "Body composition analysis" entirely (the `bodpod` icon key in
+`StayRail.jsx`'s `ICONS` map is now unused but left in place — harmless dead code, not worth a
+diff of its own). All seven Hudson rooms' `detail`/`desc` — and, where the doc's own figures
+disagreed with the previous extrapolated ones, `bed`/`sqft`/`view` — now match the client's copy
+doc verbatim. **The Deluxe Double Room's square footage changed from 560 to 415 sq.ft.** as a
+direct consequence — the previous 560 figure was itself an extrapolation (interpolated between
+Deluxe and Junior Suite), not a sourced number, and the copy doc's 415 supersedes it; the room's
+*rate* ($2,025, still `unverified: true`) was not touched, since the brief's copy doc doesn't speak
+to rates. Every occurrence of "programme" in user-facing copy (data.js's property/retreat/FAQ
+strings, the site menu's "The Programme") is now "program" — checked with a repo-wide grep, not
+just the obvious spots; a handful of code comments still say "programme" (not user-facing, left
+alone, out of the brief's own scope — "fix in strings, not identifiers").
+
+**8 — Footer rebuilt to match theranchlife.com** (`src/components/Chrome.jsx`). Source: fetched
+9 Sep 2026 two ways that agreed — a WebFetch summary of `https://www.theranchlife.com/` and a raw
+`curl -sL` of the same page, read directly for the `<footer class="site-footer">` markup (saved to
+the session scratchpad, not committed). Four link groups (**The Ranch**: About, Contact Us, Careers,
+Gift Certificates, Store · **Noteworthy**: Awards & Press, Newsletters, FAQ · **Legal**: Privacy
+Policy, Terms of Use, Cookie Policy, Site Map · **Follow Us**: Facebook, Instagram), every link
+pointed at its real `theranchlife.com`/`store.theranchlife.com` URL and opening in a new tab
+(`rel="noopener"`) — leaving the booking flow to read the parent site shouldn't cost the guest an
+in-progress reservation — then a centred mark (kept as the existing "start over" reset button) and
+the site's own copyright line, laid out in this app's own tokens rather than the source site's
+Bootstrap grid.
+  - **What didn't carry over, on purpose.** The real footer has no phone number, email address,
+    mailing address, or newsletter signup prompt — none were invented to fill the gap. The
+    previous footer's phone link and "Terms & Conditions / Privacy Policy / Accessibility" plain-text
+    (non-link) placeholders are gone; Terms and Privacy now exist as real links under Legal, but the
+    **Accessibility statement link has no equivalent on the real site and was dropped** rather than
+    kept as an orphaned placeholder — worth a client conversation, since a dedicated accessibility
+    statement page is generally good practice for a hospitality booking flow even where the brand
+    site doesn't have one.
+  - **Partner badges (Virtuoso Preferred, Wellness in Travel and Tourism) render as text**, not the
+    real site's logo images — those marks were not sourced or licensed for this pass, and hotlinking
+    or re-hosting them without confirming rights would be its own Licensing warning. Flagged here
+    instead of silently omitted.
+  - Landing.jsx renders the same `Footer` component as every other page — no separate content or
+    structure was needed there.

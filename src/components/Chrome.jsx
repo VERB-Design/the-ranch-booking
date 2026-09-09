@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from './ui/Button.jsx';
 import MenuButton from './SiteMenu.jsx';
 import TextCta from './home/TextCta.jsx';
-import { D, guestsLabel, useBooking, useToastMessage } from '../store.jsx';
+import { D, guestsLabel, stayRange, useBooking, useToastMessage } from '../store.jsx';
 import { fmtShort, asset } from '../utils.js';
 
 /* ============================================================
@@ -56,7 +56,7 @@ export function Header({ onEditStay }) {
         {hasStay && onEditStay ? (
           <div className="flex items-baseline gap-4 text-sm text-ink">
             <span className="hidden items-baseline gap-3 md:inline-flex">
-              <span>{fmtShort(state.checkIn)} – {fmtShort(state.checkOut)}</span>
+              <span>{fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}</span>
               <span aria-hidden="true" className="text-line-hover">|</span>
               <span>{guestsLabel(state)}</span>
             </span>
@@ -79,21 +79,106 @@ export function Header({ onEditStay }) {
   );
 }
 
+/* Client's second feedback round (9 Sep 2026), item 8 — rebuilt to match
+   theranchlife.com's own footer content and structure (fetched 9 Sep
+   2026: `curl -sL https://www.theranchlife.com/` and read the rendered
+   `<footer class="site-footer">` directly, cross-checked against a
+   WebFetch summary of the same page — both agree). Four link groups
+   (The Ranch / Noteworthy / Legal / Follow Us), a partner-badge row, a
+   centred mark, and the site's own copyright line — see
+   docs/PRODUCTION-NOTES.md for what didn't carry over (no phone, email,
+   address or newsletter prompt in the real footer; the Virtuoso Preferred
+   and Wellness in Travel & Tourism marks are kept as text, not hotlinked
+   or re-hosted imagery). Every link points at the real
+   theranchlife.com/store.theranchlife.com URL, opening in a new tab —
+   leaving the booking flow to read the parent site shouldn't cost the
+   guest their in-progress reservation. */
+const FOOTER_GROUPS = [
+  {
+    heading: 'The Ranch',
+    links: [
+      { label: 'About', href: 'https://www.theranchlife.com/about' },
+      { label: 'Contact Us', href: 'https://www.theranchlife.com/contact-us' },
+      { label: 'Careers', href: 'https://www.theranchlife.com/careers' },
+      { label: 'Gift Certificates', href: 'https://www.theranchlife.com/gift-card' },
+      { label: 'Store', href: 'https://store.theranchlife.com/' },
+    ],
+  },
+  {
+    heading: 'Noteworthy',
+    links: [
+      { label: 'Awards & Press', href: 'https://www.theranchlife.com/awards' },
+      { label: 'Newsletters', href: 'https://www.theranchlife.com/newsletters' },
+      { label: 'FAQ', href: 'https://www.theranchlife.com/faq' },
+    ],
+  },
+  {
+    heading: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: 'https://www.theranchlife.com/privacy-policy' },
+      { label: 'Terms of Use', href: 'https://www.theranchlife.com/terms-conditions' },
+      { label: 'Cookie Policy', href: 'https://www.theranchlife.com/cookie-policy' },
+      { label: 'Site Map', href: 'https://www.theranchlife.com/sitemap' },
+    ],
+  },
+];
+const SOCIAL_LINKS = [
+  { label: 'Facebook', href: 'https://www.facebook.com/TheRanchExperience/' },
+  { label: 'Instagram', href: 'https://www.instagram.com/theranch.life/' },
+];
+
+function FooterLink({ href, children }) {
+  return (
+    <a href={href} target="_blank" rel="noopener" className="hover:text-ink">
+      {children}
+    </a>
+  );
+}
+
 export function Footer() {
   const { state, reset } = useBooking();
   const navigate = useNavigate();
   const mark = wordmark(state.property);
   return (
-    <footer className="mt-12 border-t border-line py-10">
-      <Container className="flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:text-left">
-        <button type="button" aria-label="Start over" onClick={() => { reset(); navigate('/'); }}>
-          <img src={mark.src} alt={mark.alt} className="h-auto w-[120px]" />
-        </button>
-        <div className="label-sm flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-body">
-          <a href={'tel:' + D.phone.replace(/[^\d+]/g, '')} className="hover:text-ink">{D.phone}</a>
-          <span>Terms &amp; Conditions</span>
-          <span>Privacy Policy</span>
-          <span>Accessibility</span>
+    <footer className="mt-12 border-t border-line pb-8 pt-10">
+      <Container>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-8 text-center sm:text-left md:grid-cols-4">
+          {FOOTER_GROUPS.map((group) => (
+            <div key={group.heading}>
+              <h3 className="h-serif text-base text-ink">{group.heading}</h3>
+              <ul className="label-sm mt-3 flex flex-col gap-2 text-body">
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    <FooterLink href={link.href}>{link.label}</FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <div>
+            <h3 className="h-serif text-base text-ink">Follow Us</h3>
+            <ul className="label-sm mt-3 flex flex-wrap justify-center gap-4 text-body sm:justify-start">
+              {SOCIAL_LINKS.map((s) => (
+                <li key={s.label}>
+                  <FooterLink href={s.href}>{s.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+            {/* Partner badges (Virtuoso Preferred, Wellness in Travel and
+                Tourism) render on the real site as logo images; kept as
+                text here rather than hotlinking or re-hosting artwork
+                that was not sourced/licensed for this pass. */}
+            <p className="label-sm mt-4 text-muted">Virtuoso Preferred · Wellness in Travel and Tourism</p>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-4 border-t border-line pt-8 text-center">
+          <button type="button" aria-label="Start over" onClick={() => { reset(); navigate('/'); }}>
+            <img src={mark.src} alt={mark.alt} className="h-auto w-[120px]" />
+          </button>
+          <p className="label-sm text-muted">
+            © 2026 The Ranch and its Associated Subsidiaries <span aria-hidden="true">·</span> Luxury Fitness, Health &amp; Wellness Vacation Retreat
+          </p>
         </div>
       </Container>
     </footer>

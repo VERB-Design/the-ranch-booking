@@ -15,7 +15,7 @@ import { asset } from '../utils.js';
    placeholders: real buttons, not `href="#"` links, since none of them
    go anywhere.
    ============================================================ */
-const MENU_ITEMS = ['The Retreat', 'Rooms', 'The Programme', 'Contact'];
+const MENU_ITEMS = ['The Retreat', 'Rooms', 'The Program', 'Contact'];
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export default function MenuButton({ tone = 'dark', className = '' }) {

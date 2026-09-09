@@ -98,7 +98,7 @@ export default function Layout() {
           <div className="min-w-0 flex-1">
             <Outlet context={setStep} />
           </div>
-          <StayRail />
+          <StayRail onEdit={() => setReserve(true)} />
         </div>
         <IncludesBelowMobile />
       </main>

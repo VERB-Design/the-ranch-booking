@@ -4,8 +4,8 @@ import useMountTransition from '../../useMountTransition.js';
 import RanchCalendar from '../Calendar.jsx';
 import Checkbox from '../ui/Checkbox.jsx';
 import RetreatModal from './RetreatModal.jsx';
-import { canExtend, checkoutsFor, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, stayDescription } from '../../stay.js';
-import { D } from '../../store.jsx';
+import { EXTENSION_LABELS, checkoutsFor, extensionOptions, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, stayDescription } from '../../stay.js';
+import { D, normalizeExtension } from '../../store.jsx';
 import { MONTH_NAMES, asset, money } from '../../utils.js';
 
 function today() {
@@ -100,9 +100,9 @@ function DateField({ label, value, placeholder, active, onClick, className = '' 
    check-out"), C (both set — no calendar, two fields side by side, and a
    "Your Chosen Stay" summary in place of the bare nights line: eyebrow,
    a data-built description in Times, the nested retreat card when the
-   stay includes one, and the property's own extension toggle when
-   canExtend(pid, checkIn, checkOut) allows it — a Saturday pre-night at
-   Malibu, a Friday post-night at Hudson). Clicking either filled field
+   stay includes one, and up to two extension checkboxes — "before"/
+   "after" — from extensionOptions(pid, checkIn, checkOut) (src/stay.js).
+   Clicking either filled field
    resets it and drops back a state, per the brief's "changing either
    date returns to the right state." Picking a date is never intercepted
    — a retreat date commits like any other; "Learn more" on a card is the
@@ -278,23 +278,30 @@ export default function DatePicker({
 
   const stayRules = D.properties[pid].stayRules;
   const bothSet = !!(checkIn && checkOut);
-  const nights = bothSet ? nightsBetween(checkIn, checkOut) + (extension ? 1 : 0) : 0;
-  const extendable = extensionsOn && canExtend(pid, checkIn, checkOut);
-  const extensionLabel = stayRules.extensionLabel || 'Add an extra night';
+  const ext = normalizeExtension(extension);
+  const extraNightsCount = (ext.pre ? 1 : 0) + (ext.post ? 1 : 0);
+  const nights = bothSet ? nightsBetween(checkIn, checkOut) + extraNightsCount : 0;
+  const extendOptions = extensionsOn && bothSet ? extensionOptions(pid, checkIn, checkOut) : { pre: false, post: false };
+  const extendable = extendOptions.pre || extendOptions.post;
 
   /* "Show rates first" (client feedback, 8 Sep 2026) — the property's
      lowest room rate, so the guest sees a real number before Rooms.
      `baseNights` deliberately excludes the extension (it's priced
      separately, at the property's own extension rate, not the lowest
-     room's programme rate) — Malibu's Saturday pre-night charges
-     `preNightRate` regardless of which room is eventually booked;
-     Hudson's Friday post-night charges the room's own nightly rate, so
-     the lowest room's rate stands in for it here too. Single guest,
-     read-only text — no new control. */
+     room's program rate) — Malibu's extra nights both charge
+     `preNightRate` regardless of which room is eventually booked (see
+     D.properties.malibu.stayRules' own comment); Hudson's one extra
+     night charges the room's own nightly rate, so the lowest room's rate
+     stands in for it here too. Single guest, read-only text — no new
+     control. */
   const lowestRate = D.fromPrice(pid);
   const baseNights = bothSet ? nightsBetween(checkIn, checkOut) : 0;
-  const extensionNightRate = extension ? (pid === 'malibu' ? (stayRules.preNightRate || lowestRate) : lowestRate) : 0;
-  const fromStayTotal = lowestRate * baseNights + extensionNightRate;
+  const extensionRatePerNight = extraNightsCount ? (pid === 'malibu' ? (stayRules.preNightRate || lowestRate) : lowestRate) : 0;
+  const fromStayTotal = lowestRate * baseNights + extensionRatePerNight * extraNightsCount;
+
+  function toggleExtra(key, checked) {
+    onToggleExtra({ ...ext, [key]: checked });
+  }
 
   /* The field currently being filled is the only one that carries the
      accent-focus highlight — a field that already holds a date is
@@ -366,12 +373,22 @@ export default function DatePicker({
             </div>
 
             {extendable && (
-              <Checkbox
-                className="mt-5"
-                checked={!!extension}
-                onChange={onToggleExtra}
-                label={extensionLabel}
-              />
+              <div className="mt-5 flex flex-col gap-3">
+                {extendOptions.pre && (
+                  <Checkbox
+                    checked={ext.pre}
+                    onChange={(v) => toggleExtra('pre', v)}
+                    label={EXTENSION_LABELS.pre}
+                  />
+                )}
+                {extendOptions.post && (
+                  <Checkbox
+                    checked={ext.post}
+                    onChange={(v) => toggleExtra('post', v)}
+                    label={EXTENSION_LABELS.post}
+                  />
+                )}
+              </div>
             )}
           </div>
         </>

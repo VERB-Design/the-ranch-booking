@@ -83,7 +83,7 @@ export default function Button({
       type={Tag === 'button' ? type : undefined}
       disabled={Tag === 'button' ? disabled : undefined}
       aria-disabled={Tag !== 'button' ? disabled : undefined}
-      aria-pressed={variant !== 'text' ? selected : undefined}
+      aria-pressed={Tag === 'button' && variant !== 'text' ? selected : undefined}
       className={rootClasses}
       {...rest}
     >

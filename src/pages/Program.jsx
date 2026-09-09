@@ -70,22 +70,21 @@ export default function Program() {
   }
 
   const pid = state.property || D.propertyList[0];
-  const stayRules = D.properties[pid].stayRules;
 
   function pickCheckIn(date) {
-    set({ checkIn: iso(date), checkOut: null, extension: null });
+    set({ checkIn: iso(date), checkOut: null, extension: { pre: false, post: false } });
   }
   function pickCheckOut(date) {
     set({ checkOut: iso(date) });
   }
   function resetCheckIn() {
-    set({ checkIn: null, checkOut: null, extension: null });
+    set({ checkIn: null, checkOut: null, extension: { pre: false, post: false } });
   }
   function resetCheckOut() {
-    set({ checkOut: null, extension: null });
+    set({ checkOut: null, extension: { pre: false, post: false } });
   }
-  function toggleExtra(v) {
-    set({ extension: v ? stayRules.extensionType : null });
+  function toggleExtra(next) {
+    set({ extension: next });
   }
   /* RetreatModal's "Choose these dates" — one commit for both fields
      rather than chaining pickCheckIn (which itself clears checkOut) into
@@ -95,7 +94,7 @@ export default function Program() {
     set({
       checkIn: iso(checkInDate),
       checkOut: checkOutDate ? iso(checkOutDate) : null,
-      extension: null,
+      extension: { pre: false, post: false },
     });
   }
 

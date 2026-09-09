@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button.jsx';
-import { D, pricing, useBooking } from '../store.jsx';
+import Field from '../components/ui/Field.jsx';
+import { D, pricing, useBooking, useToast } from '../store.jsx';
 import { useConfig } from '../config.jsx';
 import { StayOverviewCard } from '../components/StayRail.jsx';
 import usePageTitle from '../usePageTitle.js';
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* Confirmation (docs/BRIEF.md, wire 07) — centred summary, reference
    chip, one RESERVATION card with every line and a total-paid band.
@@ -23,7 +27,11 @@ export default function Confirmation() {
   const { state, reset } = useBooking();
   const config = useConfig();
   const navigate = useNavigate();
+  const toast = useToast();
   const p = pricing(state);
+
+  const [resendEmail, setResendEmail] = useState('');
+  const [resendError, setResendError] = useState('');
 
   if (!state.confirmation || !p) {
     return <Navigate to={config.entry === 'drawer' ? '/' : (config.multiProperty ? '/location' : '/rooms')} replace />;
@@ -46,6 +54,24 @@ export default function Confirmation() {
     navigate('/');
   }
 
+  function backToHome() {
+    navigate('/');
+  }
+
+  /* Prototype only — nothing is actually sent. The toast is the same
+     confirmation pattern the rest of the app uses for a completed action
+     with no page to land on. */
+  function sendToAnother(e) {
+    e.preventDefault();
+    if (!resendEmail.trim() || !EMAIL_RE.test(resendEmail)) {
+      setResendError('Enter a valid email address.');
+      return;
+    }
+    setResendError('');
+    toast('Confirmation sent to ' + resendEmail);
+    setResendEmail('');
+  }
+
   return (
     <div>
       <div className="mx-auto flex max-w-[560px] flex-col items-center gap-8 py-14 text-center">
@@ -66,22 +92,57 @@ export default function Confirmation() {
           {state.confirmation.number}
         </span>
 
-        <StayOverviewCard title="Reservation" totalLabel="Total paid" readOnly contact={contact} className="w-full text-left" />
+        <StayOverviewCard
+          title="Reservation"
+          readOnly
+          contact={contact}
+          className="w-full text-left"
+          depositMode
+          depositLabel="Deposit paid"
+        />
 
         <div className="w-full border-t border-line pt-6 text-left">
           <h2 className="h-serif text-lg text-ink">Before You Arrive</h2>
           <p className="mt-2 text-sm leading-relaxed text-body">
-            Check in opens at {prop.stayRules.arrival} and check out is {prop.stayRules.departure}. {prop.depositCopy} {prop.cancelCopy}
+            Check-in begins at {prop.stayRules.arrival}, and check-out is at {prop.stayRules.departure}. If a
+            balance remains on your reservation, it will be charged automatically 40 days prior to arrival.
           </p>
           <p className="mt-3 text-sm text-body">
-            Questions about your reservation? Call{' '}
+            Questions about your stay? Please call us at{' '}
             <a href={'tel:' + D.phone.replace(/[^\d+]/g, '')} className="underline underline-offset-4 hover:text-accent">
               {D.phone}
             </a>.
           </p>
+          <p className="mt-3 text-sm leading-relaxed text-body">{prop.depositCopy}</p>
+          <p className="mt-3 text-sm leading-relaxed text-body">{prop.cancelCopy}</p>
         </div>
 
-        <Button variant="ghost" onClick={again}>Make another booking</Button>
+        <div className="w-full border-t border-line pt-6 text-left print-hide">
+          <h2 className="h-serif text-lg text-ink">Send to Another Email</h2>
+          <form onSubmit={sendToAnother} className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start">
+            <Field
+              label="Email address"
+              type="email"
+              placeholder="email@mail.com"
+              value={resendEmail}
+              error={resendError || undefined}
+              onChange={(e) => setResendEmail(e.target.value)}
+              className="flex-1"
+            />
+            <Button variant="ghost" type="submit" className="sm:mt-6">Send</Button>
+          </form>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-4 print-hide">
+          <Button variant="primary" onClick={again}>Make another booking</Button>
+          <Button variant="ghost" onClick={backToHome}>Back to Home</Button>
+          {prop.siteUrl && (
+            <Button variant="ghost" as="a" href={prop.siteUrl} target="_blank" rel="noopener">
+              Find out more
+            </Button>
+          )}
+          <Button variant="text" onClick={() => window.print()}>Print</Button>
+        </div>
       </div>
     </div>
   );

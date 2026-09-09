@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { D, guestsLabel, lineNightly, nights, pricing, stayRange, useBooking } from '../store.jsx';
+import { D, guestsLabel, lineNightly, nights, normalizeExtension, pricing, stayRange, useBooking } from '../store.jsx';
 import { retreatById } from '../stay.js';
 import { useConfig } from '../config.jsx';
 import { fmtShort, money, pct } from '../utils.js';
@@ -36,15 +36,17 @@ function useSummary() {
   return { state, config, p, n, prop, bookedRoomLines, removeAddon };
 }
 
-function SummaryRows({ readOnly = false, contact = null }) {
+function SummaryRows({ readOnly = false, contact = null, onEdit = null }) {
   const { state, config, p, n, prop, bookedRoomLines, removeAddon } = useSummary();
   const roomsSet = !!state.property;
   const datesSet = !!(state.checkIn && state.checkOut);
   const roomCount = (state.rooms || []).length;
-  const extensionNote = state.extension === 'pre'
-    ? 'incl. 1 pre-night · programme from ' + fmtShort(state.checkIn)
-    : state.extension === 'post'
-      ? 'incl. 1 extra night · programme to ' + fmtShort(state.checkOut)
+  const ext = normalizeExtension(state.extension);
+  const extraCount = (ext.pre ? 1 : 0) + (ext.post ? 1 : 0);
+  const extensionNote = extraCount === 1
+    ? 'incl. 1 extra night'
+    : extraCount === 2
+      ? 'incl. 2 extra nights · program ' + fmtShort(state.checkIn) + ' – ' + fmtShort(state.checkOut)
       : null;
   const Sep = () => <span aria-hidden="true" className="mx-3 text-line-hover">|</span>;
 
@@ -70,9 +72,21 @@ function SummaryRows({ readOnly = false, contact = null }) {
             </p>
           )}
           {datesSet && (
-            <p>
-              {fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}
-              {roomsSet && <><Sep />{guestsLabel(state)}</>}
+            <p className="flex items-baseline justify-between gap-3">
+              <span>
+                {fmtShort(stayRange(state).arrive)} – {fmtShort(stayRange(state).depart)}
+                {roomsSet && <><Sep />{guestsLabel(state)}</>}
+              </span>
+              {onEdit && (
+                <button
+                  type="button"
+                  onClick={onEdit}
+                  aria-label="Edit dates and guests"
+                  className="label-sm shrink-0 text-ink underline underline-offset-4 decoration-1 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-focus focus-visible:outline-offset-2"
+                >
+                  Edit
+                </button>
+              )}
             </p>
           )}
           {roomsSet && (
@@ -174,25 +188,54 @@ function TaxesRow({ p }) {
   );
 }
 
+/* Client's second feedback round (9 Sep 2026): the closing total row
+   reads as a deposit-and-balance pair, not one lump "Total" figure, on
+   checkout (where the deposit is what's actually about to be charged)
+   and on confirmation (where it's what already was) — everywhere else
+   in the flow the guest hasn't committed to a deposit yet, so the plain
+   running total is still the right number to show. One component so the
+   two deposit-mode surfaces (the rail's `StayOverviewCard` and the phone
+   bar's own inline totals) can never compute `p.total - p.dueToday`
+   two different ways. */
+function TotalsBlock({ p, depositMode = false, depositLabel = 'Due today · 25% deposit' }) {
+  if (depositMode) {
+    return (
+      <>
+        <div className="flex items-center justify-between border-t border-page px-5 py-4">
+          <span className="text-base text-ink">{depositLabel}</span>
+          <strong className="text-[18px] font-normal text-ink">{money(p.dueToday)}</strong>
+        </div>
+        <div className="flex items-center justify-between border-t border-page px-5 py-4">
+          <span className="text-base text-ink">Balance due 40 days before arrival</span>
+          <strong className="text-[18px] font-normal text-ink">{money(p.total - p.dueToday)}</strong>
+        </div>
+      </>
+    );
+  }
+  return (
+    <div className="flex items-center justify-between border-t border-page px-5 py-4">
+      <span className="text-base text-ink">Total</span>
+      <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
+    </div>
+  );
+}
+
 /* The overview card itself — the rail on every step, and the reservation
    summary on the confirmation, so the two can never disagree. */
-export function StayOverviewCard({ title = 'Your Stay', totalLabel = 'Total', readOnly = false, contact = null, className = '' }) {
+export function StayOverviewCard({ title = 'Your Stay', readOnly = false, contact = null, className = '', onEdit = null, depositMode = false, depositLabel }) {
   const { p } = useSummary();
   return (
     <div className={'bg-light ' + className}>
       <div className="border-b border-page px-5 py-3 text-center">
         <span className="eyebrow text-strong">{title}</span>
       </div>
-      <SummaryRows readOnly={readOnly} contact={contact} />
+      <SummaryRows readOnly={readOnly} contact={contact} onEdit={onEdit} />
       {p && (
         <>
           <div className="border-t border-page px-5 py-4">
             <TaxesRow p={p} />
           </div>
-          <div className="flex items-center justify-between border-t border-page px-5 py-4">
-            <span className="text-base text-ink">{totalLabel}</span>
-            <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
-          </div>
+          <TotalsBlock p={p} depositMode={depositMode} depositLabel={depositLabel} />
         </>
       )}
     </div>
@@ -207,7 +250,7 @@ function noRail(pathname) {
   return NO_RAIL.has(pathname) || pathname.startsWith('/room/');
 }
 
-export function StayRail() {
+export function StayRail({ onEdit }) {
   const { pathname } = useLocation();
   /* No rail before a property is chosen, and none on the confirmation,
      which carries its own reservation card. */
@@ -215,7 +258,7 @@ export function StayRail() {
 
   return (
     <aside className="hidden lg:sticky lg:top-[calc(var(--chrome)+2rem)] lg:block lg:w-80 lg:shrink-0 lg:self-start">
-      <StayOverviewCard />
+      <StayOverviewCard onEdit={onEdit} depositMode={pathname === '/checkout'} />
 
       <EveryStayIncludes className="mt-6" />
     </aside>
@@ -272,10 +315,7 @@ export function StayRailMobile({ onEdit }) {
               <div className="border-t border-page px-5 py-4">
                 <TaxesRow p={p} />
               </div>
-              <div className="flex items-center justify-between border-t border-page px-5 py-4">
-                <span className="text-base text-ink">Total</span>
-                <strong className="text-[18px] font-normal text-ink">{money(p.total)}</strong>
-              </div>
+              <TotalsBlock p={p} depositMode={pathname === '/checkout'} />
             </>
           )}
         </div>

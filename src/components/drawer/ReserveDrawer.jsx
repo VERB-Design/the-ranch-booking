@@ -7,7 +7,7 @@ import LocationSelect from './LocationSelect.jsx';
 import Button from '../ui/Button.jsx';
 import { Arrow } from '../Chrome.jsx';
 import { iso, nightsBetween, retreatInStay, stayDescription } from '../../stay.js';
-import { D, MAX_ROOMS, newRoomSlot, useBooking, useToast } from '../../store.jsx';
+import { D, MAX_ROOMS, newRoomSlot, normalizeExtension, useBooking, useToast } from '../../store.jsx';
 import { flowSteps, useConfig } from '../../config.jsx';
 import { fmtShort, asset, money } from '../../utils.js';
 import useMountTransition from '../../useMountTransition.js';
@@ -90,7 +90,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
       property: presetProperty || state.property || (config.multiProperty ? null : D.propertyList[0]),
       checkIn: state.checkIn ? new Date(state.checkIn + 'T00:00:00') : null,
       checkOut: state.checkOut ? new Date(state.checkOut + 'T00:00:00') : null,
-      extension: state.extension || null,
+      extension: normalizeExtension(state.extension),
       rooms: (state.rooms || []).length ? state.rooms.map((r) => ({ ...r })) : [newRoomSlot([])],
       promo: '',
       promoApplied: false,
@@ -193,7 +193,10 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
   const trayRetreat = config.retreats && draft.property && draft.checkIn && draft.checkOut
     ? retreatInStay(draft.property, draft.checkIn, draft.checkOut)
     : null;
-  const trayNights = draft.checkIn && draft.checkOut ? nightsBetween(draft.checkIn, draft.checkOut) + (draft.extension ? 1 : 0) : 0;
+  const trayExt = normalizeExtension(draft.extension);
+  const trayNights = draft.checkIn && draft.checkOut
+    ? nightsBetween(draft.checkIn, draft.checkOut) + (trayExt.pre ? 1 : 0) + (trayExt.post ? 1 : 0)
+    : 0;
   const trayDesc = draft.property && trayNights ? stayDescription(draft.property, trayNights) : null;
 
   function chooseProperty(pid) {
@@ -204,7 +207,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
        honour. Rooms/guests are unaffected: they're the guest's own party,
        not a property rule. A property change also invalidates whatever
        programme was chosen for the old property's dates. */
-    setDraft((d) => ({ ...d, property: pid, checkIn: null, checkOut: null, extension: null, program: null }));
+    setDraft((d) => ({ ...d, property: pid, checkIn: null, checkOut: null, extension: { pre: false, post: false }, program: null }));
   }
 
   function addRoom() {
@@ -357,12 +360,12 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                     extension={draft.extension}
                     retreatsOn={config.retreats}
                     extensionsOn={config.extensions}
-                    onPickCheckIn={(d) => setDraft((x) => ({ ...x, checkIn: d, checkOut: null, extension: null }))}
+                    onPickCheckIn={(d) => setDraft((x) => ({ ...x, checkIn: d, checkOut: null, extension: { pre: false, post: false } }))}
                     onPickCheckOut={(d) => setDraft((x) => ({ ...x, checkOut: d }))}
-                    onResetCheckIn={() => setDraft((x) => ({ ...x, checkIn: null, checkOut: null, extension: null }))}
-                    onResetCheckOut={() => setDraft((x) => ({ ...x, checkOut: null, extension: null }))}
-                    onToggleExtra={(v) => setDraft((x) => ({ ...x, extension: v ? D.properties[x.property].stayRules.extensionType : null }))}
-                    onChooseRetreatDates={(ci, co) => setDraft((x) => ({ ...x, checkIn: ci, checkOut: co || null, extension: null }))}
+                    onResetCheckIn={() => setDraft((x) => ({ ...x, checkIn: null, checkOut: null, extension: { pre: false, post: false } }))}
+                    onResetCheckOut={() => setDraft((x) => ({ ...x, checkOut: null, extension: { pre: false, post: false } }))}
+                    onToggleExtra={(next) => setDraft((x) => ({ ...x, extension: next }))}
+                    onChooseRetreatDates={(ci, co) => setDraft((x) => ({ ...x, checkIn: ci, checkOut: co || null, extension: { pre: false, post: false } }))}
                     bare
                   />
                 ) : (
