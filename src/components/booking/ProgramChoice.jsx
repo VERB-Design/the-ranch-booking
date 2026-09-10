@@ -34,22 +34,28 @@ export function hasProgramChoice(pid, checkIn, checkOut, retreatsOn = true) {
    even when the click landed on the nested button). Keeping "Learn more"
    as a sibling avoids the whole problem: clicking the label area selects
    the card, clicking "Learn more" only opens its modal. */
-function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore, groupName }) {
+function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore, groupName, disabled, disabledNote }) {
   const accent = tone === 'accent';
   /* One row per programme: chip and name on the left, the check and
-     Learn more on the right — the cards stack rather than sit side by side. */
+     Learn more on the right — the cards stack rather than sit side by side.
+     `disabled` greys the card out and blocks selection (radio input itself
+     disabled) without hiding it — "Learn more" stays live so the guest can
+     still read what the programme is, and `disabledNote` explains in place
+     why it can't be picked right now (e.g. party size) rather than leaving
+     them to guess. */
   return (
     <div
       className={
         /* No outline, no fill at rest — the chosen programme takes the
            light ground and the check; the accent chip alone says "special". */
         'flex items-center gap-4 rounded-brand p-4 transition-colors ' +
-        (checked ? 'bg-brown-100' : 'bg-light')
+        (checked ? 'bg-brown-100' : 'bg-light') +
+        (disabled ? ' opacity-50' : '')
       }
     >
       <div className="flex min-w-0 flex-1 flex-col gap-2">
-      <label className="flex min-w-0 cursor-pointer flex-col gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2">
-        <input type="radio" name={groupName} checked={checked} onChange={onSelect} className="sr-only" />
+      <label className={'flex min-w-0 flex-col gap-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent-focus has-[:focus-visible]:outline-offset-2 ' + (disabled ? 'cursor-not-allowed' : 'cursor-pointer')}>
+        <input type="radio" name={groupName} checked={checked} onChange={onSelect} disabled={disabled} className="sr-only" />
         {dateLabel && (
           <span
             /* One chip treatment for both programmes — the neutral one. */
@@ -61,6 +67,7 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
         {/* The special programme's name reads in the dark brown. */}
         <span className={'h-serif text-[18px] leading-tight ' + (accent ? 'text-accent' : 'text-ink')}>{title}</span>
       </label>
+      {disabled && disabledNote && <p className="text-xs text-muted">{disabledNote}</p>}
       <button
         type="button"
         onClick={onLearnMore}
@@ -90,46 +97,68 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
    ProgramChoice
    ------------------------------------------------------------
    docs/figma node 456:1499 — "if two concurrent programs are happening
-   during a stay, prompt user to select which they book." Two cards: the
-   dated retreat that falls inside the stay (accent treatment) and the
-   property's own standard programme (neutral treatment). Renders nothing
-   when the stay carries no retreat — every caller can render this
-   unconditionally right after its own dates/stay summary and trust it to
-   self-gate, the same way DatePicker's own RetreatList does.
+   during a stay, prompt user to select which they book." Up to three
+   cards, in this order: the dated retreat that falls inside the stay
+   (accent treatment, only when one exists), The Ranch Private (always
+   offered, but greyed out and explained rather than hidden once the
+   party exceeds `D.ranchPrivate.maxGuests`), and the property's own
+   standard programme (neutral treatment, always offered). Renders
+   nothing only when there's no property/dates to key off yet — every
+   caller can render this unconditionally right after its own
+   dates/stay summary and trust it to self-gate, the same way
+   DatePicker's own RetreatList does.
 
    `value` / `onChange` carry the store's `program` shape —
    `{ type: 'retreat', id }` (id is the retreat's own `date`, already
-   unique per property) or `{ type: 'standard' }`. Shared by
-   ReserveDrawer's second tray and Program.jsx's pages-mode inline
-   chooser (docs/BRIEF.md's "Drawer entry" — one component so the two
-   entry modes can't drift into showing the choice differently).
+   unique per property), `{ type: 'private' }`, or `{ type: 'standard' }`.
+   Shared by ReserveDrawer's second tray and Program.jsx's pages-mode
+   inline chooser (docs/BRIEF.md's "Drawer entry" — one component so the
+   two entry modes can't drift into showing the choice differently).
    ============================================================ */
-export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = true, value, onChange, groupName = 'program-choice', className = '', modalContainer = null }) {
+export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = true, value, onChange, guestCount = null, groupName = 'program-choice', className = '', modalContainer = null }) {
   const [learnMoreRetreat, setLearnMoreRetreat] = useState(false);
+  const [learnMorePrivate, setLearnMorePrivate] = useState(false);
   const [learnMoreStandard, setLearnMoreStandard] = useState(false);
 
-  const retreat = hasProgramChoice(pid, checkIn, checkOut, retreatsOn) ? retreatInStay(pid, checkIn, checkOut) : null;
-  if (!retreat) return null;
+  if (!pid || !checkIn || !checkOut) return null;
 
+  const retreat = hasProgramChoice(pid, checkIn, checkOut, retreatsOn) ? retreatInStay(pid, checkIn, checkOut) : null;
   const prop = D.properties[pid];
-  const retreatCheckIn = parse(retreat.date);
-  const retreatCheckOut = retreatDisplayCheckout(pid, retreatCheckIn);
+  const retreatCheckIn = retreat ? parse(retreat.date) : null;
+  const retreatCheckOut = retreat ? retreatDisplayCheckout(pid, retreatCheckIn) : null;
   const retreatDateLabel = retreatCheckOut ? fmtRange(retreatCheckIn, retreatCheckOut) : null;
-  const standardDateLabel = checkIn && checkOut ? fmtRange(checkIn, checkOut) : null;
+  const standardDateLabel = fmtRange(checkIn, checkOut);
   const standardName = prop.programName || prop.name;
+
+  const ranchPrivate = D.ranchPrivate;
+  const privateMaxGuests = ranchPrivate.maxGuests;
+  const privateOverCapacity = guestCount != null && guestCount > privateMaxGuests;
+  const privateDisabledNote = `The Ranch Private is only available for parties of up to ${privateMaxGuests} guests.`;
 
   return (
     <div className={className}>
       <fieldset role="radiogroup" aria-label="Choose your program" className="grid grid-cols-1 gap-3">
         <legend className="sr-only">Choose your program</legend>
+        {retreat && (
+          <ProgramOption
+            groupName={groupName}
+            checked={value?.type === 'retreat' && value.id === retreat.date}
+            onSelect={() => onChange({ type: 'retreat', id: retreat.date })}
+            tone="accent"
+            dateLabel={retreatDateLabel}
+            title={retreat.name}
+            onLearnMore={() => setLearnMoreRetreat(true)}
+          />
+        )}
         <ProgramOption
           groupName={groupName}
-          checked={value?.type === 'retreat' && value.id === retreat.date}
-          onSelect={() => onChange({ type: 'retreat', id: retreat.date })}
+          checked={value?.type === 'private'}
+          onSelect={() => onChange({ type: 'private' })}
           tone="accent"
-          dateLabel={retreatDateLabel}
-          title={retreat.name}
-          onLearnMore={() => setLearnMoreRetreat(true)}
+          title={ranchPrivate.name}
+          onLearnMore={() => setLearnMorePrivate(true)}
+          disabled={privateOverCapacity}
+          disabledNote={privateDisabledNote}
         />
         <ProgramOption
           groupName={groupName}
@@ -142,17 +171,23 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
         />
       </fieldset>
 
-      <RetreatModal
-        open={learnMoreRetreat}
-        retreat={retreat}
-        pid={pid}
-        container={modalContainer}
-        onClose={() => setLearnMoreRetreat(false)}
-        onChooseDates={() => {
-          onChange({ type: 'retreat', id: retreat.date });
-          setLearnMoreRetreat(false);
-        }}
-      />
+      {retreat && (
+        <RetreatModal
+          open={learnMoreRetreat}
+          retreat={retreat}
+          pid={pid}
+          container={modalContainer}
+          onClose={() => setLearnMoreRetreat(false)}
+          onChooseDates={() => {
+            onChange({ type: 'retreat', id: retreat.date });
+            setLearnMoreRetreat(false);
+          }}
+        />
+      )}
+
+      <Modal open={learnMorePrivate} onClose={() => setLearnMorePrivate(false)} title={ranchPrivate.name} container={modalContainer}>
+        <p className="text-sm text-body">{ranchPrivate.desc}</p>
+      </Modal>
 
       <Modal open={learnMoreStandard} onClose={() => setLearnMoreStandard(false)} title={standardName} container={modalContainer}>
         <p className="text-sm text-body">{prop.programDesc}</p>

@@ -621,6 +621,20 @@ const D = (function () {
     ],
   };
 
+  /* ---------- The Ranch Private ----------
+     A third, always-available programme choice alongside the property's
+     own standard programme and any dated retreat (ProgramChoice.jsx) —
+     unlike `retreats` above, this isn't tied to specific dates or a
+     single property; it's offered on every stay, at every property,
+     capped at `maxGuests` total guests across the party (ProgramChoice
+     greys the card out and explains why once the party exceeds it,
+     rather than hiding the option). */
+  var ranchPrivate = {
+    name: 'The Ranch Private',
+    desc: 'The Ranch Private is a way for guests to enjoy a more customized experience for guests who may not want the fully communal aspects of our traditional program. You may want a private hike, classes or meals, or may prefer to experience a different schedule to our main cohort of guests.',
+    maxGuests: 4,
+  };
+
   /* ---------- Fees & policies ----------
      Client feedback pass (8 Sep 2026): itemised into the real receipt
      lines the booking engine charges, not the earlier "Service charge &
@@ -696,6 +710,7 @@ const D = (function () {
     addonById: addonById,
     addonsFor: addonsFor,
     retreats: retreats,
+    ranchPrivate: ranchPrivate,
     fees: fees,
     phone: phone,
     phoneAlt: phoneAlt,

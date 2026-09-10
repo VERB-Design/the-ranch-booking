@@ -193,6 +193,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
   const trayRetreat = config.retreats && draft.property && draft.checkIn && draft.checkOut
     ? retreatInStay(draft.property, draft.checkIn, draft.checkOut)
     : null;
+  const trayGuestCount = draft.rooms.reduce((sum, r) => sum + (r.adults || 0), 0);
   const trayExt = normalizeExtension(draft.extension);
   const trayNights = draft.checkIn && draft.checkOut
     ? nightsBetween(draft.checkIn, draft.checkOut) + (trayExt.pre ? 1 : 0) + (trayExt.post ? 1 : 0)
@@ -254,18 +255,25 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
   function checkRates() {
     if (propertyMissing) { toast('Select a location to continue.'); return; }
     if (!draft.checkIn || !draft.checkOut) { toast('Select a check-in and check-out date.'); return; }
-    if (trayRetreat) {
-      /* A previous choice only carries forward if it still answers the
-         question these exact dates ask — a standard pick always still
-         applies, a retreat pick only if it's still *this* retreat. */
-      setDraft((d) => {
-        const stillValid = d.program && (d.program.type === 'standard' || (d.program.type === 'retreat' && d.program.id === trayRetreat.date));
-        return stillValid ? d : { ...d, program: null };
-      });
-      setTray('program');
-      return;
-    }
-    commit({ type: 'standard' });
+    /* The Ranch Private and the standard programme are always on offer —
+       not just when these dates carry a dated retreat — so the program
+       tray now shows on every date selection, not only the retreats one.
+       A previous choice only carries forward if it still answers the
+       question these exact dates/party ask: a standard pick always still
+       applies, a retreat pick only if it's still *this* retreat, and a
+       Ranch Private pick only if the party hasn't since grown past
+       D.ranchPrivate.maxGuests. Anything else falls back to `standard`
+       rather than leaving the tray with nothing picked, so Continue is
+       still one click away for guests who don't want to linger on it. */
+    setDraft((d) => {
+      const stillValid = d.program && (
+        d.program.type === 'standard' ||
+        (d.program.type === 'retreat' && !!trayRetreat && d.program.id === trayRetreat.date) ||
+        (d.program.type === 'private' && trayGuestCount <= D.ranchPrivate.maxGuests)
+      );
+      return { ...d, program: stillValid ? d.program : { type: 'standard' } };
+    });
+    setTray('program');
   }
 
   function continueFromProgram() {
@@ -418,8 +426,9 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
             </div>
           </div>
 
-          {/* ---------- Tray 2 — choose your program (only reachable when
-              the chosen dates carry a dated retreat) ---------- */}
+          {/* ---------- Tray 2 — choose your program (reached on every
+              date selection now; the retreat card only appears within it
+              when these dates happen to carry a dated retreat) ---------- */}
           <div data-tray="program" inert={tray !== "program"} className="flex h-full w-1/2 flex-col overflow-hidden">
             <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-6 py-8 md:px-8">
               <div>
@@ -436,7 +445,10 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                   <p className="text-sm text-body">
                     {trayDesc.title}, {trayDesc.rest.charAt(0).toLowerCase() + trayDesc.rest.slice(1)}
                   </p>
-                  <p className="text-sm text-body">Includes a special retreat.</p>
+                  {/* Only true when these exact dates carry one — the tray
+                      itself now opens on every date selection, so this can
+                      no longer assume a retreat is always why it's open. */}
+                  {trayRetreat && <p className="text-sm text-body">Includes a special retreat.</p>}
                 </div>
               )}
 
@@ -448,6 +460,7 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 retreatsOn={config.retreats}
                 value={draft.program}
                 onChange={(p) => setDraft((d) => ({ ...d, program: p }))}
+                guestCount={trayGuestCount}
                 groupName={programGroupName}
               />
 

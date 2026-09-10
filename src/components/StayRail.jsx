@@ -71,6 +71,9 @@ function SummaryRows({ readOnly = false, contact = null, onEdit = null }) {
               {retreatById(state.property, state.program.id)?.name || 'Special retreat'}
             </p>
           )}
+          {state.program?.type === 'private' && (
+            <p className="mb-1 text-xs text-muted">{D.ranchPrivate.name}</p>
+          )}
           {datesSet && (
             <p className="flex items-baseline justify-between gap-3">
               <span>

@@ -37,11 +37,14 @@ export default function Program() {
 
   const roomsOk = rooms.length > 0 && rooms.every((r) => (r.adults || 0) >= 1);
   const datesOk = !!(checkIn && checkOut);
+  const guestCount = rooms.reduce((sum, r) => sum + (r.adults || 0), 0);
   /* Whether these dates carry a dated retreat the guest has to choose
      between (see ProgramChoice.jsx) — Continue stays disabled until that
-     choice is made, matching the drawer's own tray. Stays with nothing to
-     choose between get `program` defaulted to `standard` below instead of
-     asking the guest to confirm the obvious. */
+     choice is made, matching the drawer's own tray. The Ranch Private and
+     the standard programme are always on offer (ProgramChoice renders
+     both regardless of retreatChoice), but neither forces a choice the
+     way two mutually-special options do — `program` still defaults to
+     `standard` below when nothing has been picked. */
   const retreatChoice = hasProgramChoice(state.property, checkIn, checkOut, config.retreats);
   const programOk = !retreatChoice || !!state.program;
 
@@ -52,11 +55,22 @@ export default function Program() {
   });
 
   useEffect(() => {
-    if (!retreatChoice && (!state.program || state.program.type !== 'standard')) {
+    /* Only overrides a choice that's gone stale — a carried-over retreat
+       pick these dates no longer carry, or a Ranch Private pick the party
+       has since outgrown — rather than clobbering a deliberate `retreat`
+       or `private` choice on every render just because retreatChoice
+       happens to be false (Ranch Private and standard are both valid
+       regardless of retreatChoice). Nothing chosen yet still defaults to
+       `standard`, same as before. */
+    if (state.program?.type === 'retreat' && !retreatChoice) {
+      set({ program: { type: 'standard' } });
+    } else if (state.program?.type === 'private' && guestCount > D.ranchPrivate.maxGuests) {
+      set({ program: { type: 'standard' } });
+    } else if (!state.program) {
       set({ program: { type: 'standard' } });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [retreatChoice, state.program]);
+  }, [retreatChoice, state.program, guestCount]);
 
   function setGuests(uid, v) {
     set({ rooms: rooms.map((r) => (r.uid === uid ? { ...r, adults: v } : r)) });
@@ -142,11 +156,11 @@ export default function Program() {
           onChooseRetreatDates={chooseRetreatDates}
         />
 
-        {/* Renders nothing (and self-gates on retreatsOn) unless these
-            dates carry a dated retreat — the same two-card chooser the
-            drawer's second tray shows, inline beneath "Your Chosen Stay"
-            instead of behind a slide transition, per docs/BRIEF.md's
-            pages-mode twin. */}
+        {/* Always shows the Ranch Private and standard cards once dates are
+            picked, plus a retreat card when these dates carry a dated
+            retreat — the same chooser the drawer's second tray shows,
+            inline beneath "Your Chosen Stay" instead of behind a slide
+            transition, per docs/BRIEF.md's pages-mode twin. */}
         <ProgramChoice
           pid={pid}
           checkIn={checkIn}
@@ -154,6 +168,7 @@ export default function Program() {
           retreatsOn={config.retreats}
           value={state.program}
           onChange={(p) => set({ program: p })}
+          guestCount={guestCount}
           className="mt-6 max-w-[420px]"
         />
       </section>
