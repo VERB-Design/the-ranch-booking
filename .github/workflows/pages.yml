@@ -1,8 +1,10 @@
 name: Publish to GitHub Pages
 
+# The default branch is the site; every other branch is published beneath it
+# at /preview/<branch>/ so any branch can be reviewed at a live URL.
 on:
   push:
-    branches: [program-v2-branch, main]
+    branches: ['**']
   workflow_dispatch:
 
 permissions:
@@ -19,17 +21,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
-      # Client-side routing: any deep link falls back to the app shell.
-      - run: cp dist/index.html dist/404.html
+      - name: Build the default branch at the site root
+        run: |
+          DEFAULT="$(git remote show origin | sed -n 's/.*HEAD branch: //p')"
+          git checkout -q "$DEFAULT"
+          npm ci
+          npm run build
+          cp dist/index.html dist/404.html
+          mkdir -p site && cp -R dist/. site/
+      - name: Build every other branch as a preview
+        run: |
+          DEFAULT="$(git remote show origin | sed -n 's/.*HEAD branch: //p')"
+          for REF in $(git branch -r --format='%(refname:short)' | grep '^origin/' | grep -v 'origin/HEAD' | sed 's#^origin/##'); do
+            [ "$REF" = "$DEFAULT" ] && continue
+            SAFE="$(echo "$REF" | sed 's#[^A-Za-z0-9._-]#-#g')"
+            echo "::group::preview/$SAFE ($REF)"
+            git checkout -q "$REF"
+            npm ci
+            BASE_PATH="/the-ranch-booking/preview/$SAFE/" npm run build
+            cp dist/index.html dist/404.html
+            mkdir -p "site/preview/$SAFE" && cp -R dist/. "site/preview/$SAFE/"
+            echo "::endgroup::"
+          done
+          git checkout -q "$DEFAULT"
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
     needs: build
