@@ -44,7 +44,7 @@ jobs:
             echo "::group::preview/$SAFE ($REF)"
             git checkout -q "$REF"
             npm ci
-            BASE_PATH="/the-ranch-booking/preview/$SAFE/" npm run build
+            BASE_PATH="/the-ranch-booking/preview/$SAFE/" npx vite build --base "/the-ranch-booking/preview/$SAFE/"
             cp dist/index.html dist/404.html
             mkdir -p "site/preview/$SAFE" && cp -R dist/. "site/preview/$SAFE/"
             echo "::endgroup::"
