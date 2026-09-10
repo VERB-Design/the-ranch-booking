@@ -168,7 +168,13 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
     if (prevTrayRef.current === tray) return;
     prevTrayRef.current = tray;
     const t = setTimeout(() => {
-      (tray === 'program' ? programTitleRef : mainTitleRef).current?.focus();
+      /* preventScroll: the panel is overflow-hidden but focus() would still
+         scroll it sideways to reveal the target mid-slide, and that scroll
+         stacked on top of the row's translate — the tray ended up shunted
+         off-panel and the drawer looked empty. Belt and braces: pin
+         scrollLeft back to 0 as well. */
+      (tray === 'program' ? programTitleRef : mainTitleRef).current?.focus({ preventScroll: true });
+      if (panelRef.current) panelRef.current.scrollLeft = 0;
     }, 20);
     return () => clearTimeout(t);
   }, [tray, open]);
