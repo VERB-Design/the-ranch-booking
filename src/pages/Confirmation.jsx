@@ -1,16 +1,24 @@
-import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button.jsx';
-import Field from '../components/ui/Field.jsx';
-import { D, pricing, useBooking, useToast } from '../store.jsx';
+import { D, pricing, useBooking } from '../store.jsx';
 import { useConfig } from '../config.jsx';
 import { StayOverviewCard } from '../components/StayRail.jsx';
 import usePageTitle from '../usePageTitle.js';
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 /* Confirmation (docs/BRIEF.md, wire 07) — centred summary, reference
    chip, one RESERVATION card with every line and a total-paid band.
+
+   A "Send to Another Email" section (a resend-confirmation form, one
+   email field + Send button) used to sit here, between "Before You
+   Arrive" and the action row below — removed per client feedback (11
+   Sep 2026): the system sends exactly one confirmation email, to the
+   primary contact, who can forward it themselves; a second, separate
+   send path was redundant with that. Removed along with it: the
+   resendEmail/resendError state, the sendToAnother handler, and the
+   EMAIL_RE constant it alone used — nothing else in this file read any
+   of them. See Checkout.jsx's own removed "This is a gift — don't
+   contact this guest" checkbox for the same reasoning applied earlier
+   to additional guests.
 
    This page never calls useStep(), so Layout hides the shared ButtonBar
    here as designed — but Layout still renders the Stepper (which
@@ -27,11 +35,7 @@ export default function Confirmation() {
   const { state, reset } = useBooking();
   const config = useConfig();
   const navigate = useNavigate();
-  const toast = useToast();
   const p = pricing(state);
-
-  const [resendEmail, setResendEmail] = useState('');
-  const [resendError, setResendError] = useState('');
 
   if (!state.confirmation || !p) {
     return <Navigate to={config.entry === 'drawer' ? '/' : (config.multiProperty ? '/location' : '/rooms')} replace />;
@@ -56,20 +60,6 @@ export default function Confirmation() {
 
   function backToHome() {
     navigate('/');
-  }
-
-  /* Prototype only — nothing is actually sent. The toast is the same
-     confirmation pattern the rest of the app uses for a completed action
-     with no page to land on. */
-  function sendToAnother(e) {
-    e.preventDefault();
-    if (!resendEmail.trim() || !EMAIL_RE.test(resendEmail)) {
-      setResendError('Enter a valid email address.');
-      return;
-    }
-    setResendError('');
-    toast('Confirmation sent to ' + resendEmail);
-    setResendEmail('');
   }
 
   return (
@@ -115,22 +105,6 @@ export default function Confirmation() {
           </p>
           <p className="mt-3 text-sm leading-relaxed text-body">{prop.depositCopy}</p>
           <p className="mt-3 text-sm leading-relaxed text-body">{prop.cancelCopy}</p>
-        </div>
-
-        <div className="w-full border-t border-line pt-6 text-left print-hide">
-          <h2 className="h-serif text-lg text-ink">Send to Another Email</h2>
-          <form onSubmit={sendToAnother} className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start">
-            <Field
-              label="Email address"
-              type="email"
-              placeholder="email@mail.com"
-              value={resendEmail}
-              error={resendError || undefined}
-              onChange={(e) => setResendEmail(e.target.value)}
-              className="flex-1"
-            />
-            <Button variant="ghost" type="submit" className="sm:mt-6">Send</Button>
-          </form>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 print-hide">
