@@ -211,18 +211,35 @@ export function partyTotals(rooms) {
    its own nightly rate by that room's own adult count, not the stay's
    total guests. An upgraded room now carries its own real rate (the
    catalogue rooms are the real programme tiers, not a flat surcharge on
-   top of the original), so `lineNightly` just reads the assigned room's
-   rate; `Upgrade.jsx` computes its own "$X more / night" as the two
-   rooms' real rate difference. */
-export function lineNightly(room) {
-  return room ? room.rate : 0;
+   top of the original), so `lineNightly` reads the assigned room's rate
+   and applies the *chosen programme's* own price on top of it —
+   `Upgrade.jsx` computes its own "$X more / night" as the two rooms'
+   real rate difference, then applies the same multiplier to that diff
+   (mathematically identical to multiplying each room's rate first). */
+
+/** The one place a programme's own price is assigned: 1 (no change) for
+    `standard` and a dated `retreat` — a retreat has no separate rate of
+    its own today, see `retreats`' own comment in data.js — and Ranch
+    Private's `priceMultiplier` once the guest picks it. Every caller
+    that reads a room's rate for money (nightly rate, extension nights,
+    the room/upgrade cards' quoted totals) runs it through this first,
+    so the price a programme card teases in ProgramChoice.jsx is exactly
+    what Rooms, Upgrades, the stay rail and Checkout go on to charge —
+    nothing downstream re-derives its own number. */
+export function programPriceMultiplier(program) {
+  return program?.type === 'private' ? D.ranchPrivate.priceMultiplier : 1;
 }
 
-/** The property's own rate for one extension night, per person — Malibu
-    charges its flat `preNightRate` for either direction (the brief gives
-    no separate post-night figure; see D.properties.malibu.stayRules'
-    own comment and docs/PRODUCTION-NOTES.md), Hudson charges the room's
-    own nightly rate for its one possible extra night. */
+export function lineNightly(room, program) {
+  return room ? room.rate * programPriceMultiplier(program) : 0;
+}
+
+/** The property's own rate for one extension night, per person, before
+    the programme multiplier — Malibu charges its flat `preNightRate`
+    for either direction (the brief gives no separate post-night figure;
+    see D.properties.malibu.stayRules' own comment and
+    docs/PRODUCTION-NOTES.md), Hudson charges the room's own nightly
+    rate for its one possible extra night. */
 function extensionNightRate(room) {
   const rules = D.properties[room.property] && D.properties[room.property].stayRules;
   if (room.property === 'malibu') return (rules && rules.preNightRate) || room.rate;
@@ -231,25 +248,29 @@ function extensionNightRate(room) {
 
 /** The extension's own charge for one room's line, per person — the
     per-night rate above times however many extra nights this stay took
-    (0, 1, or 2 at Malibu; 0 or 1 at Hudson). Returns 0 when neither
+    (0, 1, or 2 at Malibu; 0 or 1 at Hudson), with the same programme
+    multiplier `lineNightly` applies (an extension night is still a
+    night of whichever programme was chosen). Returns 0 when neither
     extension is taken. */
 function extensionAmount(state, room) {
   if (!room) return 0;
   const ext = normalizeExtension(state.extension);
   const extraNights = (ext.pre ? 1 : 0) + (ext.post ? 1 : 0);
   if (!extraNights) return 0;
-  return extensionNightRate(room) * extraNights;
+  return extensionNightRate(room) * programPriceMultiplier(state.program) * extraNights;
 }
 
 /** Quick total for a single candidate room against the stay currently in
     progress — used by the room/upgrade cards before a room is actually
     booked, so the "Or $X total" figure already accounts for guests-per-
-    room and the extension the way the final pricing() will. */
+    room, the extension, and the programme chosen back on the Program
+    step the way the final pricing() will. */
 export function roomStayTotal(state, room, adults) {
   if (!room || !state.checkIn || !state.checkOut) return 0;
   const base = nightsBetween(parse(state.checkIn), parse(state.checkOut));
   const guests = adults || 1;
-  return room.rate * base * guests + extensionAmount(state, room) * guests;
+  const nightly = room.rate * programPriceMultiplier(state.program);
+  return nightly * base * guests + extensionAmount(state, room) * guests;
 }
 
 export function pricing(state) {
@@ -262,7 +283,7 @@ export function pricing(state) {
   const lines = bookedRooms(state).map((r) => {
     const room = D.roomById(r.roomId);
     if (!room) return null;
-    const nightly = lineNightly(room);
+    const nightly = lineNightly(room, state.program);
     const adults = r.adults || 1;
     const extAmount = extensionAmount(state, room) * adults;
     const subtotal = nightly * baseNights * adults + extAmount;

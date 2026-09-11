@@ -9,7 +9,7 @@ import { Arrow } from '../Chrome.jsx';
 import { iso, nightsBetween, retreatInStay, stayDescription } from '../../stay.js';
 import { D, MAX_ROOMS, newRoomSlot, normalizeExtension, useBooking, useToast } from '../../store.jsx';
 import { flowSteps, useConfig } from '../../config.jsx';
-import { fmtShort, asset, money } from '../../utils.js';
+import { fmtShort, asset } from '../../utils.js';
 import useMountTransition from '../../useMountTransition.js';
 
 const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input:not([disabled]),select,[tabindex]:not([tabindex="-1"])';
@@ -331,25 +331,10 @@ export default function ReserveDrawer({ open, onClose, onApply, ctaLabel = 'Chec
                 <LocationSelect value={draft.property} onChange={chooseProperty} open={propOpen} onOpenChange={setPropOpen} />
               )}
 
-              {/* Rates for the chosen location, single and double occupancy,
-                  before taxes and fees — shown as soon as a location is set. */}
-              {draft.property && (
-                <div>
-                  <span className="label-sm mb-1.5 block text-accent">Rates</span>
-                  <dl className="flex flex-col gap-1 text-sm text-ink">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <dt>Single occupancy</dt>
-                      <dd className="text-right">from {money(D.occupancyRates(draft.property).single, 0)} per night</dd>
-                    </div>
-                    <div className="flex items-baseline justify-between gap-4">
-                      <dt>Double occupancy</dt>
-                      <dd className="text-right">from {money(D.occupancyRates(draft.property).double, 0)} per person / night</dd>
-                    </div>
-                  </dl>
-                  <p className="mt-1.5 text-xs text-muted">Before taxes and fees.</p>
-                  <hr className="mt-5 border-line" />
-                </div>
-              )}
+              {/* No rates shown here anymore — pricing now depends on which
+                  programme the guest picks (ProgramChoice.jsx, tray 2), so
+                  a single "from $X" figure this early would be misleading
+                  before that choice is made. */}
 
               {/* Until a location is chosen, everything between it and the
                   dates sits inert at half opacity — the dates block stays

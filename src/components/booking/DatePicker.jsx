@@ -6,7 +6,7 @@ import Checkbox from '../ui/Checkbox.jsx';
 import RetreatModal from './RetreatModal.jsx';
 import { EXTENSION_LABELS, checkoutsFor, extensionOptions, isCheckInDay, isRetreatDate, nightsBetween, parse, retreatInStay, stayDescription } from '../../stay.js';
 import { D, normalizeExtension } from '../../store.jsx';
-import { MONTH_NAMES, asset, money } from '../../utils.js';
+import { MONTH_NAMES, asset } from '../../utils.js';
 
 function today() {
   const d = new Date();
@@ -284,21 +284,6 @@ export default function DatePicker({
   const extendOptions = extensionsOn && bothSet ? extensionOptions(pid, checkIn, checkOut) : { pre: false, post: false };
   const extendable = extendOptions.pre || extendOptions.post;
 
-  /* "Show rates first" (client feedback, 8 Sep 2026) — the property's
-     lowest room rate, so the guest sees a real number before Rooms.
-     `baseNights` deliberately excludes the extension (it's priced
-     separately, at the property's own extension rate, not the lowest
-     room's program rate) — Malibu's extra nights both charge
-     `preNightRate` regardless of which room is eventually booked (see
-     D.properties.malibu.stayRules' own comment); Hudson's one extra
-     night charges the room's own nightly rate, so the lowest room's rate
-     stands in for it here too. Single guest, read-only text — no new
-     control. */
-  const lowestRate = D.fromPrice(pid);
-  const baseNights = bothSet ? nightsBetween(checkIn, checkOut) : 0;
-  const extensionRatePerNight = extraNightsCount ? (pid === 'malibu' ? (stayRules.preNightRate || lowestRate) : lowestRate) : 0;
-  const fromStayTotal = lowestRate * baseNights + extensionRatePerNight * extraNightsCount;
-
   function toggleExtra(key, checked) {
     onToggleExtra({ ...ext, [key]: checked });
   }
@@ -367,9 +352,10 @@ export default function DatePicker({
               <span className="label-sm block text-accent">Your Chosen Stay</span>
               <p className="h-serif mt-2 text-[24px] leading-tight text-ink">{stayDescription(pid, nights).title}</p>
               <p className="mt-1.5 text-sm text-body">{stayDescription(pid, nights).rest}</p>
-              <p className="mt-1.5 text-sm text-muted">
-                From {money(lowestRate, 0)} per person / night · from {money(fromStayTotal, 0)} for your stay, before taxes and fees
-              </p>
+              {/* Pricing no longer shows here — it now depends on which
+                  programme is chosen below (ProgramChoice.jsx), which the
+                  guest hasn't picked yet at this point in the flow; each
+                  programme card quotes its own rate instead. */}
             </div>
 
             {extendable && (

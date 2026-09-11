@@ -628,11 +628,22 @@ const D = (function () {
      single property; it's offered on every stay, at every property,
      capped at `maxGuests` total guests across the party (ProgramChoice
      greys the card out and explains why once the party exceeds it,
-     rather than hiding the option). */
+     rather than hiding the option).
+
+     `priceMultiplier` is the one place its premium is assigned — every
+     programme now carries its own price (store.jsx's `pricing()` reads
+     it via `programPriceMultiplier`, applied to whichever room is
+     actually booked): the standard programme and a dated retreat both
+     price at the room's own catalogue rate (multiplier 1 — retreats
+     have no separate rate of their own today; see data.js's `retreats`
+     comment), and Ranch Private prices at that same rate plus 50%,
+     the one place today where the chosen programme — not just the
+     chosen room — changes what a stay costs. */
   var ranchPrivate = {
     name: 'The Ranch Private',
     desc: 'The Ranch Private is a way for guests to enjoy a more customized experience for guests who may not want the fully communal aspects of our traditional program. You may want a private hike, classes or meals, or may prefer to experience a different schedule to our main cohort of guests.',
     maxGuests: 4,
+    priceMultiplier: 1.5,
   };
 
   /* ---------- Fees & policies ----------

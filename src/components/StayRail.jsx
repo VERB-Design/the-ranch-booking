@@ -48,6 +48,17 @@ function SummaryRows({ readOnly = false, contact = null, onEdit = null }) {
     : extraCount === 2
       ? 'incl. 2 extra nights · program ' + fmtShort(state.checkIn) + ' – ' + fmtShort(state.checkOut)
       : null;
+  /* Declares whichever programme was actually chosen — a dated retreat
+     by its own name, Ranch Private by its name, or the property's own
+     standard programme name, so the summary always says which one,
+     not just the two "special" cases. */
+  const programLabel = state.program?.type === 'retreat'
+    ? (retreatById(state.property, state.program.id)?.name || 'Special retreat')
+    : state.program?.type === 'private'
+      ? D.ranchPrivate.name
+      : state.program?.type === 'standard' && prop
+        ? (prop.programName || prop.name)
+        : null;
   const Sep = () => <span aria-hidden="true" className="mx-3 text-line-hover">|</span>;
 
   /* Condensed: two summary lines, then the room with its rate beneath.
@@ -66,14 +77,6 @@ function SummaryRows({ readOnly = false, contact = null, onEdit = null }) {
       {(datesSet || roomsSet) && (
         <div className="pt-3 pb-4 text-sm text-ink">
           {prop && <p className="mb-1 text-ink">{prop.name}</p>}
-          {state.program?.type === 'retreat' && (
-            <p className="mb-1 text-xs text-muted">
-              {retreatById(state.property, state.program.id)?.name || 'Special retreat'}
-            </p>
-          )}
-          {state.program?.type === 'private' && (
-            <p className="mb-1 text-xs text-muted">{D.ranchPrivate.name}</p>
-          )}
           {datesSet && (
             <p className="flex items-baseline justify-between gap-3">
               <span>
@@ -99,13 +102,17 @@ function SummaryRows({ readOnly = false, contact = null, onEdit = null }) {
             </p>
           )}
           {extensionNote && <p className="mt-1 text-xs text-muted">{extensionNote}</p>}
+          {/* Which programme was chosen — the last of the three decisions
+              made on the Program step (rooms & guests, then dates, then
+              this), so it reads last here too, under both rows above. */}
+          {programLabel && <p className="mt-1 text-xs text-muted">{programLabel}</p>}
           {bookedRoomLines.filter((r) => r.room).map((r, i) => (
             <div key={r.uid} className="mt-3">
               <p className="text-ink">
                 {config.multiRoom && bookedRoomLines.length > 1 ? 'Room ' + (i + 1) + ' · ' : ''}{r.room.name}
               </p>
               <p className="text-xs text-muted">
-                {money(lineNightly(r.room))} per person / night{r.upgradedFrom ? ' (upgraded)' : ''}
+                {money(lineNightly(r.room, state.program))} per person / night{r.upgradedFrom ? ' (upgraded)' : ''}
               </p>
             </div>
           ))}

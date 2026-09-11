@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button.jsx';
 import FeeModal from './FeeModal.jsx';
 import { money } from '../utils.js';
-import { activeRoomIndex, nextUnassigned, nights, roomStayTotal, useBooking } from '../store.jsx';
+import { activeRoomIndex, nextUnassigned, nights, programPriceMultiplier, roomStayTotal, useBooking } from '../store.jsx';
 import { cardLayout, nextPathAfter, useConfig } from '../config.jsx';
 
 /* ============================================================
@@ -29,6 +29,7 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
   const idx = activeRoomIndex(state);
   const adults = (state.rooms && state.rooms[idx] && state.rooms[idx].adults) || 1;
   const total = roomStayTotal(state, room, adults);
+  const nightly = room.rate * programPriceMultiplier(state.program);
   const vertical = layout === 'vertical';
 
   return (
@@ -36,7 +37,7 @@ export default function RoomCard({ room, ctaLabel = 'Select Room', selected = fa
       room={room}
       layout={layout}
       selected={selected}
-      priceSlot={<PriceBlock nightly={room.rate} nights={n} adults={adults} total={total} pid={room.property} />}
+      priceSlot={<PriceBlock nightly={nightly} nights={n} adults={adults} total={total} pid={room.property} />}
       actions={
         <div className={vertical ? 'flex flex-col gap-2' : 'flex flex-col items-start gap-2 md:items-end'}>
           <Button

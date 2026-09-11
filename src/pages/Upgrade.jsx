@@ -4,7 +4,7 @@ import { nextStepKey, useConfig } from '../config.jsx';
 import Button from '../components/ui/Button.jsx';
 import Checkbox from '../components/ui/Checkbox.jsx';
 import { CheckIcon, PriceBlock, RoomCardFrame } from '../components/RoomCard.jsx';
-import { D, nights, normalizeExtension, useBooking } from '../store.jsx';
+import { D, nights, normalizeExtension, programPriceMultiplier, useBooking } from '../store.jsx';
 import { EXTENSION_LABELS, extensionOptions, parse } from '../stay.js';
 import usePageTitle from '../usePageTitle.js';
 
@@ -42,7 +42,13 @@ export default function Upgrade() {
   });
   const n = Math.max(1, nights(state));
   const adults = (slot && slot.adults) || 1;
-  const diff = upgradeRoom && originalRoom ? Math.max(0, upgradeRoom.rate - originalRoom.rate) : 0;
+  /* The two rooms' real rate difference, at whichever programme's price
+     the guest chose back on the Program step — multiplying the raw diff
+     is equivalent to multiplying each room's rate first and subtracting
+     (the multiplier factors out), without recomputing both rates here. */
+  const diff = upgradeRoom && originalRoom
+    ? Math.max(0, upgradeRoom.rate - originalRoom.rate) * programPriceMultiplier(state.program)
+    : 0;
 
   function upgrade() {
     if (!slot || !upgradeRoom || !originalRoomId) return;

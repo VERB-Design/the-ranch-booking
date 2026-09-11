@@ -5,8 +5,8 @@ import RetreatModal from './RetreatModal.jsx';
 import { CheckIcon } from '../RoomCard.jsx';
 import { retreatDisplayCheckout } from './RetreatCard.jsx';
 import { parse, retreatInStay } from '../../stay.js';
-import { D } from '../../store.jsx';
-import { MONTH_NAMES } from '../../utils.js';
+import { D, programPriceMultiplier } from '../../store.jsx';
+import { MONTH_NAMES, money } from '../../utils.js';
 
 function fmtRange(a, b) {
   return a.getDate() + ' ' + MONTH_NAMES[a.getMonth()] + ' – ' + b.getDate() + ' ' + MONTH_NAMES[b.getMonth()];
@@ -34,7 +34,7 @@ export function hasProgramChoice(pid, checkIn, checkOut, retreatsOn = true) {
    even when the click landed on the nested button). Keeping "Learn more"
    as a sibling avoids the whole problem: clicking the label area selects
    the card, clicking "Learn more" only opens its modal. */
-function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore, groupName, disabled, disabledNote }) {
+function ProgramOption({ checked, onSelect, tone, dateLabel, title, priceLabel, onLearnMore, groupName, disabled, disabledNote }) {
   const accent = tone === 'accent';
   /* One row per programme: chip and name on the left, the check and
      Learn more on the right — the cards stack rather than sit side by side.
@@ -42,7 +42,10 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
      disabled) without hiding it — "Learn more" stays live so the guest can
      still read what the programme is, and `disabledNote` explains in place
      why it can't be picked right now (e.g. party size) rather than leaving
-     them to guess. */
+     them to guess. `priceLabel` is this programme's own assigned rate —
+     pricing lives here now, not on the dates step above (see
+     DatePicker.jsx), since which programme the guest picks is exactly
+     what decides the number. */
   return (
     <div
       className={
@@ -66,6 +69,7 @@ function ProgramOption({ checked, onSelect, tone, dateLabel, title, onLearnMore,
         )}
         {/* The special programme's name reads in the dark brown. */}
         <span className={'h-serif text-[18px] leading-tight ' + (accent ? 'text-accent' : 'text-ink')}>{title}</span>
+        {priceLabel && <span className="text-xs text-muted">{priceLabel}</span>}
       </label>
       {disabled && disabledNote && <p className="text-xs text-muted">{disabledNote}</p>}
       <button
@@ -135,6 +139,19 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
   const privateOverCapacity = guestCount != null && guestCount > privateMaxGuests;
   const privateDisabledNote = `The Ranch Private is only available for parties of up to ${privateMaxGuests} guests.`;
 
+  /* Each programme's own assigned rate — pricing moved here from the
+     dates step above it (see store.jsx's programPriceMultiplier, the one
+     place the multiplier itself is looked up, so this card's number and
+     what Rooms/Checkout actually charge can't drift apart). Standard and
+     a dated retreat price at the property's own cheapest-room rate
+     (retreats carry no separate rate of their own — see data.js);
+     Ranch Private prices at that same rate plus its own premium. */
+  const basePrice = D.fromPrice(pid);
+  const retreatPrice = basePrice * programPriceMultiplier({ type: 'retreat' });
+  const privatePrice = basePrice * programPriceMultiplier({ type: 'private' });
+  const standardPrice = basePrice * programPriceMultiplier({ type: 'standard' });
+  const priceLabel = (price) => `From ${money(price, 0)} per person / night`;
+
   return (
     <div className={className}>
       <fieldset role="radiogroup" aria-label="Choose your program" className="grid grid-cols-1 gap-3">
@@ -147,6 +164,7 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
             tone="accent"
             dateLabel={retreatDateLabel}
             title={retreat.name}
+            priceLabel={priceLabel(retreatPrice)}
             onLearnMore={() => setLearnMoreRetreat(true)}
           />
         )}
@@ -156,6 +174,7 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
           onSelect={() => onChange({ type: 'private' })}
           tone="accent"
           title={ranchPrivate.name}
+          priceLabel={priceLabel(privatePrice)}
           onLearnMore={() => setLearnMorePrivate(true)}
           disabled={privateOverCapacity}
           disabledNote={privateDisabledNote}
@@ -167,6 +186,7 @@ export default function ProgramChoice({ pid, checkIn, checkOut, retreatsOn = tru
           tone="neutral"
           dateLabel={standardDateLabel}
           title={standardName}
+          priceLabel={priceLabel(standardPrice)}
           onLearnMore={() => setLearnMoreStandard(true)}
         />
       </fieldset>

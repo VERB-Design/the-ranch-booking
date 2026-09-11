@@ -29,7 +29,7 @@ function emptyPrimary() {
   return { first: '', last: '', email: '', phone: '', address: '', city: '', state: '', country: '', zip: '' };
 }
 function emptyGuest() {
-  return { first: '', last: '', email: '', phone: '', isGift: false };
+  return { first: '', last: '', email: '', phone: '' };
 }
 function emptyPayment() {
   return { name: '', cardNumber: '', mm: '', yy: '', cvc: '' };
@@ -82,7 +82,7 @@ export default function Checkout() {
 
     const guestErrors = guestCards.map((g) => {
       const e = {};
-      if (!g.isGift && g.email.trim() && !EMAIL_RE.test(g.email)) e.email = 'Enter a valid email address.';
+      if (g.email.trim() && !EMAIL_RE.test(g.email)) e.email = 'Enter a valid email address.';
       return e;
     });
 
@@ -259,33 +259,23 @@ export default function Checkout() {
                   error={showErr(ge.last)}
                   onChange={(e) => updateAdditional(i, { last: e.target.value })}
                 />
-                {!g.isGift && (
-                  <>
-                    <Field
-                      label="Email"
-                      type="email"
-                      placeholder="email@mail.com"
-                      value={g.email}
-                      error={showErr(ge.email)}
-                      onChange={(e) => updateAdditional(i, { email: e.target.value })}
-                    />
-                    <Field
-                      label="Phone"
-                      type="tel"
-                      placeholder="+# ### ### ####"
-                      value={g.phone}
-                      error={showErr(ge.phone)}
-                      onChange={(e) => updateAdditional(i, { phone: e.target.value })}
-                    />
-                  </>
-                )}
+                <Field
+                  label="Email"
+                  type="email"
+                  placeholder="email@mail.com"
+                  value={g.email}
+                  error={showErr(ge.email)}
+                  onChange={(e) => updateAdditional(i, { email: e.target.value })}
+                />
+                <Field
+                  label="Phone"
+                  type="tel"
+                  placeholder="+# ### ### ####"
+                  value={g.phone}
+                  error={showErr(ge.phone)}
+                  onChange={(e) => updateAdditional(i, { phone: e.target.value })}
+                />
               </div>
-              <Checkbox
-                className="mt-4"
-                checked={g.isGift}
-                onChange={(v) => updateAdditional(i, { isGift: v })}
-                label="This is a gift — don't contact this guest"
-              />
             </section>
           );
         })}
