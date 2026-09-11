@@ -102,8 +102,12 @@ export function CheckIcon() {
     between the two. `total`, when supplied, overrides the naive
     nightly×nights so callers can account for guests-per-room and a
     property's own extension pricing (see `roomStayTotal` in store.jsx)
-    rather than every card re-deriving it. */
-export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' per person / night', modalTitle, pid }) {
+    rather than every card re-deriving it. `totalLabel` swaps the plain
+    "$X total" wording for a labelled figure (Upgrade.jsx's "New total"),
+    and `feePricing` forwards a full `pricing()` result straight through
+    to FeeModal so its breakdown reflects the *whole* stay, not just this
+    one room's rate — see FeeModal's own comment. */
+export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' per person / night', totalLabel, modalTitle, pid, feePricing }) {
   const nightCount = Math.max(1, n || 1);
   const guests = Math.max(1, adults || 1);
   const [feesOpen, setFeesOpen] = useState(false);
@@ -114,7 +118,9 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
         <span className="text-[20px] font-medium leading-none">{money(nightly, 0)}</span>
         <span className="ml-2 whitespace-nowrap text-xs text-muted">{suffix.trim()}</span>
       </p>
-      <span className="block text-sm text-body">{money(grandTotal, 0)} total</span>
+      <span className="block text-sm text-body">
+        {totalLabel ? totalLabel + ' ' + money(grandTotal, 0) : money(grandTotal, 0) + ' total'}
+      </span>
       <button
         type="button"
         onClick={() => setFeesOpen(true)}
@@ -130,6 +136,7 @@ export function PriceBlock({ nightly, nights: n, adults = 1, total, suffix = ' p
         adults={guests}
         pid={pid}
         title={modalTitle}
+        p={feePricing}
       />
     </div>
   );

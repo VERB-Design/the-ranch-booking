@@ -11,13 +11,24 @@ import usePageTitle from '../usePageTitle.js';
    step (for the stepper highlight) even though its own Continue is inert. */
 export default function Location() {
   usePageTitle('Choose Your Location');
-  const { set } = useBooking();
+  const { state, set } = useBooking();
   const config = useConfig();
   const navigate = useNavigate();
   useStep({ canContinue: false });
 
+  /* Picking a property never touches the guest's own room/guest counts —
+     those are the guest's party, not a property rule, matching
+     ReserveDrawer's chooseProperty (see its own comment). Room *type*
+     assignments do reset, but only when the property actually changed —
+     a room id from one property's catalogue doesn't exist at the
+     other's — so re-confirming the same property on a back-navigation
+     leaves everything exactly as the guest left it. */
   function choose(pid) {
-    set({ property: pid, rooms: [{ uid: 'r1', roomId: null, adults: 2, upgradedFrom: null }] });
+    const propertyChanged = state.property !== pid;
+    const rooms = propertyChanged
+      ? (state.rooms || []).map((r) => ({ ...r, roomId: null, upgradedFrom: null }))
+      : state.rooms;
+    set({ property: pid, rooms });
     navigate(nextPathAfter(config, 'location'));
   }
 

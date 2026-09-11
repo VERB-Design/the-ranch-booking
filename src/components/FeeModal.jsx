@@ -24,15 +24,26 @@ import { D } from '../store.jsx';
    tax), so the intro sentence and the table below it now agree: both say
    "20% service charge." The table renders the identical `label · rate%`
    line StayRail's own TaxesRow does (`pct()`, `src/utils.js`) — one
-   formatting rule, not two tables that could drift apart. */
-export default function FeeModal({ open, onClose, nightly, nights, adults = 1, pid, title = 'About Taxes & Fees' }) {
+   formatting rule, not two tables that could drift apart.
+
+   `p` — an optional full `pricing()` result (store.jsx) — switches the
+   modal from "one room's own rate" to "the whole stay's real breakdown,
+   room by room": Upgrade.jsx passes the *hypothetical* pricing() result
+   for what the stay would total with the upgrade applied, so its "New
+   total" figure and this modal's own numbers can never disagree — both
+   read off the exact same computed object rather than this modal
+   re-deriving a subtotal from a single nightly rate. When `p` is
+   omitted, the single-room reconstruction below (nightly × nights ×
+   guests) still drives RoomCard's and RoomDetail's own preview cards
+   exactly as before. */
+export default function FeeModal({ open, onClose, nightly, nights, adults = 1, pid, title = 'About Taxes & Fees', p }) {
   const n = Math.max(1, nights || 1);
   const guests = Math.max(1, adults || 1);
-  const subtotal = nightly * n * guests;
-  const feeInfo = (pid && D.fees[pid]) || D.fees.malibu;
+  const subtotal = p ? p.roomSubtotal + p.addonsTotal : nightly * n * guests;
+  const feeInfo = p ? p.feeInfo : (pid && D.fees[pid]) || D.fees.malibu;
   const breakdown = feeInfo.breakdown || [];
-  const tax = Math.round(breakdown.reduce((s, b) => s + subtotal * b.rate, 0) * 100) / 100;
-  const total = subtotal + tax;
+  const tax = p ? p.tax : Math.round(breakdown.reduce((s, b) => s + subtotal * b.rate, 0) * 100) / 100;
+  const total = p ? p.total : subtotal + tax;
 
   return (
     <Modal open={open} onClose={onClose} title={title} closeLabel="Close">
@@ -43,12 +54,29 @@ export default function FeeModal({ open, onClose, nightly, nights, adults = 1, p
         enhance your experience.
       </p>
       <dl className="mt-5 flex flex-col gap-2 border-t border-line pt-5 text-sm">
-        <div className="flex justify-between gap-3">
-          <dt className="text-body">
-            {money(nightly, 0)} × {n} night{n > 1 ? 's' : ''}{guests > 1 ? ' × ' + guests + ' guests' : ''}
-          </dt>
-          <dd className="text-ink">{money(subtotal, 0)}</dd>
-        </div>
+        {p ? (
+          p.lines.map((l, i) => (
+            <div key={l.uid} className="flex justify-between gap-3">
+              <dt className="text-body">
+                {p.lines.length > 1 ? 'Room ' + (i + 1) + ' · ' : ''}{l.room.name} · {n} night{n > 1 ? 's' : ''}{l.adults > 1 ? ' × ' + l.adults + ' guests' : ''}
+              </dt>
+              <dd className="text-ink">{money(l.subtotal, 0)}</dd>
+            </div>
+          ))
+        ) : (
+          <div className="flex justify-between gap-3">
+            <dt className="text-body">
+              {money(nightly, 0)} × {n} night{n > 1 ? 's' : ''}{guests > 1 ? ' × ' + guests + ' guests' : ''}
+            </dt>
+            <dd className="text-ink">{money(subtotal, 0)}</dd>
+          </div>
+        )}
+        {p && !!p.addonLines.length && (
+          <div className="flex justify-between gap-3">
+            <dt className="text-body">Enhancements</dt>
+            <dd className="text-ink">{money(p.addonsTotal, 0)}</dd>
+          </div>
+        )}
         {breakdown.map((b) => (
           <div key={b.label} className="flex justify-between gap-3">
             <dt className="text-body">{b.label} · {pct(b.rate)}%</dt>

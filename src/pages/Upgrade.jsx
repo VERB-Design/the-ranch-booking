@@ -4,7 +4,7 @@ import { nextStepKey, useConfig } from '../config.jsx';
 import Button from '../components/ui/Button.jsx';
 import Checkbox from '../components/ui/Checkbox.jsx';
 import { CheckIcon, PriceBlock, RoomCardFrame } from '../components/RoomCard.jsx';
-import { D, nights, normalizeExtension, programPriceMultiplier, useBooking } from '../store.jsx';
+import { D, nights, normalizeExtension, pricing, programPriceMultiplier, useBooking } from '../store.jsx';
 import { EXTENSION_LABELS, extensionOptions, parse } from '../stay.js';
 import usePageTitle from '../usePageTitle.js';
 
@@ -49,6 +49,17 @@ export default function Upgrade() {
   const diff = upgradeRoom && originalRoom
     ? Math.max(0, upgradeRoom.rate - originalRoom.rate) * programPriceMultiplier(state.program)
     : 0;
+
+  /* The whole stay's real total with this upgrade actually applied to
+     the first room — not just the rate difference — so "New total"
+     below and its "Excluding taxes and fees" breakdown both show what
+     Checkout would actually charge (other booked rooms and any add-ons
+     included), not only the upgrade's own increment. This never writes
+     to the store; `upgrade()` still does that when the guest commits. */
+  const previewRooms = upgradeRoom
+    ? rooms.map((r, i) => (i === 0 ? { ...r, roomId: upgradeRoom.id, upgradedFrom: originalRoomId } : r))
+    : rooms;
+  const previewPricing = upgradeRoom ? pricing({ ...state, rooms: previewRooms }) : null;
 
   function upgrade() {
     if (!slot || !upgradeRoom || !originalRoomId) return;
@@ -101,9 +112,11 @@ export default function Upgrade() {
               nights={n}
               adults={adults}
               pid={upgradeRoom.property}
-              total={diff * n * adults}
+              total={previewPricing ? previewPricing.total : diff * n * adults}
+              totalLabel="New total"
               suffix=" more per person / night"
               modalTitle="Taxes & fees on the upgrade"
+              feePricing={previewPricing}
             />
           }
           actions={
